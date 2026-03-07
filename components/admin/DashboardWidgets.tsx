@@ -1,6 +1,7 @@
 "use client";
 
-import { 
+import { useState, useCallback, useEffect } from "react";
+import Link from "next/link";import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
   BarChart, Bar, AreaChart, Area, PieChart, Pie, Cell, Legend 
 } from 'recharts';
@@ -72,33 +73,73 @@ const alerts = [
 ];
 
 function WidgetCard({ title, children, className, subtitle, icon: Icon, actions }: any) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleDownloadCSV = () => {
+    const csvContent = "data:text/csv;charset=utf-8,Demo Header 1, Demo Header 2\nValue 100, Value 200\nValue 300, Value 400";
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `${title.replace(/\s+/g, '_').toLowerCase()}_report.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <div className={cn("bg-white rounded-[2.5rem] border border-gray-100 shadow-sm p-8 flex flex-col h-full", className)}>
-      <div className="flex justify-between items-start mb-8">
-        <div>
-          <div className="flex items-center space-x-3 mb-1">
-            {Icon && <Icon size={18} className="text-primary" />}
-            <h3 className="text-lg font-black text-typography tracking-tight uppercase leading-none">{title}</h3>
+    <div className={cn("bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col h-full", className)}>
+      <div className="flex justify-between items-start mb-6 w-full relative">
+        <div className="min-w-0 pr-4">
+          <div className="flex items-center space-x-2">
+            {Icon && <Icon size={20} className="text-primary shrink-0" />}
+            <h3 className="text-base font-bold text-gray-800 truncate">{title}</h3>
           </div>
-          {subtitle && <p className="text-xs font-bold text-secondary/40 uppercase tracking-widest">{subtitle}</p>}
+          {subtitle && <p className="text-sm font-medium text-gray-500 mt-1 pl-7 truncate">{subtitle}</p>}
         </div>
-        <div className="flex items-center space-x-2">
-           <button className="p-2 hover:bg-gray-50 rounded-xl transition-all border border-transparent hover:border-gray-100">
-              <Download size={16} className="text-secondary/40 hover:text-primary" />
+        <div className="flex items-center space-x-2 shrink-0">
+           <button onClick={handleDownloadCSV} title="Download CSV Report" className="p-1.5 hover:bg-gray-50 rounded-lg transition-all border border-transparent hover:border-gray-100 text-gray-400 hover:text-gray-600">
+              <Download size={16} />
            </button>
-           <button className="p-2 hover:bg-gray-50 rounded-xl transition-all border border-transparent hover:border-gray-100">
-              <MoreVertical size={16} className="text-secondary/40 hover:text-primary" />
-           </button>
+           <div className="relative">
+             <button onClick={() => setMenuOpen(!menuOpen)} className="p-1.5 hover:bg-gray-50 rounded-lg transition-all border border-transparent hover:border-gray-100 text-gray-400 hover:text-gray-600">
+                <MoreVertical size={16} />
+             </button>
+             {menuOpen && (
+               <div className="absolute right-0 top-8 w-36 bg-white border border-gray-100 shadow-xl rounded-xl flex flex-col p-1 z-50">
+                  <button onClick={() => setMenuOpen(false)} className="text-xs text-left font-medium text-gray-600 hover:bg-gray-50 hover:text-primary px-3 py-2 rounded-md">View Details</button>
+                  <button onClick={() => setMenuOpen(false)} className="text-xs text-left font-medium text-gray-600 hover:bg-gray-50 hover:text-primary px-3 py-2 rounded-md">Configure Widget</button>
+                  <button onClick={() => setMenuOpen(false)} className="text-xs text-left font-medium text-red-600 hover:bg-red-50 px-3 py-2 rounded-md">Hide from View</button>
+               </div>
+             )}
+           </div>
         </div>
       </div>
-      <div className="flex-1">{children}</div>
+      <div className="flex-1 w-full min-h-0">{children}</div>
     </div>
   );
 }
 
-export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAlerts, loading }: any) {
+export function DashboardWidgets({ 
+  topColleges: propTopColleges, 
+  alerts: propAlerts, 
+  activityData: propActivityData,
+  leadVelocity: propLeadVelocity,
+  revenueTrend: propRevenueTrend,
+  moderationData: propModerationData,
+  loading 
+}: any) {
   const displayColleges = propTopColleges && propTopColleges.length > 0 ? propTopColleges : topColleges;
-  const displayAlerts = propAlerts && propAlerts.length > 0 ? propAlerts : alerts;
+  const initialAlerts = propAlerts && propAlerts.length > 0 ? propAlerts : alerts;
+  const displayActivityData = propActivityData && propActivityData.length > 0 ? propActivityData : activityData;
+  const displayLeadVelocity = propLeadVelocity && propLeadVelocity.length > 0 ? propLeadVelocity : leadVelocity;
+  const displayRevenueTrend = propRevenueTrend && propRevenueTrend.length > 0 ? propRevenueTrend : revenueTrend;
+  const displayModerationData = propModerationData && propModerationData.length > 0 ? propModerationData : moderationData;
+
+  const [localAlerts, setLocalAlerts] = useState<any[]>([]);
+
+  useEffect(() => {
+    setLocalAlerts(initialAlerts);
+  }, [initialAlerts]);
 
   return (
     <div className="grid grid-cols-12 gap-8 mb-10">
@@ -106,12 +147,12 @@ export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAle
       <WidgetCard 
         title="Student Activity" 
         subtitle="DAU vs AI Counseling Sessions (Last 7 Days)" 
-        className="col-span-12 lg:col-span-8"
+        className="col-span-12 xl:col-span-8"
         icon={TrendingUp}
       >
         <div className="h-[350px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={activityData}>
+            <AreaChart data={displayActivityData}>
               <defs>
                 <linearGradient id="colorDau" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#0B2447" stopOpacity={0.1}/>
@@ -140,12 +181,12 @@ export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAle
       <WidgetCard 
         title="Lead Velocity" 
         subtitle="Grouped by stream (Engineering/MBA/Medical)" 
-        className="col-span-12 lg:col-span-4"
+        className="col-span-12 xl:col-span-4"
         icon={MousePointer2}
       >
         <div className="h-[350px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={leadVelocity}>
+            <BarChart data={displayLeadVelocity}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F1F5F9" />
               <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} dy={10} />
               <YAxis hide />
@@ -162,12 +203,12 @@ export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAle
       <WidgetCard 
         title="Revenue Performance" 
         subtitle="Daily CPL + Subscription Revenue" 
-        className="col-span-12 lg:col-span-6"
+        className="col-span-12 lg:col-span-7 xl:col-span-8"
         icon={TrendingUp}
       >
         <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={revenueTrend}>
+            <AreaChart data={displayRevenueTrend}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F1F5F9" />
               <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} />
               <YAxis axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} tickFormatter={(value) => `₹${value/1000}k`} />
@@ -183,14 +224,14 @@ export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAle
       <WidgetCard 
         title="Moderation Pipeline" 
         subtitle="Pending / Approved / Rejected Today" 
-        className="col-span-12 lg:col-span-3"
+        className="col-span-12 md:col-span-6 lg:col-span-5 xl:col-span-4"
         icon={ShieldAlert}
       >
         <div className="h-[300px] w-full flex flex-col items-center justify-center">
           <ResponsiveContainer width="100%" height={240}>
             <PieChart>
               <Pie
-                data={moderationData}
+                data={displayModerationData}
                 innerRadius={70}
                 outerRadius={90}
                 paddingAngle={10}
@@ -205,13 +246,13 @@ export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAle
             </PieChart>
           </ResponsiveContainer>
           <div className="flex space-x-6">
-            {moderationData.map((item) => (
+            {displayModerationData.map((item: any) => (
               <div key={item.name} className="flex flex-col items-center">
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 mb-1">
                    <div className="w-2.5 h-2.5 rounded-full" style={{backgroundColor: item.color}} />
-                   <span className="text-[10px] font-black uppercase text-secondary/40 leading-none">{item.name}</span>
+                   <span className="text-xs font-medium text-gray-500 leading-none">{item.name}</span>
                 </div>
-                <span className="text-lg font-black mt-1">{item.value}</span>
+                <span className="text-lg font-bold text-gray-800">{item.value}</span>
               </div>
             ))}
           </div>
@@ -222,34 +263,36 @@ export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAle
       <WidgetCard 
         title="Global Trend Intelligence" 
         subtitle="Top 5 Most Searched Colleges Today" 
-        className="col-span-12 lg:col-span-3"
+        className="col-span-12 lg:col-span-12"
         icon={Search}
       >
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
           {displayColleges.map((college: any, i: number) => (
-            <div key={college.name} className="flex items-center justify-between group cursor-pointer hover:translate-x-1 transition-all">
+            <div key={college.name} className="flex items-center justify-between group cursor-pointer hover:bg-gray-50 p-3 rounded-xl transition-all border border-transparent hover:border-gray-100">
               <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-xs font-black text-secondary group-hover:bg-primary group-hover:text-white transition-all">
+                <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-xs font-bold text-gray-500 group-hover:bg-primary group-hover:text-white transition-all">
                    0{i+1}
                 </div>
                 <div>
-                   <p className="text-sm font-black text-typography line-clamp-1">{college.name}</p>
-                   <p className="text-[10px] font-bold text-secondary/40">{loading ? "..." : college.searches?.toLocaleString()} Queries</p>
+                   <p className="text-sm font-semibold text-gray-800 line-clamp-1">{college.name}</p>
+                   <p className="text-xs font-medium text-gray-500">{loading ? "..." : college.searches?.toLocaleString()} Queries</p>
                 </div>
               </div>
               <div className={cn(
-                "text-[10px] font-black italic",
-                college.change?.startsWith('+') ? "text-emerald-500" : "text-red-500"
+                "text-xs font-semibold px-2.5 py-1.5 rounded-md",
+                college.change?.startsWith('+') ? "text-emerald-700 bg-emerald-50 border border-emerald-100/50" : "text-red-700 bg-red-50 border border-red-100/50"
               )}>
                 {college.change}
               </div>
             </div>
           ))}
         </div>
-        <button className="w-full mt-8 py-3 bg-gray-50 hover:bg-primary hover:text-white text-secondary text-[10px] font-black uppercase tracking-widest rounded-2xl transition-all flex items-center justify-center space-x-2 border border-gray-100">
-           <span>View 100+ More</span>
-           <ArrowRight size={12} />
-        </button>
+        <div className="flex justify-center mt-6">
+          <Link href="/admin/colleges" className="w-full lg:w-auto px-8 py-2.5 bg-gray-50 hover:bg-gray-100 text-gray-600 text-sm font-semibold rounded-lg transition-all flex items-center justify-center space-x-2 border border-gray-200">
+             <span>View All Trends</span>
+             <ArrowRight size={14} />
+          </Link>
+        </div>
       </WidgetCard>
 
       {/* Widget 8: Infrastructure Logs */}
@@ -259,22 +302,22 @@ export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAle
         className="col-span-12 lg:col-span-12"
         icon={Zap}
       >
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
-             <thead className="bg-snow-pearl/50 border-y border-gray-50">
+        <div className="overflow-x-auto -mx-6 mb-[-24px]">
+          <table className="w-full text-left border-t border-gray-100">
+             <thead className="bg-gray-50/50">
                 <tr>
-                   <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/50">Status</th>
-                   <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/50">Message</th>
-                   <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/50">Timestamp</th>
-                   <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/50 text-right">Actions</th>
+                   <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                   <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Message</th>
+                   <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Timestamp</th>
+                   <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">Actions</th>
                 </tr>
              </thead>
-             <tbody className="divide-y divide-gray-50">
-                {displayAlerts.map((alert: any) => (
-                  <tr key={alert.id} className="group hover:bg-gray-50/50 transition-colors">
-                    <td className="px-6 py-5">
+             <tbody className="divide-y divide-gray-100">
+                {localAlerts.map((alert: any) => (
+                  <tr key={alert.id} className="group hover:bg-gray-50/80 transition-colors">
+                    <td className="px-6 py-4">
                        <span className={cn(
-                         "text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-full",
+                         "text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md",
                          alert.type === 'CRITICAL' ? 'bg-red-50 text-red-600' : 
                          alert.type === 'WARNING' ? 'bg-amber-50 text-amber-600' : 
                          'bg-sky-50 text-sky-600'
@@ -282,17 +325,22 @@ export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAle
                          {alert.type}
                        </span>
                     </td>
-                    <td className="px-6 py-5">
-                       <p className="text-sm font-bold text-typography line-clamp-1">{alert.text}</p>
+                    <td className="px-6 py-4">
+                       <p className="text-sm font-medium text-gray-800 line-clamp-1">{alert.text}</p>
                     </td>
-                    <td className="px-6 py-5">
-                       <p className="text-xs font-bold text-secondary/30 whitespace-nowrap">{new Date(alert.time).toLocaleTimeString()}</p>
+                    <td className="px-6 py-4">
+                       <p className="text-sm font-medium text-gray-400 whitespace-nowrap">{new Date(alert.time).toLocaleTimeString()}</p>
                     </td>
-                    <td className="px-6 py-5 text-right">
-                       <button className="text-[10px] font-black text-primary px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity bg-primary/5">Acknowledge</button>
+                    <td className="px-6 py-4 text-right">
+                       <button onClick={() => setLocalAlerts(prev => prev.filter(a => a.id !== alert.id))} className="text-xs font-medium text-primary px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary/5">Acknowledge</button>
                     </td>
                   </tr>
                 ))}
+                {localAlerts.length === 0 && (
+                  <tr>
+                    <td colSpan={4} className="px-6 py-8 text-center text-gray-400 text-sm font-medium">All infrastructure systems operating optimally. No pending alerts.</td>
+                  </tr>
+                )}
              </tbody>
           </table>
         </div>
@@ -303,27 +351,27 @@ export function DashboardWidgets({ topColleges: propTopColleges, alerts: propAle
 
 export function QuickActions() {
   const actions = [
-    { label: "New College", icon: Plus, color: "bg-primary" },
-    { label: "Approve 34 Reviews", icon: ShieldAlert, color: "bg-red-600" },
-    { label: "Scraper Control", icon: Zap, color: "bg-secondary" },
-    { label: "AI Config", icon: Zap, color: "bg-emerald-600" },
-    { label: "SEO Sitemap", icon: Globe, color: "bg-blue-600" },
+    { label: "New College", icon: Plus, color: "bg-primary", href: "/admin/colleges/new" },
+    { label: "Approve Reviews", icon: ShieldAlert, color: "bg-red-600", href: "/admin/moderation/reviews" },
+    { label: "View Leads", icon: Users, color: "bg-secondary", href: "/admin/operations/leads" },
+    { label: "Manage Exams", icon: Globe, color: "bg-blue-600", href: "/admin/exams" },
+    { label: "Add Scholarship", icon: Zap, color: "bg-emerald-600", href: "/admin/scholarships/new" },
   ];
 
   return (
-    <div className="fixed bottom-10 right-10 flex flex-col space-y-4 items-end z-50 group">
-       <button className="w-16 h-16 bg-primary text-white rounded-[2rem] shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+    <div className="fixed bottom-24 lg:bottom-10 right-4 lg:right-10 flex flex-col space-y-4 items-end z-[90] group">
+       <button className="w-14 h-14 md:w-16 md:h-16 bg-primary text-white rounded-[1.5rem] md:rounded-[2rem] shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
           <Settings size={28} className="animate-spin-slow" />
        </button>
-       <div className="absolute bottom-20 right-0 flex flex-col space-y-4 pointer-events-none group-hover:pointer-events-auto">
+       <div className="absolute bottom-16 md:bottom-20 right-0 flex flex-col space-y-4 pointer-events-none group-hover:pointer-events-auto">
           {actions.map((action, i) => (
             <div key={i} className="flex items-center justify-end space-x-4 opacity-0 group-hover:opacity-100 translate-y-10 group-hover:translate-y-0 transition-all duration-300" style={{ transitionDelay: `${i * 50}ms` }}>
                <span className="bg-white border border-gray-100 px-4 py-2 rounded-xl text-xs font-black shadow-lg shadow-black/5 whitespace-nowrap">
                   {action.label}
                </span>
-               <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl cursor-pointer hover:rotate-12 active:scale-95 transition-all", action.color)}>
+               <Link href={action.href} className={cn("w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl cursor-pointer hover:rotate-12 active:scale-95 transition-all", action.color)}>
                   <action.icon size={20} />
-               </div>
+               </Link>
             </div>
           ))}
        </div>

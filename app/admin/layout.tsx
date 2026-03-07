@@ -25,8 +25,8 @@ export default function AdminLayout({
       <Sidebar />
       <div className="flex-1 flex flex-col h-full relative overflow-y-auto no-scrollbar">
         <Navbar />
-        <main className="p-10 flex-1 relative bg-snow-pearl/30">
-          <div className="max-w-[1600px] mx-auto animate-in fade-in slide-in-from-bottom-2 duration-500">
+        <main className="p-4 md:p-6 lg:p-10 flex-1 relative bg-snow-pearl/30 pb-24 lg:pb-10">
+          <div className="max-w-[1600px] mx-auto animate-in fade-in slide-in-from-bottom-2 duration-500 overflow-x-hidden">
             {children}
           </div>
         </main>

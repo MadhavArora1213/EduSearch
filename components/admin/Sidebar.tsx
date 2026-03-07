@@ -49,32 +49,104 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside 
-      className={cn(
-        "h-screen sticky top-0 bg-primary text-white transition-all duration-300 flex flex-col z-50",
-        collapsed ? "w-20" : "w-72"
-      )}
-    >
-      {/* Sidebar Header */}
-      <div className="p-6 flex items-center justify-between">
-        {!collapsed && (
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10">
-              <span className="text-white font-black text-xl italic pt-0.5">E</span>
-            </div>
-            <span className="font-black text-xl tracking-tight">EduSearch</span>
-          </div>
+    <>
+      {/* Desktop Sidebar */}
+      <aside 
+        className={cn(
+          "h-screen sticky top-0 bg-[#06162C] text-white transition-all duration-300 z-50 border-r border-white/5 shadow-2xl relative overflow-hidden shrink-0",
+          collapsed ? "w-24" : "w-[280px]",
+          "hidden lg:flex flex-col"
         )}
-        <button 
-          onClick={() => setCollapsed(!collapsed)}
-          className="p-2 hover:bg-white/10 rounded-xl transition-colors"
-        >
-          {collapsed ? <ChevronRight size={20} /> : <ChevronLeft size={20} />}
-        </button>
-      </div>
+      >
+        {/* Premium Background Glows */}
+        <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute bottom-[-100px] right-[-100px] w-[300px] h-[300px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none" />
 
-      {/* Navigation Items */}
-      <nav className="flex-1 mt-4 px-4 space-y-2 overflow-y-auto no-scrollbar">
+        {/* Sidebar Header */}
+        <div className="relative h-24 flex items-center justify-between px-7 shrink-0 z-10">
+          {!collapsed && (
+            <div className="flex items-center group cursor-pointer transition-all">
+               <span className="font-extrabold text-[#F8FAFC] text-2xl tracking-tight leading-none">EduSearch</span>
+            </div>
+          )}
+          <button 
+            onClick={() => setCollapsed(!collapsed)}
+            className={cn(
+              "p-2 rounded-xl transition-all border border-transparent backdrop-blur-md",
+              collapsed ? "mx-auto bg-white/5 border-white/10 text-white hover:bg-white/10" : "hover:bg-white/5 text-slate-500 hover:text-slate-300"
+            )}
+          >
+            {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+          </button>
+        </div>
+
+        <div className="px-7 mb-4 shrink-0 z-10">
+           <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        </div>
+
+        {/* Navigation Items */}
+        <nav className="flex-1 px-4 space-y-1.5 overflow-y-auto no-scrollbar relative z-10 pb-6">
+          {menuItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link 
+                key={item.id} 
+                href={item.href}
+                className={cn(
+                  "flex items-center space-x-3.5 px-4 py-3.5 rounded-[14px] transition-all duration-300 group relative overflow-hidden",
+                  isActive 
+                    ? "bg-white/10 text-white shadow-lg shadow-black/20 border border-white/10" 
+                    : "text-slate-400 hover:text-white hover:bg-white/5 border border-transparent"
+                )}
+              >
+                {/* Active Item Background Glow */}
+                {isActive && (
+                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-transparent opacity-50 pointer-events-none" />
+                )}
+
+                <div className={cn(
+                   "relative flex items-center justify-center shrink-0 transition-all duration-300",
+                   isActive ? "text-blue-400" : "group-hover:text-blue-300 group-hover:scale-110"
+                )}>
+                   {isActive && (
+                      <div className="absolute inset-0 bg-blue-400 blur-md opacity-40 rounded-full" />
+                   )}
+                   <item.icon size={20} className="relative z-10" />
+                </div>
+                
+                {!collapsed && (
+                  <span className={cn(
+                     "text-[13px] tracking-wide transition-all z-10",
+                     isActive ? "font-bold" : "font-medium"
+                  )}>{item.label}</span>
+                )}
+                
+                {isActive && !collapsed && (
+                  <div className="absolute left-0 w-1 h-8 bg-blue-500 rounded-r-full shadow-[0_0_12px_rgba(59,130,246,0.8)] top-1/2 -translate-y-1/2" />
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="px-4 shrink-0 z-10 mb-4 mt-auto">
+           <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        </div>
+
+        {/* Sidebar Footer */}
+        <div className="p-5 pt-0 shrink-0 z-10">
+          <button className={cn(
+             "w-full flex items-center space-x-3.5 px-4 py-3.5 text-slate-400 hover:text-red-400 hover:bg-red-500/10 hover:border-red-500/20 border border-transparent rounded-[14px] transition-all font-medium group",
+             collapsed && "justify-center"
+          )}>
+            <LogOut size={20} className="group-hover:-translate-x-1 transition-transform" />
+            {!collapsed && <span className="text-[13px] font-bold tracking-wide">Secure Sign Out</span>}
+          </button>
+        </div>
+      </aside>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#06162C]/95 backdrop-blur-xl border-t border-white/10 z-[100] flex flex-row items-center justify-between px-2 overflow-x-auto no-scrollbar shadow-[0_-10px_40px_rgba(0,0,0,0.3)] touch-pan-x">
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
           return (
@@ -82,43 +154,29 @@ export function Sidebar() {
               key={item.id} 
               href={item.href}
               className={cn(
-                "flex items-center space-x-4 px-4 py-3.5 rounded-2xl transition-all duration-200 group relative",
-                isActive 
-                  ? "bg-secondary text-white shadow-lg shadow-black/20" 
-                  : "text-white/60 hover:text-white hover:bg-white/5"
+                "flex flex-col items-center justify-center p-2 min-w-[64px] rounded-xl transition-all relative overflow-hidden",
+                isActive ? "text-blue-400" : "text-slate-400"
               )}
             >
-              <item.icon size={22} className={cn(
-                "shrink-0",
-                isActive ? "text-white" : "group-hover:scale-110 transition-transform"
-              )} />
-              {!collapsed && (
-                <span className="font-bold text-sm tracking-wide">{item.label}</span>
-              )}
-              {isActive && !collapsed && (
-                <div className="absolute left-0 w-1.5 h-6 bg-white rounded-r-full" />
+              <div className="relative mb-1">
+                 {isActive && (
+                    <div className="absolute inset-0 bg-blue-400 blur-sm opacity-40 rounded-full" />
+                 )}
+                 <item.icon size={20} className="relative z-10" />
+              </div>
+              <span className={cn(
+                "text-[9px] font-semibold whitespace-nowrap",
+                isActive ? "text-blue-400" : "text-slate-500"
+              )}>
+                 {item.label.split(' ')[0]} {/* Show short label on mobile */}
+              </span>
+              {isActive && (
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-blue-500 rounded-t-full shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
               )}
             </Link>
           );
         })}
       </nav>
-
-      {/* Sidebar Footer */}
-      <div className="p-4 border-t border-white/5 space-y-2">
-        {!collapsed && (
-          <div className="bg-white/5 p-4 rounded-2xl mb-4">
-            <p className="text-[10px] uppercase font-black tracking-widest text-white/40 mb-2">Environment</p>
-            <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-tighter">PRODUCTION</span>
-            </div>
-          </div>
-        )}
-        <button className="w-full flex items-center space-x-4 px-4 py-3.5 text-white/60 hover:text-red-400 hover:bg-red-400/10 rounded-2xl transition-all">
-          <LogOut size={22} />
-          {!collapsed && <span className="font-bold text-sm uppercase tracking-widest">Logout</span>}
-        </button>
-      </div>
-    </aside>
+    </>
   );
 }
