@@ -22,7 +22,10 @@ import {
   Map,
   BookOpen,
   Target,
-  Lock
+  Lock,
+  Activity,
+  Zap,
+  CreditCard
 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
@@ -30,18 +33,27 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
-  { id: "dashboard", label: "Dashboard Overview", icon: LayoutDashboard, href: "/admin/dashboard" },
-  { id: "colleges", label: "College & Course Management", icon: GraduationCap, href: "/admin/colleges" },
-  { id: "exams", label: "Entrance exams & Cutoffs", icon: FileText, href: "/admin/exams" },
-  { id: "leads", label: "Lead Management System", icon: Target, href: "/admin/operations/leads" },
-  { id: "moderation", label: "Content Moderation", icon: ShieldCheck, href: "/admin/moderation/reviews" },
-  { id: "content", label: "Article & Blog Editor", icon: BookOpen, href: "/admin/content/articles" },
-  { id: "seo", label: "SEO & Meta Intelligence", icon: Globe, href: "/admin/seo/meta-tags" },
-  { id: "ai", label: "AI Operations Panel", icon: Cpu, href: "/admin/ai/control" },
-  { id: "growth", label: "Platform Growth & Analytics", icon: TrendingUp, href: "/admin/growth/analytics" },
-  { id: "system", label: "Infrastructure & Health", icon: Database, href: "/admin/system/health" },
-  { id: "notifications", label: "Notification Centre", icon: Bell, href: "/admin/notifications/hub" },
-  { id: "security", label: "Security & Audit Logs", icon: Lock, href: "/admin/security/audit" },
+  { id: "dashboard", label: "Command Centre", icon: LayoutDashboard, href: "/admin/dashboard" },
+  { id: "colleges", label: "Institution Hub", icon: GraduationCap, href: "/admin/colleges" },
+  { id: "exams", label: "Exam Intelligence", icon: FileText, href: "/admin/exams" },
+  
+  // Section 4.1 - Lead Management & Audit
+  { id: "leads", label: "Lead Velocitor", icon: Target, href: "/admin/operations/leads" },
+  { id: "disputes", label: "Invalid Disputes", icon: ShieldCheck, href: "/admin/operations/leads/disputes" },
+  { id: "performance", label: "SLA Precision", icon: Activity, href: "/admin/operations/leads/performance" },
+  { id: "attribution", label: "Source Attribution", icon: Map, href: "/admin/operations/leads/attribution" },
+
+  // Section 4.2 - Subscription, Billing & Sponsorship
+  { id: "subscriptions", label: "Sub Matrix", icon: Zap, href: "/admin/growth/subscriptions" },
+  { id: "invoices", label: "Invoicing Engine", icon: CreditCard, href: "/admin/growth/invoices" },
+  { id: "sponsored", label: "Ad Inventory", icon: LayoutDashboard, href: "/admin/growth/sponsored" }, // Reusing icon for slots
+  { id: "commissions", label: "Affiliate Vault", icon: TrendingUp, href: "/admin/growth/commissions" },
+
+  { id: "moderation", label: "Auto-Mod Rules", icon: ShieldCheck, href: "/admin/moderation/reviews" },
+  { id: "content", label: "Content Editor", icon: BookOpen, href: "/admin/content/articles" },
+  { id: "seo", label: "SEO Intelligence", icon: Globe, href: "/admin/seo/meta-tags" },
+  { id: "ai", label: "AI Ops Console", icon: Cpu, href: "/admin/ai/control" },
+  { id: "system", label: "System Pulse", icon: Database, href: "/admin/system/health" },
 ];
 
 export function Sidebar() {

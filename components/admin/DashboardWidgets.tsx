@@ -87,14 +87,14 @@ function WidgetCard({ title, children, className, subtitle, icon: Icon, actions 
   };
 
   return (
-    <div className={cn("bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col h-full", className)}>
+    <div className={cn("bg-white rounded-2xl border border-gray-100 shadow-sm p-4 md:p-6 flex flex-col h-full", className)}>
       <div className="flex justify-between items-start mb-6 w-full relative">
-        <div className="min-w-0 pr-4">
+        <div className="min-w-0 pr-2">
           <div className="flex items-center space-x-2">
-            {Icon && <Icon size={20} className="text-primary shrink-0" />}
-            <h3 className="text-base font-bold text-gray-800 truncate">{title}</h3>
+            {Icon && <Icon size={18} className="text-primary shrink-0" />}
+            <h3 className="text-[14px] font-black text-typography tracking-tight leading-none">{title}</h3>
           </div>
-          {subtitle && <p className="text-sm font-medium text-gray-500 mt-1 pl-7 truncate">{subtitle}</p>}
+          {subtitle && <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-2">{subtitle}</p>}
         </div>
         <div className="flex items-center space-x-2 shrink-0">
            <button onClick={handleDownloadCSV} title="Download CSV Report" className="p-1.5 hover:bg-gray-50 rounded-lg transition-all border border-transparent hover:border-gray-100 text-gray-400 hover:text-gray-600">
@@ -146,7 +146,7 @@ export function DashboardWidgets({
       {/* Widget 1: Student Activity */}
       <WidgetCard 
         title="Student Activity" 
-        subtitle="DAU vs Search Queries vs AI Counseling Sessions" 
+        subtitle="DAU vs Queries vs AI" 
         className="col-span-12 xl:col-span-8"
         icon={TrendingUp}
       >
@@ -182,7 +182,7 @@ export function DashboardWidgets({
       {/* Widget 2: Lead Velocity */}
       <WidgetCard 
         title="Lead Velocity" 
-        subtitle="Grouped by stream (Engineering/MBA/Medical)" 
+        subtitle="Grouped by stream (Eng/MBA/Med)" 
         className="col-span-12 xl:col-span-4"
         icon={MousePointer2}
       >
@@ -213,8 +213,8 @@ export function DashboardWidgets({
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={displayRevenueTrend}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F1F5F9" />
-              <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} />
-              <YAxis axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} tickFormatter={(value) => `₹${value/1000}k`} />
+              <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} dy={15} />
+              <YAxis axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} tickFormatter={(value) => `₹${value/1000}k`} dx={-10} width={45} />
               <Tooltip />
               <Legend />
               <Area type="step" name="Subscriptions" dataKey="sub" stroke="#0F172A" fill="#0F172A" fillOpacity={0.05} strokeWidth={2} />
@@ -224,35 +224,10 @@ export function DashboardWidgets({
         </div>
       </WidgetCard>
 
-      {/* Widget 4: College Client Map */}
-      <WidgetCard 
-        title="College Client Map" 
-        subtitle="Geographic Spread of Active Leads" 
-        className="col-span-12 lg:col-span-5 xl:col-span-4"
-        icon={Globe}
-      >
-        <div className="h-[300px] w-full flex items-center justify-center bg-gray-50 rounded-xl relative overflow-hidden group border border-gray-100">
-           <svg viewBox="0 0 200 200" className="w-full h-full opacity-20 group-hover:scale-110 transition-transform duration-1000">
-              <path d="M50,150 L150,150 L100,50 Z" fill="currentColor" className="text-primary" />
-              <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="1" className="text-primary/20" />
-           </svg>
-           <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-              <Globe className="text-primary/40 mb-3 animate-pulse" size={32} />
-              <p className="text-sm font-bold text-gray-800">Geographic Spread View</p>
-              <p className="text-[10px] font-medium text-gray-500 mt-1 uppercase tracking-widest">Active Leads Intensity by Region</p>
-              <div className="mt-4 flex space-x-2">
-                 <div className="w-2 h-2 rounded-full bg-primary" />
-                 <div className="w-2 h-2 rounded-full bg-primary/60" />
-                 <div className="w-2 h-2 rounded-full bg-primary/20" />
-              </div>
-           </div>
-        </div>
-      </WidgetCard>
-
       {/* Widget 5: Moderation Queue Status */}
       <WidgetCard 
-        title="Moderation Queue Status" 
-        subtitle="Pending / Approved / Rejected Today" 
+        title="Queue Pipeline" 
+        subtitle="Moderation Status" 
         className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4"
         icon={ShieldAlert}
       >
@@ -261,8 +236,8 @@ export function DashboardWidgets({
             <PieChart>
               <Pie
                 data={displayModerationData}
-                innerRadius={70}
-                outerRadius={90}
+                innerRadius={60}
+                outerRadius={80}
                 paddingAngle={10}
                 dataKey="value"
                 stroke="none"
@@ -290,9 +265,9 @@ export function DashboardWidgets({
 
       {/* Widget 6: AI Counselor Usage */}
       <WidgetCard 
-        title="AI Counselor Usage" 
-        subtitle="Sessions Today: 1,245 | Avg Response: 2.1s" 
-        className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4" 
+        title="AI Ops Center" 
+        subtitle="Usage & Performance Logs" 
+        className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6" 
         icon={Zap}
       >
         <div className="h-[300px] flex flex-col justify-center space-y-6">
@@ -331,7 +306,7 @@ export function DashboardWidgets({
       <WidgetCard 
         title="Top Searched Colleges" 
         subtitle="Most Viewed Institutions (Real-time)" 
-        className="col-span-12 md:col-span-12 lg:col-span-4 xl:col-span-4"
+        className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6"
         icon={Search}
       >
         <div className="space-y-4">
@@ -342,7 +317,7 @@ export function DashboardWidgets({
                    {i+1}
                 </div>
                 <div>
-                   <p className="text-sm font-bold text-gray-800 line-clamp-1">{college.name}</p>
+                   <p className="text-sm font-bold text-gray-800">{college.name}</p>
                    <p className="text-[10px] font-medium text-gray-500">{loading ? "..." : college.searches?.toLocaleString()} Views</p>
                 </div>
               </div>
