@@ -5,8 +5,10 @@ import {
   MessageSquare, 
   CheckCircle2, 
   XCircle, 
-  ShieldAlert, 
-  Search, 
+   ShieldAlert,
+   ShieldCheck,
+   Search, 
+   Users,
   ChevronRight, 
   User, 
   Star, 
@@ -16,8 +18,12 @@ import {
   Download,
   Filter,
   Eye,
-  Flag,
-  RotateCcw
+  RotateCcw,
+  StarHalf,
+  FileText,
+  Mail,
+  Clock,
+  ExternalLink
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -35,12 +41,31 @@ interface Review {
   course_review: string;
   pros: string;
   cons: string;
+  assigned_to?: string;
+  verification_method: 'OTP' | 'STUDENT_ID';
+  verification_log?: string;
+  evidence_url?: string;
+  rating_breakdown: {
+    academics: number;
+    faculty: number;
+    infrastructure: number;
+    accommodation: number;
+    placements: number;
+  };
+  student_meta: {
+    account_age_days: number;
+    total_reviews: number;
+    previous_rejections: number;
+  };
+  ai_reasoning: string;
 }
-
 export default function ReviewModerationPage() {
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("PENDING");
+  const [selectedReview, setSelectedReview] = useState<Review | null>(null);
+  const [rejectionReason, setRejectionReason] = useState("");
+  const [isRejecting, setIsRejecting] = useState(false);
 
   useEffect(() => {
     fetchReviews();
@@ -158,13 +183,21 @@ export default function ReviewModerationPage() {
                           </div>
                           <div>
                              <h4 className="text-base font-black text-typography leading-tight">{review.student.name}</h4>
-                             <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest">{review.student.email}</p>
-                          </div>
-                       </div>
-                       <div className="flex items-center space-x-1 bg-amber-50 px-4 py-2 rounded-full border border-amber-100">
+                              <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest">{review.student.email}</p>
+                           </div>
+                        </div>
+                        <div className="flex items-center space-x-6">
+                           {review.assigned_to && (
+                             <div className="flex items-center space-x-2 bg-gray-50 px-3 py-1.5 rounded-xl border border-gray-100">
+                                <Users size={12} className="text-secondary/40" />
+                                <span className="text-[9px] font-black uppercase tracking-widest text-secondary/40">Audit: {review.assigned_to}</span>
+                             </div>
+                           )}
+                           <div className="flex items-center space-x-1 bg-amber-50 px-4 py-2 rounded-full border border-amber-100">
                           <Star size={14} className="text-amber-500 fill-amber-500" />
                           <span className="text-sm font-black text-amber-600">{review.overall_rating}</span>
                        </div>
+                    </div>
                     </div>
 
                     <div className="space-y-4">
@@ -232,27 +265,18 @@ export default function ReviewModerationPage() {
 
                     <div className="flex flex-col space-y-3">
                        <button 
-                         onClick={() => updateStatus(review.id, "APPROVED")}
-                         className="w-full py-4 bg-emerald-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-emerald-500/20 flex items-center justify-center space-x-2"
-                        >
-                          <CheckCircle2 size={16} />
-                          <span>Approve & Go Live</span>
-                       </button>
-                       <button 
-                         onClick={() => updateStatus(review.id, "REJECTED")}
-                         className="w-full py-4 bg-white border border-gray-200 text-red-500 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-red-50 transition-all flex items-center justify-center space-x-2"
+                         onClick={() => setSelectedReview(review)}
+                         className="w-full py-4 bg-white border border-gray-200 text-secondary/60 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all flex items-center justify-center space-x-2"
                        >
-                          <XCircle size={16} />
-                          <span>Audit Failed / Reject</span>
+                          <Eye size={16} />
+                          <span>View Details & Audit</span>
                        </button>
                        <div className="flex items-center space-x-2">
-                          <button className="flex-1 py-4 bg-white border border-gray-200 text-secondary/40 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-100 transition-all flex items-center justify-center space-x-2">
-                             <Flag size={14} />
-                             <span>Spam</span>
+                          <button onClick={() => updateStatus(review.id, "APPROVED")} className="flex-1 py-3 bg-emerald-50 text-emerald-600 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all">
+                             Approve
                           </button>
-                          <button className="flex-1 py-4 bg-white border border-gray-200 text-secondary/40 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-100 transition-all flex items-center justify-center space-x-2">
-                             <Eye size={14} />
-                             <span>Details</span>
+                          <button onClick={() => { setSelectedReview(review); setIsRejecting(true); }} className="flex-1 py-3 bg-red-50 text-red-600 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all">
+                             Reject
                           </button>
                        </div>
                     </div>
@@ -261,6 +285,166 @@ export default function ReviewModerationPage() {
            </div>
          ))}
       </section>
+
+      {/* Review Detail Pane (Side Sheet) */}
+      {selectedReview && (
+        <div className="fixed inset-0 z-[100] flex justify-end">
+           <div className="absolute inset-0 bg-typography/40 backdrop-blur-sm" onClick={() => { setSelectedReview(null); setIsRejecting(false); }} />
+           <div className="relative w-full max-w-2xl bg-white h-full shadow-2xl animate-in slide-in-from-right duration-500 overflow-y-auto no-scrollbar">
+              <div className="p-10 space-y-10">
+                 {/* Header */}
+                 <div className="flex items-center justify-between">
+                    <button onClick={() => { setSelectedReview(null); setIsRejecting(false); }} className="p-4 bg-gray-50 rounded-2xl text-secondary/40 hover:text-primary transition-all">
+                       <ChevronRight size={20} className="rotate-180" />
+                    </button>
+                    <div className="flex items-center space-x-3">
+                       <span className="text-[10px] font-black uppercase tracking-widest text-secondary/30">Review ID: {selectedReview!.id.slice(0,8)}</span>
+                       <div className={cn(
+                          "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest",
+                          selectedReview!.status === 'PENDING' ? "bg-amber-50 text-amber-600" : "bg-emerald-50 text-emerald-600"
+                       )}>
+                          {selectedReview!.status}
+                       </div>
+                    </div>
+                 </div>
+
+                 {/* Ratings Breakdown */}
+                 <div className="bg-gray-50 p-8 rounded-[2.5rem]">
+                    <h4 className="text-xs font-black uppercase tracking-widest text-secondary/40 mb-6">Star Rating Breakdown</h4>
+                    <div className="grid grid-cols-2 gap-8 italic">
+                       {Object.entries(selectedReview!.rating_breakdown).map(([key, val]) => (
+                         <div key={key} className="flex flex-col">
+                            <span className="text-[9px] font-black uppercase tracking-widest text-secondary/30 mb-2 truncate">{key}</span>
+                            <div className="flex items-center space-x-1">
+                               {[...Array(5)].map((_, i) => (
+                                 <Star key={i} size={14} className={cn(i < val ? "text-amber-500 fill-amber-500" : "text-gray-200")} />
+                               ))}
+                               <span className="ml-2 text-xs font-black text-typography">{val}.0</span>
+                            </div>
+                         </div>
+                       ))}
+                    </div>
+                 </div>
+
+                 {/* Content */}
+                 <div className="space-y-6">
+                    <h3 className="text-3xl font-black text-typography tracking-tight uppercase italic underline decoration-primary/20 decoration-8 underline-offset-8 decoration-solid">{selectedReview!.title}</h3>
+                    <div className="bg-primary/5 p-8 rounded-[2.5rem] border border-primary/10 italic">
+                       <p className="text-sm font-bold text-typography leading-loose">
+                          {selectedReview!.course_review}
+                       </p>
+                    </div>
+                 </div>
+
+                 {/* Verification & Meta */}
+                 <div className="grid grid-cols-2 gap-8">
+                    <div className="bg-white border border-gray-100 p-8 rounded-[2.5rem] space-y-6">
+                       <h4 className="text-[10px] font-black uppercase tracking-widest text-secondary/40 mb-2">Evidence & Audit</h4>
+                       <div className="flex items-center space-x-4">
+                          <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
+                             <ShieldCheck size={24} />
+                          </div>
+                          <div>
+                             <p className="text-xs font-black text-typography">Via {selectedReview!.verification_method}</p>
+                             <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">Verified At 14:20</p>
+                          </div>
+                       </div>
+                       <button className="w-full py-4 bg-gray-50 text-secondary/40 text-[10px] font-black uppercase tracking-widest rounded-2xl hover:bg-gray-100 transition-all flex items-center justify-center space-x-2">
+                          <ExternalLink size={14} />
+                          <span>View Proof Image</span>
+                       </button>
+                    </div>
+
+                    <div className="bg-white border border-gray-100 p-8 rounded-[2.5rem] space-y-6">
+                       <h4 className="text-[10px] font-black uppercase tracking-widest text-secondary/40 mb-2">Reviewer Identity</h4>
+                       <div className="flex items-center space-x-4">
+                          <div className="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
+                             <User size={24} />
+                          </div>
+                          <div>
+                             <p className="text-xs font-black text-typography">{selectedReview!.student_meta.account_age_days}d Old Account</p>
+                             <p className="text-[9px] font-bold text-secondary/30 uppercase tracking-widest">{selectedReview!.student_meta.total_reviews} Total Reviews</p>
+                          </div>
+                       </div>
+                       <div className="p-3 bg-red-50 rounded-xl text-[9px] font-black text-red-600 uppercase tracking-widest flex items-center space-x-2">
+                          <AlertTriangle size={12} />
+                          <span>{selectedReview!.student_meta.previous_rejections} Prev Rejections</span>
+                       </div>
+                    </div>
+                 </div>
+
+                 {/* AI Insights */}
+                 <div className="bg-typography text-white p-10 rounded-[3rem] shadow-2xl shadow-primary/20 relative overflow-hidden group">
+                    <div className="absolute right-0 top-0 w-24 h-24 bg-white/5 rounded-full -translate-y-12 translate-x-12" />
+                    <div className="flex items-center space-x-4 mb-6">
+                       <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-primary">
+                          <Brain size={24} />
+                       </div>
+                       <div>
+                          <h4 className="text-lg font-black tracking-tight italic">AI MODERATOR LOG</h4>
+                          <p className="text-[9px] font-black text-white/30 uppercase tracking-widest">Llama 3.1 Inference Engine</p>
+                       </div>
+                    </div>
+                    <p className="text-sm font-bold text-white/60 leading-relaxed italic mb-8">
+                       "{selectedReview!.ai_reasoning}"
+                    </p>
+                    <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                       <div className="flex items-center space-x-2">
+                          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                          <span className="text-[9px] font-black uppercase tracking-widest text-white/40">Confidence: 98.4%</span>
+                       </div>
+                    </div>
+                 </div>
+
+                 {/* Actions */}
+                 <div className="pt-10 border-t border-gray-100 space-y-6 pb-10">
+                    {isRejecting ? (
+                      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
+                         <div>
+                            <label className="text-[10px] font-black uppercase tracking-widest text-secondary/40 ml-1">Rejection Reason</label>
+                            <select 
+                              value={rejectionReason}
+                              onChange={(e) => setRejectionReason(e.target.value)}
+                              className="w-full bg-red-50 border-0 px-6 py-4 rounded-2xl text-[13px] font-bold outline-none ring-1 ring-red-100 text-red-900 mt-2 appearance-none"
+                            >
+                               <option value="">Select a reason...</option>
+                               <option value="INSUFFICIENT">Insufficient Detail / Too Short</option>
+                               <option value="PROMOTIONAL">Promotional / Marketing Material</option>
+                               <option value="OFF_TOPIC">Off-topic / Irrelevant Content</option>
+                               <option value="FAKE">Suspected Fraudulent / Fake Experience</option>
+                               <option value="ABUSIVE">Abusive / Discriminatory Language</option>
+                            </select>
+                            <p className="text-[10px] font-bold text-red-400 mt-2 italic flex items-center space-x-1">
+                               <Mail size={12} />
+                               <span>Automated rejection email will be sent to reviewer upon confirmation.</span>
+                            </p>
+                         </div>
+                         <div className="flex items-center space-x-3">
+                            <button onClick={() => { updateStatus(selectedReview!.id, "REJECTED"); setSelectedReview(null); }} className="flex-1 py-4 bg-red-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-red-500/20">
+                               Confirm Rejection
+                            </button>
+                            <button onClick={() => setIsRejecting(false)} className="px-8 py-4 bg-gray-50 text-secondary/40 rounded-2xl text-[10px] font-black uppercase tracking-widest font-bold">
+                               Cancel
+                            </button>
+                         </div>
+                      </div>
+                    ) : (
+                      <div className="flex items-center space-x-4">
+                         <button onClick={() => { updateStatus(selectedReview!.id, "APPROVED"); setSelectedReview(null); }} className="flex-1 py-5 bg-emerald-500 text-white rounded-3xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-emerald-500/20 flex items-center justify-center space-x-3">
+                            <CheckCircle2 size={20} />
+                            <span>Confirm Approval</span>
+                         </button>
+                         <button onClick={() => setIsRejecting(true)} className="flex-1 py-5 bg-white border border-gray-200 text-red-500 rounded-3xl text-[11px] font-black uppercase tracking-widest hover:bg-red-50 transition-all flex items-center justify-center space-x-3">
+                            <XCircle size={20} />
+                            <span>Reject Review</span>
+                         </button>
+                      </div>
+                    )}
+                 </div>
+              </div>
+           </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -25,7 +25,8 @@ import {
   AlertTriangle,
   Cpu,
   Layers,
-  Sparkles
+  Sparkles,
+  Plus
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Cell } from "recharts";

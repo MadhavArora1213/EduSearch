@@ -40,7 +40,8 @@ import {
   CheckCircle2,
   XCircle,
   RotateCcw,
-  ShieldAlert
+  ShieldAlert,
+  Eye
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

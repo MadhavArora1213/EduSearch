@@ -7,7 +7,343 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// --- ENUMS ---
+model User {
+  id               String           @id @default(uuid())
+  name             String
+  email            String           @unique
+  phone            String?          @unique
+  password_hash    String?
+  role             Role             @default(STUDENT)
+  email_verified   Boolean          @default(false)
+  image_url        String?          @db.Text
+  created_at       DateTime         @default(now())
+  updated_at       DateTime         @updatedAt
+  ai_logs          AICounselorLog[]
+  applications     Application[]
+  claimed_colleges College[]        @relation("ClaimedBy")
+  leads            Lead[]
+  reviews          Review[]
+  sessions         Session[]
+  profile          StudentProfile?
+
+  @@map("users")
+}
+
+model Session {
+  id         String   @id @default(uuid())
+  user_id    String
+  token      String   @unique
+  expires_at DateTime
+  ip_address String?
+  user_agent String?  @db.Text
+  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@index([user_id], map: "sessions_user_id_fkey")
+  @@map("sessions")
+}
+
+model StudentProfile {
+  user_id           String   @id
+  stream            String?
+  class_10_marks    Decimal? @db.Decimal(5, 2)
+  class_12_marks    Decimal? @db.Decimal(5, 2)
+  preferred_cities  String?  @db.LongText
+  budget_min        Int?
+  budget_max        Int?
+  career_goals      String?  @db.Text
+  counseling_points Int      @default(0)
+  user              User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@map("student_profiles")
+}
+
+model College {
+  id                 String            @id @default(uuid())
+  name               String
+  slug               String            @unique
+  city               String
+  state              String
+  established_year   Int?
+  type               CollegeType
+  naac_grade         String?
+  about_description  String?           @db.Text
+  admission_process  String?           @db.Text
+  logo_url           String?           @db.Text
+  banner_url         String?           @db.Text
+  brochure_pdf_url   String?           @db.Text
+  video_tour_url     String?           @db.Text
+  is_verified        Boolean           @default(false)
+  is_sponsored       Boolean           @default(false)
+  claimed_by_user_id String?
+  created_at         DateTime          @default(now())
+  updated_at         DateTime          @updatedAt
+  approval_bodies    String?
+  campus_area        String?
+  applications       Application[]
+  facilities         CollegeFacility[]
+  gallery            CollegeGallery[]
+  rankings           CollegeRanking[]
+  claimed_by         User?             @relation("ClaimedBy", fields: [claimed_by_user_id], references: [id])
+  courses            Course[]
+  leads              Lead[]
+  placement_stats    PlacementStat[]
+  reviews            Review[]
+
+  @@index([claimed_by_user_id], map: "colleges_claimed_by_user_id_fkey")
+  @@map("colleges")
+}
+
+model CollegeRanking {
+  id             String        @id @default(uuid())
+  college_id     String
+  ranking_agency RankingAgency
+  category       String?
+  year           Int
+  rank           Int
+  college        College       @relation(fields: [college_id], references: [id], onDelete: Cascade)
+
+  @@index([college_id], map: "college_rankings_college_id_fkey")
+  @@map("college_rankings")
+}
+
+model CollegeFacility {
+  id            String  @id @default(uuid())
+  college_id    String
+  facility_name String
+  description   String? @db.Text
+  icon_name     String?
+  college       College @relation(fields: [college_id], references: [id], onDelete: Cascade)
+
+  @@index([college_id], map: "college_facilities_college_id_fkey")
+  @@map("college_facilities")
+}
+
+model CollegeGallery {
+  id         String          @id @default(uuid())
+  college_id String
+  image_url  String          @db.Text
+  category   GalleryCategory @default(OTHER)
+  caption    String?
+  sort_order Int             @default(0)
+  college    College         @relation(fields: [college_id], references: [id], onDelete: Cascade)
+
+  @@index([college_id], map: "college_gallery_college_id_fkey")
+  @@map("college_gallery")
+}
+
+model Course {
+  id                   String        @id @default(uuid())
+  college_id           String
+  name                 String
+  stream               String
+  specialization       String?
+  degree_level         String
+  study_mode           StudyMode     @default(FULL_TIME)
+  duration_years       Decimal       @db.Decimal(3, 1)
+  total_fees           Int
+  first_year_fees      Int?
+  eligibility_criteria String?       @db.Text
+  syllabus_pdf_url     String?       @db.Text
+  course_description   String?       @db.Text
+  created_at           DateTime      @default(now())
+  seats_available      Int?
+  applications         Application[]
+  exams                CourseExam[]
+  college              College       @relation(fields: [college_id], references: [id], onDelete: Cascade)
+  cutoffs              Cutoff[]
+  reviews              Review[]
+
+  @@index([college_id], map: "courses_college_id_fkey")
+  @@map("courses")
+}
+
+model Exam {
+  id               String       @id @default(uuid())
+  name             String       @unique
+  slug             String       @unique
+  full_name        String?
+  level            ExamLevel
+  mode             String?
+  application_link String?      @db.Text
+  exam_date        DateTime?
+  result_date      DateTime?
+  courses          CourseExam[]
+  cutoffs          Cutoff[]
+
+  @@map("exams")
+}
+
+model CourseExam {
+  course_id String
+  exam_id   String
+  course    Course @relation(fields: [course_id], references: [id], onDelete: Cascade)
+  exam      Exam   @relation(fields: [exam_id], references: [id], onDelete: Cascade)
+
+  @@id([course_id, exam_id])
+  @@index([exam_id], map: "course_exams_exam_id_fkey")
+  @@map("course_exams")
+}
+
+model Cutoff {
+  id               String         @id @default(uuid())
+  course_id        String
+  exam_id          String
+  year             Int
+  category         CutoffCategory
+  quota            String?
+  counseling_round String?
+  cutoff_type      CutoffType
+  opening_value    Decimal?       @db.Decimal(10, 2)
+  closing_value    Decimal?       @db.Decimal(10, 2)
+  is_expected      Boolean        @default(false)
+  course           Course         @relation(fields: [course_id], references: [id], onDelete: Cascade)
+  exam             Exam           @relation(fields: [exam_id], references: [id], onDelete: Cascade)
+
+  @@index([course_id], map: "cutoffs_course_id_fkey")
+  @@index([exam_id], map: "cutoffs_exam_id_fkey")
+  @@map("cutoffs")
+}
+
+model Lead {
+  id              String      @id @default(uuid())
+  student_id      String?
+  college_id      String
+  student_name    String
+  student_phone   String
+  student_email   String
+  city            String?
+  quality_score   LeadQuality @default(MEDIUM)
+  status          LeadStatus  @default(NEW)
+  source_page     String?
+  utm_source      String?
+  utm_medium      String?
+  utm_campaign    String?
+  created_at      DateTime    @default(now())
+  course_interest String?
+  college         College     @relation(fields: [college_id], references: [id], onDelete: Cascade)
+  student         User?       @relation(fields: [student_id], references: [id])
+
+  @@index([college_id], map: "leads_college_id_fkey")
+  @@index([student_id], map: "leads_student_id_fkey")
+  @@map("leads")
+}
+
+model Application {
+  id             String        @id @default(uuid())
+  student_id     String
+  college_id     String
+  course_id      String
+  status         AppStatus     @default(SUBMITTED)
+  payment_status PaymentStatus @default(PENDING)
+  payment_id     String?
+  documents_json String?       @db.LongText
+  applied_at     DateTime      @default(now())
+  updated_at     DateTime      @updatedAt
+  college        College       @relation(fields: [college_id], references: [id], onDelete: Cascade)
+  course         Course        @relation(fields: [course_id], references: [id], onDelete: Cascade)
+  student        User          @relation(fields: [student_id], references: [id], onDelete: Cascade)
+
+  @@index([college_id], map: "applications_college_id_fkey")
+  @@index([course_id], map: "applications_course_id_fkey")
+  @@index([student_id], map: "applications_student_id_fkey")
+  @@map("applications")
+}
+
+model PlacementStat {
+  id                   String             @id @default(uuid())
+  college_id           String
+  year                 Int
+  average_package      Decimal?           @db.Decimal(10, 2)
+  highest_package      Decimal?           @db.Decimal(10, 2)
+  median_package       Decimal?           @db.Decimal(10, 2)
+  total_recruiters     Int?
+  placement_percentage Decimal?           @db.Decimal(5, 2)
+  companies            PlacementCompany[]
+  college              College            @relation(fields: [college_id], references: [id], onDelete: Cascade)
+
+  @@index([college_id], map: "placement_stats_college_id_fkey")
+  @@map("placement_stats")
+}
+
+model PlacementCompany {
+  id                String        @id @default(uuid())
+  placement_stat_id String
+  company_name      String
+  logo_url          String?       @db.Text
+  offers_made       Int?
+  placement_stat    PlacementStat @relation(fields: [placement_stat_id], references: [id], onDelete: Cascade)
+
+  @@index([placement_stat_id], map: "placement_companies_placement_stat_id_fkey")
+  @@map("placement_companies")
+}
+
+model Review {
+  id                    String          @id @default(uuid())
+  college_id            String
+  student_id            String
+  course_id             String?
+  academic_rating       Decimal         @db.Decimal(3, 1)
+  faculty_rating        Decimal         @db.Decimal(3, 1)
+  infrastructure_rating Decimal         @db.Decimal(3, 1)
+  accommodation_rating  Decimal         @db.Decimal(3, 1)
+  placement_rating      Decimal         @db.Decimal(3, 1)
+  social_life_rating    Decimal         @db.Decimal(3, 1)
+  overall_rating        Decimal?        @db.Decimal(3, 2)
+  batch_year            Int
+  admission_year        Int?
+  title                 String
+  faculty_review        String?         @db.Text
+  campus_life_review    String?         @db.Text
+  placement_review      String?         @db.Text
+  pros                  String?         @db.Text
+  cons                  String?         @db.Text
+  sentiment_label       SentimentLabel?
+  quality_score         Int             @default(0)
+  status                ReviewStatus    @default(PENDING)
+  helpful_votes         Int             @default(0)
+  created_at            DateTime        @default(now())
+  admission_review      String?         @db.Text
+  course_review         String?         @db.Text
+  fees_review           String?         @db.Text
+  college               College         @relation(fields: [college_id], references: [id], onDelete: Cascade)
+  course                Course?         @relation(fields: [course_id], references: [id])
+  student               User            @relation(fields: [student_id], references: [id], onDelete: Cascade)
+
+  @@index([college_id], map: "reviews_college_id_fkey")
+  @@index([course_id], map: "reviews_course_id_fkey")
+  @@index([student_id], map: "reviews_student_id_fkey")
+  @@map("reviews")
+}
+
+model AICounselorLog {
+  id                       String   @id @default(uuid())
+  student_id               String?
+  prompt_payload           String?  @db.LongText
+  response_text            String?  @db.Text
+  created_at               DateTime @default(now())
+  recommended_colleges_ids String?  @db.LongText
+  student                  User?    @relation(fields: [student_id], references: [id])
+
+  @@index([student_id], map: "ai_counselor_logs_student_id_fkey")
+  @@map("ai_counselor_logs")
+}
+
+model Scholarship {
+  id                   String              @id @default(uuid())
+  name                 String
+  category             ScholarshipCategory
+  deadline             DateTime?
+  created_at           DateTime            @default(now())
+  about_scholarship    String?             @db.Text
+  amount_description   String?
+  application_link     String?             @db.Text
+  income_limit         Int?
+  merit_percentage_min Decimal?            @db.Decimal(5, 2)
+  required_documents   String?             @db.LongText
+  target_category      String?
+
+  @@map("scholarships")
+}
 
 enum Role {
   STUDENT
@@ -112,332 +448,4 @@ enum ReviewStatus {
   PENDING
   APPROVED
   REJECTED
-}
-
-// --- MODELS ---
-
-model User {
-  id             String    @id @default(uuid())
-  name           String
-  email          String    @unique
-  phone          String?   @unique
-  password_hash  String?
-  role           Role      @default(STUDENT)
-  email_verified Boolean   @default(false)
-  image_url      String?   @db.Text
-  created_at     DateTime  @default(now())
-  updated_at     DateTime  @updatedAt
-
-  sessions       Session[]
-  profile        StudentProfile?
-  claimed_colleges College[] @relation("ClaimedBy")
-  leads          Lead[]
-  applications   Application[]
-  reviews        Review[]
-  ai_logs        AICounselorLog[]
-
-  @@map("users")
-}
-
-model Session {
-  id         String   @id @default(uuid())
-  user_id    String
-  token      String   @unique
-  expires_at DateTime
-  ip_address String?
-  user_agent String?  @db.Text
-  user       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-
-  @@map("sessions")
-}
-
-model StudentProfile {
-  user_id           String   @id
-  stream            String?
-  class_10_marks    Decimal? @db.Decimal(5, 2)
-  class_12_marks    Decimal? @db.Decimal(5, 2)
-  preferred_cities  Json?
-  budget_min        Int?
-  budget_max        Int?
-  career_goals      String?  @db.Text
-  counseling_points Int      @default(0)
-  user              User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
-
-  @@map("student_profiles")
-}
-
-model College {
-  id                 String    @id @default(uuid())
-  name               String
-  slug               String    @unique
-  city               String
-  state              String
-  established_year   Int?
-  type               CollegeType
-  campus_area        String?
-  naac_grade         String?
-  approval_bodies    String?
-  about_description  String?   @db.Text
-  admission_process  String?   @db.Text
-  logo_url           String?   @db.Text
-  banner_url         String?   @db.Text
-  brochure_pdf_url   String?   @db.Text
-  video_tour_url     String?   @db.Text
-  is_verified        Boolean   @default(false)
-  is_sponsored       Boolean   @default(false)
-  claimed_by_user_id String?
-  created_at         DateTime  @default(now())
-  updated_at         DateTime  @updatedAt
-
-  claimed_by       User?             @relation("ClaimedBy", fields: [claimed_by_user_id], references: [id], onDelete: SetNull)
-  rankings         CollegeRanking[]
-  facilities       CollegeFacility[]
-  gallery          CollegeGallery[]
-  courses          Course[]
-  leads            Lead[]
-  applications     Application[]
-  placement_stats  PlacementStat[]
-  reviews          Review[]
-
-  @@map("colleges")
-}
-
-model CollegeRanking {
-  id             String        @id @default(uuid())
-  college_id     String
-  ranking_agency RankingAgency
-  category       String?
-  year           Int
-  rank           Int
-  college        College       @relation(fields: [college_id], references: [id], onDelete: Cascade)
-
-  @@map("college_rankings")
-}
-
-model CollegeFacility {
-  id            String  @id @default(uuid())
-  college_id    String
-  facility_name String
-  description   String? @db.Text
-  icon_name     String?
-  college       College @relation(fields: [college_id], references: [id], onDelete: Cascade)
-
-  @@map("college_facilities")
-}
-
-model CollegeGallery {
-  id         String          @id @default(uuid())
-  college_id String
-  image_url  String          @db.Text
-  category   GalleryCategory @default(OTHER)
-  caption    String?
-  sort_order Int             @default(0)
-  college    College         @relation(fields: [college_id], references: [id], onDelete: Cascade)
-
-  @@map("college_gallery")
-}
-
-model Course {
-  id                   String      @id @default(uuid())
-  college_id           String
-  name                 String
-  stream               String
-  specialization       String?
-  degree_level         String
-  study_mode           StudyMode   @default(FULL_TIME)
-  duration_years       Decimal     @db.Decimal(3, 1)
-  total_fees           Int
-  first_year_fees      Int?
-  eligibility_criteria String?     @db.Text
-  seats_available      Int?
-  syllabus_pdf_url     String?     @db.Text
-  course_description   String?     @db.Text
-  created_at           DateTime    @default(now())
-
-  college      College       @relation(fields: [college_id], references: [id], onDelete: Cascade)
-  exams        CourseExam[]
-  cutoffs      Cutoff[]
-  applications Application[]
-  reviews      Review[]
-
-  @@map("courses")
-}
-
-model Exam {
-  id               String    @id @default(uuid())
-  name             String    @unique
-  slug             String    @unique
-  full_name        String?
-  level            ExamLevel
-  mode             String?
-  exam_date        DateTime?
-  result_date      DateTime?
-  application_link String?   @db.Text
-
-  courses CourseExam[]
-  cutoffs Cutoff[]
-
-  @@map("exams")
-}
-
-model CourseExam {
-  course_id String
-  exam_id   String
-  course    Course @relation(fields: [course_id], references: [id], onDelete: Cascade)
-  exam      Exam   @relation(fields: [exam_id], references: [id], onDelete: Cascade)
-
-  @@id([course_id, exam_id])
-  @@map("course_exams")
-}
-
-model Cutoff {
-  id               String         @id @default(uuid())
-  course_id        String
-  exam_id          String
-  year             Int
-  category         CutoffCategory
-  quota            String?
-  counseling_round String?
-  cutoff_type      CutoffType
-  opening_value    Decimal?       @db.Decimal(10, 2)
-  closing_value    Decimal?       @db.Decimal(10, 2)
-  is_expected      Boolean        @default(false)
-
-  course Course @relation(fields: [course_id], references: [id], onDelete: Cascade)
-  exam   Exam   @relation(fields: [exam_id], references: [id], onDelete: Cascade)
-
-  @@map("cutoffs")
-}
-
-model Lead {
-  id               String      @id @default(uuid())
-  student_id       String?
-  college_id       String
-  student_name     String
-  student_phone    String
-  student_email    String
-  course_interest  String?
-  city             String?
-  quality_score    LeadQuality @default(MEDIUM)
-  status           LeadStatus  @default(NEW)
-  source_page      String?
-  utm_source       String?
-  utm_medium       String?
-  utm_campaign     String?
-  created_at       DateTime    @default(now())
-
-  student User?   @relation(fields: [student_id], references: [id], onDelete: SetNull)
-  college College @relation(fields: [college_id], references: [id], onDelete: Cascade)
-
-  @@map("leads")
-}
-
-model Application {
-  id             String        @id @default(uuid())
-  student_id     String
-  college_id     String
-  course_id      String
-  status         AppStatus     @default(SUBMITTED)
-  payment_status PaymentStatus @default(PENDING)
-  payment_id     String?
-  documents_json Json?
-  applied_at     DateTime      @default(now())
-  updated_at     DateTime      @updatedAt
-
-  student User    @relation(fields: [student_id], references: [id], onDelete: Cascade)
-  college College @relation(fields: [college_id], references: [id], onDelete: Cascade)
-  course  Course  @relation(fields: [course_id], references: [id], onDelete: Cascade)
-
-  @@map("applications")
-}
-
-model PlacementStat {
-  id                   String             @id @default(uuid())
-  college_id           String
-  year                 Int
-  average_package      Decimal?           @db.Decimal(10, 2)
-  highest_package      Decimal?           @db.Decimal(10, 2)
-  median_package       Decimal?           @db.Decimal(10, 2)
-  total_recruiters     Int?
-  placement_percentage Decimal?           @db.Decimal(5, 2)
-  college              College            @relation(fields: [college_id], references: [id], onDelete: Cascade)
-  companies            PlacementCompany[]
-
-  @@map("placement_stats")
-}
-
-model PlacementCompany {
-  id                String        @id @default(uuid())
-  placement_stat_id String
-  company_name      String
-  logo_url          String?       @db.Text
-  offers_made       Int?
-  placement_stat    PlacementStat @relation(fields: [placement_stat_id], references: [id], onDelete: Cascade)
-
-  @@map("placement_companies")
-}
-
-model Review {
-  id                    String         @id @default(uuid())
-  college_id            String
-  student_id            String
-  academic_rating       Decimal        @db.Decimal(3, 1)
-  faculty_rating        Decimal        @db.Decimal(3, 1)
-  infrastructure_rating Decimal        @db.Decimal(3, 1)
-  accommodation_rating  Decimal        @db.Decimal(3, 1)
-  placement_rating      Decimal        @db.Decimal(3, 1)
-  social_life_rating    Decimal        @db.Decimal(3, 1)
-  overall_rating        Decimal?       @db.Decimal(3, 2)
-  batch_year            Int
-  course_id             String?
-  admission_year        Int?
-  title                 String
-  course_review         String?        @db.Text
-  faculty_review        String?        @db.Text
-  campus_life_review    String?        @db.Text
-  placement_review      String?        @db.Text
-  admission_review      String?        @db.Text
-  fees_review           String?        @db.Text
-  pros                  String?        @db.Text
-  cons                  String?        @db.Text
-  sentiment_label       SentimentLabel?
-  quality_score         Int            @default(0)
-  status                ReviewStatus   @default(PENDING)
-  helpful_votes         Int            @default(0)
-  created_at            DateTime       @default(now())
-
-  college College @relation(fields: [college_id], references: [id], onDelete: Cascade)
-  student User    @relation(fields: [student_id], references: [id], onDelete: Cascade)
-  course  Course? @relation(fields: [course_id], references: [id], onDelete: SetNull)
-
-  @@map("reviews")
-}
-
-model AICounselorLog {
-  id                       String   @id @default(uuid())
-  student_id               String?
-  prompt_payload           Json?
-  response_text            String?  @db.Text
-  recommended_colleges_ids Json?
-  created_at               DateTime @default(now())
-  student                  User?    @relation(fields: [student_id], references: [id], onDelete: SetNull)
-
-  @@map("ai_counselor_logs")
-}
-
-model Scholarship {
-  id                   String              @id @default(uuid())
-  name                 String
-  category             ScholarshipCategory
-  target_category      String?
-  income_limit         Int?
-  merit_percentage_min Decimal?            @db.Decimal(5, 2)
-  amount_description   String?
-  about_scholarship    String?             @db.Text
-  required_documents   Json?
-  application_link     String?             @db.Text
-  deadline             DateTime?
-  created_at           DateTime            @default(now())
-
-  @@map("scholarships")
 }
