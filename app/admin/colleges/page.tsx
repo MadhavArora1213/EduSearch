@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { 
   Plus, 
   Search, 
@@ -92,14 +93,23 @@ export default function CollegesPage() {
         </div>
 
         <div className="flex items-center space-x-4">
-           <button className="flex items-center space-x-2 px-6 py-4 bg-gray-50 border border-gray-200/50 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-200 transition-all active:scale-95 text-secondary/60">
+           <button onClick={() => {
+              const csvContent = "data:text/csv;charset=utf-8,ID,Name,Type,City\n" + colleges.map(c => `${c.id},${c.name},${c.type},${c.city}`).join("\n");
+              const encodedUri = encodeURI(csvContent);
+              const link = document.createElement("a");
+              link.setAttribute("href", encodedUri);
+              link.setAttribute("download", "college_export.csv");
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+           }} className="flex items-center space-x-2 px-6 py-4 bg-gray-50 border border-gray-200/50 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-200 transition-all active:scale-95 text-secondary/60">
               <Download size={16} />
               <span>Bulk Export (CSV)</span>
            </button>
-           <button className="flex items-center space-x-2 px-8 py-4 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
+           <Link href="/admin/colleges/new" className="flex items-center space-x-2 px-8 py-4 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
               <Plus size={18} />
               <span>Add New College</span>
-           </button>
+           </Link>
         </div>
       </section>
 
@@ -132,7 +142,7 @@ export default function CollegesPage() {
                  className="w-full bg-gray-50 border-0 pl-14 pr-6 py-4 rounded-2xl text-[13px] font-bold outline-none focus:ring-2 focus:ring-primary/10 transition-all text-typography"
                />
             </div>
-            <button className="w-14 h-14 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center hover:bg-white hover:border-primary/20 transition-all group">
+            <button onClick={() => alert("Advanced filtering panel toggled...")} className="w-14 h-14 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center hover:bg-white hover:border-primary/20 transition-all group">
                <Filter size={18} className="text-secondary/40 group-hover:text-primary" />
             </button>
          </div>
@@ -232,13 +242,18 @@ export default function CollegesPage() {
                        </td>
                        <td className="px-10 py-8 text-right">
                           <div className="flex items-center justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                             <button className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-primary hover:text-white transition-all shadow-sm">
+                             <button onClick={() => alert(`Opening Full Edit Form for: ${college.name}`)} className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-primary hover:text-white transition-all shadow-sm">
                                 <Edit2 size={16} />
                              </button>
-                             <button className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm">
+                             <button onClick={() => window.open(`/${college.slug}`, '_blank')} className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm">
                                 <ExternalLink size={16} />
                              </button>
-                             <button className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-sm">
+                             <button onClick={async () => {
+                               if (confirm(`Are you sure you want to soft-delete/archive ${college.name}?`)) {
+                                 alert(`Archiving ${college.name}... (Simulated)`);
+                                 // fetch(/api/admin/colleges/${college.id}, { method: 'DELETE' })
+                               }
+                             }} className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-sm">
                                 <Trash2 size={16} />
                              </button>
                           </div>
@@ -254,13 +269,13 @@ export default function CollegesPage() {
         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white">
            <p className="text-xs font-bold text-secondary/30 uppercase tracking-widest italic">Showing {filteredColleges.length} Instititues</p>
            <div className="flex items-center space-x-4">
-              <button className="p-4 bg-gray-50 rounded-2xl text-[11px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all active:scale-95">Previous</button>
+              <button onClick={() => alert("Navigating to previous page...")} className="p-4 bg-gray-50 rounded-2xl text-[11px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all active:scale-95">Previous</button>
               <div className="flex items-center space-x-2">
                  <button className="w-12 h-12 bg-primary text-white rounded-2xl flex items-center justify-center text-xs font-black">1</button>
                  <button className="w-12 h-12 bg-gray-50 text-secondary/40 rounded-2xl flex items-center justify-center text-xs font-black hover:bg-gray-100 transition-all">2</button>
                  <button className="w-12 h-12 bg-gray-50 text-secondary/40 rounded-2xl flex items-center justify-center text-xs font-black hover:bg-gray-100 transition-all">3</button>
               </div>
-              <button className="p-4 bg-gray-50 rounded-2xl text-[11px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all active:scale-95">Next Page</button>
+              <button onClick={() => alert("Navigating to next page...")} className="p-4 bg-gray-50 rounded-2xl text-[11px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all active:scale-95">Next Page</button>
            </div>
         </div>
       </section>

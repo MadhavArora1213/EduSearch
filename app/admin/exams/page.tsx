@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { 
   FileText, 
   Plus, 
@@ -81,11 +82,21 @@ export default function ExamsListingPage() {
         </div>
 
         <div className="flex items-center space-x-4">
-           <button className="flex items-center space-x-2 px-6 py-4 bg-gray-50 border border-gray-200/50 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-200 transition-all active:scale-95 text-secondary/60">
+           <button onClick={() => {
+              const fileInput = document.createElement('input');
+              fileInput.type = 'file';
+              fileInput.accept = '.csv';
+              fileInput.onchange = e => {
+                 if ((e.target as HTMLInputElement).files?.length) {
+                    alert('Cutoff CSV successfully uploaded and queued for processing! (Simulated)');
+                 }
+              };
+              fileInput.click();
+           }} className="flex items-center space-x-2 px-6 py-4 bg-gray-50 border border-gray-200/50 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-200 transition-all active:scale-95 text-secondary/60">
               <Download size={16} />
               <span>Import Cutoffs (CSV)</span>
            </button>
-           <button className="flex items-center space-x-8 px-10 py-4 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
+           <button onClick={() => alert('Opening Exam Registration Wizard...')} className="flex items-center space-x-8 px-10 py-4 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
               <Plus size={18} />
               <span>Register New Exam</span>
            </button>
@@ -187,10 +198,10 @@ export default function ExamsListingPage() {
                    </div>
 
                    <div className="mt-8 flex items-center space-x-2">
-                      <button className="flex-1 py-4 bg-gray-50 text-secondary text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-primary hover:text-white transition-all">
+                      <button onClick={() => alert(`Opening Advanced Rank Predictor Harness & Cutoff Manager for: ${exam.name}`)} className="flex-1 py-4 bg-gray-50 text-secondary text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-primary hover:text-white transition-all">
                          Manage Cutoffs
                       </button>
-                      <button className="px-5 py-4 bg-gray-50 text-secondary rounded-xl hover:bg-primary hover:text-white transition-all">
+                      <button onClick={() => window.open(`/exams/${exam.id}`, '_blank')} className="px-5 py-4 bg-gray-50 text-secondary rounded-xl hover:bg-primary hover:text-white transition-all">
                          <ExternalLink size={14} />
                       </button>
                    </div>

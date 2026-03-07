@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { 
   BookOpen, 
   Plus, 
@@ -73,14 +74,23 @@ export default function ScholarshipsPage() {
         </div>
 
         <div className="flex items-center space-x-4">
-           <button className="flex items-center space-x-2 px-6 py-4 bg-gray-50 border border-gray-200/50 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-200 transition-all active:scale-95 text-secondary/60">
+           <button onClick={() => {
+              const csvContent = "data:text/csv;charset=utf-8,ID,Name,Category,Deadline\n" + scholarships.map(s => `${s.id},"${s.name}",${s.category},${s.deadline}`).join("\n");
+              const encodedUri = encodeURI(csvContent);
+              const link = document.createElement("a");
+              link.setAttribute("href", encodedUri);
+              link.setAttribute("download", "scholarship_directory_export.csv");
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+           }} className="flex items-center space-x-2 px-6 py-4 bg-gray-50 border border-gray-200/50 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-200 transition-all active:scale-95 text-secondary/60">
               <Download size={16} />
               <span>Export Directory</span>
            </button>
-           <button className="flex items-center space-x-2 px-8 py-4 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
+           <Link href="/admin/scholarships/new" className="flex items-center space-x-2 px-8 py-4 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
               <Plus size={18} />
               <span>New Scholarship</span>
-           </button>
+           </Link>
         </div>
       </section>
 
@@ -141,10 +151,10 @@ export default function ScholarshipsPage() {
              </div>
 
              <div className="mt-8 flex items-center space-x-2">
-                <button className="flex-1 py-4 bg-primary text-white text-[10px] font-black uppercase tracking-widest rounded-2xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                <button onClick={() => alert(`Opening Visual Rule Builder for: ${s.name}`)} className="flex-1 py-4 bg-primary text-white text-[10px] font-black uppercase tracking-widest rounded-2xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
                    Manage Rules
                 </button>
-                <button className="px-5 py-4 bg-gray-50 text-secondary/40 rounded-2xl hover:bg-gray-100 hover:text-secondary transition-all">
+                <button onClick={() => window.open(`/scholarships/${s.id}`, '_blank')} className="px-5 py-4 bg-gray-50 text-secondary/40 rounded-2xl hover:bg-gray-100 hover:text-secondary transition-all">
                    <ExternalLink size={16} />
                 </button>
              </div>
