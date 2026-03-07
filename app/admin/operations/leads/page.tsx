@@ -19,7 +19,8 @@ import {
   TrendingUp,
   MoreVertical,
   CheckCircle2,
-  Share2
+  Share2,
+  Building2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -136,18 +137,22 @@ export default function LeadsManagementPage() {
               <thead className="bg-snow-pearl/50 border-b border-gray-100">
                  <tr>
                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Potential Student</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Interest Target</th>
+                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Target</th>
+                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">B2B Client</th>
                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Acquisition Source</th>
                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Intent Score</th>
+                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Dispute</th>
                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Actions</th>
                  </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
-                {loading ? [...Array(3)].map((_, i) => (
-                  <tr key={i} className="animate-pulse h-[100px]">
-                     <td colSpan={5} className="bg-gray-50/50" />
-                  </tr>
-                )) : leads.map((lead) => (
+                {loading ? (
+                  [...Array(3)].map((_, i) => (
+                    <tr key={i} className="animate-pulse h-[100px]">
+                       <td colSpan={7} className="bg-gray-50/50" />
+                    </tr>
+                  ))
+                ) : leads.map((lead) => (
                   <tr key={lead.id} className="group hover:bg-gray-50/30 transition-all">
                     <td className="px-10 py-8">
                        <div className="flex items-center space-x-6">
@@ -165,16 +170,20 @@ export default function LeadsManagementPage() {
                        </div>
                     </td>
                     <td className="px-10 py-8">
-                       <h3 className="text-sm font-black text-typography group-hover:text-primary transition-colors">{lead.college.name}</h3>
+                       <h3 className="text-sm font-black text-typography group-hover:text-primary transition-colors line-clamp-1">{lead.college.name}</h3>
                        <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1 underline decoration-primary/10">{lead.course_interest}</p>
+                    </td>
+                    <td className="px-10 py-8">
+                        <div className="flex items-center space-x-2 text-primary font-bold text-[12px]">
+                           <Building2 size={14} />
+                           <span className="line-clamp-1">Universal Academy</span>
+                        </div>
                     </td>
                     <td className="px-10 py-8">
                        <div className="inline-flex items-center space-x-2 bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-lg">
                           <span className="text-[10px] font-black text-typography">{lead.utm_source || "Direct"}</span>
-                          <ChevronRight size={10} className="text-secondary/20" />
-                          <span className="text-[9px] font-bold text-secondary/40 uppercase tracking-widest">Organic Search</span>
                        </div>
-                       <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-2">{new Date(lead.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • Received 4m ago</p>
+                       <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-2">Organic Search</p>
                     </td>
                     <td className="px-10 py-8 text-center">
                        <div className={cn(
@@ -185,12 +194,18 @@ export default function LeadsManagementPage() {
                           <span className="text-[10px] font-black uppercase tracking-widest">{lead.quality_score}</span>
                        </div>
                     </td>
+                    <td className="px-10 py-8">
+                        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-lg bg-gray-50 border border-gray-100">
+                           <div className="w-1.5 h-1.5 rounded-full bg-secondary/20" />
+                           <span className="text-[10px] font-black uppercase text-secondary/40">Clean</span>
+                        </div>
+                    </td>
                     <td className="px-10 py-8 text-right">
                        <div className="flex items-center justify-end space-x-2">
-                          <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm">
+                          <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm group/btn">
                              <Share2 size={16} />
                           </button>
-                          <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all shadow-sm">
+                          <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all shadow-sm group/btn">
                              <ExternalLink size={16} />
                           </button>
                        </div>

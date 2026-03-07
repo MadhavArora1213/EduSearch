@@ -19,7 +19,8 @@ import {
   Filter,
   Layers,
   Monitor,
-  Smartphone
+  Smartphone,
+  TrendingUp
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -85,9 +86,19 @@ export default function SeometaTagsPage() {
       </section>
 
       {/* SEO Pulse Strip */}
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-4 gap-8">
          <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
             <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-700" />
+            <div>
+               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Indexable Pages</p>
+               <p className="text-3xl font-black text-typography">48,291</p>
+            </div>
+            <div className="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary border border-primary/10 italic relative">
+               <Layers size={24} />
+            </div>
+         </div>
+         <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
+            <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-sky-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div>
                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Index Health</p>
                <p className="text-3xl font-black text-typography">98.4%</p>
@@ -99,21 +110,21 @@ export default function SeometaTagsPage() {
          <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
             <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-amber-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div>
-               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Broken Links</p>
-               <p className="text-3xl font-black text-typography">12</p>
+               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Crawl Errors</p>
+               <p className="text-3xl font-black text-typography">104</p>
             </div>
             <div className="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-500 border border-amber-100 italic relative">
                <AlertCircle size={24} />
             </div>
          </div>
          <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
-            <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-sky-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
+            <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-indigo-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div>
-               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Avg. Score</p>
-               <p className="text-3xl font-black text-typography">92</p>
+               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Avg Domain Auth</p>
+               <p className="text-3xl font-black text-typography">42</p>
             </div>
-            <div className="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-500 border border-sky-100 italic relative">
-               <Globe size={24} />
+            <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-500 border border-indigo-100 italic relative">
+               <TrendingUp size={24} />
             </div>
          </div>
       </div>

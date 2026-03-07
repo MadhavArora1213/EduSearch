@@ -32,17 +32,17 @@ export default function DashboardPage() {
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 transition-all">
         <div>
            <div className="flex items-center space-x-3 mb-3">
-              <div className="bg-primary/5 px-3 py-1 rounded-lg border border-primary/10">
-                 <span className="text-xs font-bold text-primary">System Overview</span>
+              <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
+                 <span className="text-[10px] font-black uppercase tracking-widest text-primary italic lowercase">System Intelligence</span>
               </div>
-              <Calendar size={14} className="text-gray-400" />
-              <span className="text-sm font-medium text-gray-500">{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</span>
+              <Calendar size={14} className="text-secondary/30" />
+              <span className="text-xs font-bold text-secondary/30">{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</span>
            </div>
-           <h1 className="text-3xl font-bold text-typography mb-1">
-             Command Centre
+           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+             Command <span className="text-primary italic">Centre</span>
            </h1>
-           <p className="text-gray-500 text-sm font-medium">
-              Unified Platform Intelligence Dashboard
+           <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
+              Unified Platform Intelligence & Monitoring
            </p>
         </div>
 

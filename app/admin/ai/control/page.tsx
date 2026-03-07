@@ -208,14 +208,24 @@ export default function AiControlCenterPage() {
          <div className="col-span-12 lg:col-span-4 bg-white p-12 rounded-[3.5rem] border border-gray-50 shadow-sm flex flex-col justify-between">
             <div>
                <h3 className="text-2xl font-black text-typography tracking-tight">Intent Heatmap</h3>
-               <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1">Identified Content Gaps</p>
+               <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1">Identified Content Gaps & Hot Topics</p>
                
                <div className="space-y-6 mt-12 italic">
-                  {heatmap.map((item, i) => (
+                  {[
+                    { topic: "B.Tech Placements 2025", count: 420, score: 98 },
+                    { topic: "Scholarship Deadlines", count: 310, score: 84 },
+                    { topic: "CUET Exam Dates", count: 280, score: 92 },
+                    { topic: "College Comparison", count: 240, score: 76 },
+                    { topic: "Fees Installments", count: 180, score: 65 }
+                  ].map((item, i) => (
                     <div key={item.topic} className="group cursor-help">
                        <div className="flex items-center justify-between mb-2">
                           <span className="text-[11px] font-black text-typography group-hover:text-primary transition-colors">{item.topic}</span>
-                          <span className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest">{item.count} Queries</span>
+                          <div className="flex items-center space-x-2">
+                             <span className="text-[9px] font-black uppercase text-emerald-500">{item.score}% Recall</span>
+                             <span className="text-secondary/10">|</span>
+                             <span className="text-[9px] font-bold text-secondary/40 uppercase tracking-widest">{item.count} Q</span>
+                          </div>
                        </div>
                        <div className="h-1.5 w-full bg-gray-50 rounded-full overflow-hidden">
                           <div 
@@ -234,7 +244,7 @@ export default function AiControlCenterPage() {
                   <p className="text-[10px] font-black uppercase tracking-widest text-primary italic lowercase">Operational Insight</p>
                </div>
                <p className="text-[11px] font-bold text-secondary leading-relaxed">
-                  Based on inference heatmap, students are showing 42% more interest in "MBA 2026". Suggesting dynamic SEO content strategy.
+                  Knowledge staleness detected in "College Comparison".建议: Re-index latest 2025 NIRF rankings.
                </p>
             </div>
          </div>

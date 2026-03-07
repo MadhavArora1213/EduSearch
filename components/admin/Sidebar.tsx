@@ -30,22 +30,18 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
-  { id: "dashboard", label: "Core Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" },
-  { id: "colleges", label: "College & Course", icon: GraduationCap, href: "/admin/colleges" },
-  { id: "exams", label: "Entrance & Cutoffs", icon: FileText, href: "/admin/exams" },
-  { id: "leads", label: "Lead Velocitor", icon: Target, href: "/admin/operations/leads" },
-  { id: "moderation", label: "Review Vigilance", icon: ShieldCheck, href: "/admin/moderation/reviews" },
-  { id: "moderation-rules", label: "Auto-Mod Rules", icon: Settings, href: "/admin/moderation/rules" },
-  { id: "moderation-qna", label: "Q&A Overwatch", icon: MessageSquare, href: "/admin/moderation/qna" },
-  { id: "moderation-badges", label: "Trust & Safety", icon: ShieldCheck, href: "/admin/moderation/badges" },
-  { id: "moderation-analytics", label: "Moderation Intel", icon: BarChart3, href: "/admin/moderation/analytics" },
-  { id: "content", label: "Content Editor", icon: BookOpen, href: "/admin/content/articles" },
-  { id: "seo", label: "SEO Intelligence", icon: Globe, href: "/admin/seo/meta-tags" },
-  { id: "ai", label: "AI Control Center", icon: Cpu, href: "/admin/ai/control" },
-  { id: "growth", label: "Revenue Flux", icon: TrendingUp, href: "/admin/growth/analytics" },
-  { id: "system", label: "Infrastructure", icon: Database, href: "/admin/system/health" },
-  { id: "notifications", label: "Omni Link Hub", icon: Bell, href: "/admin/notifications/hub" },
-  { id: "security", label: "Vigilance Audit", icon: Lock, href: "/admin/security/audit" },
+  { id: "dashboard", label: "Dashboard Overview", icon: LayoutDashboard, href: "/admin/dashboard" },
+  { id: "colleges", label: "College & Course Management", icon: GraduationCap, href: "/admin/colleges" },
+  { id: "exams", label: "Entrance exams & Cutoffs", icon: FileText, href: "/admin/exams" },
+  { id: "leads", label: "Lead Management System", icon: Target, href: "/admin/operations/leads" },
+  { id: "moderation", label: "Content Moderation", icon: ShieldCheck, href: "/admin/moderation/reviews" },
+  { id: "content", label: "Article & Blog Editor", icon: BookOpen, href: "/admin/content/articles" },
+  { id: "seo", label: "SEO & Meta Intelligence", icon: Globe, href: "/admin/seo/meta-tags" },
+  { id: "ai", label: "AI Operations Panel", icon: Cpu, href: "/admin/ai/control" },
+  { id: "growth", label: "Platform Growth & Analytics", icon: TrendingUp, href: "/admin/growth/analytics" },
+  { id: "system", label: "Infrastructure & Health", icon: Database, href: "/admin/system/health" },
+  { id: "notifications", label: "Notification Centre", icon: Bell, href: "/admin/notifications/hub" },
+  { id: "security", label: "Security & Audit Logs", icon: Lock, href: "/admin/security/audit" },
 ];
 
 export function Sidebar() {

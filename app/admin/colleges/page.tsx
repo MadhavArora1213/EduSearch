@@ -19,7 +19,10 @@ import {
   TrendingUp,
   ExternalLink,
   Edit2,
-  Trash2
+  Trash2,
+  Copy,
+  Clock,
+  Briefcase
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +36,8 @@ interface College {
   is_verified: boolean;
   naac_grade: string | null;
   logo_url: string | null;
+  has_b2b: boolean;
+  last_updated: string;
   _count: {
     courses: number;
     reviews: number;
@@ -155,7 +160,8 @@ export default function CollegesPage() {
               <thead className="bg-snow-pearl/50 border-b border-gray-100">
                  <tr>
                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40">Institution Details</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40">Location</th>
+                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40">B2B Account</th>
+                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40">Freshness</th>
                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40 text-center">Stats</th>
                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40">Status</th>
                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40 text-right">Actions</th>
@@ -165,14 +171,14 @@ export default function CollegesPage() {
                 {loading ? (
                   [...Array(5)].map((_, i) => (
                     <tr key={i} className="animate-pulse">
-                      <td colSpan={5} className="px-10 py-8">
+                      <td colSpan={6} className="px-10 py-8">
                          <div className="h-12 bg-gray-50 rounded-2xl w-full" />
                       </td>
                     </tr>
                   ))
                 ) : filteredColleges.length === 0 ? (
                   <tr>
-                    <td colSpan={5} className="px-10 py-20 text-center">
+                    <td colSpan={6} className="px-10 py-20 text-center">
                        <div className="flex flex-col items-center">
                           <AlertCircle size={48} className="text-secondary/10 mb-4" />
                           <p className="text-xl font-black text-typography">No Institutions Found</p>
@@ -203,9 +209,21 @@ export default function CollegesPage() {
                           </div>
                        </td>
                        <td className="px-10 py-8">
-                          <div className="flex items-center space-x-2 text-secondary/60">
-                             <MapPin size={14} />
-                             <span className="text-[13px] font-bold">{college.city}, {college.state}</span>
+                          <div className={cn(
+                            "flex items-center space-x-2 text-[12px] font-bold",
+                            college.has_b2b ? "text-primary" : "text-secondary/30"
+                          )}>
+                             <Briefcase size={14} />
+                             <span>{college.has_b2b ? "Linked" : "Unlinked"}</span>
+                          </div>
+                       </td>
+                       <td className="px-10 py-8">
+                          <div className="flex flex-col">
+                             <div className="flex items-center space-x-2 text-secondary/60">
+                                <Clock size={12} />
+                                <span className="text-[12px] font-bold">12 Days Ago</span>
+                             </div>
+                             <span className="text-[10px] font-black uppercase text-emerald-500 mt-1">Stale in 168d</span>
                           </div>
                        </td>
                        <td className="px-10 py-8">
@@ -242,18 +260,20 @@ export default function CollegesPage() {
                        </td>
                        <td className="px-10 py-8 text-right">
                           <div className="flex items-center justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                             <button onClick={() => alert(`Opening Full Edit Form for: ${college.name}`)} className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-primary hover:text-white transition-all shadow-sm">
+                             <button onClick={() => alert(`Cloning: ${college.name}`)} title="Clone Record" className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-snow-pearl hover:text-primary transition-all shadow-sm">
+                                <Copy size={16} />
+                             </button>
+                             <button onClick={() => alert(`Opening Full Edit Form for: ${college.name}`)} title="Edit College" className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-primary hover:text-white transition-all shadow-sm">
                                 <Edit2 size={16} />
                              </button>
-                             <button onClick={() => window.open(`/${college.slug}`, '_blank')} className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm">
+                             <button onClick={() => window.open(`/${college.slug}`, '_blank')} title="View Public Profile" className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm">
                                 <ExternalLink size={16} />
                              </button>
                              <button onClick={async () => {
                                if (confirm(`Are you sure you want to soft-delete/archive ${college.name}?`)) {
                                  alert(`Archiving ${college.name}... (Simulated)`);
-                                 // fetch(/api/admin/colleges/${college.id}, { method: 'DELETE' })
                                }
-                             }} className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-sm">
+                             }} title="Archive College" className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-sm">
                                 <Trash2 size={16} />
                              </button>
                           </div>

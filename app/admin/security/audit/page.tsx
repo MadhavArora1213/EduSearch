@@ -119,7 +119,7 @@ export default function SecurityAuditPage() {
       </section>
 
       {/* Security Widgets */}
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-4 gap-8">
          <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all overflow-hidden relative">
             <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div className="flex items-center justify-between mb-6 relative">
@@ -129,7 +129,20 @@ export default function SecurityAuditPage() {
                <span className="text-[9px] font-black bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full uppercase italic">ACTIVE</span>
             </div>
             <p className="text-3xl font-black text-typography mb-1">942</p>
-            <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest">Successful Logins (24h)</p>
+            <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest">Master Auth Logins (24h)</p>
+         </div>
+         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all overflow-hidden relative">
+            <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-sky-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
+            <div>
+               <div className="flex items-center justify-between mb-6 relative">
+                  <div className="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-500">
+                     <Users size={24} />
+                  </div>
+                  <span className="text-[9px] font-black text-sky-600">LIVE</span>
+               </div>
+               <p className="text-3xl font-black text-typography mb-1">18</p>
+               <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest">Active Admin Sessions</p>
+            </div>
          </div>
          <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all overflow-hidden relative">
             <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-amber-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
@@ -137,21 +150,21 @@ export default function SecurityAuditPage() {
                <div className="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-500">
                   <Lock size={24} />
                </div>
-               <span className="text-[9px] font-black bg-amber-50 text-amber-600 px-3 py-1 rounded-full uppercase italic">MONITORED</span>
+               <span className="text-[9px] font-black bg-amber-50 text-amber-600 px-3 py-1 rounded-full uppercase italic">MFA ON</span>
             </div>
             <p className="text-3xl font-black text-typography mb-1">04</p>
             <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest">Failed Attempts (Auto-Flag)</p>
          </div>
          <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm group hover:border-primary/20 transition-all overflow-hidden relative">
-            <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-sky-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
+            <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-red-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div className="flex items-center justify-between mb-6 relative">
-               <div className="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-500">
-                  <Globe size={24} />
+               <div className="w-12 h-12 bg-red-50 rounded-2xl flex items-center justify-center text-red-500">
+                  <ShieldCheck size={24} />
                </div>
-               <span className="text-[9px] font-black bg-sky-50 text-sky-600 px-3 py-1 rounded-full uppercase italic">GEO-TRACKED</span>
+               <span className="text-[9px] font-black bg-red-50 text-red-600 px-3 py-1 rounded-full uppercase italic">THREAT_STOP</span>
             </div>
-            <p className="text-3xl font-black text-typography mb-1">12</p>
-            <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest truncate overflow-hidden text-ellipsis whitespace-nowrap">Unique IP Locations Accessing Admin</p>
+            <p className="text-3xl font-black text-typography mb-1">2,491</p>
+            <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest truncate">SQLi / XSS Threats Blocked</p>
          </div>
       </div>
 

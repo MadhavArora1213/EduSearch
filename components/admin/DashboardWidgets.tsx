@@ -146,7 +146,7 @@ export function DashboardWidgets({
       {/* Widget 1: Student Activity */}
       <WidgetCard 
         title="Student Activity" 
-        subtitle="DAU vs AI Counseling Sessions (Last 7 Days)" 
+        subtitle="DAU vs Search Queries vs AI Counseling Sessions" 
         className="col-span-12 xl:col-span-8"
         icon={TrendingUp}
       >
@@ -170,8 +170,10 @@ export function DashboardWidgets({
                 contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', fontWeight: 700 }}
                 itemStyle={{ fontSize: '11px' }}
               />
-              <Area type="monotone" dataKey="dau" stroke="#0B2447" strokeWidth={4} fillOpacity={1} fill="url(#colorDau)" />
-              <Area type="monotone" dataKey="ai" stroke="#19376D" strokeWidth={4} fillOpacity={1} fill="url(#colorAi)" strokeDasharray="10 10" />
+              <Legend verticalAlign="top" height={36}/>
+              <Area type="monotone" name="DAU" dataKey="dau" stroke="#0B2447" strokeWidth={4} fillOpacity={1} fill="url(#colorDau)" />
+              <Area type="monotone" name="Queries" dataKey="queries" stroke="#3B82F6" strokeWidth={2} fillOpacity={0.1} fill="#3B82F6" />
+              <Area type="monotone" name="AI Sessions" dataKey="ai" stroke="#19376D" strokeWidth={4} fillOpacity={1} fill="url(#colorAi)" strokeDasharray="10 10" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -191,9 +193,10 @@ export function DashboardWidgets({
               <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} dy={10} />
               <YAxis hide />
               <Tooltip cursor={{fill: '#F8FAFC'}} contentStyle={{ borderRadius: '20px', border: 'none', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
-              <Bar dataKey="eng" fill="#0B2447" radius={[6, 6, 0, 0]} barSize={12} />
-              <Bar dataKey="mba" fill="#19376D" radius={[6, 6, 0, 0]} barSize={12} />
-              <Bar dataKey="med" fill="#CBD5E1" radius={[6, 6, 0, 0]} barSize={12} />
+              <Legend />
+              <Bar dataKey="eng" name="Engineering" fill="#0B2447" radius={[6, 6, 0, 0]} barSize={12} />
+              <Bar dataKey="mba" name="MBA" fill="#19376D" radius={[6, 6, 0, 0]} barSize={12} />
+              <Bar dataKey="med" name="Medical" fill="#CBD5E1" radius={[6, 6, 0, 0]} barSize={12} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -201,7 +204,7 @@ export function DashboardWidgets({
 
       {/* Widget 3: Revenue Trend */}
       <WidgetCard 
-        title="Revenue Performance" 
+        title="Revenue Trend" 
         subtitle="Daily CPL + Subscription Revenue" 
         className="col-span-12 lg:col-span-7 xl:col-span-8"
         icon={TrendingUp}
@@ -213,18 +216,44 @@ export function DashboardWidgets({
               <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} />
               <YAxis axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} tickFormatter={(value) => `₹${value/1000}k`} />
               <Tooltip />
-              <Area type="step" dataKey="sub" stroke="#0F172A" fill="#0F172A" fillOpacity={0.05} strokeWidth={2} />
-              <Area type="monotone" dataKey="cpl" stroke="#10B981" fill="#10B981" fillOpacity={0.15} strokeWidth={4} />
+              <Legend />
+              <Area type="step" name="Subscriptions" dataKey="sub" stroke="#0F172A" fill="#0F172A" fillOpacity={0.05} strokeWidth={2} />
+              <Area type="monotone" name="CPL Revenue" dataKey="cpl" stroke="#10B981" fill="#10B981" fillOpacity={0.15} strokeWidth={4} />
             </AreaChart>
           </ResponsiveContainer>
         </div>
       </WidgetCard>
 
-      {/* Widget 5: Moderation Status */}
+      {/* Widget 4: College Client Map */}
       <WidgetCard 
-        title="Moderation Pipeline" 
+        title="College Client Map" 
+        subtitle="Geographic Spread of Active Leads" 
+        className="col-span-12 lg:col-span-5 xl:col-span-4"
+        icon={Globe}
+      >
+        <div className="h-[300px] w-full flex items-center justify-center bg-gray-50 rounded-xl relative overflow-hidden group border border-gray-100">
+           <svg viewBox="0 0 200 200" className="w-full h-full opacity-20 group-hover:scale-110 transition-transform duration-1000">
+              <path d="M50,150 L150,150 L100,50 Z" fill="currentColor" className="text-primary" />
+              <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" strokeWidth="1" className="text-primary/20" />
+           </svg>
+           <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+              <Globe className="text-primary/40 mb-3 animate-pulse" size={32} />
+              <p className="text-sm font-bold text-gray-800">Geographic Spread View</p>
+              <p className="text-[10px] font-medium text-gray-500 mt-1 uppercase tracking-widest">Active Leads Intensity by Region</p>
+              <div className="mt-4 flex space-x-2">
+                 <div className="w-2 h-2 rounded-full bg-primary" />
+                 <div className="w-2 h-2 rounded-full bg-primary/60" />
+                 <div className="w-2 h-2 rounded-full bg-primary/20" />
+              </div>
+           </div>
+        </div>
+      </WidgetCard>
+
+      {/* Widget 5: Moderation Queue Status */}
+      <WidgetCard 
+        title="Moderation Queue Status" 
         subtitle="Pending / Approved / Rejected Today" 
-        className="col-span-12 md:col-span-6 lg:col-span-5 xl:col-span-4"
+        className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4"
         icon={ShieldAlert}
       >
         <div className="h-[300px] w-full flex flex-col items-center justify-center">
@@ -238,7 +267,7 @@ export function DashboardWidgets({
                 dataKey="value"
                 stroke="none"
               >
-                {moderationData.map((entry, index) => (
+                {displayModerationData.map((entry: any, index: number) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
@@ -259,46 +288,79 @@ export function DashboardWidgets({
         </div>
       </WidgetCard>
 
-      {/* Widget 7: Top Searches */}
+      {/* Widget 6: AI Counselor Usage */}
       <WidgetCard 
-        title="Global Trend Intelligence" 
-        subtitle="Top 5 Most Searched Colleges Today" 
-        className="col-span-12 lg:col-span-12"
+        title="AI Counselor Usage" 
+        subtitle="Sessions Today: 1,245 | Avg Response: 2.1s" 
+        className="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-4" 
+        icon={Zap}
+      >
+        <div className="h-[300px] flex flex-col justify-center space-y-6">
+           <div className="space-y-2">
+              <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
+                 <span>Cache Hit Rate</span>
+                 <span>84%</span>
+              </div>
+              <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                 <div className="h-full bg-emerald-500 rounded-full" style={{width: '84%'}} />
+              </div>
+           </div>
+           <div className="space-y-2">
+              <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
+                 <span>Queue Depth</span>
+                 <span>3 Active</span>
+              </div>
+              <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                 <div className="h-full bg-primary rounded-full" style={{width: '30%'}} />
+              </div>
+           </div>
+           <div className="grid grid-cols-2 gap-4 mt-2">
+              <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Total Tokens</p>
+                 <p className="text-lg font-black text-typography">8.4M</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">GPU Load</p>
+                 <p className="text-lg font-black text-typography">62%</p>
+              </div>
+           </div>
+        </div>
+      </WidgetCard>
+
+      {/* Widget 7: Top Searched Colleges */}
+      <WidgetCard 
+        title="Top Searched Colleges" 
+        subtitle="Most Viewed Institutions (Real-time)" 
+        className="col-span-12 md:col-span-12 lg:col-span-4 xl:col-span-4"
         icon={Search}
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
+        <div className="space-y-4">
           {displayColleges.map((college: any, i: number) => (
-            <div key={college.name} className="flex items-center justify-between group cursor-pointer hover:bg-gray-50 p-3 rounded-xl transition-all border border-transparent hover:border-gray-100">
-              <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center text-xs font-bold text-gray-500 group-hover:bg-primary group-hover:text-white transition-all">
-                   0{i+1}
+            <div key={college.name} className="flex items-center justify-between group cursor-pointer hover:bg-gray-50 p-2 rounded-xl transition-all">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-[10px] font-bold text-gray-500 group-hover:bg-primary group-hover:text-white transition-all">
+                   {i+1}
                 </div>
                 <div>
-                   <p className="text-sm font-semibold text-gray-800 line-clamp-1">{college.name}</p>
-                   <p className="text-xs font-medium text-gray-500">{loading ? "..." : college.searches?.toLocaleString()} Queries</p>
+                   <p className="text-sm font-bold text-gray-800 line-clamp-1">{college.name}</p>
+                   <p className="text-[10px] font-medium text-gray-500">{loading ? "..." : college.searches?.toLocaleString()} Views</p>
                 </div>
               </div>
               <div className={cn(
-                "text-xs font-semibold px-2.5 py-1.5 rounded-md",
-                college.change?.startsWith('+') ? "text-emerald-700 bg-emerald-50 border border-emerald-100/50" : "text-red-700 bg-red-50 border border-red-100/50"
+                "text-[10px] font-black px-2 py-1 rounded-md",
+                college.change?.startsWith('+') ? "text-emerald-700 bg-emerald-50" : "text-red-700 bg-red-50"
               )}>
                 {college.change}
               </div>
             </div>
           ))}
         </div>
-        <div className="flex justify-center mt-6">
-          <Link href="/admin/colleges" className="w-full lg:w-auto px-8 py-2.5 bg-gray-50 hover:bg-gray-100 text-gray-600 text-sm font-semibold rounded-lg transition-all flex items-center justify-center space-x-2 border border-gray-200">
-             <span>View All Trends</span>
-             <ArrowRight size={14} />
-          </Link>
-        </div>
       </WidgetCard>
 
-      {/* Widget 8: Infrastructure Logs */}
+      {/* Widget 8: System Alerts Feed */}
       <WidgetCard 
-        title="Real-Time System Alerts" 
-        subtitle="Critical Infrastructure Monitoring" 
+        title="System Alerts Feed" 
+        subtitle="Chronological infrastructure & security events" 
         className="col-span-12 lg:col-span-12"
         icon={Zap}
       >
@@ -351,11 +413,12 @@ export function DashboardWidgets({
 
 export function QuickActions() {
   const actions = [
-    { label: "New College", icon: Plus, color: "bg-primary", href: "/admin/colleges/new" },
+    { label: "Add College", icon: Plus, color: "bg-primary", href: "/admin/colleges/new" },
     { label: "Approve Reviews", icon: ShieldAlert, color: "bg-red-600", href: "/admin/moderation/reviews" },
-    { label: "View Leads", icon: Users, color: "bg-secondary", href: "/admin/operations/leads" },
-    { label: "Manage Exams", icon: Globe, color: "bg-blue-600", href: "/admin/exams" },
-    { label: "Add Scholarship", icon: Zap, color: "bg-emerald-600", href: "/admin/scholarships/new" },
+    { label: "Generate Invoices", icon: Download, color: "bg-secondary", href: "/admin/growth/invoices" },
+    { label: "View Lead Disputes", icon: Users, color: "bg-amber-600", href: "/admin/operations/leads?disputes=true" },
+    { label: "SEO Master Audit", icon: Globe, color: "bg-emerald-600", href: "/admin/seo/meta-tags" },
+    { label: "Trigger Search Re-index", icon: Zap, color: "bg-blue-600", href: "/admin/system/meilisearch" },
   ];
 
   return (

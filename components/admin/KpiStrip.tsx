@@ -53,17 +53,20 @@ function KpiCard({ label, value, trend, icon: Icon, color, secondary }: KpiProps
       </div>
 
       <div className="space-y-1">
-        <h3 className="text-sm font-medium text-gray-500">{label}</h3>
+        <h3 className="text-[10px] font-black uppercase tracking-widest text-secondary/40">{label}</h3>
         <div className="flex items-baseline space-x-2">
-            <p className="text-2xl font-bold text-typography">{value}</p>
-            {secondary && <span className="text-xs font-medium text-gray-400">{secondary}</span>}
+            <p className="text-4xl font-black text-typography tracking-tighter">{value}</p>
+            {secondary && <span className="text-[10px] font-bold text-secondary/20 uppercase tracking-[0.2em]">{secondary}</span>}
         </div>
       </div>
       
       {/* Bottom status line */}
-      <div className="mt-4 flex items-center justify-between pt-4 border-t border-gray-50">
-         <p className="text-xs font-medium text-gray-400">Updated 30s ago</p>
-         <button className="p-1.5 bg-gray-50 rounded-lg hover:bg-primary hover:text-white transition-all text-gray-400">
+      <div className="mt-6 flex items-center justify-between pt-6 border-t border-gray-50 group-hover:border-primary/10 transition-colors">
+         <div className="flex items-center space-x-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <p className="text-[9px] font-black uppercase tracking-widest text-secondary/30">Live Syncing</p>
+         </div>
+         <button className="w-8 h-8 flex items-center justify-center bg-gray-50 rounded-xl hover:bg-primary hover:text-white transition-all text-secondary/20 group-hover:scale-110">
             <ArrowUpRight size={14} />
          </button>
       </div>
@@ -84,38 +87,38 @@ interface KpiStripProps {
 
 export function KpiStrip({ kpis, loading }: KpiStripProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 italic">
       <KpiCard 
-        label="Total Students" 
+        label="DAU (Students)" 
         value={loading ? "..." : (kpis?.students || 0).toString()} 
         trend={12} 
         icon={Users} 
         color="bg-primary"
-        secondary="Database"
+        secondary="Today"
       />
       <KpiCard 
-        label="Total Leads" 
+        label="Leads Today" 
         value={loading ? "..." : (kpis?.leads || 0).toString()} 
-        trend={-4} 
+        trend={22} 
         icon={MousePointer2} 
-        color="bg-yale-blue"
-        secondary="Captured"
+        color="bg-indigo-600"
+        secondary="Active"
       />
       <KpiCard 
         label="Pending Reviews" 
         value={loading ? "..." : (kpis?.reviews || 0).toString()} 
-        trend={22} 
+        trend={-5} 
         icon={MessageSquare} 
-        color="bg-red-500"
-        secondary="Moderate"
+        color="bg-rose-500"
+        secondary="Action Needed"
       />
       <KpiCard 
-        label="Total Colleges" 
-        value={loading ? "..." : (kpis?.colleges || 0).toString()} 
+        label="Active Clients" 
+        value={loading ? "..." : "42"} 
         trend={8} 
         icon={Briefcase} 
-        color="bg-secondary"
-        secondary="Institutes"
+        color="bg-amber-600"
+        secondary="B2B Colleges"
       />
       <KpiCard 
         label="Revenue MTD" 
@@ -126,12 +129,12 @@ export function KpiStrip({ kpis, loading }: KpiStripProps) {
         secondary="INR"
       />
       <KpiCard 
-        label="Active AI Sessions" 
-        value={loading ? "..." : "124"} 
-        trend={34} 
+        label="System Pulse" 
+        value={loading ? "..." : "Stable"} 
+        trend={100} 
         icon={Activity} 
-        color="bg-blue-500"
-        secondary="Real-time"
+        color="bg-sky-500"
+        secondary="All Systems Go"
       />
     </div>
   );
