@@ -287,7 +287,7 @@ export default function CollegesPage() {
         
         {/* Pagination etc */}
         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white">
-           <p className="text-xs font-bold text-secondary/30 uppercase tracking-widest italic">Showing {filteredColleges.length} Instititues</p>
+           <p className="text-xs font-bold text-secondary/30 uppercase tracking-widest italic">Showing {filteredColleges.length} Institutions</p>
            <div className="flex items-center space-x-4">
               <button onClick={() => alert("Navigating to previous page...")} className="p-4 bg-gray-50 rounded-2xl text-[11px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all active:scale-95">Previous</button>
               <div className="flex items-center space-x-2">

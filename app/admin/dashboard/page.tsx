@@ -9,8 +9,10 @@ import Link from "next/link";
 export default function DashboardPage() {
   const [data, setData] = useState<{ kpis?: any, topColleges?: any, alerts?: any, activityData?: any, leadVelocity?: any, revenueTrend?: any, moderationData?: any } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     fetch('/api/admin/dashboard')
       .then(r => r.json())
       .then(d => {
@@ -35,8 +37,10 @@ export default function DashboardPage() {
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
                  <span className="text-[10px] font-black uppercase tracking-widest text-primary italic lowercase">System Intelligence</span>
               </div>
-              <Calendar size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30">{new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'})}</span>
+               <Calendar size={14} className="text-secondary/30" />
+               <span className="text-xs font-bold text-secondary/30">
+                  {mounted ? new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}) : "..."}
+               </span>
            </div>
            <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Command <span className="text-primary italic">Centre</span>

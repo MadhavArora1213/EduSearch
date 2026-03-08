@@ -163,11 +163,10 @@ export default function GrafanaHubPage() {
                <div className="p-8 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30">
                   <div className="flex items-center space-x-6">
                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm ring-1 ring-gray-100">
-                        {dashboards.find(d => d.id === activeDashboard)?.icon && (
-                          <div className="text-primary">
-                            {(dashboards.find(d => d.id === activeDashboard) as any).icon({ size: 24 })}
-                          </div>
-                        )}
+                         {(() => {
+                           const ActiveIcon = dashboards.find(d => d.id === activeDashboard)?.icon;
+                           return ActiveIcon ? <ActiveIcon size={24} /> : null;
+                         })()}
                      </div>
                      <div>
                         <h3 className="text-2xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Embedded Grafana Environment</h3>

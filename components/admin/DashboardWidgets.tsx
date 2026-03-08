@@ -349,30 +349,33 @@ export function DashboardWidgets({
                    <th className="px-6 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider text-right">Actions</th>
                 </tr>
              </thead>
-             <tbody className="divide-y divide-gray-100">
-                {localAlerts.map((alert: any) => (
-                  <tr key={alert.id} className="group hover:bg-gray-50/80 transition-colors">
-                    <td className="px-6 py-4">
-                       <span className={cn(
-                         "text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md",
-                         alert.type === 'CRITICAL' ? 'bg-red-50 text-red-600' : 
-                         alert.type === 'WARNING' ? 'bg-amber-50 text-amber-600' : 
-                         'bg-sky-50 text-sky-600'
-                       )}>
-                         {alert.type}
-                       </span>
-                    </td>
-                    <td className="px-6 py-4">
-                       <p className="text-sm font-medium text-gray-800 line-clamp-1">{alert.text}</p>
-                    </td>
-                    <td className="px-6 py-4">
-                       <p className="text-sm font-medium text-gray-400 whitespace-nowrap">{new Date(alert.time).toLocaleTimeString()}</p>
-                    </td>
-                    <td className="px-6 py-4 text-right">
-                       <button onClick={() => setLocalAlerts(prev => prev.filter(a => a.id !== alert.id))} className="text-xs font-medium text-primary px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary/5">Acknowledge</button>
-                    </td>
-                  </tr>
-                ))}
+              <tbody className="divide-y divide-gray-100">
+                {localAlerts.map((alert: any) => {
+                  const displayTime = alert.time?.includes('ago') ? alert.time : new Date(alert.time).toLocaleTimeString();
+                  return (
+                    <tr key={alert.id} className="group hover:bg-gray-50/80 transition-colors">
+                      <td className="px-6 py-4">
+                        <span className={cn(
+                          "text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md",
+                          alert.type === 'CRITICAL' ? 'bg-red-50 text-red-600' : 
+                          alert.type === 'WARNING' ? 'bg-amber-50 text-amber-600' : 
+                          'bg-sky-50 text-sky-600'
+                        )}>
+                          {alert.type}
+                        </span>
+                      </td>
+                      <td className="px-6 py-4">
+                        <p className="text-sm font-medium text-gray-800 line-clamp-1">{alert.text}</p>
+                      </td>
+                      <td className="px-6 py-4">
+                        <p className="text-sm font-medium text-gray-400 whitespace-nowrap">{displayTime}</p>
+                      </td>
+                      <td className="px-6 py-4 text-right">
+                        <button onClick={() => setLocalAlerts(prev => prev.filter(a => a.id !== alert.id))} className="text-xs font-medium text-primary px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary/5">Acknowledge</button>
+                      </td>
+                    </tr>
+                  );
+                })}
                 {localAlerts.length === 0 && (
                   <tr>
                     <td colSpan={4} className="px-6 py-8 text-center text-gray-400 text-sm font-medium">All infrastructure systems operating optimally. No pending alerts.</td>
@@ -391,10 +394,11 @@ export function QuickActions() {
     { label: "Add College", icon: Plus, color: "bg-primary", href: "/admin/colleges/new" },
     { label: "Approve Reviews", icon: ShieldAlert, color: "bg-red-600", href: "/admin/moderation/reviews" },
     { label: "Generate Invoices", icon: Download, color: "bg-secondary", href: "/admin/growth/invoices" },
-    { label: "View Lead Disputes", icon: Users, color: "bg-amber-600", href: "/admin/operations/leads?disputes=true" },
-    { label: "SEO Master Audit", icon: Globe, color: "bg-emerald-600", href: "/admin/seo/meta-tags" },
-    { label: "Trigger Search Re-index", icon: Zap, color: "bg-blue-600", href: "/admin/system/meilisearch" },
+    { label: "Lead Control", icon: Users, color: "bg-amber-600", href: "/admin/operations/leads" },
+    { label: "SEO Master Audit", icon: Globe, color: "bg-emerald-600", href: "/admin/seo/metadata" },
+    { label: "AI Logic Control", icon: Zap, color: "bg-blue-600", href: "/admin/ai/quality/prompts" },
   ];
+;
 
   return (
     <div className="fixed bottom-24 lg:bottom-10 right-4 lg:right-10 flex flex-col space-y-4 items-end z-[90] group">

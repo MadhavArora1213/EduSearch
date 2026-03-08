@@ -72,8 +72,8 @@ const menuItems = [
 
   { id: "moderation", label: "Auto-Mod Rules", icon: ShieldCheck, href: "/admin/moderation/reviews" },
   { id: "content", label: "Content Editor", icon: BookOpen, href: "/admin/content/articles" },
-  { id: "seo", label: "SEO Intelligence", icon: Globe, href: "/admin/seo/meta-tags" },
-  { id: "ai", label: "AI Ops Console", icon: Cpu, href: "/admin/ai/control" },
+  { id: "seo", label: "SEO Intelligence", icon: Globe, href: "/admin/seo/metadata" },
+  { id: "ai", label: "AI Ops Console", icon: Cpu, href: "/admin/ai/models/status" },
 ];
 
 export function Sidebar() {
