@@ -112,9 +112,9 @@ export default function BlogCMSPage() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -141,14 +141,14 @@ export default function BlogCMSPage() {
       </section>
 
       {/* KPI Stream */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
          {[
            { label: "Total Articles", value: posts.length, trend: "+4 this week", icon: FileText, color: "text-primary bg-primary/5" },
            { label: "Total PageViews", value: posts.reduce((acc, p) => acc + p.view_count, 0).toLocaleString(), trend: "Real-time", icon: BarChart3, color: "text-emerald-500 bg-emerald-50" },
            { label: "Avg. Time on Page", value: "4m 24s", trend: "+12s Hub Peak", icon: Clock, color: "text-indigo-500 bg-indigo-50" },
            { label: "Indexed Pages", value: "98.2%", trend: "Synced", icon: Globe, color: "text-amber-500 bg-amber-50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all">
               <div>
                  <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest italic mb-2 leading-none">{kpi.label}</p>
                  <p className="text-3xl font-black text-typography tracking-tighter leading-none">{kpi.value.toLocaleString()}</p>
@@ -162,8 +162,8 @@ export default function BlogCMSPage() {
       </div>
 
       {/* Main Table */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
+         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
             <div className="relative flex-1 max-w-xl">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input 
@@ -187,11 +187,11 @@ export default function BlogCMSPage() {
             <table className="w-full text-left">
                <thead className="bg-snow-pearl/50 border-b border-gray-100 italic">
                   <tr>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Article Identity</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Classification</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Status</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Analytics</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Actions</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Article Identity</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Classification</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Status</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Analytics</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Actions</th>
                   </tr>
                </thead>
                <tbody className="divide-y divide-gray-50">
@@ -262,7 +262,7 @@ export default function BlogCMSPage() {
 
       {/* Quick Access Context Panel */}
       <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative">
-         <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-110 transition-transform duration-1000">
             <Globe size={120} className="text-primary" />
          </div>
          <div className="flex items-center space-x-8 relative z-10">
@@ -283,10 +283,10 @@ export default function BlogCMSPage() {
 
       {/* Modal Editor */}
       {isEditorOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-10 italic">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-6 italic">
           <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-xl" onClick={() => setIsEditorOpen(false)} />
           <div className="relative w-full max-w-4xl bg-white rounded-[3.5rem] overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                <div>
                   <h3 className="text-2xl font-black text-typography uppercase tracking-tighter">
                     {editingPost?.id ? "Edit Article" : "Draft New Article"}
@@ -296,8 +296,8 @@ export default function BlogCMSPage() {
                <button onClick={() => setIsEditorOpen(false)} className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-rose-50 hover:text-rose-500 transition-all"><X size={20} /></button>
             </div>
             
-            <div className="flex-1 overflow-y-auto p-12 space-y-10 custom-scrollbar">
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="flex-1 overflow-y-auto p-12 space-y-6 custom-scrollbar">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                      <label className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 ml-4">Article Title</label>
                      <input 
@@ -351,13 +351,13 @@ export default function BlogCMSPage() {
                <div className="space-y-4">
                   <label className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 ml-4">Longform Asset Body (Markdown)</label>
                   <textarea 
-                    className="w-full bg-snow-pearl border-0 px-8 py-8 rounded-[2rem] text-[14px] font-medium outline-none ring-1 ring-gray-100 focus:ring-4 focus:ring-primary/5 transition-all shadow-inner min-h-[300px]" 
+                    className="w-full bg-snow-pearl border-0 px-8 py-4 rounded-[2rem] text-[14px] font-medium outline-none ring-1 ring-gray-100 focus:ring-4 focus:ring-primary/5 transition-all shadow-inner min-h-[300px]" 
                     placeholder="Compose your article structure here..."
                   />
                </div>
             </div>
 
-            <div className="p-10 border-t border-gray-50 bg-white flex items-center justify-between">
+            <div className="p-6 border-t border-gray-50 bg-white flex items-center justify-between">
                <button onClick={() => setIsEditorOpen(false)} className="flex items-center space-x-2 text-secondary/30 hover:text-primary transition-all text-[11px] font-black uppercase tracking-widest">
                   <ArrowLeft size={16} />
                   <span>Discard Changes</span>

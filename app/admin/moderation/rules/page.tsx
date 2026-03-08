@@ -27,8 +27,8 @@ export default function AutoModerationRulesConfigPage() {
   ]);
 
   return (
-    <div className="space-y-10 pb-20">
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+    <div className="space-y-6 pb-20">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -53,9 +53,9 @@ export default function AutoModerationRulesConfigPage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-12 gap-8">
+      <section className="grid grid-cols-12 gap-5">
         <div className="col-span-12 lg:col-span-4 space-y-8">
-            <div className="bg-typography p-10 rounded-[2.5rem] text-white shadow-2xl shadow-primary/20 relative overflow-hidden group">
+            <div className="bg-typography p-6 rounded-2xl text-white shadow-2xl shadow-primary/20 relative overflow-hidden group">
                <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-primary/20 to-transparent pointer-events-none" />
                <h3 className="text-2xl font-black tracking-tight leading-none mb-2">Rule Engine Status</h3>
                <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-8">Saving 60% manual moderator hours</p>
@@ -76,7 +76,7 @@ export default function AutoModerationRulesConfigPage() {
                </div>
             </div>
             
-            <div className="bg-amber-50 border border-amber-100 p-8 rounded-[2.5rem]">
+            <div className="bg-amber-50 border border-amber-100 p-5 rounded-2xl">
                <h3 className="text-sm font-black text-amber-900 uppercase tracking-tight mb-2 flex items-center space-x-2">
                  <ShieldAlert size={16} /><span>Shadow Mode Notice</span>
                </h3>
@@ -87,7 +87,7 @@ export default function AutoModerationRulesConfigPage() {
         </div>
 
         <div className="col-span-12 lg:col-span-8">
-           <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm space-y-6">
+           <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-6">
               <div className="flex items-center justify-between mb-8">
                  <h3 className="text-xl font-black text-typography uppercase tracking-tight">Active Matrix</h3>
                  <div className="relative">

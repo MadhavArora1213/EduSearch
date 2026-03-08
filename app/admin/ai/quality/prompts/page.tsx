@@ -60,9 +60,9 @@ GUARDRAILS:
   ]);
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100 italic">
         <div>
            <div className="flex items-center space-x-3 mb-2 italic">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -91,10 +91,10 @@ GUARDRAILS:
         </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          {/* Editor Workspace */}
-         <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col italic">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+         <div className="col-span-12 lg:col-span-8 bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col italic">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
                <div className="flex items-center space-x-6">
                   <div className="w-14 h-14 bg-primary/5 text-primary rounded-2xl flex items-center justify-center shadow-inner ring-1 ring-primary/10">
                      <PenTool size={28} />
@@ -114,13 +114,13 @@ GUARDRAILS:
                   </button>
                </div>
             </div>
-            <div className="p-10 bg-slate-900 min-h-[500px] flex flex-col relative group">
+            <div className="p-6 bg-slate-900 min-h-[500px] flex flex-col relative group">
                <textarea 
                   value={activePrompt}
                   onChange={(e) => setActivePrompt(e.target.value)}
                   className="w-full h-full bg-transparent border-0 text-slate-300 font-mono text-[14px] leading-relaxed outline-none resize-none flex-1 lg:max-h-[600px] custom-scrollbar focus:ring-0"
                />
-               <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-1000">
+               <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-1000">
                   <Terminal size={120} className="text-primary" />
                </div>
                <div className="mt-8 p-6 bg-white/5 rounded-3xl border border-white/5 flex items-center justify-between relative z-10">
@@ -145,8 +145,8 @@ GUARDRAILS:
 
          {/* Version Manifest & Simulation */}
          <div className="col-span-12 lg:col-span-4 space-y-8 italic">
-            <section className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm relative group hover:border-primary/20 transition-all flex flex-col h-full overflow-hidden">
-               <div className="mb-10">
+            <section className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm relative group hover:border-primary/20 transition-all flex flex-col h-full overflow-hidden">
+               <div className="mb-6">
                   <h4 className="text-sm font-black text-secondary/30 uppercase tracking-widest italic mb-8">Simulation Suite</h4>
                   <div className="space-y-6">
                      <p className="text-[10px] font-black text-secondary/20 uppercase tracking-widest italic underline decoration-primary/10">Student Profile Blueprint</p>
@@ -199,7 +199,7 @@ GUARDRAILS:
       </div>
 
       {/* Shadow Testing Analytics Hud */}
-      <section className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-12 italic relative group overflow-hidden">
+      <section className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-12 italic relative group overflow-hidden">
          <div className="absolute inset-0 bg-primary/10 flex items-center space-x-2 duration-1000" />
          <div className="flex items-center space-x-6 relative z-10">
             <div className="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary animate-pulse">

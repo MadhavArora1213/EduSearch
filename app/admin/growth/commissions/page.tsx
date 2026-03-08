@@ -71,9 +71,9 @@ export default function CommissionTrackerPage() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-indigo-50 px-3 py-1.5 rounded-xl border border-indigo-100">
@@ -102,8 +102,8 @@ export default function CommissionTrackerPage() {
       </section>
 
       {/* Partner Entry Quick Actions */}
-      <div className="grid grid-cols-12 gap-8">
-         <div className="col-span-12 lg:col-span-8 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm">
+      <div className="grid grid-cols-12 gap-5">
+         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
             <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 mb-8">Integrated Partner Portals</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                {[
@@ -126,8 +126,8 @@ export default function CommissionTrackerPage() {
             </div>
          </div>
 
-         <div className="col-span-12 lg:col-span-4 bg-slate-900 p-10 rounded-[2.5rem] text-white relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute bottom-0 right-0 p-10 opacity-10">
+         <div className="col-span-12 lg:col-span-4 bg-slate-900 p-6 rounded-2xl text-white relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute bottom-0 right-0 p-6 opacity-10">
                <Zap size={120} className="text-indigo-500" />
             </div>
             <div className="relative z-10">
@@ -156,8 +156,8 @@ export default function CommissionTrackerPage() {
       </div>
 
       {/* Ledger Table */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="relative flex-1 max-w-xl">
               <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input placeholder="Search Student or Partner..." className="w-full bg-snow-pearl border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all" />
@@ -187,7 +187,7 @@ export default function CommissionTrackerPage() {
               <tbody className="divide-y divide-gray-50">
                 {commissions.map((entry) => (
                   <tr key={entry.id} className="group hover:bg-indigo-50/10 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-indigo-600 group-hover:bg-indigo-50 transition-all">
                              {entry.type === 'STUDY_ABROAD' ? <Globe size={24} /> : <Wallet size={24} />}
@@ -198,21 +198,21 @@ export default function CommissionTrackerPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <p className="text-sm font-black text-typography">{entry.partner}</p>
                        <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest mt-1 italic">Date: {new Date(entry.enrollmentDate).toLocaleDateString()}</p>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <p className="text-[12px] font-black text-typography">₹{(entry.amount/100000).toFixed(2)}L</p>
                        <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest mt-1 italic">Contract Rate: {entry.rate}%</p>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="inline-flex items-center space-x-2 bg-indigo-50 px-4 py-2 rounded-2xl border border-indigo-100">
                           <TrendingUp size={14} className="text-indigo-600" />
                           <span className="text-sm font-black text-indigo-700 italic">₹{entry.commission.toLocaleString()}</span>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <span className={cn(
                           "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
                           entry.status === 'PAID' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
@@ -223,7 +223,7 @@ export default function CommissionTrackerPage() {
                           <span>{entry.status}</span>
                        </span>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2">
                           <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm" title="Confirm Settlement">
                              <CheckCircle2 size={18} />
@@ -239,7 +239,7 @@ export default function CommissionTrackerPage() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+        <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-snow-pearl/30">
            <div className="flex items-center space-x-4">
               <p className="text-xs font-black text-secondary/40 uppercase tracking-widest italic lowercase underline decoration-indigo-600/10 italic">Affiliate Settlement Ledger: Automated Verification Protocol</p>
            </div>

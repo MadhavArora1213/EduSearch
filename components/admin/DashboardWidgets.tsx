@@ -37,14 +37,14 @@ function WidgetCard({ title, children, className, subtitle, icon: Icon, actions 
   };
 
   return (
-    <div className={cn("bg-white rounded-2xl border border-gray-100 shadow-sm p-4 md:p-6 flex flex-col h-full", className)}>
-      <div className="flex justify-between items-start mb-6 w-full relative">
+    <div className={cn("bg-white rounded-xl border border-gray-100 shadow-sm p-4 md:p-5 flex flex-col h-full hover:shadow-md transition-all", className)}>
+      <div className="flex justify-between items-start mb-4 w-full relative">
         <div className="min-w-0 pr-2">
           <div className="flex items-center space-x-2">
-            {Icon && <Icon size={18} className="text-primary shrink-0" />}
-            <h3 className="text-[14px] font-black text-typography tracking-tight leading-none">{title}</h3>
+            {Icon && <Icon size={16} className="text-primary shrink-0" />}
+            <h3 className="text-[13px] font-black text-typography tracking-tight leading-none uppercase">{title}</h3>
           </div>
-          {subtitle && <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-2">
+          {subtitle && <p className="text-[9px] font-bold text-secondary/30 uppercase tracking-[0.1em] mt-1.5">
             {subtitle}
           </p>}
         </div>
@@ -57,7 +57,7 @@ function WidgetCard({ title, children, className, subtitle, icon: Icon, actions 
                 <MoreVertical size={16} />
              </button>
              {menuOpen && (
-               <div className="absolute right-0 top-8 w-36 bg-white border border-gray-100 shadow-xl rounded-xl flex flex-col p-1 z-50">
+               <div className="absolute right-0 top-5 w-36 bg-white border border-gray-100 shadow-xl rounded-xl flex flex-col p-1 z-50">
                   <button onClick={() => setMenuOpen(false)} className="text-xs text-left font-medium text-gray-600 hover:bg-gray-50 hover:text-primary px-3 py-2 rounded-md">View Details</button>
                   <button onClick={() => setMenuOpen(false)} className="text-xs text-left font-medium text-gray-600 hover:bg-gray-50 hover:text-primary px-3 py-2 rounded-md">Configure Widget</button>
                   <button onClick={() => setMenuOpen(false)} className="text-xs text-left font-medium text-red-600 hover:bg-red-50 px-3 py-2 rounded-md">Hide from View</button>
@@ -95,10 +95,10 @@ export function DashboardWidgets({
     }
   }, [alerts]);
 
-  if (!mounted) return <div className="grid grid-cols-12 gap-8 mb-10 min-h-[600px] animate-pulse bg-gray-50/50 rounded-[3rem]" />;
+  if (!mounted) return <div className="grid grid-cols-12 gap-5 mb-6 min-h-[600px] animate-pulse bg-gray-50/50 rounded-2xl" />;
 
   return (
-    <div className="grid grid-cols-12 gap-8 mb-10">
+    <div className="grid grid-cols-12 gap-5 mb-6">
       {/* Widget 1: Student Activity */}
       <WidgetCard 
         title="Student Activity" 
@@ -297,7 +297,7 @@ export function DashboardWidgets({
                 })}
                 {localAlerts.length === 0 && (
                   <tr>
-                    <td colSpan={4} className="px-6 py-8 text-center text-gray-400 text-sm font-medium">All infrastructure systems operating optimally. No pending alerts.</td>
+                    <td colSpan={4} className="px-6 py-4 text-center text-gray-400 text-sm font-medium">All infrastructure systems operating optimally. No pending alerts.</td>
                   </tr>
                 )}
              </tbody>

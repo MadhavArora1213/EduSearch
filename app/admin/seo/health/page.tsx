@@ -54,9 +54,9 @@ export default function ProgrammaticPageHealth() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -88,7 +88,7 @@ export default function ProgrammaticPageHealth() {
       {/* Indexing Grid */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
          {stats.map((s) => (
-           <div key={s.id} className="bg-white p-6 rounded-[2.5rem] border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all">
+           <div key={s.id} className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all">
               <div className="flex items-center justify-between mb-4">
                  <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110", s.color)}>
                     <Globe size={20} />
@@ -110,10 +110,10 @@ export default function ProgrammaticPageHealth() {
          ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
          {/* Critical Errors List */}
-         <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10 border-rose-100/20">
+         <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10 border-rose-100/20">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-rose-500/20 capitalize">Top Critical Violations</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic capitalize">Ranked by Monthly Traffic/Authority Impact</p>
@@ -124,7 +124,7 @@ export default function ProgrammaticPageHealth() {
             </div>
             <div className="divide-y divide-gray-50">
                {errors.map((err, i) => (
-                  <div key={i} className="p-8 group hover:bg-snow-pearl/30 transition-all flex items-center justify-between">
+                  <div key={i} className="p-5 group hover:bg-snow-pearl/30 transition-all flex items-center justify-between">
                      <div className="flex items-center space-x-6">
                         <div className={cn(
                            "w-12 h-12 rounded-2xl flex items-center justify-center transition-all shadow-inner italic",
@@ -144,16 +144,16 @@ export default function ProgrammaticPageHealth() {
                   </div>
                ))}
             </div>
-            <button className="p-8 border-t border-gray-50 text-[10px] font-black text-primary uppercase tracking-widest hover:bg-snow-pearl transition-all">Explore all 142 instances</button>
+            <button className="p-5 border-t border-gray-50 text-[10px] font-black text-primary uppercase tracking-widest hover:bg-snow-pearl transition-all">Explore all 142 instances</button>
          </section>
 
          {/* Visual Indexing Distribution */}
-         <section className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-between relative overflow-hidden group">
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
+         <section className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-between relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-5 opacity-10 group-hover:scale-110 transition-transform">
                <Zap size={100} className="text-primary" />
             </div>
             <div className="relative z-10">
-               <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/30">Auto-Generated Node Coverage</h4>
+               <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">Auto-Generated Node Coverage</h4>
                <div className="space-y-8">
                   {[
                      { label: "College Profiles", val: 98.4, total: "34k pages" },
@@ -184,7 +184,7 @@ export default function ProgrammaticPageHealth() {
       </div>
 
       {/* Manual Request Terminal */}
-      <section className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-10 italic">
+      <section className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-10 italic">
          <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-primary shadow-sm ring-1 ring-gray-100"><Zap size={24} /></div>
          <div className="flex-1">
             <h4 className="text-lg font-black text-typography tracking-tighter uppercase italic">Manual Indexing Accelerator</h4>

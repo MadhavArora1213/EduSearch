@@ -71,9 +71,9 @@ export default function AuditLogPage() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2 font-montserrat">
               <div className="bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100 italic">
@@ -99,14 +99,14 @@ export default function AuditLogPage() {
       </section>
 
       {/* Real-time Integrity KPI Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
          {[
            { label: "Integrity Status", value: logs.length > 0 ? "SECURE" : "AWAITING DATA", trend: "100% Validated", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-50" },
            { label: "Active Admins", value: new Set(logs.map(l => l.admin_email)).size, trend: "Pulse Monitor", icon: Activity, color: "text-primary bg-primary/5" },
            { label: "System Events (24h)", value: logs.length, trend: "Nominal", icon: Cpu, color: "text-indigo-500 bg-indigo-50" },
            { label: "DB Mutations", value: logs.filter(l => l.action.toLowerCase().includes('edit') || l.action.toLowerCase().includes('delete')).length, trend: "Audited", icon: Database, color: "text-amber-500 bg-amber-50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group hover:border-rose-500/20 transition-all">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group hover:border-rose-500/20 transition-all">
               <div>
                  <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest italic mb-2 leading-none">{kpi.label}</p>
                  <p className="text-3xl font-black text-typography tracking-tighter leading-none italic uppercase">{kpi.value.toLocaleString()}</p>
@@ -120,8 +120,8 @@ export default function AuditLogPage() {
       </div>
 
       {/* Main Forensic Table */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
+         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="relative flex-1 max-w-xl italic">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input 
@@ -145,12 +145,12 @@ export default function AuditLogPage() {
             <table className="w-full text-left italic">
                <thead className="bg-snow-pearl/50 border-b border-gray-100 italic">
                   <tr>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Timestamp & ID</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Actor (Admin)</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Action Sequence</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Target Entity</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">IP Forensic</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit Status</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Timestamp & ID</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Actor (Admin)</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Action Sequence</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Target Entity</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">IP Forensic</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit Status</th>
                   </tr>
                </thead>
                <tbody className="divide-y divide-gray-50 italic">
@@ -161,13 +161,13 @@ export default function AuditLogPage() {
                   )}
                   {filteredLogs.map((log) => (
                     <tr key={log.id} className="group hover:bg-snow-pearl/30 transition-all italic">
-                       <td className="px-10 py-8">
+                       <td className="px-10 py-4">
                           <p className="text-[12px] font-black text-typography uppercase leading-none">
                              {new Date(log.created_at).toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'medium' })}
                           </p>
                           <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-1">E-ID: {log.id.slice(0, 8)}</p>
                        </td>
-                       <td className="px-10 py-8">
+                       <td className="px-10 py-4">
                           <div className="flex items-center space-x-3">
                              <div className="w-8 h-8 bg-snow-pearl rounded-full flex items-center justify-center border border-gray-100 italic">
                                 <Lock size={12} className="text-secondary/30" />
@@ -175,7 +175,7 @@ export default function AuditLogPage() {
                              <span className="text-[12px] font-black text-typography lowercase underline decoration-rose-500/10">{log.admin_email}</span>
                           </div>
                        </td>
-                       <td className="px-10 py-8 text-[10px] font-black uppercase tracking-widest">
+                       <td className="px-10 py-4 text-[10px] font-black uppercase tracking-widest">
                           <span className={cn(
                             "px-3 py-1 rounded-lg border",
                             log.action.includes('DELETE') ? "bg-rose-50 border-rose-100 text-rose-600" : "bg-emerald-50 border-emerald-100 text-emerald-600"
@@ -183,15 +183,15 @@ export default function AuditLogPage() {
                              {log.action}
                           </span>
                        </td>
-                       <td className="px-10 py-8">
+                       <td className="px-10 py-4">
                           <p className="text-[10px] font-black text-typography uppercase tracking-widest italic">{log.entity_type}</p>
                           <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest mt-0.5">{log.entity_id}</p>
                        </td>
-                       <td className="px-10 py-8 flex items-center space-x-2 text-secondary/30">
+                       <td className="px-10 py-4 flex items-center space-x-2 text-secondary/30">
                           <TerminalIcon size={14} />
                           <span className="text-[11px] font-mono font-bold">{log.ip_address}</span>
                        </td>
-                       <td className="px-10 py-8 text-right">
+                       <td className="px-10 py-4 text-right">
                           <div className={cn(
                              "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest",
                              log.status === 'SUCCESS' ? "bg-emerald-50 text-emerald-600" : "bg-rose-50 text-rose-600"
@@ -206,7 +206,7 @@ export default function AuditLogPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-100 bg-snow-pearl/30 flex items-center justify-between font-montserrat italic">
+         <div className="p-6 border-t border-gray-100 bg-snow-pearl/30 flex items-center justify-between font-montserrat italic">
             <div className="flex items-center space-x-4 italic underline decoration-rose-500/10">
                <ShieldCheck size={18} className="text-emerald-500" />
                <p className="text-xs font-black text-secondary/40 uppercase tracking-widest">Ledger Integrity: Verified with SHA-256 Merkle Hash Node</p>
@@ -218,7 +218,7 @@ export default function AuditLogPage() {
       </section>
 
       {/* Terminal Context Panel */}
-      <section className="bg-slate-900 rounded-[3rem] p-12 border border-slate-800 shadow-2xl relative overflow-hidden group italic">
+      <section className="bg-slate-900 rounded-2xl p-12 border border-slate-800 shadow-2xl relative overflow-hidden group italic">
          <div className="absolute top-0 right-0 p-12 opacity-5">
             <TerminalIcon size={120} className="text-rose-500" />
          </div>
@@ -235,7 +235,7 @@ export default function AuditLogPage() {
                      <p className="text-slate-400 text-[11px] select-none lowercase italic truncate font-mono tracking-tight">result: integrity_verified 100% | latent_signals: 0</p>
                   </div>
                </div>
-               <div className="p-8 border border-white/5 bg-white/5 rounded-[2.5rem] flex items-center justify-between italic select-none">
+               <div className="p-5 border border-white/5 bg-white/5 rounded-2xl flex items-center justify-between italic select-none">
                   <div>
                      <p className="text-slate-500 text-[10px] uppercase font-bold tracking-widest mb-1 italic underline decoration-rose-500/10 truncate font-mono tracking-tight">Live Threat Intelligence</p>
                      <p className="text-xl text-white font-black italic select-none lowercase truncate font-mono tracking-tight underline decoration-rose-500/10">Zero Violations Found</p>

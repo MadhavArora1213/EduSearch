@@ -78,7 +78,7 @@ export default function SystemHealthPage() {
   return (
     <div className="space-y-12 pb-20 font-montserrat italic">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic transition-all">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100 italic transition-all">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -113,8 +113,8 @@ export default function SystemHealthPage() {
       </section>
 
       {/* Infrastructure Widgets */}
-      <div className="grid grid-cols-3 gap-8">
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all overflow-hidden relative italic">
+      <div className="grid grid-cols-3 gap-5">
+         <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all overflow-hidden relative italic">
             <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div className="flex items-center justify-between mb-6 relative">
                <div className="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
@@ -125,7 +125,7 @@ export default function SystemHealthPage() {
             <p className="text-3xl font-black text-typography mb-1 uppercase tracking-tighter">{health?.database?.latency || "---"}</p>
             <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest">MySQL Latency (Hostinger)</p>
          </div>
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-sky-500/20 transition-all overflow-hidden relative italic">
+         <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm group hover:border-sky-500/20 transition-all overflow-hidden relative italic">
             <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-sky-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div className="flex items-center justify-between mb-6 relative">
                <div className="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-500 group-hover:scale-110 transition-transform">
@@ -136,7 +136,7 @@ export default function SystemHealthPage() {
             <p className="text-3xl font-black text-typography mb-1 uppercase tracking-tighter">{health?.infrastructure?.cpu_usage || "---"}</p>
             <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest">Server CPU Consumption</p>
          </div>
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm group hover:border-amber-500/20 transition-all overflow-hidden relative italic">
+         <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm group hover:border-amber-500/20 transition-all overflow-hidden relative italic">
             <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-amber-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div className="flex items-center justify-between mb-6 relative">
                <div className="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-500 group-hover:scale-110 transition-transform">
@@ -150,10 +150,10 @@ export default function SystemHealthPage() {
       </div>
 
       {/* Maintenance & Error Log Console */}
-      <section className="grid grid-cols-12 gap-8">
+      <section className="grid grid-cols-12 gap-5">
          {/* Live Error Log */}
          <div className="col-span-12 lg:col-span-8 bg-white p-12 rounded-[3.5rem] border border-gray-50 shadow-sm overflow-hidden relative italic">
-            <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center justify-between mb-6">
                <div>
                   <h3 className="text-3xl font-black text-typography tracking-tight">Real-time Error Logs</h3>
                   <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1 italic capitalize">Aggregating 404s & 500s across 10M+ users</p>
@@ -168,7 +168,7 @@ export default function SystemHealthPage() {
                {loading ? [...Array(3)].map((_, i) => (
                  <div key={i} className="h-20 bg-gray-50 animate-pulse rounded-2xl" />
                )) : (health?.errors || []).map((err: any) => (
-                 <div key={err.id} className="group flex items-center justify-between p-8 bg-gray-50/50 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:border-red-500/20 transition-all cursor-pointer">
+                 <div key={err.id} className="group flex items-center justify-between p-5 bg-gray-50/50 rounded-2xl border border-gray-100 hover:bg-white hover:border-red-500/20 transition-all cursor-pointer">
                     <div className="flex items-center space-x-10 flex-1 overflow-hidden text-ellipsis whitespace-nowrap">
                        <div className={cn(
                           "w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-all shadow-sm",
@@ -196,7 +196,7 @@ export default function SystemHealthPage() {
                ))}
             </div>
             
-            <div className="absolute left-0 bottom-0 w-full p-10 bg-gradient-to-t from-white to-transparent pointer-events-none flex justify-center italic transition-all">
+            <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-white to-transparent pointer-events-none flex justify-center italic transition-all">
                <button className="pointer-events-auto px-10 py-5 bg-gray-50 border border-gray-100 rounded-2xl text-[10px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all shadow-sm transition-all whitespace-nowrap overflow-hidden text-ellipsis">Archive Management Console</button>
             </div>
          </div>
@@ -210,7 +210,7 @@ export default function SystemHealthPage() {
                <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] mb-12 italic">Disaster Recovery & Redundancy Logic</p>
                
                <div className="space-y-8 mt-12 italic transition-all">
-                  <div className="bg-white/5 p-8 rounded-[3rem] border border-white/10 flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-all transition-all active:scale-95 italic">
+                  <div className="bg-white/5 p-5 rounded-2xl border border-white/10 flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-all transition-all active:scale-95 italic">
                      <div className="flex items-center space-x-6 overflow-hidden text-ellipsis whitespace-nowrap transition-all">
                         <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-primary group-hover:scale-105 transition-transform transition-all">
                            <Database size={22} />
@@ -223,7 +223,7 @@ export default function SystemHealthPage() {
                      <CheckCircle2 size={16} className="text-emerald-500" />
                   </div>
 
-                  <div className="bg-white/5 p-8 rounded-[3rem] border border-white/10 flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-all active:scale-95 italic">
+                  <div className="bg-white/5 p-5 rounded-2xl border border-white/10 flex items-center justify-between group cursor-pointer hover:bg-white/5 transition-all active:scale-95 italic">
                      <div className="flex items-center space-x-6 overflow-hidden text-ellipsis whitespace-nowrap transition-all">
                         <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-sky-500 transition-all">
                            <Monitor size={22} />
@@ -240,7 +240,7 @@ export default function SystemHealthPage() {
 
             <div className="mt-12 transition-all">
                <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-6 italic transition-all text-center">Last Backup: {health?.database?.last_backup || "---"}</p>
-               <button className="w-full py-6 bg-primary text-white rounded-[2.5rem] text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/40 flex items-center justify-center space-x-4 transition-all">
+               <button className="w-full py-6 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-primary/40 flex items-center justify-center space-x-4 transition-all">
                   <RotateCcw size={18} />
                   <span>Execute Forced Backup</span>
                </button>

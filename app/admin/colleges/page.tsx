@@ -78,9 +78,9 @@ export default function CollegesPage() {
   );
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header Section */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -89,15 +89,15 @@ export default function CollegesPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Educational Institutes</span>
            </div>
-           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-4xl font-black text-typography tracking-tighter leading-none mb-1">
              Colleges <span className="text-primary italic">& Courses</span>
            </h1>
-           <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
+           <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5">
               Managing 35,000+ Indian Institutions
            </p>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
            <button onClick={() => {
               const csvContent = "data:text/csv;charset=utf-8,ID,Name,Type,City\n" + colleges.map(c => `${c.id},${c.name},${c.type},${c.city}`).join("\n");
               const encodedUri = encodeURI(csvContent);
@@ -107,29 +107,29 @@ export default function CollegesPage() {
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);
-           }} className="flex items-center space-x-2 px-6 py-4 bg-gray-50 border border-gray-200/50 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-200 transition-all active:scale-95 text-secondary/60">
-              <Download size={16} />
-              <span>Bulk Export (CSV)</span>
+           }} className="flex items-center space-x-2 px-4 py-2.5 bg-gray-50 border border-gray-200/50 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-200 transition-all active:scale-95 text-secondary/60">
+              <Download size={14} />
+              <span>Export</span>
            </button>
-           <Link href="/admin/colleges/new" className="flex items-center space-x-2 px-8 py-4 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
-              <Plus size={18} />
-              <span>Add New College</span>
+           <Link href="/admin/colleges/new" className="flex items-center space-x-2 px-5 py-2.5 bg-primary text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/10">
+              <Plus size={16} />
+              <span>Add College</span>
            </Link>
         </div>
       </section>
 
       {/* Filters & Search */}
-      <section className="bg-white p-6 rounded-[2.5rem] border border-gray-50 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
-         <div className="flex items-center space-x-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100 w-full md:w-auto">
+      <section className="bg-white p-3 rounded-xl border border-gray-50 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3">
+         <div className="flex items-center space-x-1.5 bg-gray-50 p-1 rounded-xl border border-gray-100 w-full md:w-auto">
             {["all", "verified", "unverified", "pending"].map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
                 className={cn(
-                  "px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all",
-                  filter === f 
-                    ? "bg-white text-primary shadow-sm shadow-black/5" 
-                    : "text-secondary/40 hover:text-secondary"
+                  "px-3 py-1.5 rounded-md text-[9px] font-black uppercase tracking-widest transition-all",
+                  filter === f
+                    ? "bg-white text-primary shadow-sm shadow-black/5"
+                    : "text-secondary/30 hover:text-secondary"
                 )}
               >
                 {f}
@@ -137,87 +137,87 @@ export default function CollegesPage() {
             ))}
          </div>
 
-         <div className="flex items-center space-x-4 w-full md:w-auto">
-            <div className="relative flex-1 md:w-80 group">
-               <Search size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-secondary/30 group-focus-within:text-primary transition-colors" />
-               <input 
-                 placeholder="Search by Name, City or State..." 
+         <div className="flex items-center space-x-3 w-full md:w-auto">
+            <div className="relative flex-1 md:w-72 group">
+               <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-secondary/30 group-focus-within:text-primary transition-colors" />
+               <input
+                 placeholder="Search institutes..."
                  value={searchTerm}
                  onChange={(e) => setSearchTerm(e.target.value)}
-                 className="w-full bg-gray-50 border-0 pl-14 pr-6 py-4 rounded-2xl text-[13px] font-bold outline-none focus:ring-2 focus:ring-primary/10 transition-all text-typography"
+                 className="w-full bg-gray-50 border-0 pl-9 pr-3 py-2 rounded-xl text-[12px] font-bold outline-none focus:ring-2 focus:ring-primary/10 transition-all text-typography"
                />
             </div>
-            <button onClick={() => alert("Advanced filtering panel toggled...")} className="w-14 h-14 bg-gray-50 border border-gray-100 rounded-2xl flex items-center justify-center hover:bg-white hover:border-primary/20 transition-all group">
-               <Filter size={18} className="text-secondary/40 group-hover:text-primary" />
+            <button onClick={() => alert("Advanced filtering panel toggled...")} className="w-9 h-9 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center hover:bg-white hover:border-primary/20 transition-all group">
+               <Filter size={14} className="text-secondary/40 group-hover:text-primary" />
             </button>
          </div>
       </section>
 
       {/* College Listing Table */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden min-h-[500px]">
+      <section className="bg-white rounded-xl border border-gray-50 shadow-sm overflow-hidden min-h-[500px]">
         <div className="overflow-x-auto">
            <table className="w-full text-left">
               <thead className="bg-snow-pearl/50 border-b border-gray-100">
                  <tr>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40">Institution Details</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40">B2B Account</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40">Freshness</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40 text-center">Stats</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40">Status</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.2em] text-secondary/40 text-right">Actions</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Institution Details</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">B2B Account</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Freshness</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40 text-center">Stats</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Status</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40 text-right">Actions</th>
                  </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {loading ? (
                   [...Array(5)].map((_, i) => (
                     <tr key={i} className="animate-pulse">
-                      <td colSpan={6} className="px-10 py-8">
-                         <div className="h-12 bg-gray-50 rounded-2xl w-full" />
+                      <td colSpan={6} className="px-6 py-3">
+                         <div className="h-10 bg-gray-50 rounded-xl w-full" />
                       </td>
                     </tr>
                   ))
                 ) : filteredColleges.length === 0 ? (
                   <tr>
-                    <td colSpan={6} className="px-10 py-20 text-center">
+                    <td colSpan={6} className="px-6 py-16 text-center">
                        <div className="flex flex-col items-center">
-                          <AlertCircle size={48} className="text-secondary/10 mb-4" />
-                          <p className="text-xl font-black text-typography">No Institutions Found</p>
-                          <p className="text-secondary/40 text-xs font-bold uppercase tracking-widest mt-2">Try adjusting your filters or search term</p>
+                          <AlertCircle size={40} className="text-secondary/10 mb-3" />
+                          <p className="text-lg font-black text-typography">No Institutions Found</p>
+                          <p className="text-secondary/40 text-xs font-bold uppercase tracking-widest mt-1">Try adjusting your filters or search term</p>
                        </div>
                     </td>
                   </tr>
                 ) : (
                   filteredColleges.map((college) => (
                     <tr key={college.id} className="group hover:bg-gray-50/30 transition-all">
-                       <td className="px-10 py-8">
-                          <div className="flex items-center space-x-6">
-                             <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center p-2 group-hover:scale-105 transition-transform border border-gray-100">
+                       <td className="px-6 py-3">
+                          <div className="flex items-center space-x-4">
+                             <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center p-2 group-hover:scale-105 transition-transform border border-gray-100">
                                 {college.logo_url ? (
                                   <img src={college.logo_url} className="w-full h-full object-contain" />
                                 ) : (
-                                  <School size={28} className="text-secondary/20" />
+                                  <School size={20} className="text-secondary/20" />
                                 )}
                              </div>
                              <div>
-                                <h3 className="text-base font-black text-typography leading-tight mb-1 group-hover:text-primary transition-colors">{college.name}</h3>
-                                <div className="flex items-center space-x-3">
-                                   <span className="text-[10px] font-black uppercase tracking-widest text-secondary/40">{college.type}</span>
+                                <h3 className="text-sm font-black text-typography leading-tight mb-0.5 group-hover:text-primary transition-colors">{college.name}</h3>
+                                <div className="flex items-center space-x-2">
+                                   <span className="text-[9px] font-black uppercase tracking-widest text-secondary/40">{college.type}</span>
                                    <div className="w-1 h-1 bg-secondary/10 rounded-full" />
-                                   <span className="text-[10px] font-black italic text-emerald-500">{college.naac_grade || "N/A"} Grade</span>
+                                   <span className="text-[9px] font-black italic text-emerald-500">{college.naac_grade || "N/A"} Grade</span>
                                 </div>
                              </div>
                           </div>
                        </td>
-                       <td className="px-10 py-8">
+                       <td className="px-6 py-3">
                           <div className={cn(
-                            "flex items-center space-x-2 text-[12px] font-bold",
+                            "flex items-center space-x-2 text-[11px] font-bold",
                             college.has_b2b ? "text-primary" : "text-secondary/30"
                           )}>
-                             <Briefcase size={14} />
+                             <Briefcase size={12} />
                              <span>{college.has_b2b ? "Linked" : "Unlinked"}</span>
                           </div>
                        </td>
-                       <td className="px-10 py-8">
+                       <td className="px-10 py-4">
                           <div className="flex flex-col">
                              <div className="flex items-center space-x-2 text-secondary/60">
                                 <Clock size={12} />
@@ -226,7 +226,7 @@ export default function CollegesPage() {
                              <span className="text-[10px] font-black uppercase text-emerald-500 mt-1">Stale in 168d</span>
                           </div>
                        </td>
-                       <td className="px-10 py-8">
+                       <td className="px-10 py-4">
                           <div className="flex items-center justify-center space-x-6 text-center">
                              <div>
                                 <p className="text-lg font-black text-typography">{college._count.courses}</p>
@@ -245,7 +245,7 @@ export default function CollegesPage() {
                              </div>
                           </div>
                        </td>
-                       <td className="px-10 py-8">
+                       <td className="px-10 py-4">
                           <div className={cn(
                             "inline-flex items-center space-x-2 px-4 py-2 rounded-full border",
                             college.is_verified 
@@ -258,7 +258,7 @@ export default function CollegesPage() {
                              </span>
                           </div>
                        </td>
-                       <td className="px-10 py-8 text-right">
+                       <td className="px-10 py-4 text-right">
                           <div className="flex items-center justify-end space-x-2">
                              <button onClick={() => alert(`Cloning: ${college.name}`)} title="Clone Record" className="w-10 h-10 flex items-center justify-center bg-gray-50 border border-transparent rounded-xl text-secondary/40 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 transition-all group/btn">
                                 <Copy size={16} />
@@ -286,7 +286,7 @@ export default function CollegesPage() {
         </div>
         
         {/* Pagination etc */}
-        <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white">
+        <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white">
            <p className="text-xs font-bold text-secondary/30 uppercase tracking-widest italic">Showing {filteredColleges.length} Institutions</p>
            <div className="flex items-center space-x-4">
               <button onClick={() => alert("Navigating to previous page...")} className="p-4 bg-gray-50 rounded-2xl text-[11px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all active:scale-95">Previous</button>

@@ -64,7 +64,7 @@ export default function AiControlCenterPage() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return <div className="p-10 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">Auditing Ad Inventory...</div>;
+  if (!mounted) return <div className="p-6 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">Auditing Ad Inventory...</div>;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ export default function AiControlCenterPage() {
   return (
     <div className="space-y-12 pb-20">
       {/* Header Section */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -118,12 +118,12 @@ export default function AiControlCenterPage() {
       </section>
 
       {/* Model Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {loading ? [...Array(3)].map((_, i) => (
-          <div key={i} className="h-[250px] bg-white rounded-[2.5rem] border border-gray-50 animate-pulse" />
+          <div key={i} className="h-[250px] bg-white rounded-2xl border border-gray-50 animate-pulse" />
         )) : models.map((m) => (
-          <div key={m.name} className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all group overflow-hidden relative">
-             <div className="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-700" />
+          <div key={m.name} className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all group overflow-hidden relative">
+             <div className="absolute -right-8 -top-5 w-32 h-32 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-700" />
              
              <div className="flex justify-between items-start mb-8 relative">
                 <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
@@ -161,10 +161,10 @@ export default function AiControlCenterPage() {
       </section>
 
       {/* Analytics & Heatmap Overlay */}
-      <section className="grid grid-cols-12 gap-8">
+      <section className="grid grid-cols-12 gap-5">
          {/* Performance Chart */}
          <div className="col-span-12 lg:col-span-8 bg-white p-12 rounded-[3.5rem] border border-gray-50 shadow-sm">
-            <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center justify-between mb-6">
                <div>
                   <h3 className="text-2xl font-black text-typography tracking-tight">System Performance</h3>
                   <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1">Real-time Inference Monitoring</p>
@@ -245,7 +245,7 @@ export default function AiControlCenterPage() {
                </div>
             </div>
 
-            <div className="bg-primary/5 p-6 rounded-[2.5rem] border border-primary/10 mt-10">
+            <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10 mt-10">
                <div className="flex items-center space-x-3 mb-3">
                   <Sparkles size={16} className="text-primary" />
                   <p className="text-[10px] font-black uppercase tracking-widest text-primary italic lowercase">Operational Insight</p>
@@ -261,7 +261,7 @@ export default function AiControlCenterPage() {
       <section className="bg-typography p-16 rounded-[4rem] text-white shadow-2xl shadow-primary/20 relative overflow-hidden group">
          <div className="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-primary/20 to-transparent pointer-events-none" />
          
-         <div className="grid grid-cols-12 gap-10 items-center relative">
+         <div className="grid grid-cols-12 gap-6 items-center relative">
             <div className="col-span-12 lg:col-span-7 space-y-8">
                <div className="flex items-center space-x-4">
                   <div className="w-16 h-16 bg-white/10 rounded-3xl flex items-center justify-center text-primary">
@@ -291,11 +291,11 @@ export default function AiControlCenterPage() {
 
             <div className="col-span-12 lg:col-span-5 italic">
                <div className="grid grid-cols-2 gap-6 pb-20">
-                  <div className="bg-white/5 p-8 rounded-[2.5rem] border border-white/10">
+                  <div className="bg-white/5 p-5 rounded-2xl border border-white/10">
                      <p className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1 italic">Knowledge Recall</p>
                      <p className="text-2xl font-black">94.8%</p>
                   </div>
-                  <div className="bg-white/5 p-8 rounded-[2.5rem] border border-white/10">
+                  <div className="bg-white/5 p-5 rounded-2xl border border-white/10">
                      <p className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1 italic">Hallucination Index</p>
                      <p className="text-2xl font-black text-emerald-400">0.02</p>
                   </div>

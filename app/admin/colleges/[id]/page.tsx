@@ -79,7 +79,7 @@ export default function CollegeEditPage() {
       </section>
 
       {/* Main Content Area */}
-      <div className="grid grid-cols-12 gap-8">
+      <div className="grid grid-cols-12 gap-5">
          {/* Navigation Sidebar (Vertical Tabs) */}
          <div className="col-span-12 lg:col-span-3 space-y-2">
             <div className="bg-white p-4 rounded-[2rem] border border-gray-50 shadow-sm sticky top-32">
@@ -116,7 +116,7 @@ export default function CollegeEditPage() {
          <div className="col-span-12 lg:col-span-9 space-y-8">
             {activeTab === "core" && (
                <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                  <div className="bg-white p-12 rounded-[3rem] border border-gray-50 shadow-sm space-y-10">
+                  <div className="bg-white p-12 rounded-2xl border border-gray-50 shadow-sm space-y-6">
                      <div className="flex items-center space-x-4">
                         <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
                            <Info size={28} />
@@ -127,7 +127,7 @@ export default function CollegeEditPage() {
                         </div>
                      </div>
 
-                     <div className="grid grid-cols-2 gap-10">
+                     <div className="grid grid-cols-2 gap-6">
                         <div className="col-span-2 space-y-3">
                            <label className="text-[10px] font-black uppercase tracking-widest text-secondary/40 ml-1">Official Name (English)</label>
                            <input defaultValue="Indian Institute of Technology Delhi" className="w-full bg-gray-50 border-0 px-8 py-5 rounded-[1.5rem] text-[15px] font-bold text-typography focus:ring-4 focus:ring-primary/5 outline-none transition-all placeholder:text-secondary/20" />
@@ -159,7 +159,7 @@ export default function CollegeEditPage() {
                      </div>
                   </div>
 
-                  <div className="bg-white p-12 rounded-[3rem] border border-gray-50 shadow-sm space-y-10">
+                  <div className="bg-white p-12 rounded-2xl border border-gray-50 shadow-sm space-y-6">
                      <div className="flex items-center space-x-4">
                         <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-500">
                            <CheckCircle2 size={28} />
@@ -170,7 +170,7 @@ export default function CollegeEditPage() {
                         </div>
                      </div>
 
-                     <div className="grid grid-cols-2 gap-10">
+                     <div className="grid grid-cols-2 gap-6">
                         <div className="space-y-3">
                            <label className="text-[10px] font-black uppercase tracking-widest text-secondary/40 ml-1">NAAC Grade</label>
                            <input defaultValue="A++" className="w-full bg-gray-50 border-0 px-8 py-5 rounded-[1.5rem] text-[15px] font-bold text-typography focus:ring-4 focus:ring-primary/5 outline-none transition-all" />
@@ -186,7 +186,7 @@ export default function CollegeEditPage() {
             )}
 
             {activeTab !== "core" && (
-               <div className="bg-white/40 border border-dashed border-gray-200 p-20 rounded-[3rem] flex flex-col items-center justify-center text-center space-y-6">
+               <div className="bg-white/40 border border-dashed border-gray-200 p-20 rounded-2xl flex flex-col items-center justify-center text-center space-y-6">
                   <div className="w-20 h-20 bg-white rounded-[2rem] shadow-sm flex items-center justify-center text-secondary/20">
                      <AlertCircle size={40} />
                   </div>

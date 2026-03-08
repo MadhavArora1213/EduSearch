@@ -76,9 +76,9 @@ export default function StudentUserTable() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -128,8 +128,8 @@ export default function StudentUserTable() {
       </div>
 
       {/* Main Table Container */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="relative flex-1 max-w-2xl">
               <Search size={22} className="absolute left-8 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input placeholder="Search by Name, Email or Partial Phone..." className="w-full bg-snow-pearl border-0 pl-20 pr-8 py-6 rounded-3xl text-[15px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all placeholder:text-secondary/20" />
@@ -155,7 +155,7 @@ export default function StudentUserTable() {
               <tbody className="divide-y divide-gray-50">
                 {users.map((user) => (
                   <tr key={user.id} className="group hover:bg-snow-pearl/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className="relative">
                              <div className="w-16 h-16 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:bg-primary/5 group-hover:text-primary transition-all">
@@ -175,7 +175,7 @@ export default function StudentUserTable() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div>
                              <p className="text-xl font-black text-typography tracking-tighter">{user.reviewsCount}</p>
@@ -188,13 +188,13 @@ export default function StudentUserTable() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8 text-center">
+                    <td className="px-10 py-4 text-center">
                        <div className="inline-flex flex-col items-center">
                           <span className="text-[12px] font-black text-typography">{user.email}</span>
                           <span className="text-[9px] font-bold text-secondary/30 uppercase tracking-widest mt-1 italic">{user.loginMethod} Verified</span>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <span className={cn(
                           "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
                           user.status === 'ACTIVE' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
@@ -205,13 +205,13 @@ export default function StudentUserTable() {
                           <span>{user.status}</span>
                        </span>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-2 text-[12px] font-black text-typography">
                           <Clock size={14} className="text-secondary/20" />
                           <span>{user.lastActive}</span>
                        </div>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2">
                           <Link href={`/admin/users/${user.id}`} className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all shadow-sm" title="Manage Account Detail">
                              <MousePointer2 size={18} />
@@ -227,7 +227,7 @@ export default function StudentUserTable() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-100 flex items-center justify-between bg-snow-pearl/30">
+        <div className="p-6 border-t border-gray-100 flex items-center justify-between bg-snow-pearl/30">
            <div className="flex items-center space-x-4">
               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <p className="text-xs font-black text-secondary/40 uppercase tracking-widest italic lowercase underline decoration-primary/10">DPDP Act Real-time Audit logging active</p>

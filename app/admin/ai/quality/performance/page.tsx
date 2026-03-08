@@ -57,9 +57,9 @@ export default function PromptPerformanceDashboard() {
   ]);
 
   return (
-    <div className="space-y-10 font-montserrat italic">
+    <div className="space-y-6 font-montserrat italic">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100 italic">
         <div>
            <div className="flex items-center space-x-3 mb-2 italic">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -88,9 +88,9 @@ export default function PromptPerformanceDashboard() {
       </section>
 
       {/* Sentiment & Engagement Matrix */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
          {metrics.map((m) => (
-           <div key={m.id} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer">
+           <div key={m.id} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer">
               <div className="flex items-center justify-between mb-4 italic">
                  <div className={cn(
                     "px-3 py-1 text-[9px] font-black rounded-full border italic",
@@ -109,10 +109,10 @@ export default function PromptPerformanceDashboard() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          {/* Low Quality Response Feed - Hallucination Hunter */}
-         <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col italic">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10 border-rose-100/20">
+         <div className="col-span-12 lg:col-span-8 bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col italic">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10 border-rose-100/20">
                <div className="flex items-center space-x-6">
                   <div className="w-14 h-14 bg-rose-500 text-white rounded-2xl flex items-center justify-center shadow-xl shadow-rose-500/20">
                      <ThumbsDown size={28} />
@@ -129,7 +129,7 @@ export default function PromptPerformanceDashboard() {
             </div>
             <div className="divide-y divide-gray-50">
                {samples.map((sample) => (
-                  <div key={sample.id} className="p-10 group hover:bg-snow-pearl/30 transition-all flex items-start justify-between cursor-pointer">
+                  <div key={sample.id} className="p-6 group hover:bg-snow-pearl/30 transition-all flex items-start justify-between cursor-pointer">
                      <div className="flex-1 space-y-4">
                         <div className="flex items-center space-x-3">
                            <span className="text-[10px] font-black text-secondary/20 uppercase tracking-widest">{sample.time}</span>
@@ -149,20 +149,20 @@ export default function PromptPerformanceDashboard() {
                   </div>
                ))}
             </div>
-            <div className="p-8 border-t border-gray-50 text-center bg-snow-pearl/30">
+            <div className="p-5 border-t border-gray-50 text-center bg-snow-pearl/30">
                <button className="text-[10px] font-black text-primary uppercase tracking-widest hover:underline italic decoration-primary/20">Explore all 842 sentiment markers</button>
             </div>
          </div>
 
          {/* Failure Category Distribution */}
          <div className="col-span-12 lg:col-span-4 space-y-8 italic">
-            <section className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-between relative overflow-hidden group min-h-[500px]">
-               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+            <section className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-between relative overflow-hidden group min-h-[500px]">
+               <div className="absolute top-0 right-0 p-5 opacity-10 group-hover:scale-110 transition-transform duration-1000">
                   <PieChart size={140} className="text-rose-500" />
                </div>
                <div className="relative z-10">
-                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-rose-500/20">Top Failure Clusters</h4>
-                  <div className="space-y-10">
+                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-rose-500/20">Top Failure Clusters</h4>
+                  <div className="space-y-6">
                     {[
                       { label: "Stale Fee Data", val: 42, color: "bg-rose-500" },
                       { label: "Wrong Category Logic", val: 28, color: "bg-rose-400" },
@@ -190,7 +190,7 @@ export default function PromptPerformanceDashboard() {
                </div>
             </section>
 
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
                <Activity size={28} className="text-secondary/10 group-hover:text-primary transition-colors" />
                <p className="text-[10px] font-black text-secondary/30 uppercase tracking-widest mb-1 italic">Average Turn Engagement</p>
                <h4 className="text-xl font-black text-typography uppercase tracking-tight leading-tight italic lowercase">6.4 Turns per Session</h4>

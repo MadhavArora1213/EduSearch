@@ -51,9 +51,9 @@ export default function CoreWebVitalsTracker() {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -89,14 +89,14 @@ export default function CoreWebVitalsTracker() {
       </section>
 
       {/* Vitals Summary Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
          {[
            { label: "LCP (Loading Speed)", value: "1.8s", sub: "P75 Aggregate Avg.", icon: Zap, color: "text-emerald-500", range: "Goal: < 2.5s" },
            { label: "INP (Responsiveness)", value: "142ms", sub: "Total Blocking Time", icon: MousePointer2, color: "text-emerald-500", range: "Goal: < 200ms" },
            { label: "CLS (Visual Stability)", value: "0.04", sub: "Layout Shift Cumulative", icon: LayoutGrid, color: "text-emerald-500", range: "Goal: < 0.1" },
          ].map((s, i) => (
-           <div key={i} className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all cursor-pointer overflow-hidden relative">
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform">
+           <div key={i} className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all cursor-pointer overflow-hidden relative">
+              <div className="absolute top-0 right-0 p-5 opacity-5 group-hover:scale-110 transition-transform">
                  <s.icon size={48} className={s.color} />
               </div>
               <div className="flex items-center justify-between mb-6 italic">
@@ -113,10 +113,10 @@ export default function CoreWebVitalsTracker() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          {/* Detail Matrix */}
-         <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+         <div className="col-span-12 lg:col-span-8 bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Experience Matrix per Page Type</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic select-none">Field Data Collected from Actual User Sessions (90 Days)</p>
@@ -141,7 +141,7 @@ export default function CoreWebVitalsTracker() {
                   <tbody className="divide-y divide-gray-50">
                     {vitals.map((v) => (
                       <tr key={v.id} className="group hover:bg-snow-pearl/30 transition-all">
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <div className="flex items-center space-x-6">
                               <div className={cn(
                                  "w-12 h-12 rounded-2xl flex items-center justify-center transition-all shadow-inner",
@@ -152,19 +152,19 @@ export default function CoreWebVitalsTracker() {
                               <h4 className="text-sm font-black text-typography leading-tight uppercase tracking-tight">{v.category}</h4>
                            </div>
                         </td>
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <p className={cn("text-lg font-black tracking-tighter", getStatusColor(v.lcp, 'LCP'))}>{v.lcp}s</p>
                            <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest italic leading-none mt-1">Goal: &lt; 2.5s</p>
                         </td>
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <p className={cn("text-lg font-black tracking-tighter", getStatusColor(v.inp, 'INP'))}>{v.inp}ms</p>
                            <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest italic leading-none mt-1">Goal: &lt; 200ms</p>
                         </td>
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <p className={cn("text-lg font-black tracking-tighter", getStatusColor(v.cls, 'CLS'))}>{v.cls}</p>
                            <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest italic leading-none mt-1">Goal: &lt; 0.1s</p>
                         </td>
-                        <td className="px-10 py-8 text-right">
+                        <td className="px-10 py-4 text-right">
                            <button className="px-6 py-2 bg-white border border-gray-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:border-primary/20 hover:text-primary transition-all shadow-sm">
                               Fix Template
                            </button>
@@ -178,12 +178,12 @@ export default function CoreWebVitalsTracker() {
 
          {/* Poor Pages Feed */}
          <div className="col-span-12 lg:col-span-4 space-y-8">
-            <section className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-between relative overflow-hidden group">
-               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
+            <section className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-between relative overflow-hidden group">
+               <div className="absolute top-0 right-0 p-5 opacity-10 group-hover:scale-110 transition-transform">
                   <ShieldAlert size={100} className="text-rose-500" />
                </div>
                <div className="relative z-10">
-                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-rose-500/20">Critical Fix Queue (CWV POOR)</h4>
+                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-rose-500/20">Critical Fix Queue (CWV POOR)</h4>
                   <div className="space-y-6">
                      {[
                         { url: "/search/engineering-colleges-pan-india", impact: "42k Reach", p: 72 },
@@ -210,7 +210,7 @@ export default function CoreWebVitalsTracker() {
                </button>
             </section>
 
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
+            <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
                <ActivitySquare size={28} className="text-secondary/10 group-hover:text-primary transition-colors" />
                <p className="text-[10px] font-black text-secondary/30 uppercase tracking-widest mb-1 italic">Real User Health (CrUX)</p>
                <h4 className="text-xl font-black text-typography uppercase tracking-tight font-black leading-tight italic lowercase">92% Compliance Rate</h4>

@@ -79,9 +79,9 @@ export default function LeadsManagementPage() {
   );
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -111,8 +111,8 @@ export default function LeadsManagementPage() {
       </section>
 
       {/* Analytics & Hourly Volume */}
-      <div className="grid grid-cols-12 gap-8">
-         <div className="col-span-12 lg:col-span-8 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm flex flex-col min-h-[400px]">
+      <div className="grid grid-cols-12 gap-5">
+         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm flex flex-col min-h-[400px]">
             <div className="flex justify-between items-start mb-8 italic">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Spike Detection Node</h3>
@@ -152,7 +152,7 @@ export default function LeadsManagementPage() {
               { label: "Total Intake Today", value: stats.todayIntake.toLocaleString(), trend: "Real-time", icon: Users, color: "text-primary" },
               { label: "High Quality Pct", value: `${stats.highQualityPct}%`, trend: "Dynamic", icon: AlertTriangle, color: "text-amber-500" },
             ].map((s, i) => (
-              <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all flex items-center justify-between cursor-pointer">
+              <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all flex items-center justify-between cursor-pointer">
                  <div>
                     <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest leading-none mb-2 italic">{s.label}</p>
                     <p className="text-4xl font-black text-typography tracking-tighter leading-none italic">{s.value}</p>
@@ -167,8 +167,8 @@ export default function LeadsManagementPage() {
       </div>
 
       {/* Main Listing */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
            <div className="relative flex-1 max-w-xl italic">
               <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input 
@@ -210,7 +210,7 @@ export default function LeadsManagementPage() {
                   )}
                   {filteredLeads.map((lead) => (
                     <tr key={lead.id} className="group hover:bg-snow-pearl/30 transition-all italic">
-                      <td className="px-10 py-8">
+                      <td className="px-10 py-4">
                          <div className="flex items-center space-x-6 italic">
                             <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all ring-1 ring-gray-100">
                                <User size={24} />
@@ -225,11 +225,11 @@ export default function LeadsManagementPage() {
                             </div>
                          </div>
                       </td>
-                      <td className="px-10 py-8">
+                      <td className="px-10 py-4">
                          <h3 className="text-[13px] font-black text-typography group-hover:text-primary transition-colors line-clamp-1 italic">{lead.college?.name}</h3>
                          <p className="text-[9px] font-black text-primary/60 uppercase tracking-widest mt-1 underline decoration-primary/10 italic">{lead.course_interest || 'General'}</p>
                       </td>
-                      <td className="px-10 py-8 text-center">
+                      <td className="px-10 py-4 text-center">
                          <div className={cn(
                             "inline-flex flex-col items-center space-y-1 px-4 py-2 rounded-2xl border transition-all",
                             lead.quality_score === 'HIGH' ? "bg-rose-50 border-rose-100 text-rose-500" : "bg-sky-50 border-sky-100 text-sky-500"
@@ -238,7 +238,7 @@ export default function LeadsManagementPage() {
                             <span className="text-[9px] font-black uppercase tracking-widest italic">{lead.quality_score}</span>
                          </div>
                       </td>
-                      <td className="px-10 py-8">
+                      <td className="px-10 py-4">
                          <span className={cn(
                             "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border transition-all",
                             lead.status === 'CONVERTED' ? "bg-emerald-50 text-emerald-600 border-emerald-100" :
@@ -250,7 +250,7 @@ export default function LeadsManagementPage() {
                          </span>
                          <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest mt-2 italic">Ingested: {new Date(lead.created_at).toLocaleDateString()}</p>
                       </td>
-                      <td className="px-10 py-8 text-right">
+                      <td className="px-10 py-4 text-right">
                          <div className="flex items-center justify-end space-x-2 italic">
                             <button className="p-4 bg-white border border-gray-200 rounded-2xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm group/btn italic underline decoration-primary/10" title="Retry Delivery">
                                <RefreshCw size={16} />
@@ -266,8 +266,8 @@ export default function LeadsManagementPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat">
-            <div className="absolute top-0 right-0 p-10 opacity-5">
+         <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat">
+            <div className="absolute top-0 right-0 p-6 opacity-5">
                <TrendingUp size={100} className="text-primary" />
             </div>
             <div className="flex items-center space-x-6 relative z-10 italic underline decoration-primary/10">

@@ -45,9 +45,9 @@ export default function CohortRetentionPage() {
   };
 
   return (
-    <div className="space-y-10 font-montserrat italic">
+    <div className="space-y-6 font-montserrat italic">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic font-montserrat not-italic">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100 italic font-montserrat not-italic">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -90,10 +90,10 @@ export default function CohortRetentionPage() {
         </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-10 font-montserrat not-italic">
+      <div className="grid grid-cols-12 gap-6 font-montserrat not-italic">
          {/* Main Retention Matrix */}
-         <div className="col-span-12 lg:col-span-9 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+         <div className="col-span-12 lg:col-span-9 bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Weekly Acquisition Cohorts</h3>
                   <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] mt-2 italic select-none">Target: W1 &gt; 35% Retention • Current: 38.2%</p>
@@ -110,10 +110,10 @@ export default function CohortRetentionPage() {
                <table className="w-full text-center border-collapse">
                   <thead className="bg-snow-pearl/50 border-b border-gray-100">
                      <tr>
-                        <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-left border-r border-gray-100">Acquisition Week</th>
-                        <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 border-r border-gray-100">Size</th>
+                        <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-left border-r border-gray-100">Acquisition Week</th>
+                        <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 border-r border-gray-100">Size</th>
                         {[...Array(8)].map((_, i) => (
-                          <th key={i} className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Week {i}</th>
+                          <th key={i} className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Week {i}</th>
                         ))}
                      </tr>
                   </thead>
@@ -153,13 +153,13 @@ export default function CohortRetentionPage() {
 
          {/* Insights: Feature Impact */}
          <div className="col-span-12 lg:col-span-3 space-y-8">
-            <div className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-between relative group h-full overflow-hidden">
-               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+            <div className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-between relative group h-full overflow-hidden">
+               <div className="absolute top-0 right-0 p-5 opacity-5 group-hover:scale-110 transition-transform duration-1000">
                   <Sparkles size={100} className="text-primary" />
                </div>
                <div className="relative z-10 flex-1">
-                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/30">Stickiness Multipliers</h4>
-                  <div className="space-y-10 flex flex-col h-full">
+                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">Stickiness Multipliers</h4>
+                  <div className="space-y-6 flex flex-col h-full">
                      <div className="space-y-4">
                         <div className="flex items-center space-x-4 mb-6">
                            <div className="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center text-primary shadow-inner">
@@ -201,7 +201,7 @@ export default function CohortRetentionPage() {
       </div>
 
       {/* DPDP Compliance Notice (Context Specific) */}
-      <section className="bg-snow-pearl/30 p-10 rounded-[2.5rem] border border-gray-100 flex items-center justify-between font-montserrat not-italic">
+      <section className="bg-snow-pearl/30 p-6 rounded-2xl border border-gray-100 flex items-center justify-between font-montserrat not-italic">
          <div className="flex items-center space-x-6">
             <History size={20} className="text-secondary/20" />
             <p className="text-[11px] font-bold text-secondary/40 tracking-widest uppercase italic">Cohort snapshots are anonymized per DPDP Act standards • No PII is shared in growth node analytics</p>

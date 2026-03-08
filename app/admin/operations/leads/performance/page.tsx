@@ -52,16 +52,16 @@ export default function LeadPerformancePage() {
 
   if (!mounted) {
     return (
-      <div className="p-10 min-h-screen animate-pulse bg-gray-50/50 flex items-center justify-center text-[10px] font-black tracking-widest uppercase italic text-secondary/10">
+      <div className="p-6 min-h-screen animate-pulse bg-gray-50/50 flex items-center justify-center text-[10px] font-black tracking-widest uppercase italic text-secondary/10">
         Loading Performance Ledger...
       </div>
     );
   }
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -90,9 +90,9 @@ export default function LeadPerformancePage() {
       </section>
 
       {/* SLA Distribution Chart */}
-      <div className="grid grid-cols-12 gap-8">
-         <div className="col-span-12 lg:col-span-8 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm">
-            <div className="flex justify-between items-start mb-10">
+      <div className="grid grid-cols-12 gap-5">
+         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
+            <div className="flex justify-between items-start mb-6">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">Delivery SLA Distribution</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2">Target: 95% Leads delivered under 60 seconds</p>
@@ -122,8 +122,8 @@ export default function LeadPerformancePage() {
             </div>
          </div>
 
-         <div className="col-span-12 lg:col-span-4 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-8">
+         <div className="col-span-12 lg:col-span-4 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-5">
                <Zap size={64} className="text-secondary/5 -mr-4 -mt-4" />
             </div>
             <div className="w-24 h-24 bg-primary/5 rounded-[2rem] flex items-center justify-center text-primary mb-6 shadow-2xl shadow-primary/10">
@@ -140,8 +140,8 @@ export default function LeadPerformancePage() {
       </div>
 
       {/* ROI & Quality Trend */}
-      <div className="grid grid-cols-12 gap-8">
-         <div className="col-span-12 lg:col-span-7 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm">
+      <div className="grid grid-cols-12 gap-5">
+         <div className="col-span-12 lg:col-span-7 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
             <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 mb-8">Lead Quality Pulse</h3>
             <div className="h-[250px] w-full">
                <ResponsiveContainer width="100%" height="100%">
@@ -164,7 +164,7 @@ export default function LeadPerformancePage() {
             </div>
          </div>
 
-         <div className="col-span-12 lg:col-span-5 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm">
+         <div className="col-span-12 lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
             <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 mb-8">Partner ROI Ranking</h3>
             <div className="space-y-4">
                {roiData.map((item, i) => (
@@ -189,11 +189,11 @@ export default function LeadPerformancePage() {
       </div>
 
       {/* Blacklist Management Hook */}
-      <section className="bg-slate-900 rounded-[2.5rem] p-12 text-white relative overflow-hidden">
+      <section className="bg-slate-900 rounded-2xl p-12 text-white relative overflow-hidden">
          <div className="absolute top-0 right-0 p-12 opacity-10">
             <ShieldAlert size={120} />
          </div>
-         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
             <div className="max-w-xl">
                <h2 className="text-4xl font-black tracking-tighter italic lowercase">Blacklist Protocol</h2>
                <p className="text-slate-400 font-bold uppercase tracking-widest text-[11px] mt-4 leading-relaxed">

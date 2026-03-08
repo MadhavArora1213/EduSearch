@@ -80,7 +80,7 @@ export default function NotificationHubPage() {
   return (
     <div className="space-y-12 pb-20 font-montserrat italic">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic transition-all">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100 italic transition-all">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -115,29 +115,29 @@ export default function NotificationHubPage() {
       </section>
 
       {/* Delivery Stats Strip */}
-      <div className="grid grid-cols-4 gap-8">
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
+      <div className="grid grid-cols-4 gap-5">
+         <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
             <div className="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform mb-6">
                <Layers size={22} />
             </div>
             <p className="text-3xl font-black text-typography tracking-tighter mb-1">{status?.queue_size || "0"}</p>
             <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest">Active Queue</p>
          </div>
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
+         <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
             <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform mb-6">
                <MessageCircle size={22} />
             </div>
             <p className="text-3xl font-black text-typography tracking-tighter mb-1">{status?.whatsapp_balance || "₹0"}</p>
             <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest">WhatsApp Balance</p>
          </div>
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm group hover:border-sky-500/20 transition-all">
+         <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm group hover:border-sky-500/20 transition-all">
             <div className="w-12 h-12 bg-sky-50 rounded-2xl flex items-center justify-center text-sky-500 group-hover:scale-110 transition-transform mb-6">
                <Mail size={22} />
             </div>
             <p className="text-3xl font-black text-typography tracking-tighter mb-1 text-sky-600">PRO</p>
             <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest whitespace-nowrap overflow-hidden text-ellipsis">Enterprise SMTP Status</p>
          </div>
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all overflow-hidden">
+         <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all overflow-hidden">
             <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all mb-6">
                <Activity size={22} />
             </div>
@@ -147,10 +147,10 @@ export default function NotificationHubPage() {
       </div>
 
       {/* Main Campaign Management Overlay */}
-      <section className="grid grid-cols-12 gap-8">
+      <section className="grid grid-cols-12 gap-5">
          {/* Active Campaigns */}
          <div className="col-span-12 lg:col-span-8 bg-white p-12 rounded-[3.5rem] border border-gray-50 shadow-sm overflow-hidden relative">
-            <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center justify-between mb-6">
                <div>
                   <h3 className="text-3xl font-black text-typography tracking-tight">Active Campaigns</h3>
                   <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1 italic capitalize">Omnichannel Lifecycles (Push, WhatsApp, SMTP)</p>
@@ -165,7 +165,7 @@ export default function NotificationHubPage() {
                {loading ? [...Array(3)].map((_, i) => (
                  <div key={i} className="h-20 bg-gray-50 animate-pulse rounded-2xl" />
                )) : campaigns.map((c) => (
-                 <div key={c.id} className="group flex items-center justify-between p-8 bg-gray-50/50 rounded-[2.5rem] border border-gray-100 hover:bg-white hover:border-primary/20 transition-all cursor-pointer">
+                 <div key={c.id} className="group flex items-center justify-between p-5 bg-gray-50/50 rounded-2xl border border-gray-100 hover:bg-white hover:border-primary/20 transition-all cursor-pointer">
                     <div className="flex items-center space-x-8">
                        <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-secondary/30 group-hover:text-primary shadow-sm transition-all rotate-3 group-hover:rotate-0">
                           {c.channel === 'PUSH' ? <Smartphone size={24} /> : c.channel === 'WHATSAPP' ? <MessageCircle size={24} /> : <Mail size={24} />}
@@ -193,7 +193,7 @@ export default function NotificationHubPage() {
                ))}
             </div>
             
-            <div className="absolute left-0 bottom-0 w-full p-10 bg-gradient-to-t from-white to-transparent pointer-events-none flex justify-center">
+            <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-white to-transparent pointer-events-none flex justify-center">
                <button className="pointer-events-auto px-10 py-4 bg-gray-50 border border-gray-100 rounded-2xl text-[10px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all">View Campaign Archive</button>
             </div>
          </div>
@@ -241,7 +241,7 @@ export default function NotificationHubPage() {
       </section>
 
       {/* Warning Overlay */}
-      <section className="bg-amber-50 p-10 rounded-[3.5rem] border border-amber-100 flex items-start space-x-6">
+      <section className="bg-amber-50 p-6 rounded-[3.5rem] border border-amber-100 flex items-start space-x-6">
          <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-amber-500 shadow-sm border border-amber-50 group transition-all">
             <AlertTriangle size={28} className="group-hover:rotate-12 transition-transform" />
          </div>

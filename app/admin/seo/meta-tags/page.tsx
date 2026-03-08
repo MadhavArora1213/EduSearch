@@ -54,9 +54,9 @@ export default function SeometaTagsPage() {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -86,8 +86,8 @@ export default function SeometaTagsPage() {
       </section>
 
       {/* SEO Pulse Strip */}
-      <div className="grid grid-cols-4 gap-8">
-         <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
+      <div className="grid grid-cols-4 gap-5">
+         <div className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
             <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div>
                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Indexable Pages</p>
@@ -97,7 +97,7 @@ export default function SeometaTagsPage() {
                <Layers size={24} />
             </div>
          </div>
-         <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
+         <div className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
             <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-sky-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div>
                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Index Health</p>
@@ -107,7 +107,7 @@ export default function SeometaTagsPage() {
                <CheckCircle2 size={24} />
             </div>
          </div>
-         <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
+         <div className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
             <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-amber-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div>
                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Crawl Errors</p>
@@ -117,7 +117,7 @@ export default function SeometaTagsPage() {
                <AlertCircle size={24} />
             </div>
          </div>
-         <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
+         <div className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group overflow-hidden relative">
             <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-indigo-50 rounded-full group-hover:scale-150 transition-transform duration-700" />
             <div>
                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-2">Avg Domain Auth</p>
@@ -130,8 +130,8 @@ export default function SeometaTagsPage() {
       </div>
 
       {/* Meta Tag Editor */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden min-h-[500px]">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden min-h-[500px]">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="flex items-center space-x-10">
               <div className="flex items-center space-x-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100">
                 {["Page Meta", "Breadcrumbs", "JSON-LD"].map((t) => (
@@ -159,9 +159,9 @@ export default function SeometaTagsPage() {
 
         <div className="divide-y divide-gray-50">
           {loading ? [...Array(2)].map((_, i) => (
-            <div key={i} className="p-10 animate-pulse bg-gray-50/50 h-[300px]" />
+            <div key={i} className="p-6 animate-pulse bg-gray-50/50 h-[300px]" />
           )) : tags.map((tag) => (
-            <div key={tag.id} className="p-10 group hover:bg-snow-pearl/30 transition-all grid grid-cols-12 gap-10 bg-white text-typography animate-in fade-in transition-all">
+            <div key={tag.id} className="p-6 group hover:bg-snow-pearl/30 transition-all grid grid-cols-12 gap-6 bg-white text-typography animate-in fade-in transition-all">
                <div className="col-span-12 lg:col-span-5 space-y-6">
                   <div className="flex items-center space-x-3">
                      <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10 flex items-center space-x-2">
@@ -197,7 +197,7 @@ export default function SeometaTagsPage() {
                   </div>
                </div>
 
-               <div className="col-span-12 lg:col-span-7 bg-gray-50 p-10 rounded-[3rem] border border-gray-100 flex flex-col justify-between italic">
+               <div className="col-span-12 lg:col-span-7 bg-gray-50 p-6 rounded-2xl border border-gray-100 flex flex-col justify-between italic">
                   <div>
                     <div className="flex items-center space-x-3 mb-6">
                        <Zap size={16} className="text-primary" />
@@ -235,7 +235,7 @@ export default function SeometaTagsPage() {
       </section>
 
       {/* SEO Warnings */}
-      <section className="bg-amber-50 p-10 rounded-[2.5rem] border border-amber-100 flex items-start space-x-6 animate-in slide-in-from-bottom transition-all">
+      <section className="bg-amber-50 p-6 rounded-2xl border border-amber-100 flex items-start space-x-6 animate-in slide-in-from-bottom transition-all">
          <Info size={24} className="text-amber-500 mt-1" />
          <div>
             <h4 className="text-sm font-black text-amber-900 uppercase tracking-widest">Metadata Compliance Protocol</h4>

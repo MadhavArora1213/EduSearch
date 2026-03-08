@@ -44,9 +44,9 @@ export default function BackupDashboardPage() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-100">
@@ -80,14 +80,14 @@ export default function BackupDashboardPage() {
       </section>
 
       {/* Analytics Strip */}
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-4 gap-5">
          {[
            { label: "Total Snapshots", value: "42", sub: "R2 Mirror: Active", icon: FileArchive, color: "text-primary bg-primary/5" },
            { label: "Storage Consumed", value: "184 GB", sub: "Lifecycle: 6 Months", icon: HardDrive, color: "text-indigo-500 bg-indigo-50" },
            { label: "Restore Readiness", value: "100%", sub: "Last Test: 2d ago", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-50" },
            { label: "Retention Policy", value: "3-Tier", sub: "Daily/Weekly/Monthly", icon: Lock, color: "text-slate-500 bg-slate-100" }
          ].map((s, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
               <div className="flex items-center justify-between mb-4">
                  <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 shadow-inner", s.color)}>
                     <s.icon size={22} />
@@ -102,8 +102,8 @@ export default function BackupDashboardPage() {
       </div>
 
       {/* Main Table Container */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
            <div>
               <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-emerald-500/10">Immutable Point-in-Time History</h3>
               <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic">Compressed binary snapshots with SHA-256 validation</p>
@@ -128,7 +128,7 @@ export default function BackupDashboardPage() {
               <tbody className="divide-y divide-gray-50 italic">
                 {backups.map((bkp) => (
                   <tr key={bkp.id} className="group hover:bg-snow-pearl/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:bg-emerald-50 group-hover:text-emerald-600 transition-all shadow-inner">
                              <Database size={24} />
@@ -139,19 +139,19 @@ export default function BackupDashboardPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-3">
                           <span className="text-lg font-black text-typography tracking-tighter">{bkp.size}</span>
                           <span className="text-[9px] font-black text-secondary/20 uppercase tracking-widest bg-gray-50 px-2 py-0.5 rounded-md border border-gray-100">Compressed</span>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-2 text-[10px] font-black text-indigo-500 uppercase tracking-widest italic decoration-indigo-200 underline">
                           <Cloud size={14} />
                           <span>{bkp.destination.replace('_', ' ')}</span>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex flex-col items-center">
                           <span className={cn(
                              "px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border",
@@ -162,7 +162,7 @@ export default function BackupDashboardPage() {
                           <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest mt-1 italic">Shadow DB test passed</p>
                        </div>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2">
                           <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-indigo-500 hover:text-white transition-all shadow-sm group/btn" title="Download for Local Storage">
                              <Download size={18} />
@@ -178,8 +178,8 @@ export default function BackupDashboardPage() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-100 flex items-center justify-between bg-white italic relative overflow-hidden">
-           <div className="absolute top-0 right-0 p-10 opacity-5">
+        <div className="p-6 border-t border-gray-100 flex items-center justify-between bg-white italic relative overflow-hidden">
+           <div className="absolute top-0 right-0 p-6 opacity-5">
               <Server size={80} className="text-emerald-500" />
            </div>
            <div className="flex items-center space-x-4 relative z-10">

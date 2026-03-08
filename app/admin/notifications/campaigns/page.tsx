@@ -47,9 +47,9 @@ const campaigns: Campaign[] = [
 
 export default function CampaignSchedulerPage() {
   return (
-    <div className="space-y-10 font-montserrat italic not-italic font-montserrat">
+    <div className="space-y-6 font-montserrat italic not-italic font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -75,14 +75,14 @@ export default function CampaignSchedulerPage() {
       </section>
 
       {/* Campaign Health KPI Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5 italic">
          {[
            { label: "Channel Delivery", value: "98.4%", trend: "+1.2%", icon: Send, color: "text-emerald-500 bg-emerald-50" },
            { label: "Active Broadcasts", value: "14 Nodes", trend: "Balanced", icon: Activity, color: "text-primary bg-primary/5" },
            { label: "Segment Coverage", value: "82% Users", trend: "High", icon: Target, color: "text-indigo-500 bg-indigo-50" },
            { label: "Engagement ROI", value: "12.8x", trend: "+2.4", icon: TrendingUp, color: "text-amber-500 bg-amber-50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all cursor-pointer">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all cursor-pointer">
               <div>
                  <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest italic mb-2 leading-none">{kpi.label}</p>
                  <p className="text-3xl font-black text-typography tracking-tighter leading-none italic">{kpi.value}</p>
@@ -96,8 +96,8 @@ export default function CampaignSchedulerPage() {
       </div>
 
       {/* Main Campaign Timeline Listing */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col font-montserrat italic not-italic">
-         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col font-montserrat italic not-italic">
+         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="relative flex-1 max-w-xl italic">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input placeholder="Search Active Campaigns or Segments..." className="w-full bg-white border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all shadow-inner" />
@@ -111,11 +111,11 @@ export default function CampaignSchedulerPage() {
             <table className="w-full text-left italic">
                <thead className="bg-snow-pearl/50 border-b border-gray-100 italic">
                   <tr>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Campaign Node</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Channel / Segment</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Scheduled Cycle</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Batch Size</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Campaign Node</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Channel / Segment</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Scheduled Cycle</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Batch Size</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit</th>
                   </tr>
                </thead>
                <tbody className="divide-y divide-gray-50 italic">
@@ -168,8 +168,8 @@ export default function CampaignSchedulerPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-10 opacity-5 italic">
+         <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-6 opacity-5 italic">
                <History size={100} className="text-primary" />
             </div>
             <div className="flex items-center space-x-6 relative z-10 italic">

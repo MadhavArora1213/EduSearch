@@ -68,9 +68,9 @@ export default function DataDiffViewerPage() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -100,13 +100,13 @@ export default function DataDiffViewerPage() {
       </section>
 
       {/* Analytics Strip */}
-      <div className="grid grid-cols-3 gap-8">
+      <div className="grid grid-cols-3 gap-5">
          {[
            { label: "Queued Diffs", value: "1,204", sub: "842 Auto-pushed", icon: Layers, color: "text-primary" },
            { label: "Avg. Confidence", value: "88.4%", sub: "Source Reliability: High", icon: Sparkles, color: "text-indigo-500" },
            { label: "Conflicts Detected", value: "14", sub: "Needs Manual Decision", icon: AlertTriangle, color: "text-amber-500" }
          ].map((s, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center space-x-8 group hover:border-primary/20 transition-all">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center space-x-8 group hover:border-primary/20 transition-all">
               <div className={cn("w-16 h-16 rounded-[2rem] flex items-center justify-center transition-all group-hover:scale-110", s.color.replace('text-', 'bg-').replace('500', '50'))}>
                  <s.icon size={28} className={s.color} />
               </div>
@@ -120,8 +120,8 @@ export default function DataDiffViewerPage() {
       </div>
 
       {/* Main Diff Table */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
            <div className="relative flex-1 max-w-xl">
               <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input placeholder="Search College or Source..." className="w-full bg-white border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all shadow-sm" />
@@ -147,7 +147,7 @@ export default function DataDiffViewerPage() {
               <tbody className="divide-y divide-gray-50">
                 {diffs.map((diff) => (
                   <tr key={diff.id} className="group hover:bg-snow-pearl/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:bg-primary/5 group-hover:text-primary transition-all">
                              <Building2 size={24} />
@@ -158,14 +158,14 @@ export default function DataDiffViewerPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-4">
                           <span className="text-[12px] font-bold text-secondary/30 line-through bg-gray-50 px-2 py-1 rounded-md">{diff.oldValue}</span>
                           <ArrowRight size={14} className="text-secondary/20" />
                           <span className="text-[13px] font-black text-emerald-600 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-100">{diff.newValue}</span>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-2 text-[11px] font-black text-typography italic">
                           <Globe size={14} className="text-secondary/20" />
                           <span>{diff.source}</span>
@@ -175,7 +175,7 @@ export default function DataDiffViewerPage() {
                           <span>Verify Source URL</span>
                        </button>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex flex-col items-center">
                           <div className="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2">
                              <div 
@@ -186,7 +186,7 @@ export default function DataDiffViewerPage() {
                           <span className="text-[10px] font-black text-typography">{diff.confidence}%</span>
                        </div>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-all">
                           <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm group/btn" title="Approve & Commit to Core">
                              <CheckCircle2 size={18} />
@@ -202,7 +202,7 @@ export default function DataDiffViewerPage() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative">
+        <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white italic relative">
            <div className="flex items-center space-x-4">
               <ShieldCheck size={20} className="text-primary" />
               <p className="text-xs font-black text-secondary/40 uppercase tracking-widest leading-none">Auto-Apply logic is active for confidence scores &gt; 95% on non-payout fields.</p>

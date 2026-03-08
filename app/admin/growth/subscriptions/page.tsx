@@ -72,9 +72,9 @@ export default function SubscriptionsPage() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-100">
@@ -100,14 +100,14 @@ export default function SubscriptionsPage() {
       </section>
 
       {/* Analytics Strip */}
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-4 gap-5">
          {[
            { label: "Active MRR", value: "₹42.8L", trend: "+8.4%", icon: TrendingUp, color: "text-emerald-500 bg-emerald-50" },
            { label: "Average CPL", value: "₹284", trend: "Target: ₹300", icon: Target, color: "text-primary bg-primary/5" },
            { label: "Renewals (7d)", value: "114", trend: "Action Needed", icon: Clock, color: "text-amber-500 bg-amber-50" },
            { label: "Upgrade conversion", value: "14.2%", trend: "+2.1%", icon: Sparkles, color: "text-indigo-500 bg-indigo-50" }
          ].map((s, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
               <div className="flex items-center justify-between mb-4">
                  <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110", s.color)}>
                     <s.icon size={22} />
@@ -121,8 +121,8 @@ export default function SubscriptionsPage() {
       </div>
 
       {/* Subscription Listing */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="relative flex-1 max-w-xl">
               <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input placeholder="Search Institution..." className="w-full bg-snow-pearl border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all" />
@@ -154,7 +154,7 @@ export default function SubscriptionsPage() {
               <tbody className="divide-y divide-gray-50">
                 {subscriptions.map((sub) => (
                   <tr key={sub.id} className="group hover:bg-snow-pearl/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all">
                              <Building2 size={24} />
@@ -165,7 +165,7 @@ export default function SubscriptionsPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex flex-col space-y-1">
                           <span className={cn(
                              "inline-flex px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest w-fit",
@@ -178,7 +178,7 @@ export default function SubscriptionsPage() {
                           <p className="text-[12px] font-black text-typography mt-1">₹{sub.cplRate} <span className="text-[9px] font-bold text-secondary/20">/ CPL</span></p>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex flex-col space-y-2">
                           <div className="flex items-center justify-between w-32">
                              <span className="text-[10px] font-black text-typography">{sub.leadBalance}</span>
@@ -192,7 +192,7 @@ export default function SubscriptionsPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className={cn(
                           "inline-flex items-center space-x-2 px-4 py-2 rounded-2xl border italic font-black text-[10px] uppercase tracking-widest",
                           sub.churnRisk === 'LOW' ? "bg-emerald-50 border-emerald-100 text-emerald-600" :
@@ -206,7 +206,7 @@ export default function SubscriptionsPage() {
                           <p className="text-[9px] font-black text-rose-500 uppercase tracking-widest mt-2 blink">🔥 Sales Follow-up Req.</p>
                        )}
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <span className={cn(
                           "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
                           sub.status === 'ACTIVE' ? "bg-emerald-50 text-emerald-600" :
@@ -218,7 +218,7 @@ export default function SubscriptionsPage() {
                           <span>{sub.status}</span>
                        </span>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2">
                           <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm group/btn" title="Issue Lead Credits">
                              <Zap size={18} />
@@ -237,7 +237,7 @@ export default function SubscriptionsPage() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 bg-snow-pearl/30 flex items-center justify-between">
+        <div className="p-6 border-t border-gray-50 bg-snow-pearl/30 flex items-center justify-between">
            <div className="flex items-center space-x-4">
               <div className="flex -space-x-3">
                  {[1,2,3].map(i => (

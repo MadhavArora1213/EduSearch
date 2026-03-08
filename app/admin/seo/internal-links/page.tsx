@@ -41,9 +41,9 @@ export default function InternalLinkManager() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -69,14 +69,14 @@ export default function InternalLinkManager() {
       </section>
 
       {/* Crawl Hub Metrics */}
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-4 gap-5">
          {[
            { label: "Orphaned Pages", value: "142", sub: "Priority: Critical", icon: Unlink, color: "text-rose-500 bg-rose-50" },
            { label: "Broken Links", value: "24", sub: "SLA Compliant", icon: XOctagon, color: "text-amber-500 bg-amber-50" },
            { label: "Link Yield", value: "12.4x", sub: "Avg per Page", icon: Share2, color: "text-primary bg-primary/5" },
            { label: "Discovery Rate", value: "98.8%", sub: "Optimal Pathing", icon: Zap, color: "text-emerald-500 bg-emerald-50" }
          ].map((s, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer">
               <div className="flex items-center justify-between mb-4 italic">
                  <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 shadow-inner", s.color)}>
                     <s.icon size={22} />
@@ -95,10 +95,10 @@ export default function InternalLinkManager() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          {/* Cluster Health Matrix */}
-         <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+         <div className="col-span-12 lg:col-span-8 bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Internal Equity Distribution</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-1 italic select-none">Balancing Inbound Density & Outbound Discovery Across Clusters</p>
@@ -123,7 +123,7 @@ export default function InternalLinkManager() {
                   <tbody className="divide-y divide-gray-50">
                     {stats.map((s) => (
                       <tr key={s.id} className="group hover:bg-snow-pearl/30 transition-all">
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <div className="flex items-center space-x-6">
                               <div className="w-12 h-12 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:bg-primary/5 group-hover:text-primary transition-all shadow-inner relative">
                                  <Layers size={22} />
@@ -131,18 +131,18 @@ export default function InternalLinkManager() {
                               <h4 className="text-sm font-black text-typography leading-tight uppercase tracking-tight">{s.category}</h4>
                            </div>
                         </td>
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <p className="text-lg font-black text-typography tracking-tighter">{(s.inLinks / s.pages).toFixed(1)}x</p>
                            <p className="text-[9px] font-black text-emerald-500 uppercase italic">Ideal Frequency</p>
                         </td>
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <p className="text-lg font-black text-typography tracking-tighter">{(s.outLinks / s.pages).toFixed(1)}x</p>
                            <p className="text-[9px] font-black text-secondary/20 uppercase italic">Discovery Vector</p>
                         </td>
-                        <td className="px-10 py-8 text-center text-[13px] font-black text-secondary/40">
+                        <td className="px-10 py-4 text-center text-[13px] font-black text-secondary/40">
                            {s.pages.toLocaleString()}
                         </td>
-                        <td className="px-10 py-8 text-right">
+                        <td className="px-10 py-4 text-right">
                            <button className="px-6 py-2 bg-white border border-gray-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all shadow-sm">
                               Audit Cluster
                            </button>
@@ -156,12 +156,12 @@ export default function InternalLinkManager() {
 
          {/* Link Opportunity Engine */}
          <div className="col-span-12 lg:col-span-4 space-y-8">
-            <section className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-between relative overflow-hidden group">
-               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+            <section className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-between relative overflow-hidden group">
+               <div className="absolute top-0 right-0 p-5 opacity-10 group-hover:scale-110 transition-transform duration-1000">
                   <Sparkles size={100} className="text-primary" />
                </div>
                <div className="relative z-10">
-                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/20">AI Opportunity Engine</h4>
+                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/20">AI Opportunity Engine</h4>
                   <div className="space-y-6">
                      {[
                         { from: "IIT Delhi Profile", to: "DTU Delhi", score: 98, type: "Same Geo Link" },
@@ -187,7 +187,7 @@ export default function InternalLinkManager() {
                </button>
             </section>
 
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
+            <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
                <Activity size={28} className="text-secondary/10 group-hover:text-primary transition-colors" />
                <p className="text-[10px] font-black text-secondary/30 uppercase tracking-widest mb-1 italic">Link Equity Index (LEI)</p>
                <h4 className="text-xl font-black text-typography uppercase tracking-tight leading-tight italic lowercase">Graph Centralization: 84.4</h4>

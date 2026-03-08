@@ -45,9 +45,9 @@ export default function ModelStatusDashboard() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -89,9 +89,9 @@ export default function ModelStatusDashboard() {
       </section>
 
       {/* Resource & Inference Pulse */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
          {metrics.map((m) => (
-           <div key={m.id} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer">
+           <div key={m.id} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer">
               <div className="flex items-center justify-between mb-4 italic">
                  <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 shadow-inner", m.color)}>
                     <m.icon size={22} />
@@ -104,13 +104,13 @@ export default function ModelStatusDashboard() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          {/* Live Inference Terminal */}
-         <div className="col-span-12 lg:col-span-8 bg-slate-900 rounded-[3rem] p-10 text-white relative overflow-hidden flex flex-col group">
-            <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+         <div className="col-span-12 lg:col-span-8 bg-slate-900 rounded-2xl p-6 text-white relative overflow-hidden flex flex-col group">
+            <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-110 transition-transform duration-1000">
                <BrainCircuit size={160} className="text-primary" />
             </div>
-            <div className="flex items-center justify-between mb-10 relative z-10">
+            <div className="flex items-center justify-between mb-6 relative z-10">
                <div>
                   <h3 className="text-xl font-black text-white tracking-tighter italic lowercase underline decoration-primary/30 select-none">Global Inference Terminal</h3>
                   <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-1 italic">Monitoring Llama-3-Instruct-8B Stream Outlets</p>
@@ -155,14 +155,14 @@ export default function ModelStatusDashboard() {
 
          {/* Queue & Capacity Sidebar */}
          <div className="col-span-12 lg:col-span-4 space-y-8">
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm relative group hover:border-primary/20 transition-all overflow-hidden flex flex-col justify-between h-full">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm relative group hover:border-primary/20 transition-all overflow-hidden flex flex-col justify-between h-full">
                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent pointer-events-none" />
                <div className="relative z-10">
                   <div className="flex items-center justify-between mb-8">
                      <h4 className="text-sm font-black text-secondary/30 uppercase tracking-widest italic underline decoration-primary/10">Pipeline Capacity</h4>
                      <Zap size={18} className="text-amber-500 animate-bounce" />
                   </div>
-                  <div className="space-y-10">
+                  <div className="space-y-6">
                      <div className="space-y-4">
                         <div className="flex items-center justify-between text-[11px] font-black uppercase tracking-widest">
                            <span className="italic">Concurrent Sessions</span>

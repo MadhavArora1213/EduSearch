@@ -45,9 +45,9 @@ export default function ConversionFunnelPage() {
   const [device, setDevice] = useState<'ALL' | 'MOBILE' | 'DESKTOP'>('ALL');
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -92,9 +92,9 @@ export default function ConversionFunnelPage() {
         </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-10 font-montserrat italic not-italic">
+      <div className="grid grid-cols-12 gap-6 font-montserrat italic not-italic">
          {/* Funnel Visualization */}
-         <div className="col-span-12 lg:col-span-9 bg-white rounded-[3rem] border border-gray-50 shadow-sm p-14 flex flex-col overflow-hidden italic">
+         <div className="col-span-12 lg:col-span-9 bg-white rounded-2xl border border-gray-50 shadow-sm p-14 flex flex-col overflow-hidden italic">
             <div className="flex justify-between items-center mb-14 italic">
                <div>
                   <h3 className="text-2xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">The Enrollment Pipeline</h3>
@@ -154,13 +154,13 @@ export default function ConversionFunnelPage() {
 
          {/* Sidebar: Source Context */}
          <div className="col-span-12 lg:col-span-3 space-y-8 font-montserrat italic not-italic">
-            <div className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-between relative group h-full italic">
-               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-1000 italic">
+            <div className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-between relative group h-full italic">
+               <div className="absolute top-0 right-0 p-5 opacity-5 group-hover:scale-110 transition-transform duration-1000 italic">
                   <Target size={80} className="text-primary italic" />
                </div>
                <div className="relative z-10 flex-1 italic">
-                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/30 italic">Conversion by Source</h4>
-                  <div className="space-y-10 italic">
+                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30 italic">Conversion by Source</h4>
+                  <div className="space-y-6 italic">
                      {trafficSources.map((s, i) => (
                         <div key={i} className="flex flex-col space-y-2 group/s italic">
                            <div className="flex justify-between items-end italic">
@@ -189,7 +189,7 @@ export default function ConversionFunnelPage() {
       {/* Growth Node: UX Insights */}
       <section className="bg-emerald-50 p-12 rounded-[3.5rem] border border-emerald-100 flex flex-col md:flex-row md:items-center justify-between group font-montserrat italic not-italic">
          <div className="flex items-center space-x-8 italic">
-            <div className="w-20 h-20 bg-emerald-500 text-white rounded-[2.5rem] flex items-center justify-center shadow-xl shadow-emerald-500/20 group-hover:scale-110 transition-transform italic">
+            <div className="w-20 h-20 bg-emerald-500 text-white rounded-2xl flex items-center justify-center shadow-xl shadow-emerald-500/20 group-hover:scale-110 transition-transform italic">
                <MousePointer2 size={32} className="italic" />
             </div>
             <div>

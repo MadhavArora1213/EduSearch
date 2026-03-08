@@ -61,7 +61,7 @@ export default function ContentEditorPage() {
   return (
     <div className="space-y-12 pb-20 font-montserrat italic">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic transition-all">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100 italic transition-all">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -96,14 +96,14 @@ export default function ContentEditorPage() {
       </section>
 
       {/* Content Analytics Strip */}
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-4 gap-5">
          {[
            { label: "Total Articles (Live)", value: "5,420", sub: "128 Published this Month", icon: BookOpen, color: "text-primary" },
            { label: "Scheduled Protocol", value: "42", sub: "Next Release: 2h ago", icon: Clock, color: "text-sky-500" },
            { label: "Draft Index", value: "194", sub: "Awaiting Final Audit", icon: FileText, color: "text-amber-500" },
            { label: "Average Read Score", value: "9.2/10", sub: "+0.4 Sentiment Lift", icon: Target, color: "text-emerald-500" }
          ].map((s, i) => (
-           <div key={i} className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all overflow-hidden relative italic">
+           <div key={i} className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all overflow-hidden relative italic">
               <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center text-secondary/20 group-hover:text-primary transition-all group-hover:bg-primary/5 mb-6">
                  <s.icon size={22} />
               </div>
@@ -115,7 +115,7 @@ export default function ContentEditorPage() {
 
       {/* Article Listing Console */}
       <section className="bg-white rounded-[4rem] border border-gray-50 shadow-sm overflow-hidden min-h-[600px] mb-20 animate-in fade-in transition-all italic">
-         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 italic bg-snow-pearl/30">
+         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 italic bg-snow-pearl/30">
             <div className="flex items-center space-x-10">
                <div className="flex items-center space-x-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100">
                  {["All Content", "Published", "Scheduled", "Drafts"].map((t) => (
@@ -140,9 +140,9 @@ export default function ContentEditorPage() {
 
          <div className="divide-y divide-gray-50 font-black italic">
            {loading ? [...Array(4)].map((_, i) => (
-             <div key={i} className="p-10 animate-pulse h-28 bg-gray-50/50" />
+             <div key={i} className="p-6 animate-pulse h-28 bg-gray-50/50" />
            )) : articles.map((article) => (
-             <div key={article.id} className="p-10 group hover:bg-gray-50/50 transition-all grid grid-cols-12 gap-10 text-typography animate-in slide-in-from-bottom transition-all">
+             <div key={article.id} className="p-6 group hover:bg-gray-50/50 transition-all grid grid-cols-12 gap-6 text-typography animate-in slide-in-from-bottom transition-all">
                 <div className="col-span-12 lg:col-span-8 flex items-center space-x-10 overflow-hidden text-ellipsis whitespace-nowrap">
                    <div className="w-16 h-16 bg-white border border-gray-100 rounded-2xl flex-shrink-0 flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 group-hover:border-primary/20 transition-all rotate-2 group-hover:rotate-0 shadow-sm">
                       <Newspaper size={28} />
@@ -184,7 +184,7 @@ export default function ContentEditorPage() {
            ))}
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between text-typography italic bg-snow-pearl/30 transition-all">
+         <div className="p-6 border-t border-gray-50 flex items-center justify-between text-typography italic bg-snow-pearl/30 transition-all">
             <p className="text-xs font-black text-secondary/30 uppercase tracking-[0.2em] italic capitalize">Knowledge Node Processing Protocol Active</p>
             <div className="flex items-center space-x-4">
               <button className="px-10 py-5 bg-gray-50 border border-gray-100 rounded-2xl text-[10px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all shadow-sm">Full Content Calendar</button>

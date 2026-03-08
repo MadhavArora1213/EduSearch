@@ -41,9 +41,9 @@ export default function StructuredDataValidator() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -69,8 +69,8 @@ export default function StructuredDataValidator() {
       </section>
 
       {/* Manual URL Tester */}
-      <section className="bg-white p-12 rounded-[3.5rem] border border-gray-50 shadow-sm flex flex-col md:flex-row md:items-center space-y-10 md:space-y-0 md:space-x-12 relative overflow-hidden group">
-         <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:scale-110 transition-transform">
+      <section className="bg-white p-12 rounded-[3.5rem] border border-gray-50 shadow-sm flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-12 relative overflow-hidden group">
+         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-110 transition-transform">
             <FileJson size={140} className="text-primary" />
          </div>
          <div className="mb-0 relative z-10">
@@ -79,7 +79,7 @@ export default function StructuredDataValidator() {
                Extract and validate all JSON-LD structured data against Google's Rich Result requirements.
             </p>
          </div>
-         <div className="flex-1 flex items-center space-x-4 bg-snow-pearl/50 p-3 rounded-[2.5rem] border border-gray-50 max-w-2xl relative z-10 w-full">
+         <div className="flex-1 flex items-center space-x-4 bg-snow-pearl/50 p-3 rounded-2xl border border-gray-50 max-w-2xl relative z-10 w-full">
             <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm ring-1 ring-gray-100">
                <Globe size={24} />
             </div>
@@ -97,8 +97,8 @@ export default function StructuredDataValidator() {
       </section>
 
       {/* Aggregate Health Grid */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
            <div>
               <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none capitalize">Growth Node Schema Health</h3>
               <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic select-none">Daily Batch Audit of Entire URL Manifest</p>
@@ -119,7 +119,7 @@ export default function StructuredDataValidator() {
               <tbody className="divide-y divide-gray-50">
                 {audits.map((audit) => (
                   <tr key={audit.id} className="group hover:bg-snow-pearl/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className={cn(
                              "w-14 h-14 rounded-2xl flex items-center justify-center transition-all shadow-inner",
@@ -133,10 +133,10 @@ export default function StructuredDataValidator() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <span className="text-[14px] font-black text-typography tracking-tighter">{audit.pagesTested.toLocaleString()} Nodes</span>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        {audit.status === 'ERRORS' ? (
                           <div className="flex items-center space-x-3 text-rose-600">
                              <XOctagon size={16} />
@@ -149,7 +149,7 @@ export default function StructuredDataValidator() {
                           </div>
                        )}
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex flex-col items-center">
                           <div className="w-16 h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2 shadow-inner">
                              <div 
@@ -160,7 +160,7 @@ export default function StructuredDataValidator() {
                           <span className="text-[10px] font-black text-typography italic">{audit.health}% CONF</span>
                        </div>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <button className="px-6 py-2 bg-white border border-gray-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:border-primary/20 hover:text-primary transition-all shadow-sm">
                           Fix Vocabulary
                        </button>
@@ -171,7 +171,7 @@ export default function StructuredDataValidator() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 flex items-center justify-between text-[11px] font-bold text-secondary/30 uppercase tracking-widest italic bg-snow-pearl/50">
+        <div className="p-6 border-t border-gray-50 flex items-center justify-between text-[11px] font-bold text-secondary/30 uppercase tracking-widest italic bg-snow-pearl/50">
            <div className="flex items-center space-x-3">
               <Code2 size={16} className="text-primary" />
               <span>Programmatic Schema Injection Engine v3.1 Operational • 100% Core coverage</span>
@@ -181,14 +181,14 @@ export default function StructuredDataValidator() {
       </section>
 
       {/* Schema Components Visualizer */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
          {[
            { icon: Building2, label: "Institution Schema", stat: "34k Nodes" },
            { icon: Calendar, label: "Exam Event Data", stat: "2k Nodes" },
            { icon: MessageSquare, label: "Review Aggregate", stat: "12k Nodes" },
            { icon: Zap, label: "Search Action Hub", stat: "Global Page" }
          ].map((c, i) => (
-           <div key={i} className="bg-slate-900 p-8 rounded-[2.5rem] border border-white/5 text-white italic group hover:border-primary/30 transition-all cursor-pointer">
+           <div key={i} className="bg-slate-900 p-5 rounded-2xl border border-white/5 text-white italic group hover:border-primary/30 transition-all cursor-pointer">
               <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform mb-6">
                  <c.icon size={24} />
               </div>

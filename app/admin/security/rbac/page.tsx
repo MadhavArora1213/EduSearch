@@ -49,9 +49,9 @@ export default function RBACPage() {
   const [activeTab, setActiveTab] = useState<'ROLES' | 'TEAM' | 'AUDIT'>('ROLES');
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -77,7 +77,7 @@ export default function RBACPage() {
       </section>
 
       {/* Control Tabs */}
-      <div className="flex items-center space-x-4 bg-white p-2 rounded-[2.5rem] border border-gray-100 shadow-sm w-fit">
+      <div className="flex items-center space-x-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm w-fit">
          {[
            { id: 'ROLES', label: 'Permission Matrix', icon: Lock },
            { id: 'TEAM', label: 'Team Management', icon: Users },
@@ -98,16 +98,16 @@ export default function RBACPage() {
       </div>
 
       {activeTab === 'ROLES' && (
-         <div className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden overflow-x-auto">
+         <div className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden overflow-x-auto">
             <table className="w-full text-left">
                <thead className="bg-snow-pearl/50 border-b border-gray-100">
                   <tr>
-                     <th className="px-10 py-8 min-w-[250px]">
+                     <th className="px-10 py-4 min-w-[250px]">
                         <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">Permission Sets</h3>
                         <p className="text-[9px] font-bold text-secondary/30 uppercase tracking-widest mt-2 italic">Module-wise Authorization Grid</p>
                      </th>
                      {roles.map(role => (
-                        <th key={role} className="px-6 py-8 text-center min-w-[120px]">
+                        <th key={role} className="px-6 py-4 text-center min-w-[120px]">
                            <span className="text-[10px] font-black uppercase tracking-widest text-typography whitespace-nowrap">{role}</span>
                         </th>
                      ))}
@@ -116,7 +116,7 @@ export default function RBACPage() {
                <tbody className="divide-y divide-gray-50">
                   {sections.map(section => (
                      <tr key={section} className="group hover:bg-snow-pearl/20 transition-all">
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <span className="text-[13px] font-black text-typography uppercase tracking-tight">{section}</span>
                         </td>
                         {roles.map((role, i) => {
@@ -124,7 +124,7 @@ export default function RBACPage() {
                            const isLocked = role === 'Super Admin';
 
                            return (
-                              <td key={`${section}-${role}`} className="px-6 py-8">
+                              <td key={`${section}-${role}`} className="px-6 py-4">
                                  <div className="flex justify-center">
                                     <button 
                                        disabled={isLocked}
@@ -148,14 +148,14 @@ export default function RBACPage() {
       )}
 
       {activeTab === 'TEAM' && (
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-typography">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-typography">
             {[
                { name: 'Ankit Sharma', role: 'Super Admin', email: 'ankit@edusearch.com', status: 'ACTIVE' },
                { name: 'Rohan Das', role: 'Content Manager', email: 'rohan@edusearch.com', status: 'ACTIVE' },
                { name: 'Simran Gill', role: 'Moderator', email: 'simran@edusearch.com', status: 'INACTIVE' }
             ].map((member, i) => (
-               <div key={i} className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm relative group hover:border-primary/20 transition-all">
-                  <div className="absolute top-0 right-0 p-8">
+               <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm relative group hover:border-primary/20 transition-all">
+                  <div className="absolute top-0 right-0 p-5">
                      <button className="p-3 bg-snow-pearl rounded-xl text-secondary/20 hover:text-primary transition-all">
                         <Edit2 size={16} />
                      </button>
@@ -179,7 +179,7 @@ export default function RBACPage() {
                </div>
             ))}
             
-            <button className="bg-snow-pearl/30 border-2 border-dashed border-gray-200 rounded-[3rem] p-10 flex flex-col items-center justify-center text-secondary/20 hover:border-primary hover:text-primary transition-all group">
+            <button className="bg-snow-pearl/30 border-2 border-dashed border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center text-secondary/20 hover:border-primary hover:text-primary transition-all group">
                <div className="w-16 h-16 rounded-3xl border-2 border-dashed border-current flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Plus size={32} />
                </div>
@@ -189,8 +189,8 @@ export default function RBACPage() {
       )}
 
       {activeTab === 'AUDIT' && (
-         <div className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-slate-900 text-white border-0">
+         <div className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-slate-900 text-white border-0">
                <div className="flex items-center space-x-4">
                   <History size={24} className="text-secondary/40" />
                   <div>
@@ -223,13 +223,13 @@ export default function RBACPage() {
                         { time: '2026-03-07 14:44:02', actuary: 'System Node-V3', subject: 'Simran Gill', op: 'Password Reset: Mandatory (Security Incident)', res: 'SUCCESS' }
                      ].map((log, i) => (
                         <tr key={i} className="group hover:bg-snow-pearl/30 transition-all">
-                           <td className="px-10 py-8 text-[11px] font-bold text-secondary/40 uppercase">{log.time}</td>
-                           <td className="px-10 py-8 text-sm font-black text-typography uppercase tracking-tighter">{log.actuary}</td>
-                           <td className="px-10 py-8 text-sm font-black text-typography uppercase tracking-tighter">{log.subject}</td>
-                           <td className="px-10 py-8">
+                           <td className="px-10 py-4 text-[11px] font-bold text-secondary/40 uppercase">{log.time}</td>
+                           <td className="px-10 py-4 text-sm font-black text-typography uppercase tracking-tighter">{log.actuary}</td>
+                           <td className="px-10 py-4 text-sm font-black text-typography uppercase tracking-tighter">{log.subject}</td>
+                           <td className="px-10 py-4">
                               <span className="text-[12px] font-black text-primary italic lowercase underline decoration-primary/10">{log.op}</span>
                            </td>
-                           <td className="px-10 py-8 text-right font-black text-emerald-500 text-[10px] uppercase">
+                           <td className="px-10 py-4 text-right font-black text-emerald-500 text-[10px] uppercase">
                               {log.res}
                            </td>
                         </tr>

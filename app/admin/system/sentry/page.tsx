@@ -71,9 +71,9 @@ export default function SentryErrorCentrePage() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100">
@@ -103,7 +103,7 @@ export default function SentryErrorCentrePage() {
       </section>
 
       {/* Control Tabs */}
-      <div className="flex items-center space-x-4 bg-white p-2 rounded-[2.5rem] border border-gray-100 shadow-sm w-fit">
+      <div className="flex items-center space-x-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm w-fit">
          {[
            { id: 'ISSUES', label: 'Issue Stream', icon: Bug },
            { id: 'PERFORMANCE', label: 'Performance Tracing', icon: Activity }
@@ -122,11 +122,11 @@ export default function SentryErrorCentrePage() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10">
-         <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+      <div className="grid grid-cols-12 gap-6">
+         <div className="col-span-12 lg:col-span-8 bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
             {activeTab === 'ISSUES' ? (
                <>
-                  <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10">
+                  <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10">
                      <div>
                         <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-rose-500/20 capitalize">Exception Stream (Aggregated)</h3>
                         <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic">Real-time unhandled component crashes & Node exceptions</p>
@@ -151,7 +151,7 @@ export default function SentryErrorCentrePage() {
                         <tbody className="divide-y divide-gray-50 italic">
                            {issues.map((issue) => (
                               <tr key={issue.id} className="group hover:bg-rose-50/10 transition-all">
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     <div className="flex items-center space-x-6">
                                        <div className="w-12 h-12 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:bg-rose-100 group-hover:text-rose-600 transition-all">
                                           <Bug size={24} />
@@ -165,7 +165,7 @@ export default function SentryErrorCentrePage() {
                                        </div>
                                     </div>
                                  </td>
-                                 <td className="px-10 py-8 text-center">
+                                 <td className="px-10 py-4 text-center">
                                     <span className={cn(
                                        "px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest border",
                                        issue.platform === 'FRONTEND' ? "bg-indigo-50 text-indigo-600 border-indigo-100" : "bg-emerald-50 text-emerald-600 border-emerald-100"
@@ -173,13 +173,13 @@ export default function SentryErrorCentrePage() {
                                        {issue.platform}
                                     </span>
                                  </td>
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     <div className="flex flex-col space-y-1">
                                        <span className="text-lg font-black text-typography tracking-tighter">{issue.count}x</span>
                                        <span className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest italic">{issue.lastSeen}</span>
                                     </div>
                                  </td>
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     {issue.status === 'ASSIGNED' ? (
                                        <div className="flex items-center space-x-2">
                                           <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse" />
@@ -189,7 +189,7 @@ export default function SentryErrorCentrePage() {
                                        <span className="text-[10px] font-black text-rose-500 uppercase italic bg-rose-50 px-3 py-1 rounded-full border border-rose-100">Unresolved</span>
                                     )}
                                  </td>
-                                 <td className="px-10 py-8 text-right">
+                                 <td className="px-10 py-4 text-right">
                                     <div className="flex items-center justify-end space-x-2">
                                        <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all shadow-sm group/btn" title="Assign to Developer">
                                           <UserPlus size={18} />
@@ -206,9 +206,9 @@ export default function SentryErrorCentrePage() {
                   </div>
                </>
             ) : (
-               <div className="p-10 space-y-10">
-                  <div className="bg-snow-pearl/30 p-10 rounded-[3rem] border border-gray-100 italic">
-                     <div className="flex items-center justify-between mb-10">
+               <div className="p-6 space-y-6">
+                  <div className="bg-snow-pearl/30 p-6 rounded-2xl border border-gray-100 italic">
+                     <div className="flex items-center justify-between mb-6">
                         <div>
                            <h4 className="text-2xl font-black text-typography tracking-tighter uppercase italic">Endpoint Latency (P95)</h4>
                            <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest mt-1">Measuring API performance across global edge nodes</p>
@@ -240,8 +240,8 @@ export default function SentryErrorCentrePage() {
          </div>
 
          <div className="col-span-12 lg:col-span-4 space-y-8">
-            <div className="bg-slate-900 p-10 rounded-[3rem] text-white overflow-hidden relative group">
-               <div className="absolute top-0 right-0 p-8 opacity-10">
+            <div className="bg-slate-900 p-6 rounded-2xl text-white overflow-hidden relative group">
+               <div className="absolute top-0 right-0 p-5 opacity-10">
                   <Cpu size={80} className="text-primary" />
                </div>
                <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">DevOps Pulse</h4>
@@ -267,7 +267,7 @@ export default function SentryErrorCentrePage() {
                </div>
             </div>
 
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
+            <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
                <div className="flex items-center justify-between">
                   <Activity size={28} className="text-secondary/10 group-hover:text-primary transition-colors" />
                   <Sparkles size={18} className="text-emerald-500 animate-pulse" />

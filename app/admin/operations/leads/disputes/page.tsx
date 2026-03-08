@@ -65,9 +65,9 @@ export default function LeadDisputesPage() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100">
@@ -96,8 +96,8 @@ export default function LeadDisputesPage() {
       </section>
 
       {/* Main Listing */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="relative flex-1 max-w-xl">
               <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input placeholder="Search Dispute ID or College..." className="w-full bg-snow-pearl border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all" />
@@ -124,7 +124,7 @@ export default function LeadDisputesPage() {
               <tbody className="divide-y divide-gray-50">
                 {disputes.map((d) => (
                   <tr key={d.id} className="group hover:bg-rose-50/10 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-rose-500 group-hover:bg-rose-50 transition-all">
                              <Building2 size={24} />
@@ -135,17 +135,17 @@ export default function LeadDisputesPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <p className="text-[12px] font-bold text-typography uppercase tracking-tight">{d.reason}</p>
                        <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1 italic leading-none">Submitted {new Date(d.submittedAt).toLocaleDateString()}</p>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                         <div className="inline-flex items-center space-x-2 bg-gray-50 px-4 py-2 rounded-2xl border border-gray-100 italic">
                            <Users size={14} className="text-secondary/20" />
                            <span className="text-sm font-black text-typography">{d.leadCount}</span>
                         </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex flex-col space-y-2">
                           <span className={cn(
                              "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest w-fit",
@@ -161,7 +161,7 @@ export default function LeadDisputesPage() {
                           </span>
                        </div>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2">
                           <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm group/btn" title="Approve & Issue Credit">
                              <CreditCard size={18} />
@@ -180,7 +180,7 @@ export default function LeadDisputesPage() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+        <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-snow-pearl/30">
            <div className="flex items-center space-x-4">
               <div className="w-3 h-3 rounded-full bg-rose-500 animate-pulse" />
               <p className="text-xs font-black text-rose-500 uppercase tracking-widest italic leading-none">SLA Warning: 2 disputes nearing 72h limit</p>
@@ -193,9 +193,9 @@ export default function LeadDisputesPage() {
       </section>
 
       {/* Investigation Panel Overlay (Mock) */}
-      <div className="grid grid-cols-12 gap-8">
-         <div className="col-span-12 lg:col-span-6 bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-xl overflow-hidden relative">
-            <div className="absolute top-0 right-0 p-8">
+      <div className="grid grid-cols-12 gap-5">
+         <div className="col-span-12 lg:col-span-6 bg-white p-6 rounded-2xl border border-gray-100 shadow-xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 p-5">
                <ShieldCheck size={48} className="text-secondary/5 -mr-4 -mt-4 rotate-12" />
             </div>
             <h3 className="text-2xl font-black text-typography tracking-tighter italic lowercase mb-6">Investigative Suite</h3>

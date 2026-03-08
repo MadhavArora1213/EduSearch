@@ -45,7 +45,7 @@ export default function SponsoredManagerPage() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return <div className="p-10 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">Verifying Moderation Ledger...</div>;
+  if (!mounted) return <div className="p-6 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">Verifying Moderation Ledger...</div>;
 
   const [slots] = useState<AdSlot[]>([
     {
@@ -81,9 +81,9 @@ export default function SponsoredManagerPage() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-100">
@@ -109,9 +109,9 @@ export default function SponsoredManagerPage() {
       </section>
 
       {/* Ad Inventory Calendar Mock & Stats */}
-      <div className="grid grid-cols-12 gap-8">
-         <div className="col-span-12 lg:col-span-8 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden h-fit">
-            <div className="flex justify-between items-center mb-10">
+      <div className="grid grid-cols-12 gap-5">
+         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm overflow-hidden h-fit">
+            <div className="flex justify-between items-center mb-6">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">Inventory Pipeline</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2">Next 3 Months Availability Audit</p>
@@ -141,8 +141,8 @@ export default function SponsoredManagerPage() {
          </div>
 
          <div className="col-span-12 lg:col-span-4 grid grid-cols-1 gap-6">
-            <div className="bg-slate-900 p-8 rounded-[2.5rem] text-white relative overflow-hidden">
-               <div className="absolute top-0 right-0 p-8 opacity-20">
+            <div className="bg-slate-900 p-5 rounded-2xl text-white relative overflow-hidden">
+               <div className="absolute top-0 right-0 p-5 opacity-20">
                   <TrendingUp size={64} className="text-primary" />
                </div>
                <div className="relative z-10">
@@ -155,7 +155,7 @@ export default function SponsoredManagerPage() {
                </div>
             </div>
             
-            <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
+            <div className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
                <div className="flex items-center justify-between mb-6">
                   <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all">
                      <MousePointer2 size={24} />
@@ -173,8 +173,8 @@ export default function SponsoredManagerPage() {
       </div>
 
       {/* Ad Inventory Table */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="relative flex-1 max-w-xl">
               <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input placeholder="Search Active Sponsors..." className="w-full bg-snow-pearl border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all" />
@@ -195,7 +195,7 @@ export default function SponsoredManagerPage() {
               <tbody className="divide-y divide-gray-50">
                 {slots.map((slot) => (
                   <tr key={slot.id} className="group hover:bg-snow-pearl/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all">
                              <Layout size={24} />
@@ -209,7 +209,7 @@ export default function SponsoredManagerPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex flex-col space-y-1">
                            <div className="flex items-center space-x-2 text-[12px] font-black text-typography">
                               <Calendar size={14} className="text-secondary/20" />
@@ -220,7 +220,7 @@ export default function SponsoredManagerPage() {
                           <p className="text-[10px] font-bold text-typography/60 mt-2 italic">Rate: ₹{(slot.price/1000).toFixed(1)}k / month</p>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="grid grid-cols-2 gap-4">
                           <div>
                              <p className="text-[14px] font-black text-typography tracking-tighter">{(slot.performance.impressions/1000).toFixed(1)}k</p>
@@ -232,7 +232,7 @@ export default function SponsoredManagerPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <span className={cn(
                           "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
                           slot.status === 'ACTIVE' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
@@ -244,7 +244,7 @@ export default function SponsoredManagerPage() {
                           <span>{slot.status}</span>
                        </span>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2">
                           <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-amber-500 hover:text-white transition-all shadow-sm group/btn" title="View Heatmap">
                              <Zap size={18} />
@@ -260,7 +260,7 @@ export default function SponsoredManagerPage() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+        <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-snow-pearl/30">
            <div className="flex items-center space-x-4">
               <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
               <p className="text-xs font-black text-emerald-600 uppercase tracking-widest italic leading-none">Yield Optimization Node: 4 upcoming slots available for bidding</p>

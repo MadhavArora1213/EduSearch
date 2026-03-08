@@ -44,9 +44,9 @@ export default function ContentPerformancePage() {
   const [activeTab, setActiveTab] = useState<'TOP' | 'UNDER' | 'GAP'>('TOP');
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -87,8 +87,8 @@ export default function ContentPerformancePage() {
       </section>
 
       {/* Analytics Matrix */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="relative flex-1 max-w-xl">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input placeholder="Search slug, node type or intent..." className="w-full bg-white border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all shadow-inner" />
@@ -103,12 +103,12 @@ export default function ContentPerformancePage() {
             <table className="w-full text-left">
                <thead className="bg-snow-pearl/50 border-b border-gray-100">
                   <tr>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 italic">Growth Node Vector</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Pageviews</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Dwell Time</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Bounce Rate</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Lead CV%</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 italic">Growth Node Vector</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Pageviews</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Dwell Time</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Bounce Rate</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Lead CV%</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit</th>
                   </tr>
                </thead>
                <tbody className="divide-y divide-gray-50">
@@ -167,8 +167,8 @@ export default function ContentPerformancePage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white relative overflow-hidden italic">
-            <div className="absolute top-0 right-0 p-10 opacity-5">
+         <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white relative overflow-hidden italic">
+            <div className="absolute top-0 right-0 p-6 opacity-5">
                <TrendingUp size={100} className="text-emerald-500" />
             </div>
             <div className="flex items-center space-x-6 relative z-10">
@@ -184,11 +184,11 @@ export default function ContentPerformancePage() {
       </section>
 
       {/* Content Gap Finder Hub */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 font-montserrat italic not-italic">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 font-montserrat italic not-italic">
          <div className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col justify-between group overflow-hidden relative">
             <div className="absolute inset-0 bg-primary/10 flex items-center space-x-2 duration-1000" />
             <div className="relative z-10">
-               <h4 className="text-lg font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/30">Ghost Intent Detection</h4>
+               <h4 className="text-lg font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">Ghost Intent Detection</h4>
                <div className="space-y-6">
                   {[
                     { query: "B.Tech fees in BIT Mesra direct", bounce: 94, duration: "12s" },
@@ -215,7 +215,7 @@ export default function ContentPerformancePage() {
          <div className="bg-white p-12 rounded-[3.5rem] border border-gray-100 shadow-sm flex flex-col justify-between group overflow-hidden relative">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-50/50 via-transparent to-transparent pointer-events-none" />
             <div className="relative z-10">
-               <h4 className="text-lg font-black text-secondary/20 uppercase tracking-widest mb-10 italic underline decoration-indigo-500/10 italic">Template Efficiency Analysis</h4>
+               <h4 className="text-lg font-black text-secondary/20 uppercase tracking-widest mb-6 italic underline decoration-indigo-500/10 italic">Template Efficiency Analysis</h4>
                <div className="space-y-8">
                   <div className="flex items-start justify-between">
                      <div className="flex items-center space-x-6">

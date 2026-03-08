@@ -43,9 +43,9 @@ const smsTemplates: SMSTemplate[] = [
 
 export default function SMSContentManagerPage() {
   return (
-    <div className="space-y-10 font-montserrat italic not-italic font-montserrat">
+    <div className="space-y-6 font-montserrat italic not-italic font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100 italic">
@@ -71,14 +71,14 @@ export default function SMSContentManagerPage() {
       </section>
 
       {/* Compliance & Delivery KPI strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5 italic">
          {[
            { label: "DLT Approval Rate", value: "94%", trend: "Stable", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-50" },
            { label: "Avg Carrier Delivery", value: "91.2%", trend: "Medium", icon: Zap, color: "text-primary bg-primary/5" },
            { label: "Blacklist Incidence", value: "0.2%", trend: "-0.1%", icon: Lock, color: "text-rose-500 bg-rose-50" },
            { label: "Active DLT Entities", value: "02", trend: "TRAI OK", icon: Database, color: "text-indigo-500 bg-indigo-50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all cursor-pointer">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all cursor-pointer">
               <div>
                  <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest italic mb-2 leading-none">{kpi.label}</p>
                  <p className="text-4xl font-black text-typography tracking-tighter leading-none italic">{kpi.value}</p>
@@ -92,8 +92,8 @@ export default function SMSContentManagerPage() {
       </div>
 
       {/* Main Listing Grid */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col font-montserrat italic not-italic">
-         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col font-montserrat italic not-italic">
+         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="relative flex-1 max-w-xl italic">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input placeholder="Search Template, DLT ID or Type..." className="w-full bg-white border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all shadow-inner" />
@@ -108,11 +108,11 @@ export default function SMSContentManagerPage() {
             <table className="w-full text-left italic">
                <thead className="bg-snow-pearl/50 border-b border-gray-100 italic">
                   <tr>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Registered SMS Entity</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Raw Template Node</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Chars</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">DLT Template ID</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit Status</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Registered SMS Entity</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Raw Template Node</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Chars</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">DLT Template ID</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit Status</th>
                   </tr>
                </thead>
                <tbody className="divide-y divide-gray-50 font-montserrat italic not-italic">
@@ -167,8 +167,8 @@ export default function SMSContentManagerPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-10 opacity-5">
+         <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-6 opacity-5">
                <History size={100} className="text-primary" />
             </div>
             <div className="flex items-center space-x-6 relative z-10 italic font-montserrat not-italic">
@@ -180,11 +180,11 @@ export default function SMSContentManagerPage() {
       </section>
 
       {/* Device Preview Node */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 font-montserrat italic not-italic">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 font-montserrat italic not-italic">
          <div className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col justify-between group overflow-hidden relative italic not-italic">
             <div className="absolute inset-0 bg-primary/10 flex items-center space-x-2 duration-1000" />
             <div className="relative z-10">
-               <h4 className="text-lg font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/30">Carrier Latency Monitor</h4>
+               <h4 className="text-lg font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">Carrier Latency Monitor</h4>
                <div className="space-y-6">
                   {[
                     { carrier: "Airtel India", latency: "1.2s", success: "94.2%" },
@@ -210,10 +210,10 @@ export default function SMSContentManagerPage() {
 
          {/* Virtual SMS Preview Device */}
          <div className="bg-snow-pearl p-6 rounded-[3.5rem] flex flex-col items-center justify-center relative overflow-hidden group border border-gray-100 italic not-italic">
-            <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+            <div className="absolute top-0 right-0 p-5 opacity-10 group-hover:scale-110 transition-transform duration-1000">
                <Smartphone size={100} className="text-primary" />
             </div>
-            <div className="w-[280px] h-[500px] bg-slate-800 rounded-[3rem] border-[4px] border-slate-700 shadow-2xl relative overflow-hidden p-6 font-montserrat italic not-italic">
+            <div className="w-[280px] h-[500px] bg-slate-800 rounded-2xl border-[4px] border-slate-700 shadow-2xl relative overflow-hidden p-6 font-montserrat italic not-italic">
                <div className="w-16 h-1.5 bg-slate-700 rounded-full mx-auto mb-6" />
                <div className="flex items-center space-x-3 mb-6 font-mono text-[9px] text-slate-500 justify-between uppercase">
                   <span>9:41 AM</span>

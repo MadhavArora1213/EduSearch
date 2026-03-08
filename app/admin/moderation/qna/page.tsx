@@ -32,8 +32,8 @@ export default function QnAModerationPage() {
   ]);
 
   return (
-    <div className="space-y-10 pb-20">
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+    <div className="space-y-6 pb-20">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -60,7 +60,7 @@ export default function QnAModerationPage() {
         </div>
       </section>
 
-      <section className="flex items-center justify-between gap-6 bg-white p-6 rounded-[2.5rem] border border-gray-50 shadow-sm">
+      <section className="flex items-center justify-between gap-6 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
          <div className="flex items-center space-x-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100 w-full md:w-auto">
             {["PENDING", "REPORTED", "FEATURED"].map((f) => (
               <button
@@ -86,7 +86,7 @@ export default function QnAModerationPage() {
          </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          <div className="col-span-12 lg:col-span-6 space-y-6">
             <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-100">
                <h3 className="text-xl font-black text-typography uppercase tracking-tight">Pending Questions</h3>
@@ -95,7 +95,7 @@ export default function QnAModerationPage() {
 
             <div className="space-y-6">
                {questions.map((q) => (
-                 <div key={q.id} className="bg-white p-8 rounded-[2.5rem] border border-gray-100/50 shadow-sm hover:border-primary/20 transition-all group relative overflow-hidden">
+                 <div key={q.id} className="bg-white p-5 rounded-2xl border border-gray-100/50 shadow-sm hover:border-primary/20 transition-all group relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-all duration-700" />
                     
                     <div className="flex items-start justify-between mb-6 relative">
@@ -155,7 +155,7 @@ export default function QnAModerationPage() {
 
             <div className="space-y-6">
                {answers.map((a) => (
-                 <div key={a.id} className="bg-white p-8 rounded-[2.5rem] border border-gray-100/50 shadow-sm hover:border-emerald-500/20 transition-all group relative overflow-hidden">
+                 <div key={a.id} className="bg-white p-5 rounded-2xl border border-gray-100/50 shadow-sm hover:border-emerald-500/20 transition-all group relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-all duration-700" />
                     
                     <div className="flex items-start justify-between mb-6 relative">

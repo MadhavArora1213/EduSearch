@@ -64,13 +64,13 @@ export default function GrowthAnalyticsPage() {
   }, []);
 
   if (!mounted) {
-    return <div className="p-10 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">Waking up growth engines...</div>;
+    return <div className="p-6 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">Waking up growth engines...</div>;
   }
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -110,14 +110,14 @@ export default function GrowthAnalyticsPage() {
       </section>
 
       {/* KPI HUD */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
          {[
            { label: "Return Visitor Rate", value: "34.2%", trend: "+8.1%", icon: RotateCw, color: "text-emerald-500 bg-emerald-50" },
            { label: "Avg Session Depth", value: "4.8", trend: "Target > 4", icon: Layers, color: "text-primary bg-primary/5" },
            { label: "Retention Gap", value: "12%", trend: "High Alert", icon: Target, color: "text-rose-500 bg-rose-50" },
            { label: "New vs Returning", value: "62/38", trend: "Balanced", icon: Users, color: "text-indigo-500 bg-indigo-50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer">
               <div className="flex items-center justify-between mb-4">
                  <div className={cn(
           "w-12 h-12 rounded-xl flex items-center justify-center shadow-sm transition-transform group-hover:-rotate-6",
@@ -138,10 +138,10 @@ export default function GrowthAnalyticsPage() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          {/* Main DAU/WAU/MAU Trend */}
-         <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm p-10 flex flex-col justify-between">
-            <div className="flex justify-between items-start mb-10">
+         <div className="col-span-12 lg:col-span-8 bg-white rounded-2xl border border-gray-50 shadow-sm p-6 flex flex-col justify-between">
+            <div className="flex justify-between items-start mb-6">
                <div>
                   <h3 className="text-2xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">Velocity Matrix</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 underline decoration-indigo-500/10">DAU / WAU / MAU 90-Day Trendline</p>
@@ -185,8 +185,8 @@ export default function GrowthAnalyticsPage() {
 
          {/* Bounce Rate Segmentation */}
          <div className="col-span-12 lg:col-span-4 space-y-8">
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm h-full flex flex-col">
-               <div className="flex items-center justify-between mb-10">
+            <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm h-full flex flex-col">
+               <div className="flex items-center justify-between mb-6">
                   <h4 className="text-sm font-black text-secondary/30 uppercase tracking-widest italic underline decoration-rose-500/10">Bounce Segmentation</h4>
                   <PieChartIcon size={18} className="text-primary" />
                </div>
@@ -214,11 +214,11 @@ export default function GrowthAnalyticsPage() {
       </div>
 
       {/* Session Stickiness */}
-      <div className="grid grid-cols-12 gap-10">
-         <div className="col-span-12 lg:col-span-4 bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-between relative overflow-hidden group">
+      <div className="grid grid-cols-12 gap-6">
+         <div className="col-span-12 lg:col-span-4 bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-between relative overflow-hidden group">
             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 blur-3xl rounded-full group-hover:scale-150 transition-transform duration-1000" />
             <div className="relative z-10">
-               <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/30">Stickiness Factor</h4>
+               <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">Stickiness Factor</h4>
                <div className="space-y-8">
                   <div className="flex items-center justify-between">
                      <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">W1 Retention</p>
@@ -239,8 +239,8 @@ export default function GrowthAnalyticsPage() {
             </div>
          </div>
 
-         <div className="col-span-12 lg:col-span-8 bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm flex flex-col justify-between">
-            <div className="flex justify-between items-center mb-10">
+         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm flex flex-col justify-between">
+            <div className="flex justify-between items-center mb-6">
                <h4 className="text-sm font-black text-secondary/30 uppercase tracking-widest italic underline decoration-indigo-500/10">Avg Session Duration (Mins)</h4>
                <button className="text-[10px] font-black text-primary uppercase tracking-widest hover:underline flex items-center space-x-2">
                   <span>View Heatmaps</span>

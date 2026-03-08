@@ -81,9 +81,9 @@ const tests: ABTest[] = [
 
 export default function ABTestManagerPage() {
   return (
-    <div className="space-y-10 font-montserrat italic not-italic font-montserrat">
+    <div className="space-y-6 font-montserrat italic not-italic font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -109,11 +109,11 @@ export default function ABTestManagerPage() {
       </section>
 
       {/* Main Test Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
          {tests.map((test) => (
-            <div key={test.id} className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm group hover:border-primary/20 transition-all flex flex-col justify-between h-full relative overflow-hidden">
+            <div key={test.id} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm group hover:border-primary/20 transition-all flex flex-col justify-between h-full relative overflow-hidden">
                {test.winner !== 'NONE' && (
-                 <div className="absolute top-0 right-0 p-8 rotate-12 opacity-5 scale-150 group-hover:scale-[1.8] transition-transform duration-1000">
+                 <div className="absolute top-0 right-0 p-5 rotate-12 opacity-5 scale-150 group-hover:scale-[1.8] transition-transform duration-1000">
                     <CheckCircle2 size={100} className="text-emerald-500" />
                  </div>
                )}
@@ -191,7 +191,7 @@ export default function ABTestManagerPage() {
 
       {/* Lab Stats Footnote */}
       <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative font-montserrat italic not-italic">
-         <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-110 transition-transform duration-1000">
             <FlaskConical size={120} className="text-secondary/20" />
          </div>
          <div className="flex items-center space-x-8 relative z-10">

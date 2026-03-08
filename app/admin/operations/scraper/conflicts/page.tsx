@@ -53,9 +53,9 @@ export default function ConflictResolutionPage() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-100">
@@ -88,12 +88,12 @@ export default function ConflictResolutionPage() {
       <div className="space-y-8">
          {conflicts.map((con, i) => (
             <div key={i} className={cn(
-               "bg-white rounded-[3rem] border shadow-sm overflow-hidden group transition-all",
+               "bg-white rounded-2xl border shadow-sm overflow-hidden group transition-all",
                con.critical ? "border-rose-100 shadow-rose-500/5" : "border-gray-50"
             )}>
                <div className="flex flex-col lg:flex-row h-full">
                   {/* Subject Info */}
-                  <div className="lg:w-1/4 p-10 bg-snow-pearl/30 border-r border-gray-50 flex flex-col justify-between">
+                  <div className="lg:w-1/4 p-6 bg-snow-pearl/30 border-r border-gray-50 flex flex-col justify-between">
                      <div>
                         <div className="flex items-center space-x-4 mb-6">
                            <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-secondary/20 shadow-sm"><Building2 size={24} /></div>
@@ -109,14 +109,14 @@ export default function ConflictResolutionPage() {
                   </div>
 
                   {/* Comparison Logic */}
-                  <div className="flex-1 p-10 grid grid-cols-1 md:grid-cols-2 gap-10 bg-white relative">
+                  <div className="flex-1 p-6 grid grid-cols-1 md:grid-cols-2 gap-6 bg-white relative">
                      {/* Scraped View */}
                      <div className="space-y-6">
                         <div className="flex items-center space-x-2 text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] italic">
                            <Globe size={14} />
                            <span>External Crawler (NIRF)</span>
                         </div>
-                        <div className="p-8 bg-indigo-50/30 rounded-[2.5rem] border border-indigo-100 group-hover:border-indigo-400/30 transition-all text-center">
+                        <div className="p-5 bg-indigo-50/30 rounded-2xl border border-indigo-100 group-hover:border-indigo-400/30 transition-all text-center">
                            <p className="text-4xl font-black text-indigo-600 tracking-tighter">{con.scrapedValue.val}</p>
                            <button className="mt-4 flex items-center space-x-1 mx-auto text-[10px] font-black text-indigo-400 uppercase tracking-widest hover:underline">
                               <ExternalLink size={12} />
@@ -131,7 +131,7 @@ export default function ConflictResolutionPage() {
                            <User size={14} />
                            <span>Institution Dashboard</span>
                         </div>
-                        <div className="p-8 bg-emerald-50/30 rounded-[2.5rem] border border-emerald-100 group-hover:border-emerald-400/30 transition-all text-center">
+                        <div className="p-5 bg-emerald-50/30 rounded-2xl border border-emerald-100 group-hover:border-emerald-400/30 transition-all text-center">
                            <p className="text-4xl font-black text-emerald-600 tracking-tighter">{con.collegeValue.val}</p>
                            <p className="mt-4 text-[10px] font-black text-emerald-400 uppercase tracking-widest italic lowercase">Last Human Sync: {con.collegeValue.updatedBy}</p>
                         </div>
@@ -144,7 +144,7 @@ export default function ConflictResolutionPage() {
                   </div>
 
                   {/* Resolution Panel */}
-                  <div className="lg:w-1/4 p-10 bg-snow-pearl/50 border-l border-gray-50 flex flex-col justify-center space-y-4">
+                  <div className="lg:w-1/4 p-6 bg-snow-pearl/50 border-l border-gray-50 flex flex-col justify-center space-y-4">
                      <button className="w-full py-5 bg-indigo-600 text-white rounded-[2rem] text-[10px] font-black uppercase tracking-widest hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-600/10 flex items-center justify-center space-x-3">
                         <CheckCircle2 size={18} />
                         <span>Use Scraped Value</span>
@@ -168,7 +168,7 @@ export default function ConflictResolutionPage() {
       </div>
 
       {/* Enforcement Footer */}
-      <section className="bg-slate-900 p-10 rounded-[2.5rem] border border-white/10 flex items-center justify-between text-white">
+      <section className="bg-slate-900 p-6 rounded-2xl border border-white/10 flex items-center justify-between text-white">
          <div className="flex items-center space-x-6 italic">
             <Database size={20} className="text-secondary/40" />
             <p className="text-[11px] font-black tracking-widest uppercase text-slate-400">Resolution Standard: Conflict logs are immutable for NIRF/UGC Grade fields. Super Admin audit trace is active on all overrides.</p>

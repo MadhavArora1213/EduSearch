@@ -70,9 +70,9 @@ export default function StudentsManagementPage() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2 font-montserrat italic">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -102,14 +102,14 @@ export default function StudentsManagementPage() {
       </section>
 
       {/* KPI Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5 italic">
          {[
            { label: "Active Nodes", value: students.length, trend: "Live", icon: Users, color: "text-primary bg-primary/5" },
            { label: "Today's Onboarding", value: students.filter(s => new Date(s.created_at).toDateString() === new Date().toDateString()).length, trend: "+420%", icon: Zap, color: "text-emerald-500 bg-emerald-50" },
            { label: "Identity Veracity", value: "98.8%", trend: "High", icon: UserCheck, color: "text-indigo-500 bg-indigo-50" },
            { label: "Inactive (>90d)", value: "1.2k", trend: "Audit Flagged", icon: Lock, color: "text-rose-500 bg-rose-50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm transition-all hover:border-primary/20 cursor-pointer group">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm transition-all hover:border-primary/20 cursor-pointer group">
               <div className="flex items-center justify-between mb-4">
                  <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center shadow-inner", kpi.color)}>
                     <kpi.icon size={22} />
@@ -123,8 +123,8 @@ export default function StudentsManagementPage() {
       </div>
 
       {/* Filter Hub */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100 italic">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
+         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100 italic">
             <div className="relative flex-1 max-w-xl">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input 
@@ -157,11 +157,11 @@ export default function StudentsManagementPage() {
             <table className="w-full text-left italic font-montserratnot-italic">
                <thead className="bg-snow-pearl/50 border-b border-gray-100 italic">
                   <tr>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Student Profile</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Communication Node</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Enrolled Since</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center italic">Engagement</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit State</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Student Profile</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Communication Node</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Enrolled Since</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center italic">Engagement</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit State</th>
                   </tr>
                </thead>
                <tbody className="divide-y divide-gray-50 italic">
@@ -231,8 +231,8 @@ export default function StudentsManagementPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat">
-            <div className="absolute top-0 right-0 p-10 opacity-5">
+         <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat">
+            <div className="absolute top-0 right-0 p-6 opacity-5">
                <Fingerprint size={100} className="text-primary" />
             </div>
             <div className="flex items-center space-x-6 relative z-10 italic">

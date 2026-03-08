@@ -56,9 +56,9 @@ export default function CutoffsManagementPage() {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header Section */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -106,8 +106,8 @@ export default function CutoffsManagementPage() {
       </div>
 
       {/* Listing Table */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="relative group flex-1 max-w-md">
               <Search size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input 
@@ -145,26 +145,26 @@ export default function CutoffsManagementPage() {
                   </tr>
                 )) : cutoffs.map((cutoff) => (
                   <tr key={cutoff.id} className="group hover:bg-gray-50/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <h3 className="text-sm font-black text-typography group-hover:text-primary transition-colors">{cutoff.course.college.name}</h3>
                        <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1">{cutoff.course.name}</p>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-2">
                           <span className="text-xs font-black text-typography italic">{cutoff.exam.name}</span>
                           <span className="bg-primary/5 px-2 py-0.5 rounded text-[10px] font-black text-primary">{cutoff.year}</span>
                        </div>
                        <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-1">{cutoff.category} | {cutoff.quota || "All States"}</p>
                     </td>
-                    <td className="px-10 py-8 text-center">
+                    <td className="px-10 py-4 text-center">
                        <span className="text-base font-black text-typography">{cutoff.opening_value?.toLocaleString() || "-"}</span>
                        <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest">Opening {cutoff.cutoff_type}</p>
                     </td>
-                    <td className="px-10 py-8 text-center">
+                    <td className="px-10 py-4 text-center">
                        <span className="text-base font-black text-typography italic">{cutoff.closing_value?.toLocaleString() || "-"}</span>
                        <p className="text-[9px] font-bold text-emerald-500 uppercase tracking-widest">Target Threshold</p>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-4">
                           <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-500 shadow-sm border border-emerald-100">
                              <BadgeCheck size={18} />
@@ -180,7 +180,7 @@ export default function CutoffsManagementPage() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 bg-white">
+        <div className="p-6 border-t border-gray-50 bg-white">
            <div className="bg-amber-50 border border-amber-100 p-6 rounded-3xl flex items-center space-x-4">
               <AlertCircle size={20} className="text-amber-500" />
               <p className="text-[11px] font-bold text-amber-900 leading-relaxed uppercase tracking-widest">

@@ -42,9 +42,9 @@ export default function ScraperErrorLogPage() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100">
@@ -70,7 +70,7 @@ export default function ScraperErrorLogPage() {
       </section>
 
       {/* Control Tabs */}
-      <div className="flex items-center space-x-4 bg-white p-2 rounded-[2.5rem] border border-gray-100 shadow-sm w-fit">
+      <div className="flex items-center space-x-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm w-fit">
          {[
            { id: 'ERRORS', label: 'Network & Logic Failures', icon: Terminal },
            { id: 'BLOCKLIST', label: 'IP Denial Monitoring', icon: Ban },
@@ -91,8 +91,8 @@ export default function ScraperErrorLogPage() {
       </div>
 
       {activeTab === 'ERRORS' && (
-         <div className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10">
+         <div className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-rose-500/20 capitalize">Recent Pipeline Exceptions</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic">Aggregated failures from Node-V3 scraper fleet</p>
@@ -121,7 +121,7 @@ export default function ScraperErrorLogPage() {
                   <tbody className="divide-y divide-gray-50">
                      {errors.map((err) => (
                         <tr key={err.id} className="group hover:bg-rose-50/10 transition-all">
-                           <td className="px-10 py-8">
+                           <td className="px-10 py-4">
                               <div className="flex items-center space-x-6">
                                  <div className={cn(
                                     "w-12 h-12 bg-snow-pearl rounded-2xl flex items-center justify-center transition-all group-hover:bg-rose-100 group-hover:text-rose-600 shadow-inner",
@@ -135,11 +135,11 @@ export default function ScraperErrorLogPage() {
                                  </div>
                               </div>
                            </td>
-                           <td className="px-10 py-8">
+                           <td className="px-10 py-4">
                               <p className="text-[11px] font-bold text-secondary/40 truncate w-64 italic">{err.url}</p>
                               <span className="text-[9px] font-black text-rose-500 uppercase tracking-widest mt-1">HTTP {err.errorCode} Error</span>
                            </td>
-                           <td className="px-10 py-8">
+                           <td className="px-10 py-4">
                               <div className="flex items-center space-x-2">
                                  <span className="text-lg font-black text-typography tracking-tighter">{err.occurrences}x</span>
                                  <div className="w-full h-1 bg-gray-100 rounded-full w-12 overflow-hidden">
@@ -147,10 +147,10 @@ export default function ScraperErrorLogPage() {
                                  </div>
                               </div>
                            </td>
-                           <td className="px-10 py-8 text-[12px] font-black text-typography italic">
+                           <td className="px-10 py-4 text-[12px] font-black text-typography italic">
                               {err.lastSeen}
                            </td>
-                           <td className="px-10 py-8 text-right">
+                           <td className="px-10 py-4 text-right">
                               <button className="px-6 py-2 bg-white border border-gray-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-rose-600 hover:text-white transition-all shadow-sm">
                                  Debug Job
                               </button>
@@ -164,8 +164,8 @@ export default function ScraperErrorLogPage() {
       )}
 
       {activeTab === 'BLOCKLIST' && (
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center">
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center">
                <Ban size={48} className="text-rose-500 mb-6" />
                <h3 className="text-2xl font-black text-typography tracking-tighter uppercase italic">WAF Evasion Status</h3>
                <p className="text-[11px] font-bold text-secondary/30 uppercase tracking-widest mt-4 leading-relaxed max-w-sm">
@@ -173,8 +173,8 @@ export default function ScraperErrorLogPage() {
                </p>
                <button className="mt-8 px-10 py-4 bg-slate-900 text-white rounded-3xl text-[10px] font-black uppercase tracking-widest italic">Request New Proxy CIDR</button>
             </div>
-            <div className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-center relative overflow-hidden group">
-               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform">
+            <div className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-center relative overflow-hidden group">
+               <div className="absolute top-0 right-0 p-5 opacity-10 group-hover:scale-110 transition-transform">
                   <WifiOff size={100} className="text-rose-500" />
                </div>
                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-4 italic underline decoration-rose-500/20">Blocked Domains (24h)</h4>
@@ -191,7 +191,7 @@ export default function ScraperErrorLogPage() {
       )}
 
       {activeTab === 'NOTIFICATIONS' && (
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm">
+         <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
             <h3 className="text-xl font-black text-typography tracking-tighter uppercase italic mb-8">Escalation Policy Nodes</h3>
             <div className="space-y-4">
                {[
@@ -199,7 +199,7 @@ export default function ScraperErrorLogPage() {
                   { trigger: "Success rate < 60%", alert: "Moderate Warning to Slack", status: "Active" },
                   { trigger: "IP Block Rate > 20%", alert: "Immediate Proxy Rotation Trigger", status: "Active" }
                ].map((rule, i) => (
-                  <div key={i} className="p-8 bg-snow-pearl/50 rounded-[2.5rem] border border-gray-100 flex items-center justify-between group hover:border-primary/20 transition-all">
+                  <div key={i} className="p-5 bg-snow-pearl/50 rounded-2xl border border-gray-100 flex items-center justify-between group hover:border-primary/20 transition-all">
                      <div className="flex items-center space-x-6">
                         <div className="w-14 h-14 bg-white rounded-3xl flex items-center justify-center text-primary shadow-sm"><Mail size={24} /></div>
                         <div>

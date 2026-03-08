@@ -100,9 +100,9 @@ export default function ReviewModerationPage() {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -134,7 +134,7 @@ export default function ReviewModerationPage() {
       </section>
 
       {/* Filters */}
-      <section className="flex items-center justify-between gap-6 bg-white p-6 rounded-[2.5rem] border border-gray-50 shadow-sm">
+      <section className="flex items-center justify-between gap-6 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
          <div className="flex items-center space-x-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100 w-full md:w-auto">
             {["PENDING", "APPROVED", "REJECTED"].map((f) => (
               <button
@@ -166,16 +166,16 @@ export default function ReviewModerationPage() {
       {/* Review Cards */}
       <section className="space-y-8">
          {loading ? [...Array(2)].map((_, i) => (
-           <div key={i} className="bg-white p-10 rounded-[3rem] border border-gray-100 animate-pulse h-[400px]" />
+           <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 animate-pulse h-[400px]" />
          )) : reviews.length === 0 ? (
-           <div className="bg-white p-20 rounded-[3rem] border border-gray-100 text-center flex flex-col items-center">
+           <div className="bg-white p-20 rounded-2xl border border-gray-100 text-center flex flex-col items-center">
               <CheckCircle2 size={48} className="text-emerald-500 mb-4 opacity-20" />
               <p className="text-xl font-black text-typography capitalize">Queue clear. Great job!</p>
            </div>
          ) : reviews.map((review) => (
-           <div key={review.id} className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all">
+           <div key={review.id} className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all">
               <div className="grid grid-cols-12">
-                 <div className="col-span-12 lg:col-span-8 p-10 space-y-6">
+                 <div className="col-span-12 lg:col-span-8 p-6 space-y-6">
                     <div className="flex items-center justify-between">
                        <div className="flex items-center space-x-4">
                           <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
@@ -236,7 +236,7 @@ export default function ReviewModerationPage() {
                     </div>
                  </div>
 
-                 <div className="col-span-12 lg:col-span-4 bg-gray-50 p-10 flex flex-col justify-between border-l border-gray-100">
+                 <div className="col-span-12 lg:col-span-4 bg-gray-50 p-6 flex flex-col justify-between border-l border-gray-100">
                     <div className="space-y-6">
                        <div className="bg-white p-6 rounded-3xl border border-gray-100 flex items-center justify-between">
                           <div className="flex items-center space-x-3">
@@ -291,7 +291,7 @@ export default function ReviewModerationPage() {
         <div className="fixed inset-0 z-[100] flex justify-end">
            <div className="absolute inset-0 bg-typography/40 backdrop-blur-sm" onClick={() => { setSelectedReview(null); setIsRejecting(false); }} />
            <div className="relative w-full max-w-2xl bg-white h-full shadow-2xl animate-in slide-in-from-right duration-500 overflow-y-auto no-scrollbar">
-              <div className="p-10 space-y-10">
+              <div className="p-6 space-y-6">
                  {/* Header */}
                  <div className="flex items-center justify-between">
                     <button onClick={() => { setSelectedReview(null); setIsRejecting(false); }} className="p-4 bg-gray-50 rounded-2xl text-secondary/40 hover:text-primary transition-all">
@@ -309,9 +309,9 @@ export default function ReviewModerationPage() {
                  </div>
 
                  {/* Ratings Breakdown */}
-                 <div className="bg-gray-50 p-8 rounded-[2.5rem]">
+                 <div className="bg-gray-50 p-5 rounded-2xl">
                     <h4 className="text-xs font-black uppercase tracking-widest text-secondary/40 mb-6">Star Rating Breakdown</h4>
-                    <div className="grid grid-cols-2 gap-8 italic">
+                    <div className="grid grid-cols-2 gap-5 italic">
                        {Object.entries(selectedReview!.rating_breakdown).map(([key, val]) => (
                          <div key={key} className="flex flex-col">
                             <span className="text-[9px] font-black uppercase tracking-widest text-secondary/30 mb-2 truncate">{key}</span>
@@ -329,7 +329,7 @@ export default function ReviewModerationPage() {
                  {/* Content */}
                  <div className="space-y-6">
                     <h3 className="text-3xl font-black text-typography tracking-tight uppercase italic underline decoration-primary/20 decoration-8 underline-offset-8 decoration-solid">{selectedReview!.title}</h3>
-                    <div className="bg-primary/5 p-8 rounded-[2.5rem] border border-primary/10 italic">
+                    <div className="bg-primary/5 p-5 rounded-2xl border border-primary/10 italic">
                        <p className="text-sm font-bold text-typography leading-loose">
                           {selectedReview!.course_review}
                        </p>
@@ -337,8 +337,8 @@ export default function ReviewModerationPage() {
                  </div>
 
                  {/* Verification & Meta */}
-                 <div className="grid grid-cols-2 gap-8">
-                    <div className="bg-white border border-gray-100 p-8 rounded-[2.5rem] space-y-6">
+                 <div className="grid grid-cols-2 gap-5">
+                    <div className="bg-white border border-gray-100 p-5 rounded-2xl space-y-6">
                        <h4 className="text-[10px] font-black uppercase tracking-widest text-secondary/40 mb-2">Evidence & Audit</h4>
                        <div className="flex items-center space-x-4">
                           <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
@@ -355,7 +355,7 @@ export default function ReviewModerationPage() {
                        </button>
                     </div>
 
-                    <div className="bg-white border border-gray-100 p-8 rounded-[2.5rem] space-y-6">
+                    <div className="bg-white border border-gray-100 p-5 rounded-2xl space-y-6">
                        <h4 className="text-[10px] font-black uppercase tracking-widest text-secondary/40 mb-2">Reviewer Identity</h4>
                        <div className="flex items-center space-x-4">
                           <div className="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
@@ -374,7 +374,7 @@ export default function ReviewModerationPage() {
                  </div>
 
                  {/* AI Insights */}
-                 <div className="bg-typography text-white p-10 rounded-[3rem] shadow-2xl shadow-primary/20 relative overflow-hidden group">
+                 <div className="bg-typography text-white p-6 rounded-2xl shadow-2xl shadow-primary/20 relative overflow-hidden group">
                     <div className="absolute right-0 top-0 w-24 h-24 bg-white/5 rounded-full -translate-y-12 translate-x-12" />
                     <div className="flex items-center space-x-4 mb-6">
                        <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-primary">

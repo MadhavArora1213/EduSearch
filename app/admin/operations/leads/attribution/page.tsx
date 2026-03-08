@@ -55,16 +55,16 @@ export default function LeadAttributionPage() {
 
   if (!mounted) {
     return (
-      <div className="p-10 min-h-screen animate-pulse bg-gray-50/50 flex items-center justify-center text-[10px] font-black tracking-widest uppercase italic text-secondary/10">
+      <div className="p-6 min-h-screen animate-pulse bg-gray-50/50 flex items-center justify-center text-[10px] font-black tracking-widest uppercase italic text-secondary/10">
         Synchronizing Attribution Flow...
       </div>
     );
   }
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -93,9 +93,9 @@ export default function LeadAttributionPage() {
       </section>
 
       {/* Conversion Funnel / Channel split */}
-      <div className="grid grid-cols-12 gap-8">
-         <div className="col-span-12 lg:col-span-8 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm">
-            <div className="flex justify-between items-start mb-10">
+      <div className="grid grid-cols-12 gap-5">
+         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
+            <div className="flex justify-between items-start mb-6">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">Platform Channel Attribution</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2">Where do leads actually originate? (Total monthly volume)</p>
@@ -121,8 +121,8 @@ export default function LeadAttributionPage() {
             </div>
          </div>
 
-         <div className="col-span-12 lg:col-span-4 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm">
-            <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 mb-10">Stream-wise Gravity</h3>
+         <div className="col-span-12 lg:col-span-4 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
+            <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 mb-6">Stream-wise Gravity</h3>
             <div className="h-[250px] w-full relative">
                <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -162,8 +162,8 @@ export default function LeadAttributionPage() {
       </div>
 
       {/* Heatmap Section */}
-      <div className="grid grid-cols-12 gap-8">
-         <div className="col-span-12 lg:col-span-6 bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm">
+      <div className="grid grid-cols-12 gap-5">
+         <div className="col-span-12 lg:col-span-6 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
             <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 mb-8">Lead Submission Heatmap</h3>
             <div className="grid grid-cols-1 gap-4">
                {heatMapData.map((item, i) => (
@@ -189,7 +189,7 @@ export default function LeadAttributionPage() {
                { icon: Layout, label: 'Exam Pages', value: '11.5%', desc: 'Lateral entry' },
                { icon: BookOpen, label: 'Blog Posts', value: '8.2%', desc: 'In-content ads' },
             ].map((card, i) => (
-               <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm group hover:border-primary/20 transition-all flex flex-col justify-between">
+               <div key={i} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm group hover:border-primary/20 transition-all flex flex-col justify-between">
                   <div className="w-12 h-12 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:bg-primary/5 group-hover:text-primary transition-all">
                      <card.icon size={22} />
                   </div>

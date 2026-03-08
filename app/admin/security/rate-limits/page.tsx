@@ -42,9 +42,9 @@ export default function RateLimitDashboard() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -73,7 +73,7 @@ export default function RateLimitDashboard() {
       </section>
 
       {/* Control Tabs */}
-      <div className="flex items-center space-x-4 bg-white p-2 rounded-[2.5rem] border border-gray-100 shadow-sm w-fit">
+      <div className="flex items-center space-x-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm w-fit">
          {[
            { id: 'LIMITS', label: 'Rate Limit Violations', icon: Activity },
            { id: 'BOTS', label: 'Bot Detection Logs', icon: Cpu },
@@ -94,11 +94,11 @@ export default function RateLimitDashboard() {
       </div>
 
       {/* Main View Area */}
-      <div className="grid grid-cols-12 gap-10">
-         <div className="col-span-12 lg:col-span-9 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden">
+      <div className="grid grid-cols-12 gap-6">
+         <div className="col-span-12 lg:col-span-9 bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
             {activeTab === 'LIMITS' && (
                <>
-                  <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+                  <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                      <div>
                         <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">Real-time IP Thresholds</h3>
                         <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic">Active sessions exceeding platform rate-limits</p>
@@ -128,7 +128,7 @@ export default function RateLimitDashboard() {
                         <tbody className="divide-y divide-gray-50">
                            {events.map((ev, i) => (
                               <tr key={ev.ip} className="group hover:bg-snow-pearl/30 transition-all">
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     <div className="flex items-center space-x-6">
                                        <div className="w-12 h-12 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all">
                                           <Globe size={20} />
@@ -142,17 +142,17 @@ export default function RateLimitDashboard() {
                                        </div>
                                     </div>
                                  </td>
-                                 <td className="px-10 py-8 italic font-black text-[12px] text-typography uppercase tracking-tight">
+                                 <td className="px-10 py-4 italic font-black text-[12px] text-typography uppercase tracking-tight">
                                     <span className="text-secondary/20 mr-2">{ev.type.replace('_', ' ')}</span>
                                     <span className="text-primary italic">Flooding Detected</span>
                                  </td>
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     <div className="flex flex-col space-y-1">
                                        <span className="text-lg font-black text-typography tracking-tighter">{ev.hits} Hits</span>
                                        <span className="text-[10px] font-bold text-rose-500 uppercase tracking-widest italic">{ev.lastHit}</span>
                                     </div>
                                  </td>
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     <span className={cn(
                                        "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
                                        ev.autoBlocked ? "bg-rose-50 text-rose-600 border border-rose-100" : "bg-gray-50 text-gray-400 border border-gray-100"
@@ -161,7 +161,7 @@ export default function RateLimitDashboard() {
                                        <span>{ev.autoBlocked ? 'Auto-Blocked' : 'Monitoring'}</span>
                                     </span>
                                  </td>
-                                 <td className="px-10 py-8 text-right">
+                                 <td className="px-10 py-4 text-right">
                                     <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-rose-600 hover:text-white transition-all shadow-sm" title="Permanent WAF Block">
                                        <Ban size={18} />
                                     </button>
@@ -178,11 +178,11 @@ export default function RateLimitDashboard() {
                <div className="p-20 text-center flex flex-col items-center">
                   <Monitor size={64} className="text-indigo-500 mb-8" />
                   <h3 className="text-3xl font-black text-typography tracking-tighter mb-4 italic">Heuristic Bot Mitigation</h3>
-                  <p className="text-xs font-bold text-secondary/40 leading-relaxed uppercase tracking-widest max-w-lg mb-10">
+                  <p className="text-xs font-bold text-secondary/40 leading-relaxed uppercase tracking-widest max-w-lg mb-6">
                      Analyzing User-Agent patterns, request timings & headless browser fingerprints. 
                      <span className="text-indigo-600 font-black ml-2">84% of blocked traffic matches Puppeteer/Playwright signatures.</span>
                   </p>
-                  <div className="grid grid-cols-2 gap-8 w-full max-w-2xl text-left">
+                  <div className="grid grid-cols-2 gap-5 w-full max-w-2xl text-left">
                      {[
                         { label: 'Scraper Cluster Detected', val: '42.108.xx', risk: 'HIGH' },
                         { label: 'Rapid Form Submission', val: '102.14.xx', risk: 'MED' }
@@ -198,8 +198,8 @@ export default function RateLimitDashboard() {
             )}
 
             {activeTab === 'LOGINS' && (
-               <div className="p-10 space-y-6">
-                  <div className="flex items-center space-x-4 mb-10">
+               <div className="p-6 space-y-6">
+                  <div className="flex items-center space-x-4 mb-6">
                      <Lock size={32} className="text-amber-500" />
                      <div>
                         <h3 className="text-xl font-black text-typography tracking-tighter uppercase italic">Brute Force Monitor</h3>
@@ -207,7 +207,7 @@ export default function RateLimitDashboard() {
                      </div>
                   </div>
                   {[1, 2].map((_, i) => (
-                     <div key={i} className="p-8 bg-snow-pearl/50 rounded-[2.5rem] border border-gray-100 flex items-center justify-between group hover:border-amber-500/20 transition-all">
+                     <div key={i} className="p-5 bg-snow-pearl/50 rounded-2xl border border-gray-100 flex items-center justify-between group hover:border-amber-500/20 transition-all">
                         <div className="flex items-center space-x-6">
                            <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center text-amber-500 shadow-sm"><Flame size={28} /></div>
                            <div>
@@ -228,8 +228,8 @@ export default function RateLimitDashboard() {
          </div>
 
          <div className="col-span-12 lg:col-span-3 space-y-8">
-            <div className="bg-slate-900 p-10 rounded-[3rem] text-white overflow-hidden relative group">
-               <div className="absolute top-0 right-0 p-8 opacity-10">
+            <div className="bg-slate-900 p-6 rounded-2xl text-white overflow-hidden relative group">
+               <div className="absolute top-0 right-0 p-5 opacity-10">
                   <Terminal size={80} className="text-primary" />
                </div>
                <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">System Integrity</h4>
@@ -252,7 +252,7 @@ export default function RateLimitDashboard() {
                </div>
             </div>
 
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm space-y-6">
+            <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm space-y-6">
                <h4 className="text-sm font-black text-typography uppercase tracking-widest italic lowercase underline decoration-primary/10">Global Blocklist</h4>
                <div className="space-y-4">
                   {['China (CN)', 'Russia (RU)', 'North Korea (KP)'].map((geo) => (

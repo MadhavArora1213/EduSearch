@@ -50,9 +50,9 @@ export default function EmailTemplateLibraryPage() {
   const [activeTab, setActiveTab] = useState<'ALL' | 'TRANSACTIONAL' | 'CAMPAIGN'>('ALL');
 
   return (
-    <div className="space-y-10 font-montserrat italic not-italic">
+    <div className="space-y-6 font-montserrat italic not-italic">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -78,14 +78,14 @@ export default function EmailTemplateLibraryPage() {
       </section>
 
       {/* Analytics: Global Email Health */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
          {[
            { label: "Avg. Delivery Rate", value: "99.8%", trend: "+0.2%", icon: Send, color: "text-emerald-500 bg-emerald-50" },
            { label: "Open Rate (Global)", value: "32.4%", trend: "Stable", icon: Eye, color: "text-primary bg-primary/5" },
            { label: "Click Through Rate", value: "8.2%", trend: "High Impact", icon: MousePointer2, color: "text-indigo-500 bg-indigo-50" },
            { label: "Template ROI Index", value: "9.4", trend: "High", icon: Sparkles, color: "text-amber-500 bg-amber-50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all cursor-pointer">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all cursor-pointer">
               <div>
                  <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest italic mb-2 leading-none">{kpi.label}</p>
                  <p className="text-3xl font-black text-typography tracking-tighter leading-none italic">{kpi.value}</p>
@@ -99,8 +99,8 @@ export default function EmailTemplateLibraryPage() {
       </div>
 
       {/* Main Listing Grid */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col italic not-italic">
-         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col italic not-italic">
+         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="flex items-center space-x-2 bg-white p-1.5 rounded-2xl border border-gray-100 italic">
                {['ALL', 'TRANSACTIONAL', 'CAMPAIGN'].map(t => (
                  <button 
@@ -128,11 +128,11 @@ export default function EmailTemplateLibraryPage() {
             <table className="w-full text-left">
                <thead className="bg-snow-pearl/50 border-b border-gray-100">
                   <tr>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Email Template Vector</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Subject Line Wrapper</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Open Rate</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Click Rate</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Email Template Vector</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Subject Line Wrapper</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Open Rate</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Click Rate</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit</th>
                   </tr>
                </thead>
                <tbody className="divide-y divide-gray-50 italic">
@@ -187,8 +187,8 @@ export default function EmailTemplateLibraryPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white relative overflow-hidden italic">
-            <div className="absolute top-0 right-0 p-10 opacity-5">
+         <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white relative overflow-hidden italic">
+            <div className="absolute top-0 right-0 p-6 opacity-5">
                <Zap size={100} className="text-primary" />
             </div>
             <div className="flex items-center space-x-6 relative z-10 italic font-montserrat not-italic">

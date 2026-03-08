@@ -29,9 +29,9 @@ export default function DashboardPage() {
   const [createOpen, setCreateOpen] = useState(false);
 
   return (
-    <div className="space-y-10 pb-20">
+    <div className="space-y-6 pb-20">
       {/* Dashboard Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 transition-all">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100 transition-all">
         <div>
            <div className="flex items-center space-x-3 mb-3">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">

@@ -53,9 +53,9 @@ export default function NewCollegePage() {
   };
 
   return (
-    <div className="space-y-10 max-w-4xl">
+    <div className="space-y-6 max-w-4xl">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <Link href="/admin/colleges" className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10 hover:bg-primary/10 transition-colors flex items-center space-x-2">
@@ -88,10 +88,10 @@ export default function NewCollegePage() {
       </section>
 
       {/* Form Context */}
-      <form className="grid grid-cols-12 gap-10">
+      <form className="grid grid-cols-12 gap-6">
          {/* Basic Details Section */}
          <div className="col-span-12 lg:col-span-8 space-y-8">
-            <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm space-y-8">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-8">
                <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
                      <School size={24} />
@@ -102,7 +102,7 @@ export default function NewCollegePage() {
                   </div>
                </div>
 
-               <div className="grid grid-cols-2 gap-8">
+               <div className="grid grid-cols-2 gap-5">
                   <div className="col-span-2 space-y-2">
                      <label className="text-[10px] font-black uppercase tracking-widest text-secondary/40 ml-1">Full Institution Name</label>
                      <input 
@@ -158,7 +158,7 @@ export default function NewCollegePage() {
                </div>
             </div>
 
-            <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm space-y-8">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-8">
                <div className="flex items-center space-x-4 mb-4">
                   <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-500">
                      <BadgeCheck size={24} />
@@ -169,7 +169,7 @@ export default function NewCollegePage() {
                   </div>
                </div>
 
-               <div className="grid grid-cols-2 gap-8">
+               <div className="grid grid-cols-2 gap-5">
                   <div className="space-y-2">
                      <label className="text-[10px] font-black uppercase tracking-widest text-secondary/40 ml-1">Institution Type</label>
                      <select 
@@ -209,7 +209,7 @@ export default function NewCollegePage() {
 
          {/* Sidebar Controls */}
          <div className="col-span-12 lg:col-span-4 space-y-6">
-            <div className="bg-primary p-10 rounded-[2.5rem] text-white shadow-2xl shadow-primary/20">
+            <div className="bg-primary p-6 rounded-2xl text-white shadow-2xl shadow-primary/20">
                <div className="flex items-center space-x-3 mb-6">
                   <Info size={18} className="text-white/40" />
                   <h3 className="text-xs font-black uppercase tracking-widest">Protocol Intelligence</h3>
@@ -233,7 +233,7 @@ export default function NewCollegePage() {
                </div>
             </div>
 
-            <div className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
                <h3 className="text-xs font-black uppercase tracking-widest text-secondary/40 mb-6 flex items-center space-x-3">
                   <GraduationCap size={16} />
                   <span>Onboarding Steps</span>

@@ -48,9 +48,9 @@ export default function DPDPCompliancePage() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100">
@@ -80,7 +80,7 @@ export default function DPDPCompliancePage() {
       </section>
 
       {/* Tabs */}
-      <div className="flex items-center space-x-4 bg-white p-2 rounded-[2.5rem] border border-gray-100 shadow-sm w-fit">
+      <div className="flex items-center space-x-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm w-fit">
          {[
            { id: 'DELETION', label: 'Erasure Requests', icon: Trash2 },
            { id: 'EXPORT', label: 'Data Portability', icon: Download },
@@ -102,11 +102,11 @@ export default function DPDPCompliancePage() {
       </div>
 
       {/* Dynamic Content */}
-      <div className="grid grid-cols-12 gap-8">
-         <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden">
+      <div className="grid grid-cols-12 gap-5">
+         <div className="col-span-12 lg:col-span-8 bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
             {activeTab === 'DELETION' && (
                <>
-                  <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                  <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                      <div>
                         <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">Pending Erasure Workflow</h3>
                         <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic">Legal Requirement: 30-day fulfillment window</p>
@@ -126,7 +126,7 @@ export default function DPDPCompliancePage() {
                         <tbody className="divide-y divide-gray-50">
                            {deletionRequests.map((req) => (
                               <tr key={req.id} className="group hover:bg-snow-pearl/30 transition-all">
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     <div className="flex items-center space-x-6">
                                        <div className="w-12 h-12 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-rose-500 group-hover:bg-rose-50 transition-all">
                                           <Trash2 size={20} />
@@ -137,16 +137,16 @@ export default function DPDPCompliancePage() {
                                        </div>
                                     </div>
                                  </td>
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     <span className="text-[12px] font-black text-typography uppercase">{new Date(req.requestDate).toLocaleDateString()}</span>
                                  </td>
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     <div className="flex items-center space-x-2 text-[12px] font-black text-rose-600 italic">
                                        <Clock size={14} />
                                        <span>{new Date(req.deadline).toLocaleDateString()}</span>
                                     </div>
                                  </td>
-                                 <td className="px-10 py-8">
+                                 <td className="px-10 py-4">
                                     <span className={cn(
                                        "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
                                        req.status === 'PENDING' ? "bg-amber-50 text-amber-600 border border-amber-100" :
@@ -157,7 +157,7 @@ export default function DPDPCompliancePage() {
                                        <span>{req.status}</span>
                                     </span>
                                  </td>
-                                 <td className="px-10 py-8 text-right">
+                                 <td className="px-10 py-4 text-right">
                                     <button className="px-6 py-3 bg-slate-900 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-rose-600 transition-all active:scale-95 shadow-lg shadow-slate-900/10">
                                        Process Erasure
                                     </button>
@@ -172,11 +172,11 @@ export default function DPDPCompliancePage() {
 
             {activeTab === 'EXPORT' && (
                <div className="p-20 text-center flex flex-col items-center">
-                  <div className="w-24 h-24 bg-primary/5 rounded-[2.5rem] flex items-center justify-center text-primary mb-8 shadow-inner">
+                  <div className="w-24 h-24 bg-primary/5 rounded-2xl flex items-center justify-center text-primary mb-8 shadow-inner">
                      <FileJson size={42} />
                   </div>
                   <h3 className="text-3xl font-black text-typography tracking-tighter mb-4 italic">Data Portability Engine</h3>
-                  <p className="text-xs font-bold text-secondary/40 leading-relaxed uppercase tracking-widest max-w-lg mb-10">
+                  <p className="text-xs font-bold text-secondary/40 leading-relaxed uppercase tracking-widest max-w-lg mb-6">
                      Generate comprehensive user context snapshots in JSON format. Files are served via secure 24h transient links delivered through Brevo.
                   </p>
                   <div className="relative w-full max-w-md">
@@ -191,7 +191,7 @@ export default function DPDPCompliancePage() {
             )}
 
             {activeTab === 'CONSENT' && (
-               <div className="p-10">
+               <div className="p-6">
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 mb-8 uppercase">Immutable Consent Records</h3>
                   <div className="space-y-4">
                      {[1, 2, 3].map((_, i) => (
@@ -217,7 +217,7 @@ export default function DPDPCompliancePage() {
                <div className="p-20 text-center flex flex-col items-center">
                   <ShieldAlert size={64} className="text-amber-500 mb-8" />
                   <h3 className="text-3xl font-black text-typography tracking-tighter mb-4 italic">Age-Restricted Guardian Portal</h3>
-                  <p className="text-xs font-bold text-secondary/40 leading-relaxed uppercase tracking-widest max-w-lg mb-10">
+                  <p className="text-xs font-bold text-secondary/40 leading-relaxed uppercase tracking-widest max-w-lg mb-6">
                      System has detected <span className="text-amber-600 font-black">4,281 Profiles</span> likely belonging to users under 18. DPDP Act requires explicit guardian consent for these accounts.
                   </p>
                   <button className="px-10 py-5 bg-amber-500 text-white rounded-3xl text-[11px] font-black uppercase tracking-widest hover:bg-amber-600 transition-all shadow-lg shadow-amber-500/20">
@@ -229,8 +229,8 @@ export default function DPDPCompliancePage() {
 
          {/* Stats Sidebar */}
          <div className="col-span-12 lg:col-span-4 space-y-8">
-            <div className="bg-slate-900 p-10 rounded-[3rem] text-white shadow-2xl relative overflow-hidden">
-               <div className="absolute -top-10 -right-10 w-40 h-40 bg-indigo-500/10 blur-3xl rounded-full" />
+            <div className="bg-slate-900 p-6 rounded-2xl text-white shadow-2xl relative overflow-hidden">
+               <div className="absolute -top-6 -right-10 w-40 h-40 bg-indigo-500/10 blur-3xl rounded-full" />
                <div className="relative z-10">
                   <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-indigo-500/30">Compliance Metrics</h4>
                   <div className="space-y-8">
@@ -265,7 +265,7 @@ export default function DPDPCompliancePage() {
                </div>
             </div>
 
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all cursor-pointer">
+            <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all cursor-pointer">
                <div className="flex items-center justify-between mb-6">
                   <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all">
                      <Database size={24} />
@@ -280,7 +280,7 @@ export default function DPDPCompliancePage() {
       </div>
 
       {/* Compliance Notice Footer */}
-      <section className="bg-snow-pearl/30 p-10 rounded-[2.5rem] border border-gray-100 flex items-center justify-between">
+      <section className="bg-snow-pearl/30 p-6 rounded-2xl border border-gray-100 flex items-center justify-between">
          <div className="flex items-center space-x-6 italic">
             <Lock size={20} className="text-secondary/20" />
             <p className="text-[11px] font-bold text-secondary/40 tracking-widest uppercase">Encryption Standard: AES-256 for PII at rest • TLS 1.3 for data portability exports • Role-based decrypt logic active</p>

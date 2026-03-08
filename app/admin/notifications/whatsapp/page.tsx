@@ -51,9 +51,9 @@ export default function WhatsAppBotManagerPage() {
   ];
 
   return (
-    <div className="space-y-10 font-montserrat italic not-italic font-montserrat">
+    <div className="space-y-6 font-montserrat italic not-italic font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-100 italic">
@@ -93,9 +93,9 @@ export default function WhatsAppBotManagerPage() {
       </section>
 
       {/* Bot Health & Telemetry Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5 italic">
          {botMetrics.map((m) => (
-           <div key={m.id} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm relative group hover:border-emerald-500/20 transition-all cursor-pointer italic">
+           <div key={m.id} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm relative group hover:border-emerald-500/20 transition-all cursor-pointer italic">
               <div className="flex items-center justify-between mb-4 italic">
                  <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 shadow-inner italic", m.color)}>
                     <m.icon size={22} className="italic" />
@@ -108,14 +108,14 @@ export default function WhatsAppBotManagerPage() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10 font-montserrat italic not-italic font-montserrat">
+      <div className="grid grid-cols-12 gap-6 font-montserrat italic not-italic font-montserrat">
          {/* QR Auth Terminal */}
-         <div className="col-span-12 lg:col-span-4 bg-slate-900 rounded-[3rem] p-12 text-white flex flex-col items-center justify-between group overflow-hidden relative font-montserrat italic not-italic">
-            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+         <div className="col-span-12 lg:col-span-4 bg-slate-900 rounded-2xl p-12 text-white flex flex-col items-center justify-between group overflow-hidden relative font-montserrat italic not-italic">
+            <div className="absolute top-0 right-0 p-5 opacity-5 group-hover:scale-110 transition-transform duration-1000">
                <Wifi size={120} className="text-primary italic" />
             </div>
             <div className="w-full relative z-10 font-montserrat italic not-italic">
-               <div className="flex items-center justify-between mb-10">
+               <div className="flex items-center justify-between mb-6">
                   <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest italic underline decoration-primary/30">Session Security</h4>
                   <div className={cn(
                     "flex items-center space-x-2 px-3 py-1 bg-white/5 rounded-full ring-1 ring-white/10 italic",
@@ -126,7 +126,7 @@ export default function WhatsAppBotManagerPage() {
                   </div>
                </div>
                
-               <div className="bg-white p-8 rounded-[2.5rem] flex items-center justify-center relative shadow-2xl ring-1 ring-white/20 italic">
+               <div className="bg-white p-5 rounded-2xl flex items-center justify-center relative shadow-2xl ring-1 ring-white/20 italic">
                   {botStatus === 'CONNECTED' ? (
                     <div className="flex flex-col items-center py-10 italic">
                        <CheckCircle2 size={100} className="text-emerald-500 animate-bounce mb-6 italic" />
@@ -151,7 +151,7 @@ export default function WhatsAppBotManagerPage() {
 
          {/* Conversation Flow Monitor */}
          <div className="col-span-12 lg:col-span-8 bg-white p-12 rounded-[3.5rem] border border-gray-100 shadow-sm flex flex-col font-montserrat italic not-italic font-montserrat">
-            <div className="flex justify-between items-center mb-10 italic">
+            <div className="flex justify-between items-center mb-6 italic">
                <div>
                   <h4 className="text-black text-xl font-black tracking-tighter uppercase italic lowercase">Conversation Intent Flow</h4>
                   <p className="text-[9px] font-black text-secondary/30 uppercase tracking-[0.2em] mt-1 underline decoration-primary/10 italic">Visualizing Node-by-Node Drop-offs (Fastify FAST-Schema)</p>
@@ -208,7 +208,7 @@ export default function WhatsAppBotManagerPage() {
       </div>
 
       {/* Logic Config Alert Footnote */}
-      <section className="bg-emerald-50 p-10 rounded-[2.5rem] border border-emerald-100 flex items-center justify-between italic not-italic font-montserrat">
+      <section className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 flex items-center justify-between italic not-italic font-montserrat">
          <div className="flex items-center space-x-6">
             <Lock size={20} className="text-emerald-600 italic" />
             <p className="text-[11px] font-bold text-emerald-800/60 tracking-widest uppercase italic font-montserrat not-italic">All bot messages are signed via AES-GCM • No PII cached in Fastify session storage • Session expiration enforced daily</p>

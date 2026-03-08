@@ -44,9 +44,9 @@ export default function ScraperManagerPage() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -79,14 +79,14 @@ export default function ScraperManagerPage() {
       </section>
 
       {/* Analytics Strip */}
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-4 gap-5">
          {[
            { label: "Records Daily", value: "2.4M+", trend: "+12.1%", icon: Activity, color: "text-primary bg-primary/5" },
            { label: "Accuracy Index", value: "98.8%", trend: "High Confidence", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-50" },
            { label: "Source Conflicts", value: "14", trend: "Needs Resolution", icon: AlertTriangle, color: "text-amber-500 bg-amber-50" },
            { label: "API Throttling", value: "1.2%", trend: "-0.4% Efficiency", icon: Zap, color: "text-rose-500 bg-rose-50" }
          ].map((s, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
               <div className="flex items-center justify-between mb-4">
                  <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110", s.color)}>
                     <s.icon size={22} />
@@ -100,8 +100,8 @@ export default function ScraperManagerPage() {
       </div>
 
       {/* Main Table Container */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
            <div>
               <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">Active Scraping Jobs</h3>
               <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic">Automated BullMQ scheduling & anti-block rotation active</p>
@@ -123,7 +123,7 @@ export default function ScraperManagerPage() {
               <tbody className="divide-y divide-gray-50">
                 {jobs.map((job) => (
                   <tr key={job.id} className="group hover:bg-snow-pearl/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all relative">
                              <Globe size={24} />
@@ -135,14 +135,14 @@ export default function ScraperManagerPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-2 text-[12px] font-black text-typography italic">
                           <Clock size={14} className="text-secondary/20" />
                           <span>{job.schedule}</span>
                        </div>
                        <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-1">Last: {job.lastRun}</p>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-3">
                           <TrendingUp size={16} className="text-emerald-500" />
                           <div>
@@ -151,7 +151,7 @@ export default function ScraperManagerPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <span className={cn(
                           "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
                           job.status === 'SUCCESS' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
@@ -163,7 +163,7 @@ export default function ScraperManagerPage() {
                           <span>{job.status}</span>
                        </span>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex flex-col items-center">
                           <div className="w-16 h-2 bg-gray-100 rounded-full overflow-hidden mb-2 shadow-inner">
                              <div 
@@ -174,7 +174,7 @@ export default function ScraperManagerPage() {
                           <span className="text-[10px] font-black text-typography italic">{job.healthScore}% CONF</span>
                        </div>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2">
                           <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all shadow-sm group/btn" title="Trigger Job Manual Override">
                              <Play size={18} />
@@ -193,8 +193,8 @@ export default function ScraperManagerPage() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden">
-           <div className="absolute bottom-0 right-0 p-10 opacity-5">
+        <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden">
+           <div className="absolute bottom-0 right-0 p-6 opacity-5">
               <Zap size={100} className="text-primary" />
            </div>
            <div className="flex items-center space-x-4 relative z-10">

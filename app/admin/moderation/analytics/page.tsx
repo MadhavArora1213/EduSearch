@@ -66,7 +66,7 @@ export default function ModerationAnalyticsPage() {
 
   if (!mounted) {
     return (
-      <div className="p-10 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">
+      <div className="p-6 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">
         Verifying Moderation Ledger...
       </div>
     );
@@ -75,7 +75,7 @@ export default function ModerationAnalyticsPage() {
   return (
     <div className="space-y-12 pb-20">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -101,9 +101,9 @@ export default function ModerationAnalyticsPage() {
       </section>
 
       {/* KPI Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm relative overflow-hidden group italic">
-            <div className="absolute right-0 top-0 p-8 text-primary/10 group-hover:scale-110 transition-transform">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+         <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm relative overflow-hidden group italic">
+            <div className="absolute right-0 top-0 p-5 text-primary/10 group-hover:scale-110 transition-transform">
                <TrendingUp size={48} />
             </div>
             <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] mb-4">AVG SLA RESOLUTION</p>
@@ -114,8 +114,8 @@ export default function ModerationAnalyticsPage() {
             </div>
          </div>
 
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm relative overflow-hidden group italic">
-            <div className="absolute right-0 top-0 p-8 text-primary/10 group-hover:scale-110 transition-transform">
+         <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm relative overflow-hidden group italic">
+            <div className="absolute right-0 top-0 p-5 text-primary/10 group-hover:scale-110 transition-transform">
                <CheckCircle2 size={48} />
             </div>
             <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] mb-4">AUTO-APPROVAL RATE</p>
@@ -126,8 +126,8 @@ export default function ModerationAnalyticsPage() {
             </div>
          </div>
 
-         <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm relative overflow-hidden group italic">
-            <div className="absolute right-0 top-0 p-8 text-primary/10 group-hover:scale-110 transition-transform">
+         <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm relative overflow-hidden group italic">
+            <div className="absolute right-0 top-0 p-5 text-primary/10 group-hover:scale-110 transition-transform">
                <XCircle size={48} />
             </div>
             <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] mb-4">REJECTION INDEX</p>
@@ -138,7 +138,7 @@ export default function ModerationAnalyticsPage() {
             </div>
          </div>
 
-         <div className="bg-typography text-white p-10 rounded-[3rem] shadow-2xl shadow-primary/20 relative overflow-hidden group italic transition-all">
+         <div className="bg-typography text-white p-6 rounded-2xl shadow-2xl shadow-primary/20 relative overflow-hidden group italic transition-all">
             <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-primary/20 rounded-full" />
             <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-4">PENDING OVERFLOW</p>
             <h3 className="text-4xl font-black text-white mb-2 italic tracking-tighter">42</h3>
@@ -150,10 +150,10 @@ export default function ModerationAnalyticsPage() {
       </div>
 
       {/* Main Charts Overlay */}
-      <section className="grid grid-cols-12 gap-8">
+      <section className="grid grid-cols-12 gap-5">
          {/* volume Trend */}
          <div className="col-span-12 lg:col-span-8 bg-white p-12 rounded-[3.5rem] border border-gray-50 shadow-sm italic">
-            <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center justify-between mb-6">
                <div>
                   <h3 className="text-2xl font-black text-typography tracking-tight">Review Volume Flux</h3>
                   <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1 italic">Manual vs Automated Processing</p>
@@ -193,7 +193,7 @@ export default function ModerationAnalyticsPage() {
             <h3 className="text-2xl font-black text-typography tracking-tight italic">Rejection Breakdown</h3>
             <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1 mb-8">Primary Quality Failure Reasons</p>
             
-            <div className="h-[250px] w-full relative mb-10">
+            <div className="h-[250px] w-full relative mb-6">
                <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                      <Pie
@@ -243,17 +243,17 @@ export default function ModerationAnalyticsPage() {
             <table className="w-full text-left">
                <thead>
                   <tr className="border-b border-gray-100">
-                     <th className="pb-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Moderator</th>
-                     <th className="pb-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Reviews Processed</th>
-                     <th className="pb-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Avg Time / Item</th>
-                     <th className="pb-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Accuracy Index</th>
-                     <th className="pb-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Audit Score</th>
+                     <th className="pb-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Moderator</th>
+                     <th className="pb-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Reviews Processed</th>
+                     <th className="pb-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Avg Time / Item</th>
+                     <th className="pb-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Accuracy Index</th>
+                     <th className="pb-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Audit Score</th>
                   </tr>
                </thead>
                <tbody className="divide-y divide-gray-50 uppercase">
                   {moderatorPerformance.map((mod) => (
                     <tr key={mod.name} className="group hover:bg-gray-50 transition-all transition-all duration-300 italic">
-                       <td className="py-8">
+                       <td className="py-4">
                           <div className="flex items-center space-x-4">
                              <div className="w-10 h-10 bg-primary/5 rounded-xl border border-primary/10 flex items-center justify-center text-primary font-black text-xs">
                                 {mod.name.charAt(0)}
@@ -261,14 +261,14 @@ export default function ModerationAnalyticsPage() {
                              <span className="text-sm font-black text-typography">{mod.name}</span>
                           </div>
                        </td>
-                       <td className="py-8 text-sm font-bold text-secondary/60">{mod.reviews} Items</td>
-                       <td className="py-8">
+                       <td className="py-4 text-sm font-bold text-secondary/60">{mod.reviews} Items</td>
+                       <td className="py-4">
                           <div className="flex items-center space-x-2 text-sm font-black text-typography">
                              <Clock size={14} className="text-secondary/30" />
                              <span>{mod.time}</span>
                           </div>
                        </td>
-                       <td className="py-8">
+                       <td className="py-4">
                           <div className="flex items-center space-x-3">
                              <div className="w-24 h-1.5 bg-gray-100 rounded-full overflow-hidden">
                                 <div className="h-full bg-emerald-500" style={{ width: mod.accuracy }} />
@@ -276,7 +276,7 @@ export default function ModerationAnalyticsPage() {
                              <span className="text-xs font-black text-emerald-600">{mod.accuracy}</span>
                           </div>
                        </td>
-                       <td className="py-8">
+                       <td className="py-4">
                           <button className="px-5 py-2.5 bg-white border border-gray-100 rounded-xl text-[9px] font-black uppercase tracking-widest hover:border-primary hover:text-primary transition-all shadow-sm">Review Logs</button>
                        </td>
                     </tr>

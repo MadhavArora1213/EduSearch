@@ -30,9 +30,9 @@ export default function RestoreProcedurePage() {
   const [confirmText, setConfirmText] = useState("");
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100">
@@ -60,11 +60,11 @@ export default function RestoreProcedurePage() {
         </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          {/* Recovery Wizard */}
          <div className="col-span-12 lg:col-span-8 space-y-8">
-            <div className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-               <div className="p-10 border-b border-gray-50 bg-snow-pearl/30 flex items-center justify-between">
+            <div className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+               <div className="p-6 border-b border-gray-50 bg-snow-pearl/30 flex items-center justify-between">
                   <div>
                      <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">Orchestrated Restore Wizard</h3>
                      <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic">Follow the high-integrity multi-step protocol</p>
@@ -83,21 +83,21 @@ export default function RestoreProcedurePage() {
 
                <div className="p-14 min-h-[400px] flex flex-col justify-center">
                   {step === 1 && (
-                     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-5 duration-500">
+                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
                         <div className="text-center">
                            <History size={48} className="text-secondary/10 mx-auto mb-6" />
                            <h4 className="text-2xl font-black text-typography uppercase tracking-tighter italic">Select Restore Source</h4>
                            <p className="text-[11px] font-bold text-secondary/30 uppercase tracking-widest mt-2">Pick a binary snapshot or entry point from WAL archives</p>
                         </div>
                         <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
-                           <button onClick={() => setStep(2)} className="p-8 bg-snow-pearl/50 rounded-3xl border border-gray-100 hover:border-primary/20 transition-all text-left flex items-start space-x-6 group">
+                           <button onClick={() => setStep(2)} className="p-5 bg-snow-pearl/50 rounded-3xl border border-gray-100 hover:border-primary/20 transition-all text-left flex items-start space-x-6 group">
                               <Database size={32} className="text-secondary/10 group-hover:text-primary transition-colors" />
                               <div>
                                  <p className="text-[13px] font-black text-typography uppercase tracking-tight">Full Daily Snapshot</p>
                                  <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1">BKP-9921 • 2026-03-08</p>
                               </div>
                            </button>
-                           <button onClick={() => setStep(2)} className="p-8 bg-snow-pearl/50 rounded-3xl border border-gray-100 hover:border-indigo-500/20 transition-all text-left flex items-start space-x-6 group">
+                           <button onClick={() => setStep(2)} className="p-5 bg-snow-pearl/50 rounded-3xl border border-gray-100 hover:border-indigo-500/20 transition-all text-left flex items-start space-x-6 group">
                               <Clock size={32} className="text-secondary/10 group-hover:text-indigo-500 transition-colors" />
                               <div>
                                  <p className="text-[13px] font-black text-typography uppercase tracking-tight">Point-in-Time (PITR)</p>
@@ -109,7 +109,7 @@ export default function RestoreProcedurePage() {
                   )}
 
                   {step === 2 && (
-                     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-5 duration-500">
+                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
                         <div className="text-center">
                            <Server size={48} className="text-primary mx-auto mb-6" />
                            <h4 className="text-2xl font-black text-typography uppercase tracking-tighter italic">Provision Target Environment</h4>
@@ -145,8 +145,8 @@ export default function RestoreProcedurePage() {
                   )}
 
                   {step === 3 && (
-                     <div className="space-y-10 animate-in fade-in slide-in-from-bottom-5 duration-500 max-w-xl mx-auto text-center">
-                        <div className="w-24 h-24 bg-rose-500 text-white rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-rose-500/30">
+                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-5 duration-500 max-w-xl mx-auto text-center">
+                        <div className="w-24 h-24 bg-rose-500 text-white rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-rose-500/30">
                            <AlertCircle size={48} />
                         </div>
                         <h4 className="text-3xl font-black text-typography uppercase tracking-tighter italic">Nuclear Authorization</h4>
@@ -179,8 +179,8 @@ export default function RestoreProcedurePage() {
 
          {/* Monitoring Sidebar */}
          <div className="col-span-12 lg:col-span-4 space-y-8">
-            <div className="bg-slate-900 p-10 rounded-[3rem] text-white overflow-hidden relative group">
-               <div className="absolute top-0 right-0 p-8 opacity-10">
+            <div className="bg-slate-900 p-6 rounded-2xl text-white overflow-hidden relative group">
+               <div className="absolute top-0 right-0 p-5 opacity-10">
                   <Terminal size={80} className="text-primary" />
                </div>
                <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">Recovery Intelligence</h4>
@@ -205,7 +205,7 @@ export default function RestoreProcedurePage() {
                </div>
             </div>
 
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all cursor-pointer">
+            <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all cursor-pointer">
                <div className="flex items-center justify-between mb-6">
                   <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all">
                      <MousePointer2 size={24} />

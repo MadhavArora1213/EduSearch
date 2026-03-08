@@ -58,9 +58,9 @@ export default function MetadataBulkEditor() {
   };
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -116,8 +116,8 @@ export default function MetadataBulkEditor() {
       </div>
 
       {/* Main Metadata Grid */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
            <div>
               <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Live Meta Optimization</h3>
               <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic select-none">Auto-saving drafted changes • character limits enforced</p>
@@ -150,7 +150,7 @@ export default function MetadataBulkEditor() {
 
                   return (
                     <tr key={page.id} className="group hover:bg-snow-pearl/30 transition-all">
-                      <td className="px-10 py-8">
+                      <td className="px-10 py-4">
                          <div className="flex items-center space-x-6">
                             <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:bg-primary/5 group-hover:text-primary transition-all shadow-inner">
                                <Globe size={24} />
@@ -161,7 +161,7 @@ export default function MetadataBulkEditor() {
                             </div>
                          </div>
                       </td>
-                      <td className="px-10 py-8">
+                      <td className="px-10 py-4">
                          <div className="relative group/field">
                             <textarea 
                                value={draftTitle}
@@ -180,7 +180,7 @@ export default function MetadataBulkEditor() {
                             </div>
                          </div>
                       </td>
-                      <td className="px-10 py-8">
+                      <td className="px-10 py-4">
                          <div className="relative group/field">
                             <textarea 
                                value={draftDesc}
@@ -199,13 +199,13 @@ export default function MetadataBulkEditor() {
                             </div>
                          </div>
                       </td>
-                      <td className="px-10 py-8">
+                      <td className="px-10 py-4">
                          <div className="flex flex-col items-center">
                             <span className="text-2xl font-black text-typography tracking-tighter italic">{page.rank || '-'}</span>
                             <p className="text-[8px] font-bold text-secondary/30 uppercase tracking-widest mt-1">GSC Avg.</p>
                          </div>
                       </td>
-                      <td className="px-10 py-8 text-right">
+                      <td className="px-10 py-4 text-right">
                          <div className="flex items-center justify-end space-x-2">
                             <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all shadow-sm group/btn" title="View Preview in Mobile Mockup">
                                <Smartphone size={18} />
@@ -222,8 +222,8 @@ export default function MetadataBulkEditor() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden">
-           <div className="absolute top-0 right-0 p-10 opacity-5">
+        <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden">
+           <div className="absolute top-0 right-0 p-6 opacity-5">
               <Zap size={100} className="text-primary" />
            </div>
            <div className="flex items-center space-x-4 relative z-10">

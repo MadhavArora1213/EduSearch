@@ -44,9 +44,9 @@ export default function ModelVersionManager() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -80,8 +80,8 @@ export default function ModelVersionManager() {
       </section>
 
       {/* A/B Testing Hud */}
-      <section className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col md:flex-row md:items-center space-y-8 md:space-y-0 md:space-x-12 relative overflow-hidden group">
-         <div className="absolute top-0 right-0 p-10 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+      <section className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col md:flex-row md:items-center space-y-8 md:space-y-0 md:space-x-12 relative overflow-hidden group">
+         <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform duration-1000">
             <Split size={140} className="text-primary" />
          </div>
          <div className="md:w-1/3 relative z-10">
@@ -100,7 +100,7 @@ export default function ModelVersionManager() {
             </div>
          </div>
          <div className="flex-1 space-y-6 relative z-10 italic">
-            <div className="p-8 bg-white/5 rounded-[2.5rem] border border-white/5 flex items-center justify-between hover:border-primary/30 transition-all cursor-pointer group/v">
+            <div className="p-5 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between hover:border-primary/30 transition-all cursor-pointer group/v">
                <div className="flex items-center space-x-6">
                   <div className="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary group-hover/v:scale-110 transition-transform">
                      <ShieldCheck size={28} />
@@ -118,8 +118,8 @@ export default function ModelVersionManager() {
       </section>
 
       {/* Model Repository Table */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col italic">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col italic">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
            <div>
               <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Ollama Model Image Hub</h3>
               <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-1 italic select-none">Managing Quantized Binary Blobs & Version History</p>
@@ -144,7 +144,7 @@ export default function ModelVersionManager() {
               <tbody className="divide-y divide-gray-50">
                 {models.map((m) => (
                   <tr key={m.id} className="group hover:bg-snow-pearl/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className={cn(
                              "w-12 h-12 rounded-2xl flex items-center justify-center transition-all shadow-inner",
@@ -158,16 +158,16 @@ export default function ModelVersionManager() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <span className="text-[13px] font-black text-secondary/40 uppercase italic tracking-tighter">{m.size}</span>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex flex-col">
                           <p className="text-lg font-black text-typography tracking-tighter">{m.performance}% Score</p>
                           <p className="text-[9px] font-bold text-emerald-500 uppercase italic">Avg. {m.latency}ms Latency</p>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <span className={cn(
                           "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest border transition-all italic",
                           m.status === 'ACTIVE' ? "bg-emerald-50 text-emerald-600 border-emerald-100 shadow-sm" :
@@ -176,7 +176,7 @@ export default function ModelVersionManager() {
                           {m.status}
                        </span>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2">
                           {m.status === 'AVAILABLE' && (
                              <button className="px-6 py-2 bg-emerald-500 text-white rounded-xl text-[9px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-emerald-500/10 italic">
@@ -194,7 +194,7 @@ export default function ModelVersionManager() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 flex items-center justify-between text-[11px] font-bold text-secondary/30 uppercase tracking-widest italic bg-snow-pearl/10 overflow-hidden relative group/footer">
+        <div className="p-6 border-t border-gray-50 flex items-center justify-between text-[11px] font-bold text-secondary/30 uppercase tracking-widest italic bg-snow-pearl/10 overflow-hidden relative group/footer">
            <div className="absolute inset-0 opacity-10 bg-primary translate-x-full group-hover/footer:translate-x-0 transition-transform duration-1000" />
            <div className="flex items-center space-x-3 relative z-10">
               <RotateCcw size={16} className="text-primary italic animate-spin-slow" />

@@ -45,9 +45,9 @@ export default function StudentDetail({ params }: { params: { id: string } }) {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Breadcrumb & Actions Header */}
-      <section className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0 pb-4 border-b border-gray-100">
         <Link href="/admin/users" className="group flex items-center space-x-3 text-secondary/40 hover:text-primary transition-all">
            <div className="w-10 h-10 bg-white rounded-xl border border-gray-100 flex items-center justify-center group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
               <ArrowLeft size={18} />
@@ -71,14 +71,14 @@ export default function StudentDetail({ params }: { params: { id: string } }) {
         </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
         {/* Profile Sidebar */}
         <div className="col-span-12 lg:col-span-4 space-y-8">
-           <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-8">
+           <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-5">
                  <ShieldCheck size={48} className="text-secondary/5 -mr-2 -mt-2 group-hover:text-primary/10 transition-colors" />
               </div>
-              <div className="w-24 h-24 bg-snow-pearl rounded-[2.5rem] flex items-center justify-center text-primary mb-8 shadow-inner">
+              <div className="w-24 h-24 bg-snow-pearl rounded-2xl flex items-center justify-center text-primary mb-8 shadow-inner">
                  <User size={42} />
               </div>
               <h2 className="text-3xl font-black text-typography tracking-tighter mb-2">{student.name}</h2>
@@ -120,8 +120,8 @@ export default function StudentDetail({ params }: { params: { id: string } }) {
               </div>
            </div>
 
-           <div className="bg-slate-900 p-10 rounded-[3rem] text-white overflow-hidden relative group">
-              <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:scale-125 transition-transform duration-1000">
+           <div className="bg-slate-900 p-6 rounded-2xl text-white overflow-hidden relative group">
+              <div className="absolute top-0 right-0 p-5 opacity-20 group-hover:scale-125 transition-transform duration-1000">
                  <Trash2 size={80} className="text-rose-500" />
               </div>
               <h4 className="text-xl font-black tracking-tighter italic lowercase">Danger Zone</h4>
@@ -137,7 +137,7 @@ export default function StudentDetail({ params }: { params: { id: string } }) {
 
         {/* Dynamic Detail Content */}
         <div className="col-span-12 lg:col-span-8 flex flex-col space-y-8">
-           <div className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col flex-1">
+           <div className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col flex-1">
               <div className="p-2 bg-snow-pearl flex border-b border-gray-50">
                  {[
                    { id: 'ACTIVITY', label: 'Activity Feed', icon: History },
@@ -149,7 +149,7 @@ export default function StudentDetail({ params }: { params: { id: string } }) {
                      key={tab.id}
                      onClick={() => setActiveTab(tab.id as any)}
                      className={cn(
-                       "flex-1 flex items-center justify-center space-x-3 py-5 rounded-[2.5rem] text-[10px] font-black uppercase tracking-widest transition-all",
+                       "flex-1 flex items-center justify-center space-x-3 py-5 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all",
                        activeTab === tab.id ? "bg-white text-primary shadow-sm ring-1 ring-gray-100" : "text-secondary/40 hover:text-secondary"
                      )}
                    >
@@ -159,7 +159,7 @@ export default function StudentDetail({ params }: { params: { id: string } }) {
                  ))}
               </div>
 
-              <div className="p-10 flex-1 overflow-y-auto no-scrollbar max-h-[700px]">
+              <div className="p-6 flex-1 overflow-y-auto no-scrollbar max-h-[700px]">
                  {activeTab === 'ACTIVITY' && (
                    <div className="space-y-8">
                       {[
@@ -200,12 +200,12 @@ export default function StudentDetail({ params }: { params: { id: string } }) {
                  {activeTab === 'APPS' && (
                     <div className="space-y-4">
                        {[1, 2].map((_, i) => (
-                          <div key={i} className="p-8 bg-snow-pearl/50 rounded-3xl border border-gray-100 flex items-center justify-between group hover:border-primary/20 transition-all">
+                          <div key={i} className="p-5 bg-snow-pearl/50 rounded-3xl border border-gray-100 flex items-center justify-between group hover:border-primary/20 transition-all">
                              <div className="flex items-center space-x-6">
                                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm"><FileText size={24} /></div>
                                 <div>
                                    <p className="text-[10px] font-black text-secondary/20 uppercase tracking-widest leading-none mb-1">IIT Bombay - MBA</p>
-                                   <p className="text-[14px] font-black text-typography uppercase tracking-tight">Application #APP-882103</p>
+                                   <p className="text-[14px] font-black text-typography uppercase tracking-tight">Application #APp-582103</p>
                                    <span className="inline-block mt-2 text-[9px] font-black bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full uppercase tracking-tighter">Paid & Submitted</span>
                                 </div>
                              </div>
@@ -227,15 +227,15 @@ export default function StudentDetail({ params }: { params: { id: string } }) {
               </div>
            </div>
 
-           <div className="grid grid-cols-2 gap-8">
-              <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm flex items-center justify-between">
+           <div className="grid grid-cols-2 gap-5">
+              <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between">
                  <div>
                     <p className="text-4xl font-black text-typography tracking-tighter">1,240</p>
                     <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest mt-1">Total Profile Views</p>
                  </div>
                  <trendingUp size={32} className="text-emerald-500 bg-emerald-50 p-2 rounded-xl" />
               </div>
-              <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm flex items-center justify-between">
+              <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between">
                  <div>
                     <p className="text-4xl font-black text-typography tracking-tighter">₹2.4k</p>
                     <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest mt-1">Total Platform spend</p>

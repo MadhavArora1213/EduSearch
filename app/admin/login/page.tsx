@@ -39,14 +39,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f1f5f9] flex items-center justify-center p-4 sm:p-8 font-montserrat">
+    <div className="min-h-screen bg-[#f1f5f9] flex items-center justify-center p-4 sm:p-5 font-montserrat">
       
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-2 bg-white rounded-[2rem] shadow-2xl overflow-hidden min-h-[600px]">
         
         {/* Left Side - Access Form */}
-        <div className="p-10 sm:p-14 flex flex-col justify-center relative">
+        <div className="p-6 sm:p-14 flex flex-col justify-center relative">
            <div className="w-full max-w-sm mx-auto">
-              <div className="mb-10">
+              <div className="mb-6">
                  <div className="flex items-center space-x-3 mb-8">
                     <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-md">
                        <span className="text-white font-bold text-xl leading-none">E</span>
@@ -121,7 +121,7 @@ export default function LoginPage() {
         <div className="hidden lg:flex flex-col justify-center p-14 bg-primary text-white relative h-full">
            
            <div className="relative z-10 max-w-md mx-auto">
-              <div className="mb-10 text-white/50">
+              <div className="mb-6 text-white/50">
                  <ShieldCheck size={48} strokeWidth={1.5} />
               </div>
               <h2 className="text-4xl font-extrabold tracking-tight leading-[1.2] mb-6">

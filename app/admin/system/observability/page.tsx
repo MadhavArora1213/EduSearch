@@ -46,7 +46,7 @@ export default function GrafanaHubPage() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Critical RAM Alert Banner */}
       {ramUsage > 85 && (
          <div className="bg-rose-600 p-6 rounded-[2rem] flex items-center justify-between text-white animate-pulse shadow-xl shadow-rose-600/20 relative overflow-hidden group">
@@ -69,7 +69,7 @@ export default function GrafanaHubPage() {
       )}
 
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -94,7 +94,7 @@ export default function GrafanaHubPage() {
         </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          {/* Side Navigation */}
          <div className="col-span-12 lg:col-span-3 space-y-4">
             {dashboards.map((dash) => (
@@ -141,8 +141,8 @@ export default function GrafanaHubPage() {
                </button>
             ))}
 
-            <div className="bg-slate-900 p-8 rounded-[3rem] text-white mt-10 relative overflow-hidden">
-               <div className="absolute -top-10 -left-10 w-32 h-32 bg-primary/5 blur-2xl rounded-full" />
+            <div className="bg-slate-900 p-5 rounded-2xl text-white mt-10 relative overflow-hidden">
+               <div className="absolute -top-6 -left-10 w-32 h-32 bg-primary/5 blur-2xl rounded-full" />
                <div className="relative z-10">
                   <h4 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">Operational Discipline</h4>
                   <div className="flex items-center space-x-4 mb-6">
@@ -159,8 +159,8 @@ export default function GrafanaHubPage() {
 
          {/* Embedded Iframe View */}
          <div className="col-span-12 lg:col-span-9 space-y-8">
-            <div className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[800px] relative">
-               <div className="p-8 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+            <div className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[800px] relative">
+               <div className="p-5 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30">
                   <div className="flex items-center space-x-6">
                      <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm ring-1 ring-gray-100">
                          {(() => {
@@ -191,14 +191,14 @@ export default function GrafanaHubPage() {
                         <LayoutDashboard size={42} className="text-primary animate-pulse" />
                      </div>
                      <h4 className="text-3xl font-black tracking-tighter mb-4 italic uppercase">Grafana Instance {activeDashboard.toUpperCase()}</h4>
-                     <code className="text-[11px] font-bold text-slate-500 bg-black/40 px-6 py-2 rounded-full border border-white/5 uppercase tracking-widest mb-10 block w-fit mx-auto italic">
+                     <code className="text-[11px] font-bold text-slate-500 bg-black/40 px-6 py-2 rounded-full border border-white/5 uppercase tracking-widest mb-6 block w-fit mx-auto italic">
                         Proxying https://grafana.internal.edusearch.com/d/{activeDashboard}-node
                      </code>
                      <p className="text-sm font-bold text-slate-400 capitalize underline decoration-primary/30 max-w-lg mx-auto leading-relaxed">
                         Iframe embed would render here in production environment using signed JWT auth cookie for security.
                      </p>
                      
-                     <div className="mt-12 grid grid-cols-3 gap-8 w-full max-w-2xl">
+                     <div className="mt-12 grid grid-cols-3 gap-5 w-full max-w-2xl">
                         {[
                            { label: "Net Load", val: "Lo-Wait" },
                            { label: "Disk I/O", val: "Nominal" },
@@ -213,7 +213,7 @@ export default function GrafanaHubPage() {
                   </div>
                </div>
 
-               <div className="p-10 border-t border-gray-50 flex items-center justify-between text-[11px] font-bold text-secondary/30 uppercase tracking-widest italic bg-snow-pearl/50">
+               <div className="p-6 border-t border-gray-50 flex items-center justify-between text-[11px] font-bold text-secondary/30 uppercase tracking-widest italic bg-snow-pearl/50">
                   <div className="flex items-center space-x-3">
                      <Eye size={16} />
                      <span>Secure Telemetry Channel Active • Audited by Super Admin</span>

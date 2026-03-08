@@ -35,7 +35,8 @@ export default function AdminLayout({
       )}
 
       <div className="flex-1 flex flex-col h-full relative overflow-y-auto no-scrollbar">
-        <main className="p-4 md:p-5 lg:p-6 flex-1 relative bg-snow-pearl/30 pb-20 lg:pb-6">
+        <Navbar onMenuClick={() => setIsSidebarOpen(true)} />
+        <main className="p-4 md:p-5 lg:p-6 flex-1 relative bg-snow-pearl/30 pb-20 lg:pb-4">
           <div className="max-w-[1800px] mx-auto animate-in fade-in slide-in-from-bottom-1 duration-400 overflow-x-hidden">
             {children}
           </div>

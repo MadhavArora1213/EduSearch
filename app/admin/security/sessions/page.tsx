@@ -75,9 +75,9 @@ export default function SessionManagementPage() {
   ];
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -103,7 +103,7 @@ export default function SessionManagementPage() {
       </section>
 
       {/* Control Tabs */}
-      <div className="flex items-center space-x-4 bg-white p-2 rounded-[2.5rem] border border-gray-100 shadow-sm w-fit">
+      <div className="flex items-center space-x-4 bg-white p-2 rounded-2xl border border-gray-100 shadow-sm w-fit">
          {[
            { id: 'ADMIN', label: 'Admin Terminal Sessions', icon: Lock },
            { id: 'STUDENT_ANOMALY', label: 'Compromise Alerts', icon: ShieldAlert }
@@ -122,9 +122,9 @@ export default function SessionManagementPage() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10">
-         <div className="col-span-12 lg:col-span-9 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden">
-            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
+      <div className="grid grid-cols-12 gap-6">
+         <div className="col-span-12 lg:col-span-9 bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+            <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">{activeTab === 'ADMIN' ? 'Active Administrative Nodes' : 'Identity Theft Prevention'}</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic">
@@ -151,7 +151,7 @@ export default function SessionManagementPage() {
                   <tbody className="divide-y divide-gray-50">
                      {(activeTab === 'ADMIN' ? sessions : anomalies).map((ses) => (
                         <tr key={ses.id} className="group hover:bg-snow-pearl/30 transition-all">
-                           <td className="px-10 py-8">
+                           <td className="px-10 py-4">
                               <div className="flex items-center space-x-6">
                                  <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all">
                                     <User size={24} />
@@ -165,7 +165,7 @@ export default function SessionManagementPage() {
                                  </div>
                               </div>
                            </td>
-                           <td className="px-10 py-8">
+                           <td className="px-10 py-4">
                               <div className="flex flex-col space-y-1">
                                  <div className="flex items-center space-x-2 text-[12px] font-black text-typography uppercase">
                                     {ses.device.includes('Mac') || ses.device.includes('PC') ? <Monitor size={14} /> : <Smartphone size={14} />}
@@ -174,7 +174,7 @@ export default function SessionManagementPage() {
                                  <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest italic">{ses.browser}</p>
                               </div>
                            </td>
-                           <td className="px-10 py-8">
+                           <td className="px-10 py-4">
                               <div className="flex flex-col space-y-1">
                                  <div className="flex items-center space-x-2 text-[12px] font-black text-typography italic">
                                     <Clock size={14} className="text-secondary/20" />
@@ -183,7 +183,7 @@ export default function SessionManagementPage() {
                                  <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">{ses.lastSeen}</p>
                               </div>
                            </td>
-                           <td className="px-10 py-8">
+                           <td className="px-10 py-4">
                               <span className={cn(
                                  "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
                                  ses.anomaly ? "bg-rose-50 text-rose-600 border border-rose-100 animate-pulse" : "bg-emerald-50 text-emerald-600 border border-emerald-100"
@@ -192,7 +192,7 @@ export default function SessionManagementPage() {
                                  <span>{ses.anomaly ? 'Identity Conflict' : 'Verified Hash'}</span>
                               </span>
                            </td>
-                           <td className="px-10 py-8 text-right">
+                           <td className="px-10 py-4 text-right">
                               <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-rose-600 hover:text-white transition-all shadow-sm group/btn" title="Force Logout (Revoke JWT)">
                                  <LogOut size={18} />
                               </button>
@@ -205,8 +205,8 @@ export default function SessionManagementPage() {
          </div>
 
          <div className="col-span-12 lg:col-span-3 space-y-8">
-            <div className="bg-slate-900 p-10 rounded-[3rem] text-white overflow-hidden relative group">
-               <div className="absolute top-0 right-0 p-8 opacity-10">
+            <div className="bg-slate-900 p-6 rounded-2xl text-white overflow-hidden relative group">
+               <div className="absolute top-0 right-0 p-5 opacity-10">
                   <Fingerprint size={80} className="text-primary" />
                </div>
                <h4 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30">Auth Intelligence</h4>
@@ -226,7 +226,7 @@ export default function SessionManagementPage() {
                </div>
             </div>
 
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
+            <div className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
                <div className="flex items-center justify-between">
                   <HelpCircle size={28} className="text-secondary/10 group-hover:text-primary transition-colors" />
                   <AlertTriangle size={18} className="text-amber-500" />

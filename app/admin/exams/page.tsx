@@ -65,9 +65,9 @@ export default function ExamsListingPage() {
   });
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -107,28 +107,28 @@ export default function ExamsListingPage() {
       </section>
 
       {/* Grid of Exams */}
-      <section className="grid grid-cols-12 gap-8 lg:gap-10">
+      <section className="grid grid-cols-12 gap-5 lg:gap-6">
          {/* Filter Card */}
-         <div className="col-span-12 lg:col-span-3 space-y-6">
-            <div className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm sticky top-28">
-               <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary/40 mb-8 flex items-center space-x-3">
-                  <ListFilter size={16} />
-                  <span>Advanced Filters</span>
+         <div className="col-span-12 lg:col-span-3">
+            <div className="bg-white p-5 rounded-xl border border-gray-50 shadow-sm sticky top-28">
+               <h3 className="text-[9px] font-black uppercase tracking-[0.2em] text-secondary/30 mb-6 flex items-center space-x-2">
+                  <ListFilter size={14} />
+                  <span>Filters</span>
                </h3>
                
-               <div className="space-y-8">
-                  <div className="space-y-4">
-                     <label className="text-[9px] font-black uppercase tracking-widest text-secondary/30">Exam Level</label>
-                     <div className="flex flex-col space-y-2">
+               <div className="space-y-6">
+                  <div className="space-y-3">
+                     <label className="text-[9px] font-black uppercase tracking-widest text-secondary/20">Exam Level</label>
+                     <div className="flex flex-col space-y-1.5">
                         {["All Levels", "National", "State"].map((lvl) => (
                            <button 
                              key={lvl}
                              onClick={() => setSelectedLevel(lvl)}
                              className={cn(
-                               "w-full px-5 py-3.5 rounded-xl text-left text-xs font-black uppercase tracking-widest transition-all",
+                               "w-full px-4 py-2.5 rounded-lg text-left text-[11px] font-black uppercase tracking-widest transition-all",
                                selectedLevel === lvl 
-                                 ? "bg-primary text-white shadow-lg shadow-primary/20" 
-                                 : "bg-gray-50 text-secondary/40 hover:bg-white hover:text-primary hover:shadow-md"
+                                 ? "bg-primary text-white shadow-md shadow-primary/10" 
+                                 : "bg-gray-50 text-secondary/40 hover:bg-white hover:text-primary"
                              )}
                            >
                               {lvl}
@@ -137,9 +137,9 @@ export default function ExamsListingPage() {
                      </div>
                   </div>
 
-                  <div className="pt-8 border-t border-gray-50 space-y-4">
-                     <label className="text-[9px] font-black uppercase tracking-widest text-secondary/30">Current Status</label>
-                     <div className="space-y-4">
+                  <div className="pt-6 border-t border-gray-50 space-y-3">
+                     <label className="text-[9px] font-black uppercase tracking-widest text-secondary/20">Exam Status</label>
+                     <div className="space-y-3">
                         {["Active", "Completed", "Results Declared"].map((s) => (
                           <label key={s} className="flex items-center space-x-3 cursor-pointer group">
                              <div className="w-5 h-5 rounded-lg border-2 border-gray-100 group-hover:border-primary/30 transition-all flex items-center justify-center bg-gray-50">
@@ -166,21 +166,21 @@ export default function ExamsListingPage() {
                />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {loading ? [...Array(4)].map((_, i) => (
-                <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-gray-50 animate-pulse h-[350px]" />
+                <div key={i} className="bg-white p-6 rounded-xl border border-gray-50 animate-pulse h-[300px]" />
               )) : filteredExams.map((exam) => (
-                <div key={exam.id} className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-black/5 transition-all group overflow-hidden relative flex flex-col justify-between">
+                <div key={exam.id} className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all group overflow-hidden relative flex flex-col justify-between">
                    {/* Decorative elements */}
-                   <div className="absolute -right-12 -top-12 w-48 h-48 bg-primary/5 rounded-full group-hover:scale-125 transition-transform duration-1000 blur-2xl" />
+                   <div className="absolute -right-10 -top-10 w-32 h-32 bg-primary/5 rounded-full group-hover:scale-125 transition-transform duration-1000 blur-xl" />
                    
                    <div>
-                     <div className="flex justify-between items-start mb-8 relative z-10">
-                        <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center border border-gray-100 group-hover:scale-110 group-hover:rotate-3 transition-all">
-                           <span className="text-2xl font-black text-primary italic">{exam.name[0]}</span>
+                     <div className="flex justify-between items-start mb-6 relative z-10">
+                        <div className="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center border border-gray-100 group-hover:scale-110 transition-all">
+                           <span className="text-xl font-black text-primary italic">{exam.name[0]}</span>
                         </div>
                         <div className={cn(
-                          "px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-[0.2em] border",
+                          "px-3 py-1.5 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border",
                           exam.level === 'NATIONAL' 
                             ? "bg-emerald-50 text-emerald-600 border-emerald-100" 
                             : "bg-blue-50 text-blue-600 border-blue-100"
@@ -189,10 +189,10 @@ export default function ExamsListingPage() {
                         </div>
                      </div>
 
-                     <h3 className="text-2xl font-black text-typography tracking-tighter mb-1 mt-2 group-hover:text-primary transition-colors">{exam.name}</h3>
-                     <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.1em] mb-10 truncate border-l-2 border-primary/10 pl-3 leading-none">{exam.full_name || "Official Examination Authority"}</p>
+                     <h3 className="text-xl font-black text-typography tracking-tighter mb-1 mt-2 group-hover:text-primary transition-colors">{exam.name}</h3>
+                     <p className="text-secondary/40 text-[9px] font-black uppercase tracking-[0.1em] mb-6 truncate border-l-2 border-primary/10 pl-2 leading-none">{exam.full_name || "Official Examination Authority"}</p>
                      
-                     <div className="grid grid-cols-3 gap-4 pt-8 border-t border-gray-50">
+                     <div className="grid grid-cols-3 gap-2 pt-6 border-t border-gray-50">
                         <div>
                            <p className="text-xl font-black text-typography leading-none">{exam._count.cutoffs}</p>
                            <div className="flex items-center space-x-1.5 mt-2 text-[9px] font-black text-secondary/30 uppercase tracking-widest">
@@ -219,12 +219,12 @@ export default function ExamsListingPage() {
                      </div>
                    </div>
 
-                   <div className="mt-10 flex items-center space-x-3 relative z-10">
-                      <button onClick={() => alert(`Opening Advanced Rank Predictor... for: ${exam.name}`)} className="flex-1 py-4.5 bg-gray-50 text-secondary/60 text-[10px] font-black uppercase tracking-widest rounded-2xl hover:bg-primary hover:text-white hover:shadow-xl hover:shadow-primary/20 transition-all active:scale-95 border border-transparent hover:border-white/10">
+                   <div className="mt-8 flex items-center space-x-2 relative z-10">
+                      <button onClick={() => alert(`Opening Advanced Rank Predictor... for: ${exam.name}`)} className="flex-1 py-3 bg-gray-50 text-secondary/60 text-[9px] font-black uppercase tracking-widest rounded-xl hover:bg-primary hover:text-white transition-all active:scale-95 border border-transparent">
                          Manage Cutoffs
                       </button>
-                      <button onClick={() => window.open(`/exams/${exam.id}`, '_blank')} title="View Public Page" className="w-14 h-14 bg-gray-50 text-secondary/30 rounded-2xl flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-all active:scale-95 border border-transparent shadow-sm">
-                         <ExternalLink size={16} />
+                      <button onClick={() => window.open(`/exams/${exam.id}`, '_blank')} title="View Public Page" className="w-11 h-11 bg-gray-50 text-secondary/30 rounded-xl flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-all active:scale-95 border border-transparent shadow-sm">
+                         <ExternalLink size={14} />
                       </button>
                    </div>
                 </div>

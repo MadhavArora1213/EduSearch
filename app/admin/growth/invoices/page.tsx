@@ -62,9 +62,9 @@ export default function InvoicesPage() {
   ]);
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -94,14 +94,14 @@ export default function InvoicesPage() {
       </section>
 
       {/* Analytics Strip */}
-      <div className="grid grid-cols-4 gap-8">
+      <div className="grid grid-cols-4 gap-5">
          {[
            { label: "Total Receivables", value: "₹18.4L", trend: "14 Drafts", icon: CreditCard, color: "text-primary bg-primary/5" },
            { label: "Collection Rate", value: "92.4%", trend: "+2.1%", icon: CheckCircle2, color: "text-emerald-500 bg-emerald-50" },
            { label: "Overdue Count", value: "04", trend: "High Priority", icon: AlertTriangle, color: "text-rose-500 bg-rose-50" },
            { label: "Days Sales Out", value: "8.2d", trend: "-1.2d", icon: Clock, color: "text-amber-500 bg-amber-50" }
          ].map((s, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm group hover:border-primary/20 transition-all">
               <div className="flex items-center justify-between mb-4">
                  <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110", s.color)}>
                     <s.icon size={22} />
@@ -115,8 +115,8 @@ export default function InvoicesPage() {
       </div>
 
       {/* Invoice Table */}
-      <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
+        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="flex items-center space-x-4">
               <div className="bg-snow-pearl px-4 py-2 rounded-xl flex items-center space-x-3 border border-gray-100">
                  <CalendarDays size={18} className="text-secondary/20" />
@@ -154,7 +154,7 @@ export default function InvoicesPage() {
               <tbody className="divide-y divide-gray-50">
                 {invoices.map((inv) => (
                   <tr key={inv.id} className="group hover:bg-snow-pearl/30 transition-all">
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <div className="flex items-center space-x-6">
                           <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-primary group-hover:bg-primary/5 transition-all">
                              <FileText size={24} />
@@ -168,19 +168,19 @@ export default function InvoicesPage() {
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <p className="text-[12px] font-black text-typography">{inv.month}</p>
                        <p className="text-[10px] font-bold text-secondary/20 uppercase tracking-widest mt-1 italic">Post-paid Cycle</p>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <p className="text-[12px] font-black text-typography">{inv.leadsDelivered} <span className="text-[9px] font-bold text-secondary/20">Leads Concluded</span></p>
                        <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-1 underline decoration-primary/10">Yield: ₹{inv.cplRate}/lead</p>
                     </td>
-                    <td className="px-10 py-8 text-center">
+                    <td className="px-10 py-4 text-center">
                        <p className="text-xl font-black text-typography tracking-tighter">₹{(inv.amount/1000).toFixed(1)}k</p>
                        <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-1">Net Payable</p>
                     </td>
-                    <td className="px-10 py-8">
+                    <td className="px-10 py-4">
                        <span className={cn(
                           "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
                           inv.status === 'PAID' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
@@ -192,7 +192,7 @@ export default function InvoicesPage() {
                           <span>{inv.status}</span>
                        </span>
                     </td>
-                    <td className="px-10 py-8 text-right">
+                    <td className="px-10 py-4 text-right">
                        <div className="flex items-center justify-end space-x-2">
                           <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all shadow-sm group/btn" title="Download PDF Invoice">
                              <Download size={18} />
@@ -211,7 +211,7 @@ export default function InvoicesPage() {
            </table>
         </div>
 
-        <div className="p-10 border-t border-gray-50 bg-snow-pearl/30 flex items-center justify-between">
+        <div className="p-6 border-t border-gray-50 bg-snow-pearl/30 flex items-center justify-between">
            <div className="flex items-center space-x-4">
               <p className="text-xs font-black text-secondary/40 uppercase tracking-widest italic lowercase underline decoration-primary/10">Automatic Reconciliation Active</p>
            </div>

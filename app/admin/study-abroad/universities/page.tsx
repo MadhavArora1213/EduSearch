@@ -73,9 +73,9 @@ export default function UniversityCMSPage() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-10 font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -105,9 +105,9 @@ export default function UniversityCMSPage() {
       </section>
 
       {/* Global Metadata & Exchange Hub */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-         <div className="md:col-span-2 bg-slate-900 p-8 rounded-[2.5rem] text-white flex items-center justify-between overflow-hidden relative group">
-            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
+         <div className="md:col-span-2 bg-slate-900 p-5 rounded-2xl text-white flex items-center justify-between overflow-hidden relative group">
+            <div className="absolute top-0 right-0 p-5 opacity-5 group-hover:scale-110 transition-transform duration-1000">
                <Globe size={100} className="text-primary" />
             </div>
             <div className="relative z-10 flex items-center space-x-8">
@@ -129,7 +129,7 @@ export default function UniversityCMSPage() {
            { label: "Active Global Nodes", value: universities.length, trend: "Live Count", icon: Building2, color: "text-primary bg-primary/5" },
            { label: "Partner Yield/Unit", value: "12.8%", trend: "High", icon: GraduationCap, color: "text-emerald-500 bg-emerald-50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all cursor-pointer">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all cursor-pointer">
               <div>
                  <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest italic mb-2 leading-none">{kpi.label}</p>
                  <p className="text-4xl font-black text-typography tracking-tighter leading-none">{kpi.value.toLocaleString()}</p>
@@ -143,8 +143,8 @@ export default function UniversityCMSPage() {
       </div>
 
       {/* Main Listing */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
+         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="relative flex-1 max-w-xl italic">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input 
@@ -169,12 +169,12 @@ export default function UniversityCMSPage() {
             <table className="w-full text-left">
                <thead className="bg-snow-pearl/50 border-b border-gray-100 italic">
                   <tr>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Institution Profile</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">QS Rank</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Acceptance Rate</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Min. IELTS</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Avg. Tuition (INR)</th>
-                     <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right italic">Status & Commit</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Institution Profile</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">QS Rank</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Acceptance Rate</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Min. IELTS</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Avg. Tuition (INR)</th>
+                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right italic">Status & Commit</th>
                   </tr>
                </thead>
                <tbody className="divide-y divide-gray-50 italic">
@@ -249,8 +249,8 @@ export default function UniversityCMSPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white relative overflow-hidden italic font-montserrat">
-            <div className="absolute top-0 right-0 p-10 opacity-5">
+         <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white relative overflow-hidden italic font-montserrat">
+            <div className="absolute top-0 right-0 p-6 opacity-5">
                <HardDrive size={100} className="text-primary" />
             </div>
             <div className="flex items-center space-x-6 relative z-10 italic">

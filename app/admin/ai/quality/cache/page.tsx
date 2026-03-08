@@ -40,9 +40,9 @@ export default function RedisCacheAnalytics() {
   ]);
 
   return (
-    <div className="space-y-10 font-montserrat italic">
+    <div className="space-y-6 font-montserrat italic">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100 italic">
         <div>
            <div className="flex items-center space-x-3 mb-2 italic">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -71,15 +71,15 @@ export default function RedisCacheAnalytics() {
       </section>
 
       {/* Cache Yield Summary */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5">
          {[
             { label: "Cache Hit Rate", value: "68.4%", sub: "+4.2% Growth", icon: Sparkles, color: "text-emerald-500 bg-emerald-50", trend: "+4.2%" },
             { label: "Ollama Calls Saved", value: "84,202", sub: "Last 30 Days", icon: Zap, color: "text-primary bg-primary/5", trend: "+12.4%" },
             { label: "Redis Memory Use", value: "1.24 GB", sub: "LRU Eviction Active", icon: HardDrive, color: "text-indigo-500 bg-indigo-50", trend: "Stable" },
             { label: "Response Speedup", value: "98.2%", sub: "vs Local Inference", icon: MousePointer2, color: "text-amber-500 bg-amber-50", trend: "Peak" }
          ].map((s, i) => (
-           <div key={i} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform">
+           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer overflow-hidden">
+              <div className="absolute top-0 right-0 p-5 opacity-5 group-hover:scale-110 transition-transform">
                  <s.icon size={48} className={s.color} />
               </div>
               <p className="text-4xl font-black text-typography tracking-tighter capitalize leading-none mb-1 italic">{s.value}</p>
@@ -92,10 +92,10 @@ export default function RedisCacheAnalytics() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10">
+      <div className="grid grid-cols-12 gap-6">
          {/* Top Cached Patterns */}
-         <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-100 shadow-sm overflow-hidden flex flex-col italic">
-            <div className="p-10 border-b border-gray-100 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
+         <div className="col-span-12 lg:col-span-8 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col italic">
+            <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
                <div className="flex items-center space-x-6">
                   <div className="w-14 h-14 bg-indigo-500 text-white rounded-2xl flex items-center justify-center shadow-xl shadow-indigo-500/20">
                      <Layers size={28} />
@@ -124,7 +124,7 @@ export default function RedisCacheAnalytics() {
                   <tbody className="divide-y divide-gray-50">
                     {queries.map((q) => (
                       <tr key={q.id} className="group hover:bg-snow-pearl/30 transition-all">
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <div className="flex items-center space-x-6">
                               <div className="w-12 h-12 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:bg-primary/5 group-hover:text-primary transition-all shadow-inner">
                                  <Database size={22} />
@@ -132,20 +132,20 @@ export default function RedisCacheAnalytics() {
                               <h4 className="text-[13px] font-black text-typography leading-tight lowercase underline decoration-secondary/10 tracking-tight truncate w-[250px]">"{q.pattern}"</h4>
                            </div>
                         </td>
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <p className="text-lg font-black text-typography tracking-tighter">{q.hits.toLocaleString()}</p>
                            <p className="text-[9px] font-bold text-emerald-500 uppercase italic">High Yield Yield</p>
                         </td>
-                        <td className="px-10 py-8">
+                        <td className="px-10 py-4">
                            <div className="flex items-center space-x-2 text-[12px] font-bold text-typography italic">
                               <Clock size={14} className="text-secondary/20" />
                               <span>{q.ttl}</span>
                            </div>
                         </td>
-                        <td className="px-10 py-8 text-center text-[13px] font-black text-secondary/40">
+                        <td className="px-10 py-4 text-center text-[13px] font-black text-secondary/40">
                            {q.size}
                         </td>
-                        <td className="px-10 py-8 text-right">
+                        <td className="px-10 py-4 text-right">
                            <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-rose-500 hover:text-white transition-all shadow-sm group/btn" title="Evict Key">
                               <Trash2 size={18} />
                            </button>
@@ -155,20 +155,20 @@ export default function RedisCacheAnalytics() {
                   </tbody>
                </table>
             </div>
-            <div className="p-10 border-t border-gray-50 italic text-center text-secondary/20 text-[9px] font-black uppercase tracking-widest bg-snow-pearl/10">
+            <div className="p-6 border-t border-gray-50 italic text-center text-secondary/20 text-[9px] font-black uppercase tracking-widest bg-snow-pearl/10">
                * Inference Cache Cluster: Redis-v7.2 Cluster Mode Enabled • Multi-DC Mirroring Disabled
             </div>
          </div>
 
          {/* Memory Intelligence Sidebar */}
          <div className="col-span-12 lg:col-span-4 space-y-8 italic">
-            <section className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-between relative overflow-hidden group min-h-[450px]">
-               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+            <section className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-between relative overflow-hidden group min-h-[450px]">
+               <div className="absolute top-0 right-0 p-5 opacity-10 group-hover:scale-110 transition-transform duration-1000">
                   <CloudRain size={160} className="text-primary" />
                </div>
                <div className="relative z-10">
-                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/20">Eviction Intelligence</h4>
-                  <div className="space-y-10">
+                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/20">Eviction Intelligence</h4>
+                  <div className="space-y-6">
                     {[
                       { label: "Volatile LRU (AI Cache)", val: 92, count: "840k keys" },
                       { label: "Persistent User State", val: 14, count: "12k keys" },
@@ -195,7 +195,7 @@ export default function RedisCacheAnalytics() {
                </div>
             </section>
 
-            <div className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-6 group hover:border-primary/20 transition-all cursor-pointer">
                <Activity size={28} className="text-secondary/10 group-hover:text-primary transition-colors" />
                <p className="text-[10px] font-black text-secondary/30 uppercase tracking-widest mb-1 italic">Total Cache Efficiency</p>
                <h4 className="text-xl font-black text-typography uppercase tracking-tight leading-tight italic lowercase">8.4M Tokens Preserved</h4>

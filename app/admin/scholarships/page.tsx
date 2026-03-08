@@ -54,9 +54,9 @@ export default function ScholarshipsPage() {
   };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -95,16 +95,16 @@ export default function ScholarshipsPage() {
       </section>
 
       {/* Main Grid View */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {loading ? [...Array(3)].map((_, i) => (
-          <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-gray-50 animate-pulse h-[350px]" />
+          <div key={i} className="bg-white p-6 rounded-2xl border border-gray-50 animate-pulse h-[350px]" />
         )) : scholarships.length === 0 ? (
-          <div className="col-span-12 py-20 bg-white rounded-[2.5rem] border border-gray-100 flex flex-col items-center">
+          <div className="col-span-12 py-20 bg-white rounded-2xl border border-gray-100 flex flex-col items-center">
              <AlertCircle size={48} className="text-secondary/10 mb-4" />
              <p className="text-xl font-black text-typography">No Scholarships Registered</p>
           </div>
         ) : scholarships.map((s) => (
-          <div key={s.id} className="bg-white p-10 rounded-[3rem] border border-gray-50 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all group relative overflow-hidden active:scale-[0.98]">
+          <div key={s.id} className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all group relative overflow-hidden active:scale-[0.98]">
              {/* Micro Decorative Element */}
              <div className="absolute -right-12 -top-12 w-48 h-48 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
              
@@ -163,7 +163,7 @@ export default function ScholarshipsPage() {
       </section>
 
       {/* Eligibility Rule Warning */}
-      <section className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm">
+      <section className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
          <div className="flex items-start space-x-6">
             <div className="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-500 border border-amber-100">
                <AlertCircle size={28} />
