@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { 
   BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, Legend, AreaChart, Area
 } from 'recharts';
@@ -43,6 +44,20 @@ const qualityTrendData = [
 ];
 
 export default function LeadPerformancePage() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="p-10 min-h-screen animate-pulse bg-gray-50/50 flex items-center justify-center text-[10px] font-black tracking-widest uppercase italic text-secondary/10">
+        Loading Performance Ledger...
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-10">
       {/* Header */}

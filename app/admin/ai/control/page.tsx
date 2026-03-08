@@ -58,6 +58,13 @@ const chartData = [
 export default function AiControlCenterPage() {
   const [models, setModels] = useState<AIModel[]>([]);
   const [heatmap, setHeatmap] = useState<HeatmapItem[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <div className="p-10 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">Auditing Ad Inventory...</div>;
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

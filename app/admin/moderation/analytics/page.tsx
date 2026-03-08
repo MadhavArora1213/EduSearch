@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { 
   BarChart3, 
   TrendingUp, 
@@ -57,6 +58,20 @@ const moderatorPerformance = [
 ];
 
 export default function ModerationAnalyticsPage() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="p-10 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">
+        Verifying Moderation Ledger...
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-12 pb-20">
       {/* Header */}

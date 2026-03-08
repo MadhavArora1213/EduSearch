@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell
 } from 'recharts';
@@ -39,6 +39,14 @@ interface AdSlot {
 }
 
 export default function SponsoredManagerPage() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <div className="p-10 min-h-screen bg-gray-50/20 animate-pulse flex items-center justify-center text-[10px] font-black uppercase tracking-[0.5em] text-secondary/10 italic">Verifying Moderation Ledger...</div>;
+
   const [slots] = useState<AdSlot[]>([
     {
       id: "SLOT-001",
@@ -203,12 +211,12 @@ export default function SponsoredManagerPage() {
                     </td>
                     <td className="px-10 py-8">
                        <div className="flex flex-col space-y-1">
-                          <div className="flex items-center space-x-2 text-[12px] font-black text-typography">
-                             <Calendar size={14} className="text-secondary/20" />
-                             <span>{new Date(slot.startDate).toLocaleDateString()}</span>
-                             <ChevronRight size={12} className="text-secondary/20" />
-                             <span>{new Date(slot.endDate).toLocaleDateString()}</span>
-                          </div>
+                           <div className="flex items-center space-x-2 text-[12px] font-black text-typography">
+                              <Calendar size={14} className="text-secondary/20" />
+                              <span>{mounted ? new Date(slot.startDate).toLocaleDateString() : '...'}</span>
+                              <ChevronRight size={12} className="text-secondary/20" />
+                              <span>{mounted ? new Date(slot.endDate).toLocaleDateString() : '...'}</span>
+                           </div>
                           <p className="text-[10px] font-bold text-typography/60 mt-2 italic">Rate: ₹{(slot.price/1000).toFixed(1)}k / month</p>
                        </div>
                     </td>

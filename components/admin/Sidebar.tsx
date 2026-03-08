@@ -35,7 +35,8 @@ import {
   RefreshCw,
   Layers,
   Bug,
-  LayoutGrid
+  LayoutGrid,
+  Smartphone
 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
@@ -47,33 +48,34 @@ const menuItems = [
   { id: "colleges", label: "Institution Hub", icon: GraduationCap, href: "/admin/colleges" },
   { id: "exams", label: "Exam Intelligence", icon: FileText, href: "/admin/exams" },
   
-  // Section 4.1 - Lead Management & Audit
+  // Section 4 - Operations & Leads
   { id: "leads", label: "Lead Monitor", icon: Target, href: "/admin/operations/leads" },
   { id: "disputes", label: "Dispute Workflow", icon: ShieldCheck, href: "/admin/operations/leads/disputes" },
-  { id: "attribution", label: "Source Intel", icon: Map, href: "/admin/operations/leads/attribution" },
+  
+  // Section 9 - Growth & Analytics
+  { id: "growth-analytics", label: "Growth Intel", icon: TrendingUp, href: "/admin/growth/analytics" },
+  { id: "funnels", label: "Conversion Funnel", icon: Zap, href: "/admin/growth/funnels" },
+  { id: "ab-testing", label: "A/B Test Lab", icon: LayoutGrid, href: "/admin/growth/ab-testing" },
 
-  // Section 4.2 - Revenue Ops
-  { id: "subscriptions", label: "Sub Matrix", icon: Zap, href: "/admin/growth/subscriptions" },
-  { id: "invoices", label: "Billing Engine", icon: CreditCard, href: "/admin/growth/invoices" },
-  { id: "sponsored", label: "Ad Inventory", icon: LayoutGrid, href: "/admin/growth/sponsored" },
-  { id: "commissions", label: "Affiliate Vault", icon: TrendingUp, href: "/admin/growth/commissions" },
+  // Section 10 - Study Abroad
+  { id: "study-abroad", label: "Global CMS", icon: Globe, href: "/admin/study-abroad/universities" },
+  { id: "partners", label: "Partner Vault", icon: Briefcase, href: "/admin/study-abroad/partners" },
 
-  // Section 5 - User & Security
-  { id: "users", label: "Student Registry", icon: Users, href: "/admin/users" },
-  { id: "dpdp", label: "DPDP Vault", icon: ShieldAlert, href: "/admin/users/dpdp" },
-  { id: "security", label: "Sec Terminal", icon: Fingerprint, href: "/admin/security/rate-limits" },
+  // Section 11 - Communication
+  { id: "notifications", label: "Email Engine", icon: MessageSquare, href: "/admin/notifications/email" },
+  { id: "sms-manager", label: "SMS Registry", icon: Smartphone, href: "/admin/notifications/sms" },
+  { id: "whatsapp", label: "Bot Control", icon: Globe, href: "/admin/notifications/whatsapp" },
+
+  // Section 12 - Security & Audit
+  { id: "audit", label: "Audit Ledger", icon: History, href: "/admin/security/audit" },
+  { id: "access-logs", label: "Access Shifts", icon: ShieldAlert, href: "/admin/security/access-logs" },
   { id: "rbac", label: "Auth Matrix", icon: Lock, href: "/admin/security/rbac" },
 
-  // Section 6 - Tech Ops & Infra
-  { id: "scraper", label: "Scraper Console", icon: Layers, href: "/admin/operations/scraper/manager" },
-  { id: "observability", label: "Grafana Command", icon: Activity, href: "/admin/system/observability" },
-  { id: "sentry", label: "Error Stack", icon: Bug, href: "/admin/system/sentry" },
-  { id: "backups", label: "Recovery Sentry", icon: HardDrive, href: "/admin/system/backups" },
-
+  // Tech & Content
   { id: "moderation", label: "Auto-Mod Rules", icon: ShieldCheck, href: "/admin/moderation/reviews" },
-  { id: "content", label: "Content Editor", icon: BookOpen, href: "/admin/content/articles" },
-  { id: "seo", label: "SEO Intelligence", icon: Globe, href: "/admin/seo/metadata" },
+  { id: "seo", label: "SEO Intelligence", icon: Search, href: "/admin/seo/metadata" },
   { id: "ai", label: "AI Ops Console", icon: Cpu, href: "/admin/ai/models/status" },
+  { id: "observability", label: "System Health", icon: Activity, href: "/admin/system/observability" },
 ];
 
 export function Sidebar() {

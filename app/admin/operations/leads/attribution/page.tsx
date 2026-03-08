@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, PieChart, Pie
 } from 'recharts';
@@ -46,6 +47,20 @@ const heatMapData = [
 ];
 
 export default function LeadAttributionPage() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="p-10 min-h-screen animate-pulse bg-gray-50/50 flex items-center justify-center text-[10px] font-black tracking-widest uppercase italic text-secondary/10">
+        Synchronizing Attribution Flow...
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-10">
       {/* Header */}
@@ -158,7 +173,7 @@ export default function LeadAttributionPage() {
                         <div 
                            className={cn("h-full transition-all duration-1000", item.count > 1500 ? "bg-primary" : "bg-primary/20")}
                            style={{ width: `${(item.count / 2100) * 100}%` }}
-                        />
+                         />
                         <span className="absolute inset-0 flex items-center px-4 text-[10px] font-black text-typography/40 italic">{item.count} Leads</span>
                      </div>
                   </div>

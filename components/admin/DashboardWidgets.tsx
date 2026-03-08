@@ -128,6 +128,9 @@ export function DashboardWidgets({
   moderationData: propModerationData,
   loading 
 }: any) {
+  const [mounted, setMounted] = useState(false);
+  const [localAlerts, setLocalAlerts] = useState<any[]>([]);
+
   const displayColleges = propTopColleges && propTopColleges.length > 0 ? propTopColleges : topColleges;
   const initialAlerts = propAlerts && propAlerts.length > 0 ? propAlerts : alerts;
   const displayActivityData = propActivityData && propActivityData.length > 0 ? propActivityData : activityData;
@@ -135,11 +138,12 @@ export function DashboardWidgets({
   const displayRevenueTrend = propRevenueTrend && propRevenueTrend.length > 0 ? propRevenueTrend : revenueTrend;
   const displayModerationData = propModerationData && propModerationData.length > 0 ? propModerationData : moderationData;
 
-  const [localAlerts, setLocalAlerts] = useState<any[]>([]);
-
   useEffect(() => {
+    setMounted(true);
     setLocalAlerts(initialAlerts);
   }, [initialAlerts]);
+
+  if (!mounted) return <div className="grid grid-cols-12 gap-8 mb-10 min-h-[600px] animate-pulse bg-gray-50/50 rounded-[3rem]" />;
 
   return (
     <div className="grid grid-cols-12 gap-8 mb-10">
@@ -398,7 +402,6 @@ export function QuickActions() {
     { label: "SEO Master Audit", icon: Globe, color: "bg-emerald-600", href: "/admin/seo/metadata" },
     { label: "AI Logic Control", icon: Zap, color: "bg-blue-600", href: "/admin/ai/quality/prompts" },
   ];
-;
 
   return (
     <div className="fixed bottom-24 lg:bottom-10 right-4 lg:right-10 flex flex-col space-y-4 items-end z-[90] group">

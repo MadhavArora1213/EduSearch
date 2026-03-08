@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import { 
   Users, 
   MessageSquare, 
@@ -38,7 +38,8 @@ function KpiCard({ label, value, trend, icon: Icon, color, secondary }: KpiProps
       <div className="flex justify-between items-start mb-4">
         <div className={cn(
           "w-12 h-12 rounded-xl flex items-center justify-center shadow-sm transition-transform group-hover:-rotate-6",
-          color.replace('bg-', 'bg-opacity-10 text-'),
+          color && color.replace('bg-', 'text-'),
+          color && `${color}/10`,
           color
         )}>
           <Icon size={22} className="text-white" />
