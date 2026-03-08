@@ -81,81 +81,80 @@ const tests: ABTest[] = [
 
 export default function ABTestManagerPage() {
   return (
-    <div className="space-y-6 font-montserrat italic not-italic font-montserrat">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-2">
+           <div className="flex items-center space-x-3 mb-1.5 font-montserrat">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
-                 <span className="text-[10px] font-black uppercase tracking-widest text-primary italic lowercase underline decoration-primary/10">Optimization Lab</span>
+                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary lowercase">Optimization Lab</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30">Statistical Significance Engine</span>
+              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Testing Intelligence</span>
            </div>
-           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-4xl font-black text-typography tracking-tighter leading-none mb-1">
              A/B <span className="text-primary italic">Testing</span>
            </h1>
-           <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
-              Executing Multi-Variant Experiments to Maximize ROI Node Yield
+           <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5 leading-none">
+              Executing Experiments to Maximize ROI Node Yield
            </p>
         </div>
-
+ 
         <div className="flex items-center space-x-4">
-           <button className="flex items-center space-x-2 px-8 py-4 bg-slate-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-xl shadow-slate-900/10 active:scale-95 group">
-              <Plus size={18} className="group-hover:rotate-90 transition-transform duration-500" />
+           <button className="flex items-center space-x-2 px-6 py-2.5 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-lg shadow-slate-900/10 active:scale-95 group">
+              <Plus size={16} className="group-hover:rotate-90 transition-transform duration-500" />
               <span>Initiate New Test</span>
            </button>
         </div>
       </section>
 
       {/* Main Test Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
          {tests.map((test) => (
-            <div key={test.id} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm group hover:border-primary/20 transition-all flex flex-col justify-between h-full relative overflow-hidden">
+            <div key={test.id} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm group hover:shadow-md transition-all flex flex-col justify-between h-full relative overflow-hidden">
                {test.winner !== 'NONE' && (
-                 <div className="absolute top-0 right-0 p-5 rotate-12 opacity-5 scale-150 group-hover:scale-[1.8] transition-transform duration-1000">
+                 <div className="absolute top-0 right-0 p-4 rotate-12 opacity-5 scale-150 group-hover:scale-[1.8] transition-transform duration-1000">
                     <CheckCircle2 size={100} className="text-emerald-500" />
                  </div>
                )}
                
                <div>
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-between mb-6">
                      <div className={cn(
-                       "flex items-center space-x-2 px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest italic",
-                       test.status === 'RUNNING' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" : "bg-snow-pearl text-secondary/30 border border-transparent"
+                       "flex items-center space-x-2 px-2.5 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest",
+                       test.status === 'RUNNING' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" : "bg-gray-50 text-secondary/30 border border-gray-100"
                      )}>
                         <div className={cn("w-1.5 h-1.5 rounded-full", test.status === 'RUNNING' && "bg-emerald-500 animate-pulse")} />
                         <span>{test.status}</span>
                      </div>
                      <button className="text-secondary/20 hover:text-primary transition-all">
-                        <MoreVertical size={18} />
+                        <MoreVertical size={16} />
                      </button>
                   </div>
-
-                  <p className="text-[10px] font-black text-primary uppercase tracking-widest italic lowercase decoration-primary/10 underline mb-2 italic">{test.type} Experiment</p>
-                  <h4 className="text-[15px] font-black text-typography tracking-tight leading-snug group-hover:text-primary transition-colors italic lowercase">{test.name}</h4>
-                  <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-2">Entry Date: {test.startDate} • {test.visitors.toLocaleString()} Participants</p>
-
-                  <div className="mt-10 space-y-6">
-                     <div className="space-y-2 group/v">
+ 
+                  <p className="text-[9px] font-black text-primary uppercase tracking-[0.1em] mb-1.5">{test.type} Experiment</p>
+                  <h4 className="text-sm font-black text-typography tracking-tight leading-snug group-hover:text-primary transition-colors uppercase">{test.name}</h4>
+                  <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-1.5">{test.startDate} • {test.visitors.toLocaleString()} Participants</p>
+ 
+                  <div className="mt-8 space-y-4">
+                     <div className="space-y-1.5 group/v">
                         <div className="flex justify-between items-end">
-                           <p className="text-[11px] font-bold text-secondary/40 uppercase tracking-widest">{test.variantA.label}</p>
-                           <p className="text-xl font-black text-typography italic tracking-tighter">{test.variantA.cr}%</p>
+                           <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest leading-none">{test.variantA.label}</p>
+                           <p className="text-lg font-black text-typography italic tracking-tighter leading-none">{test.variantA.cr}%</p>
                         </div>
-                        <div className="w-full h-1.5 bg-snow-pearl rounded-full overflow-hidden border border-gray-100">
+                        <div className="w-full h-1 bg-gray-50 rounded-full overflow-hidden">
                            <div className="h-full bg-slate-300" style={{ width: `${test.variantA.cr * 5}%` }} />
                         </div>
                      </div>
-                     <div className="space-y-2 group/v relative">
-                        {test.winner === 'B' && <Sparkles size={14} className="absolute -top-4 right-0 text-emerald-500 animate-bounce" />}
+                     <div className="space-y-1.5 group/v relative">
                         <div className="flex justify-between items-end">
-                           <p className="text-[11px] font-bold text-secondary/40 uppercase tracking-widest">{test.variantB.label}</p>
+                           <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest leading-none">{test.variantB.label}</p>
                            <p className={cn(
-                             "text-xl font-black italic tracking-tighter",
+                             "text-lg font-black italic tracking-tighter leading-none",
                              test.variantB.cr > test.variantA.cr ? "text-emerald-500" : "text-rose-500"
                            )}>{test.variantB.cr}%</p>
                         </div>
-                        <div className="w-full h-1.5 bg-snow-pearl rounded-full overflow-hidden border border-gray-100">
+                        <div className="w-full h-1 bg-gray-50 rounded-full overflow-hidden">
                            <div className={cn(
                              "h-full transition-all duration-1000",
                              test.variantB.cr > test.variantA.cr ? "bg-emerald-500" : "bg-rose-500"
@@ -165,56 +164,57 @@ export default function ABTestManagerPage() {
                   </div>
                </div>
 
-               <div className="mt-10 pt-10 border-t border-gray-50 flex items-center justify-between">
-                  <div className="flex flex-col">
-                     <span className="text-[8px] font-black text-secondary/20 uppercase tracking-widest mb-1 italic">Significance</span>
-                     <span className={cn(
-                       "text-[12px] font-black italic",
-                       test.confidence > 90 ? "text-emerald-500" : "text-amber-500"
-                     )}>{test.confidence}% Confident</span>
-                  </div>
-                  {test.winner !== 'NONE' ? (
-                     <button className="px-6 py-3 bg-primary text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:scale-[1.05] transition-all shadow-xl shadow-primary/20 flex items-center space-x-2">
-                        <Zap size={14} />
-                        <span>Promote {test.winner === 'A' ? 'A' : 'B'}</span>
-                     </button>
-                  ) : (
-                     <button className="px-6 py-3 bg-snow-pearl text-secondary/40 rounded-2xl text-[10px] font-black uppercase tracking-widest flex items-center space-x-2 italic">
-                        <Monitor size={14} />
-                        <span>View Live Performance</span>
-                     </button>
-                  )}
-               </div>
-            </div>
-         ))}
-      </div>
+
+                <div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-between">
+                   <div className="flex flex-col">
+                      <span className="text-[7px] font-black text-secondary/30 uppercase tracking-[0.2em] mb-1">Significance</span>
+                      <span className={cn(
+                        "text-[11px] font-black",
+                        test.confidence > 90 ? "text-emerald-500" : "text-amber-500"
+                      )}>{test.confidence}% Confident</span>
+                   </div>
+                   {test.winner !== 'NONE' ? (
+                      <button className="px-5 py-2.5 bg-primary text-white rounded-xl text-[9px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-primary/20 flex items-center space-x-1.5">
+                         <Zap size={12} />
+                         <span>Promote {test.winner === 'A' ? 'A' : 'B'}</span>
+                      </button>
+                   ) : (
+                      <button className="px-5 py-2.5 bg-gray-50 text-secondary/40 rounded-xl text-[9px] font-black uppercase tracking-widest flex items-center space-x-1.5 hover:bg-primary/5 hover:text-primary transition-all">
+                         <Monitor size={12} />
+                         <span>Live Data</span>
+                      </button>
+                   )}
+                </div>
+             </div>
+          ))}
+       </div>
 
       {/* Lab Stats Footnote */}
-      <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative font-montserrat italic not-italic">
-         <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:scale-110 transition-transform duration-1000">
-            <FlaskConical size={120} className="text-secondary/20" />
+      <section className="bg-slate-900 p-6 rounded-xl text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative">
+         <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+            <FlaskConical size={80} className="text-secondary/20" />
          </div>
-         <div className="flex items-center space-x-8 relative z-10">
-            <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-primary shadow-inner ring-1 ring-white/10 italic">
-               <TrendingUp size={28} />
+         <div className="flex items-center space-x-6 relative z-10">
+            <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-primary shadow-inner ring-1 ring-white/10">
+               <TrendingUp size={24} />
             </div>
             <div>
-               <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 italic underline decoration-primary/30">Cumulative Lab Impact</p>
-               <h4 className="text-3xl font-black text-white tracking-tighter leading-none italic">+24.8% <span className="text-emerald-500 text-sm not-italic ml-2 uppercase tracking-widest">Global CV Lift</span></h4>
+               <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.2em] mb-1.5">Lab Impact</p>
+               <h4 className="text-2xl font-black text-white tracking-tighter leading-none italic">+24.8% <span className="text-emerald-500 text-xs not-italic ml-2 uppercase tracking-widest">CV Lift</span></h4>
             </div>
          </div>
-         <div className="mt-8 md:mt-0 flex items-center space-x-12 relative z-10">
+         <div className="mt-6 md:mt-0 flex items-center space-x-10 relative z-10">
             <div className="flex flex-col">
-               <span className="text-xl font-black text-white italic tracking-tighter">12</span>
-               <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Active Tests</span>
+               <span className="text-lg font-black text-white italic tracking-tighter">12</span>
+               <span className="text-[7px] font-black text-slate-500 uppercase tracking-widest">Active</span>
             </div>
             <div className="flex flex-col">
-               <span className="text-xl font-black text-emerald-500 italic tracking-tighter">95%</span>
-               <span className="text-[8px] font-black text-slate-500 uppercase tracking-widest">Avg Sig Level</span>
+               <span className="text-lg font-black text-emerald-500 italic tracking-tighter">95%</span>
+               <span className="text-[7px] font-black text-slate-500 uppercase tracking-widest">Confidence</span>
             </div>
-            <div className="w-px h-10 bg-white/10 hidden md:block" />
-            <button className="px-8 py-4 bg-primary text-white rounded-[1.5rem] text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all shadow-xl shadow-primary/20 italic">
-               View Experiment Archives
+            <div className="w-px h-8 bg-white/10 hidden md:block" />
+            <button className="px-6 py-3 bg-primary text-white rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all shadow-lg shadow-primary/20">
+               Archive Hub
             </button>
          </div>
       </section>

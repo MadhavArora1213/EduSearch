@@ -130,7 +130,7 @@ export default function BlogCMSPage() {
               Managing Editorial Assets & Programmatic SEO
            </p>
         </div>
-
+ 
         <button 
           onClick={() => openEditor()}
           className="flex items-center space-x-2 px-6 py-2.5 bg-primary text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-primary/20"
@@ -154,8 +154,8 @@ export default function BlogCMSPage() {
                  <p className="text-2xl font-black text-typography tracking-tighter leading-none">{kpi.value}</p>
                  <span className="inline-block mt-2 text-[8px] font-black text-emerald-500 bg-emerald-50 px-2 py-0.5 rounded-full uppercase tracking-widest">{kpi.trend}</span>
               </div>
-              <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-105", kpi.color)}>
-                 <kpi.icon size={20} />
+              <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center transition-all group-hover:scale-105", kpi.color)}>
+                 <kpi.icon size={18} />
               </div>
            </div>
          ))}
@@ -201,14 +201,14 @@ export default function BlogCMSPage() {
                     <tr key={post.id} className="group hover:bg-gray-50/50 transition-all font-montserrat">
                        <td className="px-6 py-3">
                           <div className="flex items-center space-x-4">
-                             <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center shrink-0 border border-gray-100 text-secondary/20 group-hover:bg-primary group-hover:text-white transition-all">
+                             <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center shrink-0 border border-gray-100 text-secondary/20 group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
                                 <FileText size={18} />
                              </div>
                              <div>
-                                <h4 className="text-[13px] font-black text-typography uppercase tracking-tight group-hover:text-primary transition-colors leading-none underline decoration-primary/5">{post.title}</h4>
+                                <h4 className="text-[13px] font-black text-typography uppercase tracking-tight group-hover:text-primary transition-colors leading-none">{post.title}</h4>
                                 <div className="flex items-center space-x-2 text-[8px] font-black text-secondary/30 uppercase tracking-widest mt-1.5">
                                    <span>{post.slug}</span>
-                                   <div className="w-1 h-1 bg-secondary/10 rounded-full" />
+                                   <div className="w-1 h-1 bg-secondary/10 rounded-xl" />
                                    <span>ID: {post.id.slice(0, 8)}</span>
                                 </div>
                              </div>
@@ -265,23 +265,23 @@ export default function BlogCMSPage() {
       </section>
 
       {/* Quick Access Context Panel */}
-       <section className="bg-slate-900 p-8 rounded-xl text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative font-montserrat">
+       <section className="bg-slate-900 p-6 rounded-xl text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative font-montserrat">
           <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-1000">
              <Globe size={100} className="text-primary" />
           </div>
           <div className="flex items-center space-x-6 relative z-10">
-             <div className="w-14 h-14 bg-primary/20 text-primary rounded-xl flex items-center justify-center shadow-inner group-hover:rotate-12 transition-transform">
-                <BarChart3 size={24} />
+             <div className="w-12 h-12 bg-primary/20 text-primary rounded-xl flex items-center justify-center shadow-inner group-hover:rotate-12 transition-transform border border-primary/20">
+                <BarChart3 size={20} />
              </div>
              <div>
-                <h4 className="text-lg font-black text-white tracking-tight uppercase">Programmatic Growth Insight</h4>
-                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 max-w-lg">
-                   Top cluster: <span className="text-white">Maharashtra Institute Rankings</span>. Driving 14% of pipeline today.
+                <h4 className="text-base font-black text-white tracking-tight uppercase">Growth insight</h4>
+                <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-1.5 max-w-lg">
+                   Cluster: <span className="text-white">Maharashtra Institute Rankings</span>. Driving 14% of pipeline.
                 </p>
              </div>
           </div>
-          <button className="mt-6 md:mt-0 px-8 py-3 bg-white text-slate-900 rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-primary/20 relative z-10">
-             Analyze Traffic Heatmap
+          <button className="mt-4 md:mt-0 px-6 py-2.5 bg-white text-slate-900 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all shadow-lg relative z-10">
+             View Traffic Heatmap
           </button>
        </section>
 

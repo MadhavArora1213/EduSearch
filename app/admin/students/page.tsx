@@ -86,18 +86,18 @@ export default function StudentsManagementPage() {
              Student <span className="text-primary italic">Cloud</span>
            </h1>
            <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5 leading-none">
-              Managing {(students.length || 0).toLocaleString()} PROFILES
+              Managing {(students.length || 0).toLocaleString()} Registered Nodes
            </p>
         </div>
-
+ 
         <div className="flex items-center space-x-3">
-           <button className="flex items-center space-x-2 px-5 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-300 transition-all text-secondary/40">
+           <button className="flex items-center space-x-2 px-5 py-2.5 bg-white border border-gray-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:text-primary transition-all shadow-sm">
               <Download size={16} />
-              <span>Export Manifest</span>
+              <span>Export</span>
            </button>
            <button className="flex items-center space-x-2 px-6 py-2.5 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-slate-900/10">
               <Zap size={16} />
-              <span>Broadcast Pulse</span>
+              <span>Broadcast</span>
            </button>
         </div>
       </section>
@@ -135,18 +135,18 @@ export default function StudentsManagementPage() {
                  className="w-full bg-white border border-transparent pl-12 pr-6 py-2.5 rounded-xl text-[13px] font-bold outline-none focus:ring-4 focus:ring-primary/5 shadow-sm" 
                />
             </div>
-            <div className="flex items-center space-x-3 italic w-full lg:w-auto justify-between lg:justify-end">
-               <div className="flex items-center space-x-1.5 bg-gray-50 p-1 rounded-xl border border-gray-100">
-                  {["All", "Today", "Suspended"].map((p) => (
-                    <button key={p} className="px-4 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all">
-                       {p}
-                    </button>
-                  ))}
-               </div>
-               <button className="w-9 h-9 bg-white border border-gray-100 rounded-xl flex items-center justify-center text-secondary/20 hover:text-primary transition-all shadow-sm">
-                  <Filter size={14} />
-               </button>
-            </div>
+             <div className="flex items-center space-x-3 w-full lg:w-auto justify-between lg:justify-end">
+                <div className="flex items-center space-x-1 bg-gray-50 p-1 rounded-xl border border-gray-100">
+                   {["All", "Today", "Suspended"].map((p) => (
+                     <button key={p} className="px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all">
+                        {p}
+                     </button>
+                   ))}
+                </div>
+                <button className="w-9 h-9 bg-white border border-gray-100 rounded-xl flex items-center justify-center text-secondary/20 hover:text-primary transition-all shadow-sm">
+                   <Filter size={14} />
+                </button>
+             </div>
          </div>
 
          <div className="overflow-x-auto relative">
@@ -155,92 +155,92 @@ export default function StudentsManagementPage() {
                 <Loader2 className="w-10 h-10 text-primary animate-spin" />
               </div>
             )}
-            <table className="w-full text-left italic font-montserratnot-italic">
-               <thead className="bg-snow-pearl/50 border-b border-gray-100">
-                  <tr>
-                     <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Profile Node</th>
-                     <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Meta Bridge</th>
-                     <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Established</th>
-                     <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40 text-center">Engagement</th>
-                     <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40 text-right">Commit State</th>
-                  </tr>
-               </thead>
-               <tbody className="divide-y divide-gray-50 italic">
-                  {students.length === 0 && !loading && (
-                    <tr>
-                      <td colSpan={5} className="px-10 py-20 text-center text-secondary/30 font-black uppercase tracking-widest text-[10px]">No Student Entities Sequenced in Registry</td>
-                    </tr>
-                  )}
-                  {students.filter(s => s.name.toLowerCase().includes(searchTerm.toLowerCase())).map((student) => (
-                    <tr key={student.id} className="group hover:bg-snow-pearl/10 transition-all">
-                       <td className="px-6 py-3">
-                          <div className="flex items-center space-x-4">
-                             <div className="w-10 h-10 bg-gray-50 rounded-lg flex items-center justify-center text-secondary/10 group-hover:bg-primary group-hover:text-white transition-all border border-gray-100">
-                                <User size={20} />
-                             </div>
-                             <div>
-                                <h4 className="text-[13px] font-black text-typography uppercase leading-none group-hover:text-primary transition-colors underline decoration-primary/5">{student.name}</h4>
-                                <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-1">ID: {student.id.slice(0, 8)}</p>
-                             </div>
-                          </div>
-                       </td>
-                       <td className="px-6 py-3">
-                          <div className="space-y-1">
-                             <div className="flex items-center space-x-1.5 text-[11px] font-black text-typography">
-                                <Mail size={12} className="text-secondary/20" />
-                                <span>{student.email}</span>
-                             </div>
-                             <div className="flex items-center space-x-1.5 text-[11px] font-black text-secondary/30">
-                                <Phone size={12} className="text-secondary/20" />
-                                <span>{maskPhone(student.phone)}</span>
-                             </div>
-                          </div>
-                       </td>
-                       <td className="px-6 py-3">
-                          <p className="text-[12px] font-black text-typography uppercase">{new Date(student.created_at).toLocaleDateString('en-IN', { month: 'short', day: '2-digit', year: 'numeric' })}</p>
-                          <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest mt-0.5">Established</p>
-                       </td>
-                       <td className="px-6 py-3 text-center">
-                          <div className="inline-flex space-x-3 items-center">
-                             <div className="text-center">
-                                <p className="text-[14px] font-black text-typography">{student.reviews_count || 0}</p>
-                                <p className="text-[7px] font-bold text-secondary/20 uppercase tracking-tighter">REVIEWS</p>
-                             </div>
-                             <div className="w-px h-5 bg-gray-100" />
-                             <div className="text-center">
-                                <p className="text-[14px] font-black text-typography">{student.apps_count || 0}</p>
-                                <p className="text-[7px] font-bold text-secondary/20 uppercase tracking-tighter">LEADS</p>
-                             </div>
-                          </div>
-                       </td>
-                       <td className="px-6 py-3 text-right">
-                          <div className="flex items-center justify-end space-x-3">
-                             <span className={cn(
-                               "px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border",
-                               student.status === 'ACTIVE' ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-rose-50 text-rose-600 border-rose-100"
-                             )}>
-                                {student.status || 'ACTIVE'}
-                             </span>
-                             <button className="w-9 h-9 bg-white border border-gray-100 rounded-xl hover:bg-slate-900 hover:text-white transition-all flex items-center justify-center">
-                                <MoreVertical size={16} />
-                             </button>
-                          </div>
-                       </td>
-                    </tr>
-                  ))}
-               </tbody>
-            </table>
+             <table className="w-full text-left font-montserrat">
+                <thead className="bg-snow-pearl/50 border-b border-gray-100">
+                   <tr>
+                      <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Profile Node</th>
+                      <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Meta Bridge</th>
+                      <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40 text-center">Established</th>
+                      <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40 text-center border-l border-gray-50">Engagement</th>
+                      <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40 text-right">Commit State</th>
+                   </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-50">
+                   {students.length === 0 && !loading && (
+                     <tr>
+                       <td colSpan={5} className="px-10 py-20 text-center text-secondary/30 font-black uppercase tracking-widest text-[10px]">No Student Entities Sequenced in Registry</td>
+                     </tr>
+                   )}
+                   {students.filter(s => s.name.toLowerCase().includes(searchTerm.toLowerCase())).map((student) => (
+                     <tr key={student.id} className="group hover:bg-gray-50/30 transition-all">
+                        <td className="px-6 py-3">
+                           <div className="flex items-center space-x-4">
+                              <div className="w-10 h-10 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center text-secondary/20 group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
+                                 <User size={18} />
+                              </div>
+                              <div>
+                                 <h4 className="text-[13px] font-black text-typography uppercase leading-none group-hover:text-primary transition-colors">{student.name}</h4>
+                                 <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-1.5">ID: {student.id.slice(0, 8)}</p>
+                              </div>
+                           </div>
+                        </td>
+                        <td className="px-6 py-3">
+                           <div className="space-y-1.5">
+                              <div className="flex items-center space-x-1.5 text-[10px] font-black text-typography uppercase">
+                                 <Mail size={12} className="text-primary" />
+                                 <span>{student.email}</span>
+                              </div>
+                              <div className="flex items-center space-x-1.5 text-[9px] font-black text-secondary/30 uppercase tracking-widest">
+                                 <Smartphone size={12} />
+                                 <span>{maskPhone(student.phone)}</span>
+                              </div>
+                           </div>
+                        </td>
+                        <td className="px-6 py-3 text-center">
+                           <p className="text-[11px] font-black text-typography uppercase leading-none">{new Date(student.created_at).toLocaleDateString('en-IN', { month: 'short', day: '2-digit', year: 'numeric' })}</p>
+                           <p className="text-[8px] font-black text-secondary/20 uppercase tracking-widest mt-1.5 leading-none">Registered</p>
+                        </td>
+                        <td className="px-6 py-3 text-center border-l border-gray-50/50 bg-gray-50/20">
+                           <div className="inline-flex space-x-3 items-center">
+                              <div className="text-center">
+                                 <p className="text-[13px] font-black text-typography leading-none">{student.reviews_count || 0}</p>
+                                 <p className="text-[7px] font-bold text-secondary/20 uppercase tracking-widest mt-1 leading-none">Feed</p>
+                              </div>
+                              <div className="w-px h-5 bg-gray-200/50" />
+                              <div className="text-center">
+                                 <p className="text-[13px] font-black text-typography leading-none">{student.apps_count || 0}</p>
+                                 <p className="text-[7px] font-bold text-secondary/20 uppercase tracking-widest mt-1 leading-none">Ops</p>
+                              </div>
+                           </div>
+                        </td>
+                        <td className="px-6 py-3 text-right">
+                           <div className="flex items-center justify-end space-x-2">
+                              <span className={cn(
+                                "px-2.5 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border transition-all",
+                                student.status === 'ACTIVE' ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-rose-50 text-rose-600 border-rose-100"
+                              )}>
+                                 {student.status || 'ACTIVE'}
+                              </span>
+                              <button className="w-8 h-8 bg-white border border-gray-100 rounded-lg hover:bg-slate-900 hover:text-white transition-all flex items-center justify-center text-secondary/30">
+                                 <MoreVertical size={14} />
+                              </button>
+                           </div>
+                        </td>
+                     </tr>
+                   ))}
+                </tbody>
+             </table>
          </div>
 
-         <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat">
-            <div className="absolute top-0 right-0 p-6 opacity-5">
-               <Fingerprint size={100} className="text-primary" />
+         <div className="p-4 border-t border-gray-100 flex items-center justify-between bg-snow-pearl/30 relative overflow-hidden font-montserrat">
+            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+               <Fingerprint size={80} className="text-primary" />
             </div>
-            <div className="flex items-center space-x-6 relative z-10 italic">
-               <Activity size={18} className="text-emerald-500 animate-pulse" />
-               <p className="text-xs font-black text-secondary/40 uppercase tracking-widest italic font-black decoration-primary/10 underline">Identity Consensus Protocol: Online • DPDP Compliance Layer Verified</p>
+            <div className="flex items-center space-x-4 relative z-10">
+               <Activity size={14} className="text-emerald-500 animate-pulse" />
+               <p className="text-[9px] font-black text-secondary/30 uppercase tracking-[0.2em]">Identity Consensus Node: DPDP Compliance Verified</p>
             </div>
-            <p className="text-[9px] font-black text-secondary/20 uppercase tracking-widest relative z-10 italic">Records synced from Authentication Node (NextAuth)</p>
+            <p className="text-[8px] font-black text-secondary/20 uppercase tracking-widest relative z-10">Auth Bridge: NextAuth v5</p>
          </div>
       </section>
     </div>

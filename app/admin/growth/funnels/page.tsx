@@ -49,102 +49,105 @@ export default function ConversionFunnelPage() {
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-2">
+           <div className="flex items-center space-x-3 mb-1.5 font-montserrat">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
-                 <span className="text-[10px] font-black uppercase tracking-widest text-primary italic">Precision Marketing</span>
+                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary lowercase">Funnel Ops</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30">Conversion Leakage Monitor</span>
+              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Path Intelligence</span>
            </div>
-           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-4xl font-black text-typography tracking-tighter leading-none mb-1">
              Full <span className="text-primary italic">Funnel</span>
            </h1>
-           <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
-              Auditing Path-to-Admission Drop-offs & UX Intent
+           <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5 leading-none">
+              Auditing Admission Drop-offs & UX Intent
            </p>
         </div>
 
-        <div className="flex items-center space-x-4">
-           <div className="flex items-center space-x-2 bg-white p-1.5 rounded-[1.5rem] border border-gray-100 shadow-sm">
+        <div className="flex items-center space-x-3">
+           <div className="flex items-center space-x-1 bg-white p-1 rounded-xl border border-gray-100 shadow-sm">
               <button 
                 onClick={() => setDevice('ALL')}
-                className={cn("px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all", device === 'ALL' ? "bg-primary text-white shadow-lg shadow-primary/20" : "text-secondary/30")}
+                className={cn("w-9 h-9 rounded-lg flex items-center justify-center transition-all", device === 'ALL' ? "bg-primary text-white shadow-md shadow-primary/20" : "text-secondary/30 hover:text-secondary")}
+                title="All Devices"
               >
-                <Globe size={16} />
+                <Globe size={14} />
               </button>
               <button 
                 onClick={() => setDevice('MOBILE')}
-                className={cn("px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all", device === 'MOBILE' ? "bg-primary text-white shadow-lg shadow-primary/20" : "text-secondary/30")}
+                className={cn("w-9 h-9 rounded-lg flex items-center justify-center transition-all", device === 'MOBILE' ? "bg-primary text-white shadow-md shadow-primary/20" : "text-secondary/30 hover:text-secondary")}
+                title="Mobile Only"
               >
-                <Smartphone size={16} />
+                <Smartphone size={14} />
               </button>
               <button 
                 onClick={() => setDevice('DESKTOP')}
-                className={cn("px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all", device === 'DESKTOP' ? "bg-primary text-white shadow-lg shadow-primary/20" : "text-secondary/30")}
+                className={cn("w-9 h-9 rounded-lg flex items-center justify-center transition-all", device === 'DESKTOP' ? "bg-primary text-white shadow-md shadow-primary/20" : "text-secondary/30 hover:text-secondary")}
+                title="Desktop Only"
               >
-                <Layout size={16} />
+                <Layout size={14} />
               </button>
            </div>
-           <button className="flex items-center space-x-2 px-8 py-4 bg-slate-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-xl shadow-slate-900/10 active:scale-95 group italic">
-              <Zap size={18} className="group-hover:rotate-12 transition-transform italic" />
-              <span>Fix Funnel Leakage</span>
+           <button className="flex items-center space-x-2 px-6 py-2.5 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-lg active:scale-95 group">
+              <Zap size={14} className="group-hover:rotate-12 transition-transform" />
+              <span>Resolve Leaks</span>
            </button>
         </div>
       </section>
 
       <div className="grid grid-cols-12 gap-6 font-montserrat italic not-italic">
          {/* Funnel Visualization */}
-         <div className="col-span-12 lg:col-span-9 bg-white rounded-2xl border border-gray-50 shadow-sm p-14 flex flex-col overflow-hidden italic">
-            <div className="flex justify-between items-center mb-14 italic">
+         <div className="col-span-12 lg:col-span-9 bg-white rounded-xl border border-gray-100 shadow-sm p-6 flex flex-col">
+            <div className="flex justify-between items-center mb-8">
                <div>
-                  <h3 className="text-2xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">The Enrollment Pipeline</h3>
-                  <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic decoration-primary/10 underline">Global Traffic to Verified Admission Workflow</p>
+                  <h3 className="text-sm font-black text-typography tracking-tight uppercase">Enrollment Pipeline</h3>
+                  <p className="text-[9px] font-bold text-secondary/30 uppercase tracking-[0.1em] mt-1.5">Traffic to Admission Workflow</p>
                </div>
-               <div className="flex items-center space-x-2 px-4 py-2 bg-snow-pearl rounded-xl border border-gray-100 italic">
-                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse italic" />
-                  <span className="text-[10px] font-black text-secondary/40 uppercase tracking-widest italic">Live Flow Active</span>
+               <div className="flex items-center space-x-2 px-3 py-1 bg-snow-pearl rounded-lg border border-gray-100">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[9px] font-black text-secondary/40 uppercase tracking-widest">Live Flow</span>
                </div>
             </div>
 
-            <div className="space-y-4 italic">
+            <div className="space-y-3">
                {funnelStages.map((stage, i) => {
                  const dropOff = i > 0 ? (funnelStages[i-1].count - stage.count) : 0;
                  const conversionFromPrev = i > 0 ? ((stage.count / funnelStages[i-1].count) * 100).toFixed(1) : 100;
-
+ 
                  return (
-                   <div key={stage.id} className="group relative flex items-center italic">
+                   <div key={stage.id} className="group relative flex items-center">
                       {/* Drop-off visualization (left) */}
-                      <div className="w-24 text-right pr-6 italic">
+                      <div className="w-20 text-right pr-4">
                          {i > 0 && (
-                           <div className="flex flex-col items-end italic">
-                              <span className="text-[12px] font-black text-rose-500 italic">-{dropOff.toLocaleString()}</span>
-                              <span className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest italic">Leaked</span>
+                           <div className="flex flex-col items-end">
+                              <span className="text-[11px] font-black text-rose-500">-{dropOff.toLocaleString()}</span>
+                              <span className="text-[7px] font-black text-secondary/20 uppercase tracking-widest">Leaked</span>
                            </div>
                          )}
                       </div>
-
+ 
                       {/* Funnel Bar */}
-                      <div className="flex-1 relative h-14 bg-snow-pearl rounded-2xl overflow-hidden border border-gray-100 group-hover:border-primary/20 transition-all p-1 flex items-center italic">
+                      <div className="flex-1 relative h-10 bg-gray-50 rounded-lg overflow-hidden border border-gray-100 group-hover:border-primary/20 transition-all p-0.5 flex items-center">
                          <div 
-                           className="h-full rounded-xl transition-all duration-1000 shadow-xl flex items-center px-6 relative overflow-hidden italic" 
+                           className="h-full rounded-md transition-all duration-1000 shadow-sm flex items-center px-4 relative overflow-hidden" 
                            style={{ width: `${stage.percentage}%`, backgroundColor: stage.color }}
                          >
-                            <div className="absolute top-0 right-0 h-full w-24 bg-white/5 skew-x-[30deg] translate-x-12 italic" />
-                            <span className="text-[11px] font-black text-white uppercase tracking-widest whitespace-nowrap italic">{stage.label}</span>
-                            <span className="ml-auto text-[13px] font-black text-white italic tracking-tighter italic">{stage.count.toLocaleString()}</span>
+                            <div className="absolute top-0 right-0 h-full w-16 bg-white/5 skew-x-[30deg] translate-x-8" />
+                            <span className="text-[10px] font-black text-white uppercase tracking-widest whitespace-nowrap">{stage.label}</span>
+                            <span className="ml-auto text-[11px] font-black text-white tracking-tight">{stage.count.toLocaleString()}</span>
                          </div>
                       </div>
-
+ 
                       {/* Step Conversion (right) */}
-                      <div className="w-32 pl-6 italic">
-                         <div className="flex items-center space-x-2 italic">
+                      <div className="w-24 pl-4">
+                         <div className="flex items-center space-x-2">
                             <span className={cn(
-                               "text-lg font-black tracking-tighter italic",
+                               "text-sm font-black tracking-tight",
                                i === 0 ? "text-secondary/20" : parseFloat(conversionFromPrev as string) < 30 ? "text-rose-500" : "text-emerald-500"
                             )}>{i === 0 ? 'START' : `${conversionFromPrev}%`}</span>
-                            {i > 0 && parseFloat(conversionFromPrev as string) < 30 && <AlertCircle size={14} className="text-rose-500 animate-bounce italic" />}
+                            {i > 0 && parseFloat(conversionFromPrev as string) < 30 && <AlertCircle size={10} className="text-rose-500 animate-pulse" />}
                          </div>
-                         {i > 0 && <p className="text-[8px] font-bold text-secondary/30 uppercase tracking-widest leading-none italic">Step Retention</p>}
+                         {i > 0 && <p className="text-[7px] font-black text-secondary/30 uppercase tracking-widest leading-none">Retention</p>}
                       </div>
                    </div>
                  );
@@ -153,23 +156,23 @@ export default function ConversionFunnelPage() {
          </div>
 
          {/* Sidebar: Source Context */}
-         <div className="col-span-12 lg:col-span-3 space-y-8 font-montserrat italic not-italic">
-            <div className="bg-slate-900 p-6 rounded-2xl text-white flex flex-col justify-between relative group h-full italic">
-               <div className="absolute top-0 right-0 p-5 opacity-5 group-hover:scale-110 transition-transform duration-1000 italic">
-                  <Target size={80} className="text-primary italic" />
+         <div className="col-span-12 lg:col-span-3 space-y-4">
+            <div className="bg-slate-900 p-5 rounded-xl text-white flex flex-col justify-between relative group h-full">
+               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+                  <Target size={60} className="text-primary" />
                </div>
-               <div className="relative z-10 flex-1 italic">
-                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-6 italic underline decoration-primary/30 italic">Conversion by Source</h4>
-                  <div className="space-y-6 italic">
+               <div className="relative z-10 flex-1">
+                  <h4 className="text-[9px] font-black text-slate-500 uppercase tracking-[0.2em] mb-6">Conversion by Source</h4>
+                  <div className="space-y-5">
                      {trafficSources.map((s, i) => (
-                        <div key={i} className="flex flex-col space-y-2 group/s italic">
-                           <div className="flex justify-between items-end italic">
-                              <p className="text-[11px] font-bold text-slate-300 uppercase tracking-widest group-hover/s:text-white transition-colors italic">{s.source}</p>
-                              <p className={cn("text-xl font-black italic tracking-tighter italic", s.color)}>{s.conversion}%</p>
+                        <div key={i} className="flex flex-col space-y-1.5 group/s">
+                           <div className="flex justify-between items-end">
+                              <p className="text-[10px] font-bold text-slate-300 uppercase tracking-widest group-hover/s:text-white transition-colors">{s.source}</p>
+                              <p className={cn("text-lg font-black tracking-tighter", s.color)}>{s.conversion}%</p>
                            </div>
-                           <div className="w-full h-1 bg-slate-800 rounded-full overflow-hidden italic">
+                           <div className="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
                               <div 
-                                className={cn("h-full group-hover/s:opacity-100 transition-all duration-1000 italic", s.color.replace('text-', 'bg-'))} 
+                                className={cn("h-full group-hover/s:opacity-100 transition-all duration-1000", s.color.replace('text-', 'bg-'))} 
                                 style={{ width: `${s.conversion * 15}%` }} 
                               />
                            </div>
@@ -177,9 +180,9 @@ export default function ConversionFunnelPage() {
                      ))}
                   </div>
                </div>
-               <div className="mt-14 p-6 bg-white/5 rounded-3xl border border-white/5 relative z-10 italic">
-                  <p className="text-[9px] font-bold text-slate-400 leading-relaxed uppercase tracking-[0.1em] italic">
-                     Organic SEO traffic maintains the highest retention rate (4.8%) through Stage 4 vs social referral (1.4%).
+               <div className="mt-8 p-4 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-[8px] font-black text-slate-400 leading-relaxed uppercase tracking-[0.1em]">
+                     Organic SEO maintains highest retention (4.8%) through Stage 4 vs social (1.4%).
                   </p>
                </div>
             </div>
@@ -187,21 +190,21 @@ export default function ConversionFunnelPage() {
       </div>
 
       {/* Growth Node: UX Insights */}
-      <section className="bg-emerald-50 p-12 rounded-[3.5rem] border border-emerald-100 flex flex-col md:flex-row md:items-center justify-between group font-montserrat italic not-italic">
-         <div className="flex items-center space-x-8 italic">
-            <div className="w-20 h-20 bg-emerald-500 text-white rounded-2xl flex items-center justify-center shadow-xl shadow-emerald-500/20 group-hover:scale-110 transition-transform italic">
-               <MousePointer2 size={32} className="italic" />
+      <section className="bg-emerald-50 p-6 rounded-xl border border-emerald-100 flex flex-col md:flex-row md:items-center justify-between group">
+         <div className="flex items-center space-x-6">
+            <div className="w-14 h-14 bg-emerald-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+               <MousePointer2 size={24} />
             </div>
             <div>
-               <h4 className="text-2xl font-black text-emerald-900 tracking-tighter uppercase italic">The "Enquire Now" Friction Node</h4>
-               <p className="text-xs font-bold text-emerald-600/60 uppercase tracking-widest mt-2 max-w-xl italic font-montserrat not-italic">
-                  We are losing <span className="text-emerald-700 font-black">70.2% of users</span> at the Enquire Click stage. Redesigning the modal trigger to be less intrusive could lift lead volume by 23%.
+               <h4 className="text-lg font-black text-emerald-900 tracking-tight uppercase">The "Enquire Now" Friction Node</h4>
+               <p className="text-[10px] font-bold text-emerald-600/60 uppercase tracking-widest mt-1.5 max-w-xl">
+                  Losing <span className="text-emerald-700 font-black">70.2% of users</span> at Enquire Click. Redesign trigger to lift volume by 23%.
                </p>
             </div>
          </div>
-         <button className="mt-8 md:mt-0 px-10 py-5 bg-emerald-600 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-600/20 flex items-center space-x-3 italic">
+         <button className="mt-6 md:mt-0 px-8 py-3 bg-emerald-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-lg flex items-center space-x-2">
             <span>A/B Test Trigger</span>
-            <ChevronRight size={18} className="italic" />
+            <ChevronRight size={16} />
          </button>
       </section>
     </div>

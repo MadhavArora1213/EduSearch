@@ -71,103 +71,100 @@ export default function CommissionTrackerPage() {
   ]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-2">
+           <div className="flex items-center space-x-3 mb-1.5 font-montserrat">
               <div className="bg-indigo-50 px-3 py-1.5 rounded-xl border border-indigo-100">
-                 <span className="text-[10px] font-black uppercase tracking-widest text-indigo-600 italic">Affiliate Yield</span>
+                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600 lowercase">Affiliate Yield</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30">Secondary Revenue Channels</span>
+              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Secondary Revenue Channels</span>
            </div>
-           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-4xl font-black text-typography tracking-tighter leading-none mb-1">
              Settlement <span className="text-indigo-600 italic">Vault</span>
            </h1>
-           <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
-              Tracking Loan Referrals, Study Abroad Placements & Partner Payables
+           <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5 leading-none">
+              Tracking Referrals, Placements & Partner Payables
            </p>
         </div>
-
+ 
         <div className="flex items-center space-x-4">
-           <div className="bg-white px-8 py-4 rounded-3xl border border-gray-100 shadow-sm flex items-center space-x-6">
+           <div className="bg-white px-6 py-3 rounded-xl border border-gray-100 shadow-sm flex items-center space-x-4">
               <div>
-                 <p className="text-[10px] font-black text-secondary/20 uppercase tracking-widest">Total Commission (MTD)</p>
-                 <p className="text-2xl font-black text-typography tracking-tighter">₹5.24L <span className="text-emerald-500 text-xs text-[10px] font-black italic">+12%</span></p>
+                 <p className="text-[9px] font-black text-secondary/20 uppercase tracking-widest">Commission (MTD)</p>
+                 <p className="text-xl font-black text-typography tracking-tighter leading-none mt-1">₹5.24L <span className="text-emerald-500 text-[10px] font-black ml-1">+12%</span></p>
               </div>
-              <Wallet size={28} className="text-indigo-600 shadow-xl shadow-indigo-600/20" />
+              <Wallet size={20} className="text-indigo-600 shadow-lg shadow-indigo-600/20" />
            </div>
         </div>
       </section>
 
       {/* Partner Entry Quick Actions */}
-      <div className="grid grid-cols-12 gap-5">
-         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
-            <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 mb-8">Integrated Partner Portals</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-12 gap-4">
+         <div className="col-span-12 lg:col-span-8 bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+            <h3 className="text-sm font-black text-typography tracking-tight uppercase mb-6">Partner Portals</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                {[
                   { name: 'HDFC Credila', type: 'Loan', icon: ShieldCheck },
                   { name: 'Avanse', type: 'Loan', icon: ShieldCheck },
                   { name: 'IDP Education', type: 'SA', icon: Globe },
                   { name: 'ApplyBoard', type: 'SA', icon: Globe },
                ].map((partner, i) => (
-                  <div key={i} className="flex flex-col items-center justify-center p-6 bg-snow-pearl/50 rounded-2xl border border-gray-100 group hover:bg-white hover:border-indigo-500/20 transition-all cursor-pointer">
-                     <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-indigo-600 mb-4 group-hover:scale-110 transition-transform">
-                        <partner.icon size={24} />
+                  <div key={i} className="flex flex-col items-center justify-center p-4 bg-snow-pearl/30 rounded-xl border border-gray-100 group hover:bg-white hover:border-indigo-500/20 transition-all cursor-pointer">
+                     <div className="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center text-indigo-600 mb-3 group-hover:scale-110 transition-transform">
+                        <partner.icon size={20} />
                      </div>
-                     <p className="text-xs font-black text-typography uppercase text-center">{partner.name}</p>
-                     <p className="text-[9px] font-bold text-secondary/40 uppercase mt-2">{partner.type} Partner</p>
-                     <div className="mt-4 flex items-center space-x-2">
-                        <LinkIcon size={14} className="text-indigo-500" />
-                     </div>
+                     <p className="text-[11px] font-black text-typography uppercase text-center leading-tight">{partner.name}</p>
+                     <p className="text-[8px] font-bold text-secondary/40 uppercase mt-1.5">{partner.type}</p>
                   </div>
                ))}
             </div>
          </div>
-
-         <div className="col-span-12 lg:col-span-4 bg-slate-900 p-6 rounded-2xl text-white relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute bottom-0 right-0 p-6 opacity-10">
-               <Zap size={120} className="text-indigo-500" />
+ 
+         <div className="col-span-12 lg:col-span-4 bg-slate-900 p-5 rounded-xl text-white relative overflow-hidden flex flex-col justify-between group">
+            <div className="absolute bottom-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform duration-1000">
+               <Zap size={80} className="text-indigo-500" />
             </div>
             <div className="relative z-10">
-               <h4 className="text-2xl font-black tracking-tighter italic lowercase underline decoration-indigo-500/30">Yield Alerts</h4>
-               <div className="mt-8 space-y-6">
-                  <div className="flex items-start space-x-4">
-                     <AlertCircle size={20} className="text-amber-500" />
+               <h4 className="text-sm font-black tracking-tight uppercase">Yield Alerts</h4>
+               <div className="mt-6 space-y-4">
+                  <div className="flex items-start space-x-3">
+                     <AlertCircle size={16} className="text-amber-500" />
                      <div>
-                        <p className="text-xs font-black uppercase italic">Dues Approaching Threshold</p>
-                        <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">₹1.2L pending from 'IDP' &gt; 30 days</p>
+                        <p className="text-[10px] font-black uppercase leading-tight">Dues Threshold</p>
+                        <p className="text-[8px] font-bold text-slate-400 mt-1 uppercase tracking-widest">₹1.2L pending from 'IDP'</p>
                      </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                     <CheckCircle2 size={20} className="text-emerald-500" />
+                  <div className="flex items-start space-x-3">
+                     <CheckCircle2 size={16} className="text-emerald-500" />
                      <div>
-                        <p className="text-xs font-black uppercase italic">Settlement Successful</p>
-                        <p className="text-[10px] font-bold text-slate-400 mt-1 uppercase tracking-widest">HDFC Credila reconciled ₹37.5k</p>
+                        <p className="text-[10px] font-black uppercase leading-tight">Settlement Sync</p>
+                        <p className="text-[8px] font-bold text-slate-400 mt-1 uppercase tracking-widest">HDFC Credila reconciled ₹37.5k</p>
                      </div>
                   </div>
                </div>
             </div>
-            <button className="relative z-10 w-full py-4 bg-indigo-600 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-indigo-500 transition-all mt-8">
-               Generate Settlement Statement
+            <button className="relative z-10 w-full py-3 bg-indigo-600 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-indigo-500 transition-all mt-6 shadow-lg shadow-indigo-600/20">
+               Settlement Statement
             </button>
          </div>
       </div>
-
+ 
       {/* Ledger Table */}
-      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <section className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+        <div className="p-4 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-snow-pearl/30">
            <div className="relative flex-1 max-w-xl">
-              <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
-              <input placeholder="Search Student or Partner..." className="w-full bg-snow-pearl border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all" />
+              <Search size={16} className="absolute left-5 top-1/2 -translate-y-1/2 text-secondary/20" />
+              <input placeholder="Search documents..." className="w-full bg-white border border-transparent pl-12 pr-6 py-2.5 rounded-xl text-[13px] font-bold outline-none focus:ring-4 focus:ring-primary/5 shadow-sm" />
            </div>
-           <div className="flex items-center space-x-4 pl-10">
-              <button className="p-5 bg-snow-pearl rounded-2xl border border-gray-100 text-secondary/20 hover:text-indigo-600 transition-all">
-                 <Filter size={20} />
+           <div className="flex items-center space-x-3">
+              <button className="w-9 h-9 bg-white border border-gray-100 rounded-xl flex items-center justify-center text-secondary/20 hover:text-indigo-600 transition-all shadow-sm">
+                 <Filter size={14} />
               </button>
-              <button className="p-5 bg-snow-pearl rounded-2xl border border-gray-100 text-secondary/20 hover:text-indigo-600 transition-all">
-                 <Download size={20} />
+              <button className="w-9 h-9 bg-white border border-gray-100 rounded-xl flex items-center justify-center text-secondary/20 hover:text-indigo-600 transition-all shadow-sm">
+                 <Download size={14} />
               </button>
            </div>
         </div>
@@ -176,60 +173,60 @@ export default function CommissionTrackerPage() {
            <table className="w-full text-left">
               <thead className="bg-snow-pearl/50 border-b border-gray-100">
                  <tr>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Student & Placement Type</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Partner Entity</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Base Value</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40 italic">Commission</th>
-                    <th className="px-10 py-6 text-[10px) font-black uppercase tracking-widest text-secondary/40">Status</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Actions</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Student & Placement Type</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Partner Entity</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Base Value</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Commission</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40">Status</th>
+                    <th className="px-6 py-3 text-[9px] font-black uppercase tracking-[0.2em] text-secondary/40 text-right">Actions</th>
                  </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {commissions.map((entry) => (
-                  <tr key={entry.id} className="group hover:bg-indigo-50/10 transition-all">
-                    <td className="px-10 py-4">
-                       <div className="flex items-center space-x-6">
-                          <div className="w-14 h-14 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:text-indigo-600 group-hover:bg-indigo-50 transition-all">
-                             {entry.type === 'STUDY_ABROAD' ? <Globe size={24} /> : <Wallet size={24} />}
+                  <tr key={entry.id} className="group hover:bg-indigo-50/10 transition-all font-montserrat">
+                    <td className="px-6 py-3">
+                       <div className="flex items-center space-x-4">
+                          <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-secondary/20 group-hover:bg-indigo-600 group-hover:text-white transition-all border border-gray-100 shadow-sm">
+                             {entry.type === 'STUDY_ABROAD' ? <Globe size={18} /> : <Wallet size={18} />}
                           </div>
                           <div>
-                             <h4 className="text-base font-black text-typography leading-tight">{entry.student}</h4>
-                             <p className="text-[10px] font-black text-indigo-600 uppercase tracking-widest mt-1 italic underline decoration-indigo-600/10">{entry.type.replace('_', ' ')}</p>
+                             <h4 className="text-[13px] font-black text-typography leading-none uppercase tracking-tight">{entry.student}</h4>
+                             <p className="text-[8px] font-black text-indigo-600 uppercase tracking-widest mt-1.5">{entry.type.replace('_', ' ')}</p>
                           </div>
                        </div>
                     </td>
-                    <td className="px-10 py-4">
-                       <p className="text-sm font-black text-typography">{entry.partner}</p>
-                       <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest mt-1 italic">Date: {new Date(entry.enrollmentDate).toLocaleDateString()}</p>
+                    <td className="px-6 py-3">
+                       <p className="text-xs font-black text-typography leading-none">{entry.partner}</p>
+                       <p className="text-[8px] font-bold text-secondary/30 uppercase tracking-widest mt-1.5">Date: {new Date(entry.enrollmentDate).toLocaleDateString()}</p>
                     </td>
-                    <td className="px-10 py-4">
-                       <p className="text-[12px] font-black text-typography">₹{(entry.amount/100000).toFixed(2)}L</p>
-                       <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest mt-1 italic">Contract Rate: {entry.rate}%</p>
+                    <td className="px-6 py-3">
+                       <p className="text-[12px] font-black text-typography leading-none">₹{(entry.amount/100000).toFixed(2)}L</p>
+                       <p className="text-[8px] font-bold text-secondary/30 uppercase tracking-widest mt-1.5">Rate: {entry.rate}%</p>
                     </td>
-                    <td className="px-10 py-4">
-                       <div className="inline-flex items-center space-x-2 bg-indigo-50 px-4 py-2 rounded-2xl border border-indigo-100">
-                          <TrendingUp size={14} className="text-indigo-600" />
-                          <span className="text-sm font-black text-indigo-700 italic">₹{entry.commission.toLocaleString()}</span>
+                    <td className="px-6 py-3">
+                       <div className="inline-flex items-center space-x-1.5 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">
+                          <TrendingUp size={12} className="text-indigo-600" />
+                          <span className="text-[11px] font-black text-indigo-700">₹{entry.commission.toLocaleString()}</span>
                        </div>
                     </td>
-                    <td className="px-10 py-4">
+                    <td className="px-6 py-3">
                        <span className={cn(
-                          "inline-flex items-center space-x-2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest",
-                          entry.status === 'PAID' ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
-                          entry.status === 'VERIFYING' ? "bg-amber-50 text-amber-600 border border-amber-100" :
-                          "bg-indigo-50 text-indigo-600 border border-indigo-100"
+                          "inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border",
+                          entry.status === 'PAID' ? "bg-emerald-50 text-emerald-600 border-emerald-100" :
+                          entry.status === 'VERIFYING' ? "bg-amber-50 text-amber-600 border-amber-100" :
+                          "bg-indigo-50 text-indigo-600 border-indigo-100"
                        )}>
-                          <div className={cn("w-1.5 h-1.5 rounded-full", entry.status === 'PAID' ? "bg-emerald-500" : "bg-current")} />
+                          <div className={cn("w-1 h-1 rounded-full", entry.status === 'PAID' ? "bg-emerald-500" : "bg-current")} />
                           <span>{entry.status}</span>
                        </span>
                     </td>
-                    <td className="px-10 py-4 text-right">
+                    <td className="px-6 py-3 text-right">
                        <div className="flex items-center justify-end space-x-2">
-                          <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm" title="Confirm Settlement">
-                             <CheckCircle2 size={18} />
+                          <button className="w-9 h-9 bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-center text-secondary/40 hover:bg-emerald-500 hover:text-white transition-all shadow-sm" title="Confirm Settlement">
+                             <CheckCircle2 size={14} />
                           </button>
-                          <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-indigo-600 hover:text-white transition-all shadow-sm" title="View Partner Ledger">
-                             <ArrowUpRight size={18} />
+                          <button className="w-9 h-9 bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-center text-secondary/40 hover:bg-indigo-600 hover:text-white transition-all shadow-sm" title="View Partner Ledger">
+                             <ArrowUpRight size={14} />
                           </button>
                        </div>
                     </td>
@@ -239,11 +236,11 @@ export default function CommissionTrackerPage() {
            </table>
         </div>
 
-        <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+        <div className="p-3 border-t border-gray-100 flex items-center justify-between bg-snow-pearl/30">
            <div className="flex items-center space-x-4">
-              <p className="text-xs font-black text-secondary/40 uppercase tracking-widest italic lowercase underline decoration-indigo-600/10 italic">Affiliate Settlement Ledger: Automated Verification Protocol</p>
+              <p className="text-[9px] font-black text-secondary/30 uppercase tracking-[0.2em]">Affiliate Settlement Protocol Node: Settlement Engine v2.4 Active</p>
            </div>
-           <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest">PostgreSQL Settlement Engine: v2.4.1 Active</p>
+           <p className="text-[8px] font-black text-secondary/20 uppercase tracking-widest">PostgreSQL Settlement Ledger</p>
         </div>
       </section>
     </div>
