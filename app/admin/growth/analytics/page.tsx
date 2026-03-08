@@ -72,29 +72,29 @@ export default function GrowthAnalyticsPage() {
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-1.5 font-montserrat">
+           <div className="flex items-center space-x-3 mb-1.5">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
-                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary lowercase">Growth Ops</span>
+                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Growth Ops</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Intelligence Dashboard</span>
+              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Intel Hub</span>
            </div>
            <h1 className="text-3xl md:text-4xl font-black text-typography tracking-tighter leading-none mb-1">
              Growth <span className="text-primary italic">Intelligence</span>
            </h1>
            <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5 leading-none">
-              Monitoring Velocity & Retention Stickiness
+              Monitoring Velocity Clusters & Retention Stickiness
            </p>
         </div>
-
+ 
         <div className="flex items-center space-x-3">
-           <div className="flex items-center space-x-2 bg-white p-1 rounded-xl border border-gray-100 shadow-sm">
+           <div className="flex items-center space-x-1 bg-white p-1 rounded-xl border border-gray-100 shadow-sm">
               {['7d', '30d', '90d', '1y'].map(r => (
                 <button 
                   key={r}
                   onClick={() => setTimeRange(r)}
                   className={cn(
-                    "px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all",
+                    "px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all leading-none",
                     timeRange === r ? "bg-primary text-white shadow-md shadow-primary/20" : "text-secondary/30 hover:text-secondary"
                   )}
                 >
@@ -102,7 +102,7 @@ export default function GrowthAnalyticsPage() {
                 </button>
               ))}
            </div>
-           <button className="flex items-center space-x-2 px-4 py-2 bg-white border border-gray-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:border-primary/20 transition-all shadow-sm">
+           <button className="flex items-center space-x-2 px-6 py-2.5 bg-white border border-gray-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:text-primary transition-all shadow-sm">
               <Download size={14} />
               <span>Export</span>
            </button>
@@ -110,39 +110,36 @@ export default function GrowthAnalyticsPage() {
       </section>
 
       {/* KPI HUD */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
          {[
-           { label: "Return Visitor Rate", value: "34.2%", trend: "+8.1%", icon: RotateCw, color: "text-emerald-500 bg-emerald-50" },
+           { label: "Return Visit Rate", value: "34.2%", trend: "+8.1%", icon: RotateCw, color: "text-emerald-500 bg-emerald-50" },
            { label: "Avg Session Depth", value: "4.8", trend: "Target > 4", icon: Layers, color: "text-primary bg-primary/5" },
-           { label: "Retention Gap", value: "12%", trend: "High Alert", icon: Target, color: "text-rose-500 bg-rose-50" },
-           { label: "New vs Returning", value: "62/38", trend: "Balanced", icon: Users, color: "text-indigo-500 bg-indigo-50" },
+           { label: "Retention Gap", value: "12%", trend: "Alert", icon: Target, color: "text-rose-500 bg-rose-50" },
+           { label: "Identity Mix", value: "62/38", trend: "Balanced", icon: Users, color: "text-indigo-500 bg-indigo-50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm relative group hover:shadow-md transition-all cursor-pointer">
-              <div className="flex items-center justify-between mb-3">
-                 <div className={cn(
-                    "w-10 h-10 rounded-xl flex items-center justify-center shadow-sm",
-                    kpi.color
-                 )}>
-                    <kpi.icon size={18} />
+           <div key={i} className="bg-white p-3.5 rounded-xl border border-gray-100 shadow-sm transition-all hover:shadow-md cursor-pointer group">
+              <div className="flex items-center justify-between mb-2">
+                 <div className={cn("w-9 h-9 rounded-lg flex items-center justify-center shadow-inner", kpi.color)}>
+                    <kpi.icon size={16} />
                  </div>
                  <span className={cn(
-                    "text-[8px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full",
-                    kpi.trend.includes('+') ? "text-emerald-600 bg-emerald-50" : "text-rose-600 bg-rose-50"
+                    "text-[7px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full border shadow-sm",
+                    kpi.trend.includes('+') || kpi.trend === 'Balanced' ? "text-emerald-600 bg-emerald-50 border-emerald-100" : "text-rose-600 bg-rose-50 border-rose-100"
                  )}>{kpi.trend}</span>
               </div>
-              <p className="text-3xl font-black text-typography tracking-tighter leading-none mb-1">{kpi.value}</p>
-              <p className="text-[9px] font-bold text-secondary/30 uppercase tracking-[0.1em]">{kpi.label}</p>
+              <p className="text-2xl font-black text-typography tracking-tighter leading-none mb-1.5">{kpi.value}</p>
+              <p className="text-[8px] font-black text-secondary/20 uppercase tracking-[0.2em]">{kpi.label}</p>
            </div>
          ))}
-      </div>
+      </section>
 
       <div className="grid grid-cols-12 gap-4">
          {/* Main DAU/WAU/MAU Trend */}
-         <div className="col-span-12 lg:col-span-8 bg-white rounded-xl border border-gray-100 shadow-sm p-5 flex flex-col justify-between">
-            <div className="flex justify-between items-start mb-6">
+         <div className="col-span-12 lg:col-span-8 bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex flex-col justify-between">
+            <div className="flex justify-between items-start mb-4">
                <div>
-                  <h3 className="text-sm font-black text-typography tracking-tight uppercase">Velocity Matrix</h3>
-                  <p className="text-[9px] font-bold text-secondary/30 uppercase tracking-[0.1em] mt-1.5">DAU / WAU / MAU 90-Day Trendline</p>
+                  <h3 className="text-xs font-black text-typography tracking-tighter uppercase">Velocity Matrix</h3>
+                  <p className="text-[8px] font-black text-secondary/20 uppercase tracking-[0.2em] mt-1.5 leading-none">DAU / WAU / MAU 90-Day Trendline</p>
                </div>
                <div className="flex items-center space-x-4">
                   <div className="flex items-center space-x-2">
@@ -181,30 +178,30 @@ export default function GrowthAnalyticsPage() {
             </div>
          </div>
 
-          <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
-            <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex-1 flex flex-col">
-               <div className="flex items-center justify-between mb-6">
-                  <h4 className="text-[9px] font-black text-secondary/30 uppercase tracking-[0.2em]">Bounce Segmentation</h4>
-                  <PieChartIcon size={14} className="text-primary" />
+           <div className="col-span-12 lg:col-span-4 flex flex-col gap-4">
+            <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex-1 flex flex-col">
+               <div className="flex items-center justify-between mb-4">
+                  <h4 className="text-[8px] font-black text-secondary/20 uppercase tracking-[0.2em]">Bounce Segment</h4>
+                  <PieChartIcon size={12} className="text-primary/40" />
                </div>
-               <div className="flex-1 space-y-5">
+               <div className="flex-1 space-y-4">
                   {bounceRates.map((item) => (
-                     <div key={item.type} className="space-y-1.5 group cursor-pointer">
-                        <div className="flex justify-between items-end">
-                           <p className="text-[10px] font-black text-typography uppercase tracking-tight">{item.type}</p>
+                     <div key={item.type} className="space-y-1 group cursor-pointer">
+                        <div className="flex justify-between items-end leading-none">
+                           <p className="text-[9px] font-black text-typography uppercase tracking-tight">{item.type}</p>
                            <p className={cn(
-                             "text-sm font-black tracking-tight",
+                             "text-[11px] font-black tracking-tighter",
                              item.rate > 40 ? "text-rose-500" : "text-emerald-500"
                            )}>{item.rate}%</p>
                         </div>
-                        <div className="w-full h-1.5 bg-gray-50 rounded-full overflow-hidden">
+                        <div className="w-full h-1 bg-gray-50 rounded-full overflow-hidden">
                            <div className="h-full group-hover:opacity-80 transition-all duration-1000" style={{ width: `${item.rate}%`, backgroundColor: item.color }} />
                         </div>
                      </div>
                   ))}
                </div>
-               <div className="mt-6 p-4 bg-rose-50 rounded-xl border border-rose-100/50">
-                  <p className="text-[9px] font-black text-rose-600 uppercase tracking-[0.1em] leading-relaxed">Alert: Mobile LCP issues detected on Exam Pages.</p>
+               <div className="mt-4 p-2.5 bg-rose-50/50 rounded-lg border border-rose-100/50">
+                  <p className="text-[8px] font-black text-rose-600 uppercase tracking-widest leading-relaxed">Alert: LCP issues on Mobile Exam Nodes.</p>
                </div>
             </div>
          </div>
@@ -212,50 +209,50 @@ export default function GrowthAnalyticsPage() {
 
       {/* Session Stickiness */}
       <div className="grid grid-cols-12 gap-4">
-         <div className="col-span-12 lg:col-span-4 bg-slate-900 p-5 rounded-xl text-white flex flex-col justify-between relative overflow-hidden group">
+         <div className="col-span-12 lg:col-span-4 bg-slate-900 p-4 rounded-xl text-white flex flex-col justify-between relative overflow-hidden group shadow-xl shadow-slate-900/10">
             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/10 blur-3xl rounded-full group-hover:scale-150 transition-transform duration-1000" />
             <div className="relative z-10">
-               <h4 className="text-[9px] font-black text-slate-500 uppercase tracking-[0.2em] mb-6">Stickiness Factor</h4>
-               <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">W1 Retention</p>
-                     <p className="text-xl font-black text-white italic tracking-tighter">42.4%</p>
+               <h4 className="text-[8px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Stickiness Factor</h4>
+               <div className="space-y-4">
+                  <div className="flex items-center justify-between border-b border-white/5 pb-3">
+                     <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">W1 Retention</p>
+                     <p className="text-lg font-black text-white italic tracking-tighter leading-none">42.4%</p>
+                  </div>
+                  <div className="flex items-center justify-between border-b border-white/5 pb-3">
+                     <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">W4 Retention</p>
+                     <p className="text-lg font-black text-primary italic tracking-tighter leading-none">18.1%</p>
                   </div>
                   <div className="flex items-center justify-between">
-                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">W4 Retention</p>
-                     <p className="text-xl font-black text-primary italic tracking-tighter">18.1%</p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">AI Lift</p>
-                     <p className="text-xl font-black text-emerald-500 italic tracking-tighter">+312%</p>
+                     <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest leading-none">AI Lift</p>
+                     <p className="text-lg font-black text-emerald-500 italic tracking-tighter leading-none">+312%</p>
                   </div>
                </div>
             </div>
-            <div className="mt-10 relative z-10">
-               <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.1em] leading-relaxed border-t border-white/5 pt-6">AI engaged users show 3.4x higher W4 retention rates vs generic searchers.</p>
+            <div className="mt-6 relative z-10">
+               <p className="text-[8px] font-black text-slate-500 uppercase tracking-[0.1em] leading-relaxed border-t border-white/5 pt-4">AI nodes drive 3.4x higher survival vs generic search clusters.</p>
             </div>
          </div>
- 
-         <div className="col-span-12 lg:col-span-8 bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
-            <div className="flex justify-between items-center mb-6">
-               <h4 className="text-[9px] font-black text-secondary/30 uppercase tracking-[0.2em]">Avg Session Duration (Mins)</h4>
-               <button className="text-[9px] font-black text-primary uppercase tracking-widest hover:underline flex items-center space-x-1.5">
-                  <span>View Heatmaps</span>
-                  <ArrowUpRight size={12} />
+  
+         <div className="col-span-12 lg:col-span-8 bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
+            <div className="flex justify-between items-center mb-4">
+               <h4 className="text-[8px] font-black text-secondary/20 uppercase tracking-[0.2em]">Session Stickiness (Mins)</h4>
+               <button className="text-[8px] font-black text-primary uppercase tracking-[0.2em] hover:underline flex items-center space-x-1.5 transition-all">
+                  <span>Heatmaps</span>
+                  <ArrowUpRight size={10} />
                </button>
             </div>
-            <div className="h-[220px] w-full">
+            <div className="h-[180px] w-full">
                <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={sessionDuration}>
                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F8FAFC" />
-                     <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 9, fontWeight: 700}} dy={10} />
+                     <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 8, fontWeight: 900}} dy={5} />
                      <Tooltip 
                         cursor={{fill: '#F1F5F9'}} 
-                        contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 20px rgba(0,0,0,0.05)', fontWeight: 800, fontSize: '10px' }}
+                        contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 20px rgba(0,0,0,0.05)', fontWeight: 800, fontSize: '9px' }}
                      />
-                     <Bar dataKey="mins" radius={[4, 4, 0, 0]} barSize={28}>
+                     <Bar dataKey="mins" radius={[3, 3, 0, 0]} barSize={24}>
                         {sessionDuration.map((entry, index) => (
-                           <Cell key={index} fill={entry.mins > 4 ? '#0B2447' : '#CBD5E1'} />
+                           <Cell key={index} fill={entry.mins > 4 ? '#0B2447' : '#F1F5F9'} stroke={entry.mins > 4 ? 'transparent' : '#E2E8F0'} strokeWidth={1} />
                         ))}
                      </Bar>
                   </BarChart>

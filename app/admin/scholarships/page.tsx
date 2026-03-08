@@ -54,124 +54,115 @@ export default function ScholarshipsPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-2">
+           <div className="flex items-center space-x-3 mb-1.5">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
-                 <span className="text-[10px] font-black uppercase tracking-widest text-primary">Financial Aid</span>
+                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Financial Aid</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30">Master Scholarship Directory</span>
+              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Master Directory</span>
            </div>
-           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-4xl font-black text-typography tracking-tighter leading-none mb-1">
              Financial <span className="text-primary italic">Assistance</span>
            </h1>
-           <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
-              Managing 150+ Govt and Private Aid Schemes
+           <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5 leading-none">
+              Managing 150+ Govt and Private Aid Schemes from Grant Registry
            </p>
         </div>
-
-        <div className="flex items-center space-x-4">
-           <button onClick={() => {
-              const csvContent = "data:text/csv;charset=utf-8,ID,Name,Category,Deadline\n" + scholarships.map(s => `${s.id},"${s.name}",${s.category},${s.deadline}`).join("\n");
-              const encodedUri = encodeURI(csvContent);
-              const link = document.createElement("a");
-              link.setAttribute("href", encodedUri);
-              link.setAttribute("download", "scholarship_directory_export.csv");
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-           }} className="flex items-center space-x-2 px-6 py-4 bg-gray-50 border border-gray-200/50 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-white hover:border-gray-200 transition-all active:scale-95 text-secondary/60">
-              <Download size={16} />
-              <span>Export Directory</span>
+ 
+        <div className="flex items-center space-x-3">
+           <button onClick={() => alert('Export...')} className="flex items-center space-x-2 px-6 py-2.5 bg-white border border-gray-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:text-primary transition-all shadow-sm">
+              <Download size={14} />
+              <span>Export</span>
            </button>
-           <Link href="/admin/scholarships/new" className="flex items-center space-x-2 px-8 py-4 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
-              <Plus size={18} />
-              <span>New Scholarship</span>
+           <Link href="/admin/scholarships/new" className="flex items-center space-x-1.5 px-6 py-2.5 bg-primary text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-primary/20">
+              <Plus size={14} />
+              <span>New Grant</span>
            </Link>
         </div>
       </section>
 
       {/* Main Grid View */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {loading ? [...Array(3)].map((_, i) => (
-          <div key={i} className="bg-white p-6 rounded-2xl border border-gray-50 animate-pulse h-[350px]" />
+          <div key={i} className="bg-white p-4 rounded-xl border border-gray-100 animate-pulse h-[250px]" />
         )) : scholarships.length === 0 ? (
-          <div className="col-span-12 py-20 bg-white rounded-2xl border border-gray-100 flex flex-col items-center">
-             <AlertCircle size={48} className="text-secondary/10 mb-4" />
-             <p className="text-xl font-black text-typography">No Scholarships Registered</p>
+          <div className="col-span-12 py-16 bg-white rounded-xl border border-gray-100 flex flex-col items-center">
+             <AlertCircle size={32} className="text-secondary/10 mb-2" />
+             <p className="text-base font-black text-typography">No Scholarships Registered</p>
           </div>
         ) : scholarships.map((s) => (
-          <div key={s.id} className="bg-white p-6 rounded-2xl border border-gray-50 shadow-sm hover:shadow-2xl hover:shadow-primary/5 transition-all group relative overflow-hidden active:scale-[0.98]">
-             {/* Micro Decorative Element */}
-             <div className="absolute -right-12 -top-12 w-48 h-48 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
+          <div key={s.id} className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all group relative overflow-hidden">
+             <div className="absolute -right-10 -top-10 w-24 h-24 bg-primary/5 rounded-full group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
              
-             <div className="flex justify-between items-start mb-8 relative">
-                <div className="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center text-primary group-hover:rotate-12 transition-all">
-                   <Award size={28} />
+             <div className="flex justify-between items-start mb-4 relative">
+                <div className="w-10 h-10 bg-primary/5 rounded-lg flex items-center justify-center text-primary transition-all">
+                   <Award size={20} />
                 </div>
                 <div className={cn(
-                  "px-4 py-2 rounded-full text-[9px] font-black uppercase tracking-widest",
-                  s.category === 'GOVERNMENT' ? "bg-red-50 text-red-600 border border-red-100" : "bg-sky-50 text-sky-600 border border-sky-100"
+                  "px-2 py-1 rounded-full text-[7px] font-black uppercase tracking-[0.2em] border shadow-sm",
+                  s.category === 'GOVERNMENT' ? "bg-rose-50 text-rose-600 border-rose-100" : "bg-sky-50 text-sky-600 border-sky-100"
                 )}>
                    {s.category}
                 </div>
              </div>
-
-             <h3 className="text-2xl font-black text-typography tracking-tight mb-2 group-hover:text-primary transition-colors line-clamp-2 min-h-[64px]">{s.name}</h3>
+ 
+             <h3 className="text-lg font-black text-typography tracking-tighter mb-1.5 group-hover:text-primary transition-colors line-clamp-2 min-h-[48px] uppercase">{s.name}</h3>
              
-             <div className="space-y-6 mt-8 pt-8 border-t border-gray-50">
-                <div className="grid grid-cols-2 gap-6">
-                   <div className="space-y-1">
-                      <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] leading-none">Min Merit</p>
-                      <p className="text-lg font-black text-typography">{s.merit_percentage_min || "0"}%</p>
+             <div className="space-y-3 mt-4 pt-4 border-t border-gray-100">
+                <div className="grid grid-cols-2 gap-4">
+                   <div className="leading-none">
+                      <p className="text-[7px] font-black text-secondary/20 uppercase tracking-[0.2em] mb-1.5">Min Merit</p>
+                      <p className="text-sm font-black text-typography">{s.merit_percentage_min || "0"}%</p>
                    </div>
-                   <div className="space-y-1">
-                      <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] leading-none">Income Limit</p>
-                      <p className="text-lg font-black text-typography">₹{s.income_limit ? (s.income_limit/100000).toFixed(1) + "L" : "N/A"}</p>
+                   <div className="leading-none">
+                      <p className="text-[7px] font-black text-secondary/20 uppercase tracking-[0.2em] mb-1.5">Threshold</p>
+                      <p className="text-sm font-black text-typography">₹{s.income_limit ? (s.income_limit/100000).toFixed(1) + "L" : "N/A"}</p>
                    </div>
                 </div>
-
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                   <div className="flex items-center space-x-3 text-secondary/40">
-                      <Clock size={16} />
-                      <span className="text-[10px] font-black uppercase tracking-widest italic">Deadline</span>
+ 
+                <div className="flex items-center justify-between p-2.5 bg-gray-50 rounded-lg border border-gray-100">
+                   <div className="flex items-center space-x-2 text-secondary/30">
+                      <Clock size={12} />
+                      <span className="text-[8px] font-black uppercase tracking-[0.1em]">Deadline</span>
                    </div>
-                   <span className="text-[11px] font-black text-typography uppercase tracking-tighter">
+                   <span className="text-[9px] font-black text-typography uppercase tracking-tight">
                       {s.deadline ? new Date(s.deadline).toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }) : "NOT SET"}
                    </span>
                 </div>
                 
-                <div className="bg-emerald-50 border border-emerald-100/50 p-4 rounded-2xl">
-                   <p className="text-[10px] font-black text-emerald-600 uppercase tracking-widest leading-none mb-1">Scholarship Benefit</p>
-                   <p className="text-xs font-bold text-emerald-800 italic line-clamp-1">{s.amount_description || "Variable amount based on criteria"}</p>
+                <div className="bg-emerald-50 border border-emerald-100/50 p-2.5 rounded-lg">
+                   <p className="text-[7px] font-black text-emerald-600 uppercase tracking-widest leading-none mb-1">Grant Allocation</p>
+                   <p className="text-[10px] font-bold text-emerald-800 line-clamp-1">{s.amount_description || "Dynamic Benefit Matrix"}</p>
                 </div>
              </div>
-
-             <div className="mt-8 flex items-center space-x-2">
-                <button onClick={() => alert(`Opening Visual Rule Builder for: ${s.name}`)} className="flex-1 py-4 bg-primary text-white text-[10px] font-black uppercase tracking-widest rounded-2xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+ 
+             <div className="mt-4 flex items-center space-x-1.5 border-t border-gray-50 pt-4 relative z-10">
+                <button onClick={() => alert(`Manage: ${s.name}`)} className="flex-1 py-2 bg-primary text-white text-[9px] font-black uppercase tracking-widest rounded-lg shadow-sm hover:scale-105 active:scale-95 transition-all">
                    Manage Rules
                 </button>
-                <button onClick={() => window.open(`/scholarships/${s.id}`, '_blank')} className="px-5 py-4 bg-gray-50 text-secondary/40 rounded-2xl hover:bg-gray-100 hover:text-secondary transition-all">
-                   <ExternalLink size={16} />
+                <button onClick={() => window.open(`/scholarships/${s.id}`, '_blank')} className="w-8 h-8 bg-gray-50 text-secondary/30 rounded-lg flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-all shadow-sm">
+                   <ExternalLink size={12} />
                 </button>
              </div>
           </div>
         ))}
       </section>
 
+
       {/* Eligibility Rule Warning */}
-      <section className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-         <div className="flex items-start space-x-6">
-            <div className="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-500 border border-amber-100">
-               <AlertCircle size={28} />
+      <section className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
+         <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center text-amber-500 border border-amber-100">
+               <AlertCircle size={16} />
             </div>
             <div>
-               <h3 className="text-xl font-black text-typography uppercase tracking-tight">Auto-Finder Protocol</h3>
-               <p className="text-sm font-bold text-secondary/40 leading-relaxed mt-2 max-w-2xl">
-                 Rules configured here drive the matching engine for 10M+ students. Ensure merit and income thresholds are precise to avoid false eligibility matches.
+               <h3 className="text-sm font-black text-typography uppercase tracking-tight">Auto-Finder Protocol</h3>
+               <p className="text-[12px] font-bold text-secondary/40 leading-relaxed mt-1 max-w-2xl">
+                 Matching engine active for 10M+ student records. Merit/income thresholds drive real-time eligibility clusters.
                </p>
             </div>
          </div>

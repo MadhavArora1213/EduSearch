@@ -75,29 +75,29 @@ export default function StudentsManagementPage() {
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-1.5 font-montserrat">
+           <div className="flex items-center space-x-3 mb-1.5">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
-                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary lowercase">Identity Protocol</span>
+                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Identity Protocol</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Registry</span>
+              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Cloud Registry</span>
            </div>
            <h1 className="text-3xl md:text-4xl font-black text-typography tracking-tighter leading-none mb-1">
              Student <span className="text-primary italic">Cloud</span>
            </h1>
            <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5 leading-none">
-              Managing {(students.length || 0).toLocaleString()} Registered Nodes
+              Managing {(students.length || 0).toLocaleString()} Registered Nodes in Security Cluster
            </p>
         </div>
  
         <div className="flex items-center space-x-3">
-           <button className="flex items-center space-x-2 px-5 py-2.5 bg-white border border-gray-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:text-primary transition-all shadow-sm">
+           <button className="flex items-center space-x-2 px-6 py-2.5 bg-white border border-gray-200 rounded-xl text-[10px] font-black uppercase tracking-widest hover:text-primary transition-all shadow-sm">
               <Download size={16} />
-              <span>Export</span>
+              <span>Export Registry</span>
            </button>
            <button className="flex items-center space-x-2 px-6 py-2.5 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-lg shadow-slate-900/10">
               <Zap size={16} />
-              <span>Broadcast</span>
+              <span>Broadcast Node</span>
            </button>
         </div>
       </section>
@@ -124,26 +124,26 @@ export default function StudentsManagementPage() {
       </div>
 
       {/* Filter Hub */}
-      <section className="bg-white rounded-xl border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-         <div className="p-4 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-4 bg-snow-pearl/30">
-            <div className="relative flex-1 max-w-xl">
-               <Search size={16} className="absolute left-5 top-1/2 -translate-y-1/2 text-secondary/20" />
+      <section className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
+         <div className="p-2 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-3 bg-snow-pearl/30">
+            <div className="relative flex-1 max-w-lg">
+               <Search size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input 
                  value={searchTerm}
                  onChange={(e) => setSearchTerm(e.target.value)}
-                 placeholder="Search identities..." 
-                 className="w-full bg-white border border-transparent pl-12 pr-6 py-2.5 rounded-xl text-[13px] font-bold outline-none focus:ring-4 focus:ring-primary/5 shadow-sm" 
+                 placeholder="Search registry cluster..." 
+                 className="w-full bg-white border border-gray-100 pl-10 pr-4 py-2 rounded-lg text-[12px] font-bold outline-none focus:ring-4 focus:ring-primary/5 shadow-sm transition-all" 
                />
             </div>
-             <div className="flex items-center space-x-3 w-full lg:w-auto justify-between lg:justify-end">
-                <div className="flex items-center space-x-1 bg-gray-50 p-1 rounded-xl border border-gray-100">
-                   {["All", "Today", "Suspended"].map((p) => (
-                     <button key={p} className="px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all">
+             <div className="flex items-center space-x-2 w-full lg:w-auto justify-between lg:justify-end">
+                <div className="flex items-center space-x-1 bg-gray-50 p-1 rounded-lg border border-gray-100">
+                   {["All Nodes", "Recent", "Violations"].map((p) => (
+                     <button key={p} className="px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all">
                         {p}
                      </button>
                    ))}
                 </div>
-                <button className="w-9 h-9 bg-white border border-gray-100 rounded-xl flex items-center justify-center text-secondary/20 hover:text-primary transition-all shadow-sm">
+                <button className="w-8 h-8 bg-white border border-gray-100 rounded-lg flex items-center justify-center text-secondary/20 hover:text-primary transition-all shadow-sm">
                    <Filter size={14} />
                 </button>
              </div>
@@ -172,57 +172,60 @@ export default function StudentsManagementPage() {
                      </tr>
                    )}
                    {students.filter(s => s.name.toLowerCase().includes(searchTerm.toLowerCase())).map((student) => (
-                     <tr key={student.id} className="group hover:bg-gray-50/30 transition-all">
-                        <td className="px-6 py-3">
-                           <div className="flex items-center space-x-4">
-                              <div className="w-10 h-10 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center text-secondary/20 group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
-                                 <User size={18} />
+                     <tr key={student.id} className="group hover:bg-gray-50/50 transition-all">
+                        <td className="px-6 py-2.5">
+                           <div className="flex items-center space-x-3">
+                              <div className="w-9 h-9 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-center text-secondary/20 group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
+                                 <User size={16} />
                               </div>
                               <div>
                                  <h4 className="text-[13px] font-black text-typography uppercase leading-none group-hover:text-primary transition-colors">{student.name}</h4>
-                                 <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-1.5">ID: {student.id.slice(0, 8)}</p>
+                                 <p className="text-[8px] font-black text-secondary/30 uppercase tracking-[0.2em] mt-1.5">NODE: {student.id.slice(0, 8)}</p>
                               </div>
                            </div>
                         </td>
-                        <td className="px-6 py-3">
-                           <div className="space-y-1.5">
-                              <div className="flex items-center space-x-1.5 text-[10px] font-black text-typography uppercase">
-                                 <Mail size={12} className="text-primary" />
+                        <td className="px-6 py-2.5">
+                           <div className="space-y-1 leading-none">
+                              <div className="flex items-center space-x-1.5 text-[10px] font-black text-typography lowercase">
+                                 <Mail size={12} className="text-primary/40" />
                                  <span>{student.email}</span>
                               </div>
-                              <div className="flex items-center space-x-1.5 text-[9px] font-black text-secondary/30 uppercase tracking-widest">
-                                 <Smartphone size={12} />
+                              <div className="flex items-center space-x-1.5 text-[8px] font-black text-secondary/30 uppercase tracking-widest mt-1">
+                                 <Smartphone size={10} />
                                  <span>{maskPhone(student.phone)}</span>
                               </div>
                            </div>
                         </td>
-                        <td className="px-6 py-3 text-center">
-                           <p className="text-[11px] font-black text-typography uppercase leading-none">{new Date(student.created_at).toLocaleDateString('en-IN', { month: 'short', day: '2-digit', year: 'numeric' })}</p>
-                           <p className="text-[8px] font-black text-secondary/20 uppercase tracking-widest mt-1.5 leading-none">Registered</p>
+                        <td className="px-6 py-2.5 text-center">
+                           <p className="text-[10px] font-black text-typography uppercase leading-none">{new Date(student.created_at).toLocaleDateString('en-IN', { month: 'short', day: '2-digit', year: 'numeric' })}</p>
+                           <p className="text-[7px] font-black text-secondary/20 uppercase tracking-widest mt-1.5 leading-none">Registered</p>
                         </td>
-                        <td className="px-6 py-3 text-center border-l border-gray-50/50 bg-gray-50/20">
+                        <td className="px-6 py-2.5 text-center bg-gray-50/30">
                            <div className="inline-flex space-x-3 items-center">
                               <div className="text-center">
-                                 <p className="text-[13px] font-black text-typography leading-none">{student.reviews_count || 0}</p>
-                                 <p className="text-[7px] font-bold text-secondary/20 uppercase tracking-widest mt-1 leading-none">Feed</p>
+                                 <p className="text-[12px] font-black text-typography leading-none">{student.reviews_count || 0}</p>
+                                 <p className="text-[7px] font-black text-secondary/20 uppercase tracking-widest mt-1 leading-none">Feed</p>
                               </div>
-                              <div className="w-px h-5 bg-gray-200/50" />
+                              <div className="w-px h-4 bg-gray-200/50" />
                               <div className="text-center">
-                                 <p className="text-[13px] font-black text-typography leading-none">{student.apps_count || 0}</p>
-                                 <p className="text-[7px] font-bold text-secondary/20 uppercase tracking-widest mt-1 leading-none">Ops</p>
+                                 <p className="text-[12px] font-black text-typography leading-none">{student.apps_count || 0}</p>
+                                 <p className="text-[7px] font-black text-secondary/20 uppercase tracking-widest mt-1 leading-none">Ops</p>
                               </div>
                            </div>
                         </td>
-                        <td className="px-6 py-3 text-right">
-                           <div className="flex items-center justify-end space-x-2">
-                              <span className={cn(
-                                "px-2.5 py-1 rounded-full text-[8px] font-black uppercase tracking-widest border transition-all",
+                        <td className="px-6 py-2.5 text-right">
+                           <div className="flex items-center justify-end space-x-1.5">
+                              <div className={cn(
+                                "px-2 py-0.5 rounded-full text-[7px] font-black uppercase tracking-widest border transition-all",
                                 student.status === 'ACTIVE' ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-rose-50 text-rose-600 border-rose-100"
                               )}>
                                  {student.status || 'ACTIVE'}
-                              </span>
-                              <button className="w-8 h-8 bg-white border border-gray-100 rounded-lg hover:bg-slate-900 hover:text-white transition-all flex items-center justify-center text-secondary/30">
-                                 <MoreVertical size={14} />
+                              </div>
+                              <Link href={`/admin/users/${student.id}`} className="w-8 h-8 bg-white border border-gray-100 rounded-lg flex items-center justify-center text-secondary/30 hover:bg-slate-900 hover:text-white transition-all shadow-sm">
+                                 <User size={12} />
+                              </Link>
+                              <button className="w-8 h-8 bg-white border border-gray-100 rounded-lg flex items-center justify-center text-secondary/30 hover:bg-rose-500 hover:text-white transition-all shadow-sm">
+                                 <AlertTriangle size={12} />
                               </button>
                            </div>
                         </td>
@@ -232,15 +235,15 @@ export default function StudentsManagementPage() {
              </table>
          </div>
 
-         <div className="p-4 border-t border-gray-100 flex items-center justify-between bg-snow-pearl/30 relative overflow-hidden font-montserrat">
-            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+         <div className="p-2.5 px-6 border-t border-gray-100 flex items-center justify-between bg-snow-pearl/30 relative overflow-hidden font-montserrat">
+            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-1000 group">
                <Fingerprint size={80} className="text-primary" />
             </div>
-            <div className="flex items-center space-x-4 relative z-10">
-               <Activity size={14} className="text-emerald-500 animate-pulse" />
-               <p className="text-[9px] font-black text-secondary/30 uppercase tracking-[0.2em]">Identity Consensus Node: DPDP Compliance Verified</p>
+            <div className="flex items-center space-x-3 relative z-10">
+               <Activity size={12} className="text-emerald-500 animate-pulse" />
+               <p className="text-[8px] font-black text-secondary/30 uppercase tracking-[0.2em]">Identity Consensus Protocol: DPDP Compliance Active</p>
             </div>
-            <p className="text-[8px] font-black text-secondary/20 uppercase tracking-widest relative z-10">Auth Bridge: NextAuth v5</p>
+            <p className="text-[7px] font-black text-secondary/20 uppercase tracking-widest relative z-10">Auth Engine: NextAuth Enterprise</p>
          </div>
       </section>
     </div>
