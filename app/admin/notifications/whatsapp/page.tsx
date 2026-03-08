@@ -44,176 +44,189 @@ export default function WhatsAppBotManagerPage() {
   const [botStatus, setBotStatus] = useState<'CONNECTED' | 'DISCONNECTED' | 'CONNECTING'>('CONNECTED');
 
   const botMetrics: BotMetric[] = [
-    { id: "B1", label: "Messages Sent (24h)", value: "14,204", trend: "+8.2%", color: "text-emerald-500 bg-emerald-50", icon: Send },
-    { id: "B2", label: "Avg Session Duration", value: "2m 14s", trend: "+12s", color: "text-primary bg-primary/5", icon: Clock },
-    { id: "B3", label: "Conversation Completion", value: "68.4%", trend: "High", color: "text-indigo-500 bg-indigo-50", icon: Target },
-    { id: "B4", label: "Lead Capture Rate", value: "12.8%", trend: "Stable", color: "text-amber-500 bg-amber-50", icon: MousePointer2 },
+    { id: "B1", label: "Messages (24h)", value: "14,204", trend: "+8.2%", color: "text-emerald-500 bg-emerald-50 border-emerald-100/50", icon: Send },
+    { id: "B2", label: "Avg Session", value: "2m 14s", trend: "+12s", color: "text-primary bg-primary/5 border-primary/10", icon: Clock },
+    { id: "B3", label: "Completion Rate", value: "68.4%", trend: "High", color: "text-indigo-500 bg-indigo-50 border-indigo-100/50", icon: Target },
+    { id: "B4", label: "Lead Capture", value: "12.8%", trend: "Stable", color: "text-amber-500 bg-amber-50 border-amber-100/50", icon: MousePointer2 },
   ];
 
   return (
-    <div className="space-y-6 font-montserrat italic not-italic font-montserrat">
+    <div className="space-y-6 font-montserrat pb-10">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-4 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-2">
-              <div className="bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-100 italic">
-                 <span className="text-[10px] font-black uppercase tracking-widest text-emerald-600 italic">Baileys Bot Core v5.1</span>
+           <div className="flex items-center space-x-3 mb-1.5">
+              <div className="bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100">
+                 <span className="text-[10px] font-black uppercase tracking-widest text-emerald-600">Baileys Core v5.1</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30">WhatsApp Ecosystem Hub</span>
+              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">WhatsApp Hub</span>
            </div>
-           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
-             Bot <span className="text-emerald-500 italic">Manager</span>
+           <h1 className="text-3xl font-black text-typography tracking-tighter leading-none mb-1">
+             Bot <span className="text-emerald-500 italic">Registry</span>
            </h1>
-           <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
+           <p className="text-secondary/40 text-[10px] font-black uppercase tracking-widest mt-1.5 leading-none">
               Auditing Real-Time Conversation Flows & Automated Counselor Engagement
            </p>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
            {botStatus === 'CONNECTED' ? (
               <button 
                 onClick={() => setBotStatus('DISCONNECTED')}
-                className="flex items-center space-x-3 px-8 py-4 bg-rose-50 text-rose-600 border border-rose-100 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-rose-500 hover:text-white transition-all shadow-xl shadow-rose-500/10 group italic"
+                className="flex items-center space-x-2 px-6 py-2.5 bg-rose-50 text-rose-600 border border-rose-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-rose-500 hover:text-white transition-all shadow-lg shadow-rose-500/10 group active:scale-95"
               >
-                 <Square size={18} className="group-hover:fill-current italic" />
+                 <Square size={14} className="group-hover:fill-current" />
                  <span>Disconnect Bot</span>
               </button>
            ) : (
               <button 
                 onClick={() => setBotStatus('CONNECTING')}
-                className="flex items-center space-x-3 px-8 py-4 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all shadow-xl shadow-emerald-500/10 group italic"
+                className="flex items-center space-x-2 px-6 py-2.5 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all shadow-lg shadow-emerald-500/10 group active:scale-95"
               >
-                 <Play size={18} className="group-hover:fill-current italic" />
-                 <span>Initiate Connection</span>
+                 <Play size={14} className="group-hover:fill-current" />
+                 <span>Initiate Hub</span>
               </button>
            )}
-           <button className="p-4 bg-white border border-gray-100 rounded-2xl text-secondary/20 hover:text-primary transition-all shadow-sm italic"><Settings size={20} /></button>
+           <button className="w-9 h-9 bg-white border border-gray-200 rounded-xl flex items-center justify-center text-secondary/40 hover:text-primary transition-all shadow-sm active:scale-95"><Settings size={16} /></button>
         </div>
       </section>
 
       {/* Bot Health & Telemetry Strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
          {botMetrics.map((m) => (
-           <div key={m.id} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm relative group hover:border-emerald-500/20 transition-all cursor-pointer italic">
-              <div className="flex items-center justify-between mb-4 italic">
-                 <div className={cn("w-12 h-12 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 shadow-inner italic", m.color)}>
-                    <m.icon size={22} className="italic" />
+           <div key={m.id} className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm transition-all hover:shadow-md cursor-pointer group">
+              <div className="flex items-center justify-between mb-2">
+                 <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center border shadow-sm transition-all group-hover:scale-110", m.color)}>
+                    <m.icon size={18} />
                  </div>
-                 <span className="text-[9px] font-black text-secondary/20 uppercase tracking-widest italic">{m.trend}</span>
+                 <span className="text-[8px] font-black text-secondary/40 uppercase tracking-widest px-2.5 py-1 rounded-full border border-gray-200 bg-gray-50/50 shadow-sm">{m.trend}</span>
               </div>
-              <p className="text-4xl font-black text-typography tracking-tighter capitalize leading-none mb-1 italic">{m.value}</p>
-              <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest italic">{m.label}</p>
+              <p className="text-3xl font-black text-typography tracking-tighter leading-none mb-1.5 mt-3">{m.value}</p>
+              <p className="text-[8px] font-black text-secondary/30 uppercase tracking-widest">{m.label}</p>
            </div>
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-6 font-montserrat italic not-italic font-montserrat">
+      <div className="grid grid-cols-12 gap-4">
          {/* QR Auth Terminal */}
-         <div className="col-span-12 lg:col-span-4 bg-slate-900 rounded-2xl p-12 text-white flex flex-col items-center justify-between group overflow-hidden relative font-montserrat italic not-italic">
-            <div className="absolute top-0 right-0 p-5 opacity-5 group-hover:scale-110 transition-transform duration-1000">
-               <Wifi size={120} className="text-primary italic" />
+         <div className="col-span-12 lg:col-span-4 bg-slate-900 rounded-xl p-6 text-white flex flex-col justify-between group overflow-hidden relative shadow-lg">
+            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-1000">
+               <Wifi size={100} className="text-primary" />
             </div>
-            <div className="w-full relative z-10 font-montserrat italic not-italic">
+            <div className="w-full relative z-10">
                <div className="flex items-center justify-between mb-6">
-                  <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest italic underline decoration-primary/30">Session Security</h4>
+                  <h4 className="text-[9px] font-black text-slate-500 uppercase tracking-widest leading-none">Session Security</h4>
                   <div className={cn(
-                    "flex items-center space-x-2 px-3 py-1 bg-white/5 rounded-full ring-1 ring-white/10 italic",
+                    "flex items-center space-x-2 px-2.5 py-1 bg-white/5 rounded-md ring-1 ring-white/10 shadow-sm",
                     botStatus === 'CONNECTED' ? "text-emerald-500" : "text-amber-500"
                   )}>
-                     <div className={cn("w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse italic", botStatus !== 'CONNECTED' && "bg-amber-500")} />
-                     <span className="text-[9px] font-black uppercase tracking-widest">{botStatus}</span>
+                     <div className={cn("w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse", botStatus !== 'CONNECTED' && "bg-amber-500")} />
+                     <span className="text-[8px] font-black uppercase tracking-widest leading-none">{botStatus}</span>
                   </div>
                </div>
                
-               <div className="bg-white p-5 rounded-2xl flex items-center justify-center relative shadow-2xl ring-1 ring-white/20 italic">
+               <div className="bg-white p-4 rounded-2xl flex items-center justify-center relative shadow-xl ring-1 ring-white/20 min-h-[220px]">
                   {botStatus === 'CONNECTED' ? (
-                    <div className="flex flex-col items-center py-10 italic">
-                       <CheckCircle2 size={100} className="text-emerald-500 animate-bounce mb-6 italic" />
-                       <p className="text-[11px] font-black text-slate-400 uppercase tracking-widest italic">Node Active (Pixel 6 Pro)</p>
-                       <p className="text-[9px] font-bold text-emerald-500 uppercase tracking-widest mt-1">Verified via Baileys Multi-Device</p>
+                    <div className="flex flex-col items-center py-6">
+                       <CheckCircle2 size={80} className="text-emerald-500 animate-bounce mb-4" />
+                       <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">Node Active</p>
+                       <p className="text-[8px] font-black text-emerald-500 uppercase tracking-widest mt-2 leading-none">Verified session: Pixel 6 Pro</p>
                     </div>
                   ) : botStatus === 'CONNECTING' ? (
-                    <div className="flex flex-col items-center py-10 space-y-4 italic">
-                       <RefreshCw size={80} className="text-primary animate-spin mb-4 italic" />
-                       <p className="text-[11px] font-black text-slate-400 uppercase tracking-widest italic">Fetching QR Payload...</p>
+                    <div className="flex flex-col items-center py-6 space-y-4">
+                       <RefreshCw size={60} className="text-primary animate-spin mb-2" />
+                       <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Fetching QR...</p>
                     </div>
                   ) : (
-                    <QrCode size={180} className="text-slate-900 group-hover:scale-105 transition-transform duration-500 italic" />
+                    <QrCode size={140} className="text-slate-900 group-hover:scale-105 transition-transform duration-500" />
                   )}
                </div>
 
-               <div className="mt-10 p-6 bg-white/5 rounded-3xl border border-white/5 italic">
-                  <p className="text-[9px] font-bold text-slate-500 leading-relaxed uppercase tracking-[0.1em] italic underline decoration-primary/10">Use official WhatsApp to scan the QR above. Session remains active for 30 days without re-scan.</p>
+               <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10 shadow-inner">
+                  <p className="text-[9px] font-black text-slate-400 leading-relaxed uppercase tracking-widest">Use official WhatsApp to scan the QR above. Session remains active for 30 days without re-scan.</p>
                </div>
             </div>
          </div>
 
          {/* Conversation Flow Monitor */}
-         <div className="col-span-12 lg:col-span-8 bg-white p-12 rounded-[3.5rem] border border-gray-100 shadow-sm flex flex-col font-montserrat italic not-italic font-montserrat">
-            <div className="flex justify-between items-center mb-6 italic">
+         <div className="col-span-12 lg:col-span-8 bg-white p-6 rounded-xl border border-gray-100 shadow-lg flex flex-col justify-between relative overflow-hidden group">
+            <div className="absolute top-0 right-0 p-4 opacity-[0.02] group-hover:scale-110 transition-transform duration-1000">
+               <Activity size={120} className="text-emerald-500" />
+            </div>
+            <div className="flex justify-between items-center mb-6 relative z-10">
                <div>
-                  <h4 className="text-black text-xl font-black tracking-tighter uppercase italic lowercase">Conversation Intent Flow</h4>
-                  <p className="text-[9px] font-black text-secondary/30 uppercase tracking-[0.2em] mt-1 underline decoration-primary/10 italic">Visualizing Node-by-Node Drop-offs (Fastify FAST-Schema)</p>
+                  <h4 className="text-sm font-black text-typography tracking-tighter uppercase mb-1">Intent Flow Analytics</h4>
+                  <p className="text-[9px] font-black text-secondary/30 uppercase tracking-widest leading-none">Node-by-Node Drop-offs (FAST-Schema)</p>
                </div>
-               <button className="flex items-center space-x-2 px-6 py-3 bg-snow-pearl rounded-2xl text-[10px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all italic underline decoration-primary/10 italic">
-                  <span>Edit Flow Schema</span>
+               <button className="flex items-center space-x-2 px-4 py-2 bg-gray-50 rounded-lg text-[9px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all border border-gray-200 shadow-sm active:scale-95">
+                  <span>Logic Schema</span>
                   <ExternalLink size={14} />
                </button>
             </div>
 
-            <div className="flex-1 space-y-8">
+            <div className="flex-1 space-y-5 relative z-10">
                {[
                  { node: "Greeting & Profile Check", completion: 94.2, leads: 0 },
-                 { node: "Stream Selection (Eng/Med/Law)", completion: 72.1, leads: 0 },
+                 { node: "Stream Selection Logic", completion: 72.1, leads: 0 },
                  { node: "City Preference Capture", completion: 64.8, leads: 0 },
-                 { node: "Scholarship Intent Analysis", completion: 42.4, leads: 1204 },
-                 { node: "Final Lead Submission Node", completion: 28.1, leads: 420 },
+                 { node: "Scholarship Analysis", completion: 42.4, leads: 1204 },
+                 { node: "Lead Submission Node", completion: 28.1, leads: 420 },
                ].map((v, i) => (
-                 <div key={i} className="group cursor-pointer">
-                    <div className="flex justify-between items-end mb-2 italic">
-                       <div className="flex items-center space-x-4 italic underline decoration-primary/10">
-                          <span className="w-8 h-8 rounded-xl bg-snow-pearl flex items-center justify-center text-[10px] font-black text-secondary/30 italic">{i+1}</span>
-                          <span className="text-[12px] font-black text-typography uppercase italic">{v.node}</span>
+                 <div key={i} className="group/node cursor-pointer">
+                    <div className="flex justify-between items-end mb-2 font-montserrat tracking-tight">
+                       <div className="flex items-center space-x-3">
+                          <span className="w-7 h-7 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-center text-[10px] font-black text-secondary/40 shadow-sm group-hover/node:bg-primary group-hover/node:text-white group-hover/node:border-primary/20 transition-all">{i+1}</span>
+                          <span className="text-[12px] font-black text-typography uppercase leading-none group-hover/node:text-primary transition-colors">{v.node}</span>
                        </div>
-                       <div className="text-right italic">
+                       <div className="text-right leading-none">
                           <span className={cn(
-                             "text-lg font-black italic tracking-tighter",
+                             "text-[16px] font-black tracking-tighter",
                              v.completion < 50 ? "text-rose-500" : "text-emerald-500"
                           )}>{v.completion}%</span>
                        </div>
                     </div>
-                    <div className="w-full h-2 bg-snow-pearl rounded-full overflow-hidden mb-1">
+                    <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mb-2 shadow-inner">
                        <div className={cn(
-                          "h-full transition-all duration-1000",
+                          "h-full transition-all duration-1000 shadow-sm",
                           v.completion < 50 ? "bg-rose-500" : "bg-emerald-500"
                        )} style={{ width: `${v.completion}%` }} />
                     </div>
-                    <div className="flex justify-between items-center italic">
-                       <p className="text-[8px] font-black text-secondary/20 uppercase tracking-widest italic">Node Progression</p>
-                       {v.leads > 0 && <p className="text-[8px] font-black text-emerald-500 uppercase tracking-widest italic">{v.leads} Leads Captured here</p>}
+                    <div className="flex justify-between items-center">
+                       <p className="text-[8px] font-black text-secondary/30 uppercase tracking-widest">Node Progression State</p>
+                       {v.leads > 0 && <p className="text-[7px] font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full uppercase tracking-widest border border-emerald-100/50">{v.leads} Generated Leads</p>}
                     </div>
                  </div>
                ))}
             </div>
 
-            <div className="mt-14 pt-10 border-t border-gray-50 flex items-center justify-between text-[9px] font-black text-secondary/20 uppercase tracking-widest italic">
-               <div className="flex items-center space-x-4">
-                  <Activity size={12} className="text-primary italic" />
-                  <span>Real-Time Fastify Event Listener Active</span>
+            <div className="mt-8 pt-5 border-t border-gray-100 flex items-center justify-between font-montserrat relative z-10">
+               <div className="flex items-center space-x-3">
+                  <Activity size={14} className="text-primary animate-pulse" />
+                  <span className="text-[8px] font-black text-secondary/40 uppercase tracking-widest">Real-Time Event Listener Active</span>
                </div>
-               <span>Polling every 5s</span>
+               <span className="text-[8px] font-black text-secondary/30 uppercase tracking-widest">v5.1 High-Density Cluster</span>
             </div>
          </div>
       </div>
 
       {/* Logic Config Alert Footnote */}
-      <section className="bg-emerald-50 p-6 rounded-2xl border border-emerald-100 flex items-center justify-between italic not-italic font-montserrat">
-         <div className="flex items-center space-x-6">
-            <Lock size={20} className="text-emerald-600 italic" />
-            <p className="text-[11px] font-bold text-emerald-800/60 tracking-widest uppercase italic font-montserrat not-italic">All bot messages are signed via AES-GCM • No PII cached in Fastify session storage • Session expiration enforced daily</p>
+      <section className="bg-emerald-50/50 p-5 rounded-xl border border-emerald-100/50 flex flex-col md:flex-row md:items-center justify-between group shadow-md transition-all hover:shadow-lg">
+         <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform">
+               <Lock size={20} />
+            </div>
+            <div>
+               <h4 className="text-[11px] font-black text-emerald-900 uppercase tracking-widest leading-none mb-2">Security & Encryption</h4>
+               <p className="text-[9px] font-black text-emerald-600/70 uppercase tracking-widest leading-relaxed max-w-2xl">
+                  Bot messages are signed via AES-GCM • No PII cached in session storage • Session expiration enforced daily at 23:59 UTC
+               </p>
+            </div>
          </div>
-         <p className="text-[9px] font-black text-emerald-600/30 uppercase tracking-widest italic">v5.1 High-Density Cluster</p>
+         <button className="mt-4 md:mt-0 px-6 py-2.5 bg-emerald-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20 active:scale-95 flex items-center space-x-2">
+            <span>Security Audit</span>
+            <ChevronRight size={14} />
+         </button>
       </section>
     </div>
   );

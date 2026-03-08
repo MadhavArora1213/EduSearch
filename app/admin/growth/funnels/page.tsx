@@ -45,18 +45,18 @@ export default function ConversionFunnelPage() {
   const [device, setDevice] = useState<'ALL' | 'MOBILE' | 'DESKTOP'>('ALL');
 
   return (
-    <div className="space-y-6 font-montserrat">
+    <div className="space-y-6 font-montserrat pb-10">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-4 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
            <div className="flex items-center space-x-3 mb-1.5">
-              <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
-                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Funnel Ops</span>
+              <div className="bg-primary/5 px-2.5 py-1 rounded-lg border border-primary/10">
+                 <span className="text-[10px] font-black uppercase tracking-widest text-primary">Funnel Ops</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Path Intelligence</span>
            </div>
-           <h1 className="text-3xl md:text-4xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl font-black text-typography tracking-tighter leading-none mb-1">
              Full <span className="text-primary italic">Funnel</span>
            </h1>
            <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5 leading-none">
@@ -95,21 +95,21 @@ export default function ConversionFunnelPage() {
         </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-6 font-montserrat italic not-italic">
+      <div className="grid grid-cols-12 gap-4">
          {/* Funnel Visualization */}
-         <div className="col-span-12 lg:col-span-9 bg-white rounded-xl border border-gray-100 shadow-sm p-5 flex flex-col">
-            <div className="flex justify-between items-center mb-6">
+         <div className="col-span-12 lg:col-span-9 bg-white rounded-xl border border-gray-100 shadow-sm p-6 flex flex-col">
+            <div className="flex justify-between items-center mb-8">
                <div>
-                  <h3 className="text-xs font-black text-typography tracking-tighter uppercase">Enrollment Pipeline</h3>
-                  <p className="text-[8px] font-black text-secondary/20 uppercase tracking-[0.1em] mt-1.5 leading-none">Traffic to Admission Workflow Clusters</p>
+                  <h3 className="text-xs font-black text-typography uppercase tracking-widest">Enrollment Pipeline</h3>
+                  <p className="text-[9px] font-black text-secondary/20 uppercase tracking-widest mt-1">Traffic to Admission Workflow Clusters</p>
                </div>
-               <div className="flex items-center space-x-2 px-2.5 py-1 bg-emerald-50 rounded-xl border border-emerald-100/50">
+               <div className="flex items-center space-x-2 px-3 py-1.5 bg-emerald-50 rounded-xl border border-emerald-100/50">
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-[8px] font-black text-emerald-700 uppercase tracking-widest">Live Flow</span>
+                  <span className="text-[9px] font-black text-emerald-700 uppercase tracking-widest">Live Flow</span>
                </div>
             </div>
  
-            <div className="space-y-2">
+            <div className="space-y-2.5">
                {funnelStages.map((stage, i) => {
                  const dropOff = i > 0 ? (funnelStages[i-1].count - stage.count) : 0;
                  const conversionFromPrev = i > 0 ? ((stage.count / funnelStages[i-1].count) * 100).toFixed(1) : 100;
@@ -121,7 +121,7 @@ export default function ConversionFunnelPage() {
                          {i > 0 && (
                            <div className="flex flex-col items-end leading-none">
                               <span className="text-[10px] font-black text-rose-500">-{dropOff.toLocaleString()}</span>
-                              <span className="text-[6px] font-black text-secondary/10 uppercase tracking-widest mt-0.5">Leaked</span>
+                              <span className="text-[7px] font-black text-secondary/30 uppercase tracking-widest mt-0.5">Leaked</span>
                            </div>
                          )}
                       </div>
@@ -145,9 +145,9 @@ export default function ConversionFunnelPage() {
                                "text-[12px] font-black tracking-tighter",
                                i === 0 ? "text-secondary/10" : parseFloat(conversionFromPrev as string) < 30 ? "text-rose-500" : "text-emerald-500"
                             )}>{i === 0 ? 'START' : `${conversionFromPrev}%`}</span>
-                            {i > 0 && parseFloat(conversionFromPrev as string) < 30 && <AlertCircle size={8} className="text-rose-500 animate-pulse" />}
+                            {i > 0 && parseFloat(conversionFromPrev as string) < 30 && <AlertCircle size={10} className="text-rose-500 animate-pulse" />}
                          </div>
-                         {i > 0 && <p className="text-[6px] font-black text-secondary/20 uppercase tracking-widest mt-0.5">Retention</p>}
+                         {i > 0 && <p className="text-[7px] font-black text-secondary/30 uppercase tracking-widest mt-0.5">Retention</p>}
                       </div>
                    </div>
                  );
@@ -157,22 +157,22 @@ export default function ConversionFunnelPage() {
 
          {/* Sidebar: Source Context */}
          <div className="col-span-12 lg:col-span-3">
-            <div className="bg-slate-900 p-4 rounded-xl text-white flex flex-col justify-between relative group h-full shadow-xl shadow-slate-900/10">
-               <div className="absolute top-0 right-0 p-3 opacity-[0.03] group-hover:scale-110 transition-transform duration-1000">
+            <div className="bg-slate-900 p-6 rounded-xl text-white flex flex-col justify-between relative group h-full shadow-lg">
+               <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:scale-110 transition-transform duration-1000">
                   <Target size={60} className="text-primary" />
                </div>
                <div className="relative z-10 flex-1">
-                  <h4 className="text-[8px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4 leading-none">Source Performance</h4>
+                  <h4 className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-6 border-b border-white/5 pb-3">Source Performance</h4>
                   <div className="space-y-4">
                      {trafficSources.map((s, i) => (
-                        <div key={i} className="flex flex-col space-y-1 group/s">
+                        <div key={i} className="flex flex-col space-y-1.5 group/s">
                            <div className="flex justify-between items-end leading-none">
                               <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest group-hover/s:text-white transition-colors">{s.source}</p>
                               <p className={cn("text-[13px] font-black tracking-tighter", s.color)}>{s.conversion}%</p>
                            </div>
-                           <div className="w-full h-1 bg-slate-800/50 rounded-full overflow-hidden">
+                           <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
                               <div 
-                                className={cn("h-full group-hover/s:opacity-100 transition-all duration-1000", s.color.replace('text-', 'bg-'))} 
+                                className={cn("h-full group-hover/s:opacity-80 transition-all duration-1000", s.color.replace('text-', 'bg-'))} 
                                 style={{ width: `${s.conversion * 15}%` }} 
                               />
                            </div>
@@ -180,8 +180,8 @@ export default function ConversionFunnelPage() {
                      ))}
                   </div>
                </div>
-               <div className="mt-6 p-3 bg-white/5 rounded-lg border border-white/5">
-                  <p className="text-[8px] font-bold text-slate-400 leading-relaxed uppercase tracking-widest">
+               <div className="mt-8 p-3 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-[9px] font-black text-slate-400 leading-relaxed uppercase tracking-widest">
                      Organic nodes yield 4.8x survival vs social clusters at Stage 4.
                   </p>
                </div>
@@ -190,19 +190,19 @@ export default function ConversionFunnelPage() {
       </div>
 
       {/* Growth Node: UX Insights */}
-      <section className="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100/50 flex flex-col md:flex-row md:items-center justify-between group shadow-sm">
+      <section className="bg-emerald-50 border border-emerald-100/50 p-6 rounded-xl flex flex-col md:flex-row md:items-center justify-between group shadow-sm transition-all hover:bg-emerald-50/80">
          <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-emerald-500 text-white rounded-lg flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 bg-emerald-500 text-white rounded-lg flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-all">
                <MousePointer2 size={18} />
             </div>
             <div>
-               <h4 className="text-sm font-black text-emerald-900 tracking-tight uppercase">UX Friction Diagnostic</h4>
-               <p className="text-[10px] font-bold text-emerald-600/60 uppercase tracking-widest mt-1 max-w-xl">
+               <h4 className="text-xs font-black text-emerald-900 uppercase tracking-widest">UX Friction Diagnostic</h4>
+               <p className="text-[10px] font-black text-emerald-600/70 uppercase tracking-widest mt-1">
                   Losing <span className="text-emerald-700 font-black">70.2% of users</span> at Enquire Node. Trigger redesign target: +23% Lift.
                </p>
             </div>
          </div>
-         <button className="mt-4 md:mt-0 px-6 py-2.5 bg-emerald-600 text-white rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-lg flex items-center space-x-2">
+         <button className="mt-4 md:mt-0 px-6 py-2.5 bg-emerald-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-600/20 flex items-center space-x-2 active:scale-95">
             <span>Deploy A/B Trigger</span>
             <ChevronRight size={14} />
          </button>

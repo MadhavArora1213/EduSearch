@@ -100,50 +100,50 @@ export default function ReviewModerationPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-montserrat">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-4 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-2">
-              <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
-                 <span className="text-[10px] font-black uppercase tracking-widest text-primary">Content Integrity</span>
+           <div className="flex items-center space-x-3 mb-1.5">
+              <div className="bg-primary/5 px-2.5 py-1 rounded-lg border border-primary/10">
+                 <span className="text-[10px] font-black uppercase tracking-widest text-primary">Moderation Intel</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30">Review Moderation Queue</span>
+              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">Queue Protocol</span>
            </div>
-           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
-             Vigilance <span className="text-primary italic">Protocol</span>
+           <h1 className="text-3xl font-black text-typography tracking-tighter leading-none mb-1">
+             Vigilance <span className="text-primary italic">Registry</span>
            </h1>
-           <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
+           <p className="text-secondary/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1.5 leading-none">
               Auditing Student Experiences Across India
            </p>
         </div>
 
-        <div className="flex items-center space-x-4">
-           <div className="bg-amber-50 px-6 py-4 rounded-2xl border border-amber-100 flex items-center space-x-3">
-              <ShieldAlert size={18} className="text-amber-500" />
-              <div className="text-[11px] font-black uppercase tracking-widest text-amber-700">
-                 {reviews.length} Flagged for Audit
+        <div className="flex items-center space-x-3">
+           <div className="bg-amber-50 px-4 py-2.5 rounded-xl border border-amber-100 flex items-center space-x-2 shadow-sm">
+              <ShieldAlert size={14} className="text-amber-500" />
+              <div className="text-[10px] font-black uppercase tracking-widest text-amber-700">
+                 {reviews.length} Flagged
               </div>
            </div>
-           <button className="flex items-center space-x-2 px-8 py-4 bg-primary text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20">
-              <RotateCcw size={18} />
-              <span>Bulk Action Queue</span>
+           <button className="flex items-center space-x-2 px-6 py-2.5 bg-primary text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20">
+              <RotateCcw size={14} />
+              <span>Bulk Action</span>
            </button>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="flex items-center justify-between gap-6 bg-white p-6 rounded-2xl border border-gray-50 shadow-sm">
-         <div className="flex items-center space-x-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100 w-full md:w-auto">
+      <section className="flex items-center justify-between gap-4 bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
+         <div className="flex items-center space-x-1.5 bg-gray-50 p-1 rounded-lg border border-gray-100">
             {["PENDING", "APPROVED", "REJECTED"].map((f) => (
               <button
                 key={f}
                 onClick={() => setFilter(f)}
                 className={cn(
-                  "px-8 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all",
+                  "px-5 py-2 rounded-md text-[9px] font-black uppercase tracking-widest transition-all",
                   filter === f 
-                    ? "bg-white text-primary shadow-sm shadow-black/5" 
+                    ? "bg-white text-primary shadow-sm ring-1 ring-gray-100" 
                     : "text-secondary/40 hover:text-secondary"
                 )}
               >
@@ -152,130 +152,130 @@ export default function ReviewModerationPage() {
             ))}
          </div>
 
-         <div className="flex items-center space-x-4">
-            <div className="relative w-80">
-               <Search size={18} className="absolute left-5 top-1/2 -translate-y-1/2 text-secondary/20" />
-               <input placeholder="Search keywords in reviews..." className="w-full bg-gray-50 border-0 pl-14 pr-6 py-3.5 rounded-2xl text-[13px] font-bold outline-none ring-1 ring-gray-100 focus:ring-primary/10 transition-all" />
+         <div className="flex items-center space-x-3">
+            <div className="relative w-64">
+               <Search size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-secondary/20" />
+               <input placeholder="Search keywords..." className="w-full bg-gray-50 border-0 pl-10 pr-4 py-2 rounded-lg text-xs font-bold outline-none ring-1 ring-gray-100 focus:ring-primary/10 transition-all font-montserrat" />
             </div>
-            <button className="p-4 bg-gray-50 rounded-2xl border border-gray-100 text-secondary/40 hover:text-primary transition-all">
-               <Download size={18} />
+            <button className="w-8 h-8 bg-gray-50 rounded-lg border border-gray-100 text-secondary/40 hover:text-primary transition-all flex items-center justify-center">
+               <Download size={14} />
             </button>
          </div>
       </section>
 
       {/* Review Cards */}
-      <section className="space-y-8">
+      <section className="space-y-4">
          {loading ? [...Array(2)].map((_, i) => (
-           <div key={i} className="bg-white p-6 rounded-2xl border border-gray-100 animate-pulse h-[400px]" />
+           <div key={i} className="bg-white p-4 rounded-xl border border-gray-100 animate-pulse h-[300px]" />
          )) : reviews.length === 0 ? (
-           <div className="bg-white p-20 rounded-2xl border border-gray-100 text-center flex flex-col items-center">
-              <CheckCircle2 size={48} className="text-emerald-500 mb-4 opacity-20" />
-              <p className="text-xl font-black text-typography capitalize">Queue clear. Great job!</p>
+           <div className="bg-white py-12 px-4 rounded-xl border border-gray-100 text-center flex flex-col items-center">
+              <CheckCircle2 size={32} className="text-emerald-500 mb-3 opacity-20" />
+              <p className="text-sm font-black text-typography uppercase tracking-widest leading-none">Queue clear</p>
            </div>
          ) : reviews.map((review) => (
-           <div key={review.id} className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all">
+           <div key={review.id} className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all">
               <div className="grid grid-cols-12">
-                 <div className="col-span-12 lg:col-span-8 p-6 space-y-6">
+                 <div className="col-span-12 lg:col-span-8 p-4 space-y-4">
                     <div className="flex items-center justify-between">
-                       <div className="flex items-center space-x-4">
-                          <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
-                             <User size={24} />
+                       <div className="flex items-center space-x-3">
+                          <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary border border-primary/10 shadow-inner">
+                             <User size={18} />
                           </div>
                           <div>
-                             <h4 className="text-base font-black text-typography leading-tight">{review.student.name}</h4>
-                              <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest">{review.student.email}</p>
+                             <h4 className="text-sm font-black text-typography leading-tight uppercase tracking-tight">{review.student.name}</h4>
+                              <p className="text-[9px] font-bold text-secondary/30 uppercase tracking-widest mt-1">{review.student.email}</p>
                            </div>
                         </div>
-                        <div className="flex items-center space-x-6">
+                        <div className="flex items-center space-x-3">
                            {review.assigned_to && (
-                             <div className="flex items-center space-x-2 bg-gray-50 px-3 py-1.5 rounded-xl border border-gray-100">
-                                <Users size={12} className="text-secondary/40" />
-                                <span className="text-[9px] font-black uppercase tracking-widest text-secondary/40">Audit: {review.assigned_to}</span>
+                             <div className="flex items-center space-x-1.5 bg-gray-50 px-2 py-1 rounded-md border border-gray-100">
+                                <Users size={10} className="text-secondary/40" />
+                                <span className="text-[8px] font-black uppercase tracking-widest text-secondary/40">Audit: {review.assigned_to}</span>
                              </div>
                            )}
-                           <div className="flex items-center space-x-1 bg-amber-50 px-4 py-2 rounded-full border border-amber-100">
-                          <Star size={14} className="text-amber-500 fill-amber-500" />
-                          <span className="text-sm font-black text-amber-600">{review.overall_rating}</span>
-                       </div>
-                    </div>
+                           <div className="flex items-center space-x-1 bg-amber-50 px-2.5 py-1.5 rounded-lg border border-amber-100 shadow-sm">
+                              <Star size={12} className="text-amber-500 fill-amber-500" />
+                              <span className="text-[10px] font-black text-amber-600">{review.overall_rating}</span>
+                           </div>
+                        </div>
                     </div>
 
-                    <div className="space-y-4">
-                       <h3 className="text-2xl font-black text-typography tracking-tight leading-tight italic underline decoration-primary/20 decoration-4 underline-offset-4">"{review.title}"</h3>
-                       <p className="text-sm font-bold text-secondary/60 leading-relaxed line-clamp-3">
+                    <div className="space-y-2">
+                       <h3 className="text-xl font-black text-typography tracking-tighter leading-tight italic decoration-primary/10 underline underline-offset-4 decoration-2">"{review.title}"</h3>
+                       <p className="text-[11px] font-bold text-secondary/60 leading-relaxed line-clamp-2">
                          {review.course_review}
                        </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-6 p-6 bg-snow-pearl/50 rounded-3xl border border-gray-50">
-                       <div className="space-y-2">
-                          <div className="flex items-center space-x-2 text-emerald-600">
-                             <ThumbsUp size={14} />
-                             <span className="text-[10px] font-black uppercase tracking-widest">Pros</span>
+                    <div className="grid grid-cols-2 gap-4 p-3 bg-gray-50/50 rounded-xl border border-gray-100">
+                       <div className="space-y-1">
+                          <div className="flex items-center space-x-1.5 text-emerald-600">
+                             <ThumbsUp size={12} />
+                             <span className="text-[9px] font-black uppercase tracking-widest">Pros</span>
                           </div>
-                          <p className="text-xs font-bold text-secondary/70 leading-relaxed italic">{review.pros}</p>
+                          <p className="text-[10px] font-bold text-secondary/60 leading-relaxed italic line-clamp-2">{review.pros}</p>
                        </div>
-                       <div className="space-y-2 border-l border-gray-100 pl-6">
-                          <div className="flex items-center space-x-2 text-red-600">
-                             <AlertTriangle size={14} />
-                             <span className="text-[10px] font-black uppercase tracking-widest">Cons</span>
+                       <div className="space-y-1 border-l border-gray-200 pl-4">
+                          <div className="flex items-center space-x-1.5 text-red-600">
+                             <AlertTriangle size={12} />
+                             <span className="text-[9px] font-black uppercase tracking-widest">Cons</span>
                           </div>
-                          <p className="text-xs font-bold text-secondary/70 leading-relaxed italic">{review.cons}</p>
+                          <p className="text-[10px] font-bold text-secondary/60 leading-relaxed italic line-clamp-2">{review.cons}</p>
                        </div>
                     </div>
 
-                    <div className="flex items-center space-x-10 text-secondary/30">
+                    <div className="flex items-center space-x-6 text-secondary/30 py-1">
                        <div className="flex items-center space-x-2">
-                          <CheckCircle2 size={16} />
-                          <span className="text-[10px] font-black uppercase tracking-widest">{review.college.name}</span>
+                          <CheckCircle2 size={12} />
+                          <span className="text-[9px] font-black uppercase tracking-widest leading-none">{review.college.name}</span>
                        </div>
-                       <div className="flex items-center space-x-2 border-l border-gray-100 pl-10">
-                          <MessageSquare size={16} />
-                          <span className="text-[10px] font-black uppercase tracking-widest">{review.course?.name || "General Experience"}</span>
+                       <div className="flex items-center space-x-2 border-l border-gray-100 pl-6 leading-none">
+                          <MessageSquare size={12} />
+                          <span className="text-[9px] font-black uppercase tracking-widest leading-none">{review.course?.name || "General Experience"}</span>
                        </div>
                     </div>
                  </div>
 
-                 <div className="col-span-12 lg:col-span-4 bg-gray-50 p-6 flex flex-col justify-between border-l border-gray-100">
-                    <div className="space-y-6">
-                       <div className="bg-white p-6 rounded-3xl border border-gray-100 flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                             <Brain size={18} className="text-primary" />
-                             <span className="text-[10px] font-black uppercase tracking-widest text-primary">AI Sentiment Audit</span>
+                 <div className="col-span-12 lg:col-span-4 bg-gray-50/50 p-4 flex flex-col justify-between border-l border-gray-100">
+                    <div className="space-y-3">
+                       <div className="bg-white p-3 rounded-xl border border-gray-100 flex items-center justify-between shadow-sm">
+                          <div className="flex items-center space-x-2">
+                             <Brain size={14} className="text-primary" />
+                             <span className="text-[9px] font-black uppercase tracking-widest text-primary">AI Sentiment</span>
                           </div>
                           <div className={cn(
-                            "px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest",
-                            review.sentiment_label === 'POSITIVE' ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'
+                            "px-2 py-0.5 rounded-md text-[8px] font-black uppercase tracking-widest border",
+                            review.sentiment_label === 'POSITIVE' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 'bg-red-50 text-red-600 border-red-100'
                           )}>
                              {review.sentiment_label}
                           </div>
                        </div>
 
-                       <div className="bg-white p-6 rounded-3xl border border-gray-100">
-                          <div className="flex items-center justify-between mb-2">
-                             <span className="text-[10px] font-black uppercase tracking-widest text-secondary/40">Integrity Score</span>
-                             <span className="text-xs font-black text-typography">{review.quality_score}%</span>
+                       <div className="bg-white p-3 rounded-xl border border-gray-100 shadow-sm leading-none">
+                          <div className="flex items-center justify-between mb-1.5">
+                             <span className="text-[9px] font-black uppercase tracking-widest text-secondary/40">Integrity Score</span>
+                             <span className="text-[10px] font-black text-typography">{review.quality_score}%</span>
                           </div>
-                          <div className="h-2 w-full bg-gray-50 rounded-full overflow-hidden">
+                          <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
                              <div className="h-full bg-primary" style={{ width: `${review.quality_score}%` }} />
                           </div>
-                          <p className="text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-2 italic">Based on detail level & anti-fraud flags</p>
+                          <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-[0.1em] mt-1.5">DETAIL LEVEL & FRAUD FLAGS</p>
                        </div>
                     </div>
 
-                    <div className="flex flex-col space-y-3">
+                    <div className="flex flex-col space-y-2 mt-4">
                        <button 
                          onClick={() => setSelectedReview(review)}
-                         className="w-full py-4 bg-white border border-gray-200 text-secondary/60 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all flex items-center justify-center space-x-2"
+                         className="w-full py-2.5 bg-white border border-gray-200 text-secondary/60 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-gray-50 transition-all flex items-center justify-center space-x-2 shadow-sm"
                        >
-                          <Eye size={16} />
-                          <span>View Details & Audit</span>
+                          <Eye size={12} />
+                          <span>Audit Details</span>
                        </button>
                        <div className="flex items-center space-x-2">
-                          <button onClick={() => updateStatus(review.id, "APPROVED")} className="flex-1 py-3 bg-emerald-50 text-emerald-600 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-all">
+                          <button onClick={() => updateStatus(review.id, "APPROVED")} className="flex-1 py-2 bg-emerald-600 text-white rounded-lg text-[8px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-md shadow-emerald-600/10">
                              Approve
                           </button>
-                          <button onClick={() => { setSelectedReview(review); setIsRejecting(true); }} className="flex-1 py-3 bg-red-50 text-red-600 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all">
+                          <button onClick={() => { setSelectedReview(review); setIsRejecting(true); }} className="flex-1 py-2 bg-red-50 text-red-600 rounded-lg text-[8px] font-black uppercase tracking-widest border border-red-100 hover:bg-red-500 hover:text-white transition-all">
                              Reject
                           </button>
                        </div>
@@ -288,20 +288,20 @@ export default function ReviewModerationPage() {
 
       {/* Review Detail Pane (Side Sheet) */}
       {selectedReview && (
-        <div className="fixed inset-0 z-[100] flex justify-end">
-           <div className="absolute inset-0 bg-typography/40 backdrop-blur-sm" onClick={() => { setSelectedReview(null); setIsRejecting(false); }} />
-           <div className="relative w-full max-w-2xl bg-white h-full shadow-2xl animate-in slide-in-from-right duration-500 overflow-y-auto no-scrollbar">
-              <div className="p-6 space-y-6">
+        <div className="fixed inset-0 z-[100] flex justify-end font-montserrat">
+           <div className="absolute inset-0 bg-typography/40 backdrop-blur-[2px] transition-opacity" onClick={() => { setSelectedReview(null); setIsRejecting(false); }} />
+           <div className="relative w-full max-w-xl bg-white h-full shadow-2xl animate-in slide-in-from-right duration-300 overflow-y-auto no-scrollbar border-l border-gray-100 flex flex-col">
+              <div className="p-4 space-y-4 flex-1">
                  {/* Header */}
-                 <div className="flex items-center justify-between">
-                    <button onClick={() => { setSelectedReview(null); setIsRejecting(false); }} className="p-4 bg-gray-50 rounded-2xl text-secondary/40 hover:text-primary transition-all">
-                       <ChevronRight size={20} className="rotate-180" />
+                 <div className="flex items-center justify-between pb-3 border-b border-gray-50">
+                    <button onClick={() => { setSelectedReview(null); setIsRejecting(false); }} className="w-8 h-8 bg-gray-50 rounded-lg text-secondary/40 hover:text-primary transition-all flex items-center justify-center border border-gray-100">
+                       <ChevronRight size={16} className="rotate-180" />
                     </button>
                     <div className="flex items-center space-x-3">
-                       <span className="text-[10px] font-black uppercase tracking-widest text-secondary/30">Review ID: {selectedReview!.id.slice(0,8)}</span>
+                       <span className="text-[9px] font-black uppercase tracking-[0.2em] text-secondary/20">RID: {selectedReview!.id.slice(0,8)}</span>
                        <div className={cn(
-                          "px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest",
-                          selectedReview!.status === 'PENDING' ? "bg-amber-50 text-amber-600" : "bg-emerald-50 text-emerald-600"
+                          "px-3 py-1 rounded-md text-[8px] font-black uppercase tracking-widest shadow-sm",
+                          selectedReview!.status === 'PENDING' ? "bg-amber-50 text-amber-600 border border-amber-100" : "bg-emerald-50 text-emerald-600 border border-emerald-100"
                        )}>
                           {selectedReview!.status}
                        </div>
@@ -309,17 +309,17 @@ export default function ReviewModerationPage() {
                  </div>
 
                  {/* Ratings Breakdown */}
-                 <div className="bg-gray-50 p-5 rounded-2xl">
-                    <h4 className="text-xs font-black uppercase tracking-widest text-secondary/40 mb-6">Star Rating Breakdown</h4>
-                    <div className="grid grid-cols-2 gap-5 italic">
+                 <div className="bg-gray-50/50 p-4 rounded-xl border border-gray-100">
+                    <h4 className="text-[9px] font-black uppercase tracking-widest text-secondary/30 mb-4 pb-2 border-b border-gray-100">Star Rating Grid</h4>
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-3">
                        {Object.entries(selectedReview!.rating_breakdown).map(([key, val]) => (
-                         <div key={key} className="flex flex-col">
-                            <span className="text-[9px] font-black uppercase tracking-widest text-secondary/30 mb-2 truncate">{key}</span>
+                         <div key={key} className="flex flex-col space-y-1">
+                            <span className="text-[8px] font-black uppercase tracking-widest text-secondary/20 truncate">{key}</span>
                             <div className="flex items-center space-x-1">
                                {[...Array(5)].map((_, i) => (
-                                 <Star key={i} size={14} className={cn(i < val ? "text-amber-500 fill-amber-500" : "text-gray-200")} />
+                                 <Star key={i} size={10} className={cn(i < val ? "text-amber-500 fill-amber-500" : "text-gray-200")} />
                                ))}
-                               <span className="ml-2 text-xs font-black text-typography">{val}.0</span>
+                               <span className="ml-1 text-[10px] font-black text-typography leading-none">{val}.0</span>
                             </div>
                          </div>
                        ))}
@@ -327,120 +327,124 @@ export default function ReviewModerationPage() {
                  </div>
 
                  {/* Content */}
-                 <div className="space-y-6">
-                    <h3 className="text-3xl font-black text-typography tracking-tight uppercase italic underline decoration-primary/20 decoration-8 underline-offset-8 decoration-solid">{selectedReview!.title}</h3>
-                    <div className="bg-primary/5 p-5 rounded-2xl border border-primary/10 italic">
-                       <p className="text-sm font-bold text-typography leading-loose">
+                 <div className="space-y-3">
+                    <h3 className="text-2xl font-black text-typography tracking-tight uppercase italic leading-none">{selectedReview!.title}</h3>
+                    <div className="bg-primary/5 p-4 rounded-xl border border-primary/10">
+                       <p className="text-[12px] font-bold text-typography leading-relaxed text-secondary/70">
                           {selectedReview!.course_review}
                        </p>
                     </div>
                  </div>
 
-                 {/* Verification & Meta */}
-                 <div className="grid grid-cols-2 gap-5">
-                    <div className="bg-white border border-gray-100 p-5 rounded-2xl space-y-6">
-                       <h4 className="text-[10px] font-black uppercase tracking-widest text-secondary/40 mb-2">Evidence & Audit</h4>
-                       <div className="flex items-center space-x-4">
-                          <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
-                             <ShieldCheck size={24} />
-                          </div>
-                          <div>
-                             <p className="text-xs font-black text-typography">Via {selectedReview!.verification_method}</p>
-                             <p className="text-[9px] font-bold text-emerald-600 uppercase tracking-widest">Verified At 14:20</p>
+                 {/* Verification & Identity */}
+                 <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-white border border-gray-100 p-3.5 rounded-xl space-y-4 shadow-sm flex flex-col justify-between">
+                       <div className="space-y-3">
+                          <h4 className="text-[9px] font-black uppercase tracking-widest text-secondary/30">Auth Protocol</h4>
+                          <div className="flex items-center space-x-3">
+                             <div className="w-8 h-8 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 border border-emerald-100">
+                                <ShieldCheck size={16} />
+                             </div>
+                             <div>
+                                <p className="text-[10px] font-black text-typography leading-none">Via {selectedReview!.verification_method}</p>
+                                <p className="text-[8px] font-bold text-emerald-600 uppercase tracking-widest mt-1">Verified Audit</p>
+                             </div>
                           </div>
                        </div>
-                       <button className="w-full py-4 bg-gray-50 text-secondary/40 text-[10px] font-black uppercase tracking-widest rounded-2xl hover:bg-gray-100 transition-all flex items-center justify-center space-x-2">
-                          <ExternalLink size={14} />
-                          <span>View Proof Image</span>
+                       <button className="w-full py-2 bg-gray-50 text-secondary/40 text-[8px] font-black uppercase tracking-widest rounded-lg hover:bg-gray-100 transition-all flex items-center justify-center space-x-1.5 border border-gray-100">
+                          <ExternalLink size={12} />
+                          <span>View Proof</span>
                        </button>
                     </div>
 
-                    <div className="bg-white border border-gray-100 p-5 rounded-2xl space-y-6">
-                       <h4 className="text-[10px] font-black uppercase tracking-widest text-secondary/40 mb-2">Reviewer Identity</h4>
-                       <div className="flex items-center space-x-4">
-                          <div className="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
-                             <User size={24} />
-                          </div>
-                          <div>
-                             <p className="text-xs font-black text-typography">{selectedReview!.student_meta.account_age_days}d Old Account</p>
-                             <p className="text-[9px] font-bold text-secondary/30 uppercase tracking-widest">{selectedReview!.student_meta.total_reviews} Total Reviews</p>
+                    <div className="bg-white border border-gray-100 p-3.5 rounded-xl space-y-4 shadow-sm flex flex-col justify-between">
+                       <div className="space-y-3">
+                          <h4 className="text-[9px] font-black uppercase tracking-widest text-secondary/30">User Node</h4>
+                          <div className="flex items-center space-x-3">
+                             <div className="w-8 h-8 bg-primary/5 rounded-lg flex items-center justify-center text-primary border border-primary/10">
+                                <User size={16} />
+                             </div>
+                             <div>
+                                <p className="text-[10px] font-black text-typography leading-none">{selectedReview!.student_meta.account_age_days}d Node Age</p>
+                                <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest mt-1">{selectedReview!.student_meta.total_reviews} Total Logs</p>
+                             </div>
                           </div>
                        </div>
-                       <div className="p-3 bg-red-50 rounded-xl text-[9px] font-black text-red-600 uppercase tracking-widest flex items-center space-x-2">
-                          <AlertTriangle size={12} />
-                          <span>{selectedReview!.student_meta.previous_rejections} Prev Rejections</span>
+                       <div className="px-2 py-1 bg-red-50 rounded-lg text-[8px] font-black text-red-600 uppercase tracking-widest flex items-center space-x-1.5 border border-red-100">
+                          <AlertTriangle size={10} />
+                          <span>{selectedReview!.student_meta.previous_rejections} Rejections</span>
                        </div>
                     </div>
                  </div>
 
                  {/* AI Insights */}
-                 <div className="bg-typography text-white p-6 rounded-2xl shadow-2xl shadow-primary/20 relative overflow-hidden group">
-                    <div className="absolute right-0 top-0 w-24 h-24 bg-white/5 rounded-full -translate-y-12 translate-x-12" />
-                    <div className="flex items-center space-x-4 mb-6">
-                       <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-primary">
-                          <Brain size={24} />
+                 <div className="bg-slate-900 text-white p-4 rounded-xl shadow-xl shadow-slate-900/10 relative overflow-hidden flex flex-col justify-between">
+                    <div className="absolute right-0 top-0 w-16 h-16 bg-white/5 rounded-full -translate-y-8 translate-x-8" />
+                    <div className="flex items-center space-x-3 mb-4 relative z-10">
+                       <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-primary">
+                          <Brain size={16} />
                        </div>
                        <div>
-                          <h4 className="text-lg font-black tracking-tight italic">AI MODERATOR LOG</h4>
-                          <p className="text-[9px] font-black text-white/30 uppercase tracking-widest">Llama 3.1 Inference Engine</p>
+                          <h4 className="text-xs font-black tracking-widest uppercase italic">AI Inference</h4>
+                          <p className="text-[8px] font-black text-white/20 uppercase tracking-widest leading-none">Llama-3 Integration</p>
                        </div>
                     </div>
-                    <p className="text-sm font-bold text-white/60 leading-relaxed italic mb-8">
+                    <p className="text-[11px] font-bold text-white/60 leading-relaxed italic mb-4 relative z-10">
                        "{selectedReview!.ai_reasoning}"
                     </p>
-                    <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                       <div className="flex items-center space-x-2">
-                          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                          <span className="text-[9px] font-black uppercase tracking-widest text-white/40">Confidence: 98.4%</span>
+                    <div className="flex items-center justify-between pt-3 border-t border-white/5 relative z-10">
+                       <div className="flex items-center space-x-1.5">
+                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          <span className="text-[8px] font-black uppercase tracking-widest text-white/30">Confidence: 98.4%</span>
                        </div>
                     </div>
                  </div>
+              </div>
 
-                 {/* Actions */}
-                 <div className="pt-10 border-t border-gray-100 space-y-6 pb-10">
-                    {isRejecting ? (
-                      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4">
-                         <div>
-                            <label className="text-[10px] font-black uppercase tracking-widest text-secondary/40 ml-1">Rejection Reason</label>
-                            <select 
-                              value={rejectionReason}
-                              onChange={(e) => setRejectionReason(e.target.value)}
-                              className="w-full bg-red-50 border-0 px-6 py-4 rounded-2xl text-[13px] font-bold outline-none ring-1 ring-red-100 text-red-900 mt-2 appearance-none"
-                            >
-                               <option value="">Select a reason...</option>
-                               <option value="INSUFFICIENT">Insufficient Detail / Too Short</option>
-                               <option value="PROMOTIONAL">Promotional / Marketing Material</option>
-                               <option value="OFF_TOPIC">Off-topic / Irrelevant Content</option>
-                               <option value="FAKE">Suspected Fraudulent / Fake Experience</option>
-                               <option value="ABUSIVE">Abusive / Discriminatory Language</option>
-                            </select>
-                            <p className="text-[10px] font-bold text-red-400 mt-2 italic flex items-center space-x-1">
-                               <Mail size={12} />
-                               <span>Automated rejection email will be sent to reviewer upon confirmation.</span>
-                            </p>
-                         </div>
-                         <div className="flex items-center space-x-3">
-                            <button onClick={() => { updateStatus(selectedReview!.id, "REJECTED"); setSelectedReview(null); }} className="flex-1 py-4 bg-red-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-red-500/20">
-                               Confirm Rejection
-                            </button>
-                            <button onClick={() => setIsRejecting(false)} className="px-8 py-4 bg-gray-50 text-secondary/40 rounded-2xl text-[10px] font-black uppercase tracking-widest font-bold">
-                               Cancel
-                            </button>
+              {/* Actions */}
+              <div className="p-4 border-t border-gray-100 bg-gray-50/50">
+                 {isRejecting ? (
+                   <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2">
+                      <div className="bg-white p-3 rounded-xl border border-red-100 shadow-sm leading-none">
+                         <label className="text-[9px] font-black uppercase tracking-widest text-secondary/30 ml-1">Rejection Reason</label>
+                         <select 
+                           value={rejectionReason}
+                           onChange={(e) => setRejectionReason(e.target.value)}
+                           className="w-full bg-transparent border-0 px-1 py-2 text-xs font-bold outline-none text-red-900 appearance-none"
+                         >
+                            <option value="">Select a reason...</option>
+                            <option value="INSUFFICIENT">Too Short / No Detail</option>
+                            <option value="PROMOTIONAL">Promotional / Marketing</option>
+                            <option value="OFF_TOPIC">Off-topic / Irrelevant</option>
+                            <option value="FAKE">Suspected Fraudulent</option>
+                            <option value="ABUSIVE">Abusive Language</option>
+                         </select>
+                         <div className="mt-2 pt-2 border-t border-gray-50 text-[8px] font-bold text-red-400 uppercase tracking-widest flex items-center space-x-1">
+                            <Mail size={10} />
+                            <span>System Trigger: Automated Rejection Dispatch</span>
                          </div>
                       </div>
-                    ) : (
-                      <div className="flex items-center space-x-4">
-                         <button onClick={() => { updateStatus(selectedReview!.id, "APPROVED"); setSelectedReview(null); }} className="flex-1 py-5 bg-emerald-500 text-white rounded-3xl text-[11px] font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-xl shadow-emerald-500/20 flex items-center justify-center space-x-3">
-                            <CheckCircle2 size={20} />
-                            <span>Confirm Approval</span>
+                      <div className="flex items-center space-x-2">
+                         <button onClick={() => { updateStatus(selectedReview!.id, "REJECTED"); setSelectedReview(null); }} className="flex-1 py-3 bg-red-600 text-white rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-red-700 transition-all shadow-lg shadow-red-600/10">
+                            Confirm Deflaking
                          </button>
-                         <button onClick={() => setIsRejecting(true)} className="flex-1 py-5 bg-white border border-gray-200 text-red-500 rounded-3xl text-[11px] font-black uppercase tracking-widest hover:bg-red-50 transition-all flex items-center justify-center space-x-3">
-                            <XCircle size={20} />
-                            <span>Reject Review</span>
+                         <button onClick={() => setIsRejecting(false)} className="px-6 py-3 bg-white border border-gray-200 text-secondary/40 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all">
+                            Back
                          </button>
                       </div>
-                    )}
-                 </div>
+                   </div>
+                 ) : (
+                   <div className="flex items-center space-x-3">
+                      <button onClick={() => { updateStatus(selectedReview!.id, "APPROVED"); setSelectedReview(null); }} className="flex-1 py-3 bg-emerald-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-2">
+                         <CheckCircle2 size={16} />
+                         <span>Deploy Approval</span>
+                      </button>
+                      <button onClick={() => setIsRejecting(true)} className="flex-1 py-3 bg-white border border-gray-200 text-red-500 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-red-50 transition-all flex items-center justify-center space-x-2">
+                         <XCircle size={16} />
+                         <span>Reject Review</span>
+                      </button>
+                   </div>
+                 )}
               </div>
            </div>
         </div>

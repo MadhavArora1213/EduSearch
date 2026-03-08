@@ -42,115 +42,119 @@ const accessLogs: AccessChange[] = [
 
 export default function AccessChangeLogPage() {
   return (
-    <div className="space-y-6 font-montserrat italic not-italic">
+    <div className="space-y-6 font-montserrat pb-10">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-4 border-b border-gray-100">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-4 md:space-y-0 pb-4 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-2">
-              <div className="bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100 italic">
-                 <span className="text-[10px] font-black uppercase tracking-widest text-rose-600 italic">Privilege Escalation Monitor</span>
+           <div className="flex items-center space-x-3 mb-1.5">
+              <div className="bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-100">
+                 <span className="text-[10px] font-black uppercase tracking-widest text-rose-600">Identity Monitor</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
-              <span className="text-xs font-bold text-secondary/30">RBAC Identity Lifecycle</span>
+              <span className="text-xs font-bold text-secondary/30 uppercase tracking-widest text-[10px]">RBAC Lifecycle</span>
            </div>
-           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
-             Access <span className="text-primary italic">Logs</span>
+           <h1 className="text-3xl font-black text-typography tracking-tighter leading-none mb-1">
+             Access <span className="text-primary italic">Registry</span>
            </h1>
-           <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
+           <p className="text-secondary/40 text-[10px] font-black uppercase tracking-widest mt-1.5 leading-none">
               Auditing RBAC Identity Shifts & Permission Mutations for DPDP Compliance
            </p>
         </div>
 
-        <div className="flex items-center space-x-4 italic">
-           <button className="flex items-center space-x-2 px-8 py-4 bg-slate-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-rose-600 transition-all shadow-xl shadow-rose-500/10 italic">
-              <ShieldAlert size={18} />
-              <span>Verify Root Access</span>
+        <div className="flex items-center space-x-3">
+           <button className="flex items-center space-x-2 px-6 py-2.5 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-rose-600 transition-all shadow-lg shadow-slate-900/10 active:scale-95">
+              <ShieldAlert size={14} />
+              <span>Verify Root</span>
            </button>
         </div>
       </section>
 
       {/* Security Health KPI strip */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-5 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
          {[
-           { label: "Privilege Escalations", value: "02", trend: "High Alert", icon: UserPlus, color: "text-rose-600 bg-rose-50" },
-           { label: "Active Sessions", value: "124", trend: "Normal", icon: Activity, color: "text-primary bg-primary/5" },
-           { label: "Suspended Accounts", value: "04", trend: "Audit Req", icon: UserMinus, color: "text-amber-500 bg-amber-50" },
-           { label: "MFA Coverage", value: "100%", trend: "Optimal", icon: Key, color: "text-emerald-500 bg-emerald-50" },
+           { label: "Privilege Escalations", value: "02", trend: "High Alert", icon: UserPlus, color: "text-rose-600 bg-rose-50 border-rose-100/50" },
+           { label: "Active Sessions", value: "124", trend: "Normal", icon: Activity, color: "text-primary bg-primary/5 border-primary/10" },
+           { label: "Suspended Accounts", value: "04", trend: "Audit Req", icon: UserMinus, color: "text-amber-500 bg-amber-50 border-amber-100/50" },
+           { label: "MFA Coverage", value: "100%", trend: "Optimal", icon: Key, color: "text-emerald-500 bg-emerald-50 border-emerald-100/50" },
          ].map((kpi, i) => (
-           <div key={i} className="bg-white p-5 rounded-2xl border border-gray-50 shadow-sm flex items-center justify-between group hover:border-primary/20 transition-all cursor-pointer">
-              <div>
-                 <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-widest italic mb-2 leading-none">{kpi.label}</p>
-                 <p className="text-3xl font-black text-typography tracking-tighter leading-none italic">{kpi.value}</p>
-                 <span className="inline-block mt-3 text-[10px] font-black text-emerald-500 bg-emerald-50 px-3 py-1 rounded-full italic">{kpi.trend}</span>
+           <div key={i} className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between group hover:shadow-md transition-all cursor-pointer">
+              <div className="leading-none flex-1">
+                 <p className="text-[8px] font-black text-secondary/30 uppercase tracking-widest mb-2">{kpi.label}</p>
+                 <p className="text-3xl font-black text-typography tracking-tighter leading-none mb-1.5">{kpi.value}</p>
+                 <span className="inline-block text-[7px] font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full uppercase tracking-widest border border-emerald-100/50">{kpi.trend}</span>
               </div>
-              <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 shadow-inner italic", kpi.color)}>
-                 <kpi.icon size={26} />
+              <div className={cn("w-10 h-10 rounded-lg flex items-center justify-center transition-all group-hover:scale-110 border shadow-sm", kpi.color)}>
+                 <kpi.icon size={18} />
               </div>
            </div>
          ))}
       </div>
 
       {/* Access Event Feed */}
-      <section className="bg-white rounded-2xl border border-gray-50 shadow-sm overflow-hidden flex flex-col font-montserrat not-italic">
-         <div className="p-6 md:p-6 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden flex flex-col font-montserrat flex-1">
+         <div className="p-3 border-b border-gray-100 flex flex-col lg:flex-row lg:items-center justify-between gap-3 bg-gray-50/30">
             <div>
-               <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Identity Mutation Ledger</h3>
-               <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] mt-2 italic select-none">Tracking Role-Based Access Control (RBAC) Lifecycle Events</p>
+               <h3 className="text-xs font-black text-typography tracking-tighter uppercase mb-1">Identity Mutation Ledger</h3>
+               <p className="text-[8px] font-black text-secondary/30 uppercase tracking-widest leading-none">Tracking Role-Based Access Lifecycle Events</p>
             </div>
-            <div className="flex items-center space-x-4 italic">
-               <button className="flex items-center space-x-2 px-6 py-3 bg-white border border-rose-100 text-rose-600 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-sm hover:bg-rose-50 transition-all italic underline decoration-rose-500/10 uppercase">
-                  <Mail size={16} />
-                  <span>Notify Super Admin</span>
+            <div className="flex items-center space-x-2">
+               <button className="flex items-center space-x-2 px-5 py-2.5 bg-white border border-rose-200 text-rose-600 rounded-lg text-[9px] font-black uppercase tracking-widest shadow-sm hover:bg-rose-50 transition-all active:scale-95">
+                  <Mail size={14} />
+                  <span>Notify Admin</span>
                </button>
             </div>
          </div>
 
-         <div className="overflow-x-auto italic">
-            <table className="w-full text-left italic">
-               <thead className="bg-snow-pearl/50 border-b border-gray-100 italic">
+         <div className="overflow-x-auto flex-1">
+            <table className="w-full text-left">
+               <thead className="bg-gray-50/50 border-b border-gray-100">
                   <tr>
-                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Vector & Timestamp</th>
-                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Changed By</th>
-                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Target User Vector</th>
-                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Role Shift Matrix</th>
-                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40">Legal Reason Payload</th>
-                     <th className="px-10 py-4 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit</th>
+                     <th className="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-secondary/40">Timestamp & Vector</th>
+                     <th className="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-secondary/40">Changed By</th>
+                     <th className="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-secondary/40">Target User</th>
+                     <th className="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-secondary/40">Role Shift</th>
+                     <th className="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-secondary/40">Reasoning</th>
+                     <th className="px-4 py-3 text-[9px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit</th>
                   </tr>
                </thead>
-               <tbody className="divide-y divide-gray-50 font-montserrat not-italic">
+               <tbody className="divide-y divide-gray-50">
                   {accessLogs.map((log) => (
-                    <tr key={log.id} className="group hover:bg-snow-pearl/30 transition-all italic underline decoration-primary/5">
-                       <td className="px-10 py-10">
-                          <p className="text-[12px] font-black text-typography italic">{log.timestamp}</p>
-                          <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest mt-1 italic">IP Vector: {log.ip}</p>
+                    <tr key={log.id} className="group hover:bg-gray-50/50 transition-all">
+                       <td className="px-4 py-3">
+                          <p className="text-[11px] font-black text-typography leading-none">{log.timestamp}</p>
+                          <p className="text-[8px] font-black text-secondary/30 uppercase tracking-widest mt-1.5 leading-none">Vector: {log.ip}</p>
                        </td>
-                       <td className="px-10 py-10">
-                          <div className="flex items-center space-x-3 italic">
-                             <div className="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                                <Lock size={18} />
+                       <td className="px-4 py-3">
+                          <div className="flex items-center space-x-3">
+                             <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-primary group-hover:scale-110 transition-transform shadow-md shadow-slate-900/20">
+                                <Lock size={12} />
                              </div>
-                             <span className="text-[14px] font-black text-typography uppercase italic">{log.changedBy}</span>
+                             <span className="text-[10px] font-black text-typography uppercase leading-none group-hover:text-primary transition-colors">{log.changedBy}</span>
                           </div>
                        </td>
-                       <td className="px-10 py-10 italic">
-                          <h4 className="text-[14px] font-black text-typography uppercase tracking-tight italic">{log.targetUser}</h4>
-                          <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest mt-1 italic">Staff Node ID: {log.id}</p>
+                       <td className="px-4 py-3">
+                          <h4 className="text-[11px] font-black text-typography uppercase tracking-tight leading-none">{log.targetUser}</h4>
+                          <p className="text-[8px] font-black text-secondary/30 uppercase tracking-widest mt-1.5 leading-none">Staff Node: {log.id}</p>
                        </td>
-                       <td className="px-10 py-10 italic">
-                          <div className="flex items-center space-x-4 italic underline decoration-primary/10">
-                             <span className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest italic">{log.oldRole}</span>
-                             <ChevronRight size={14} className="text-secondary/20 italic" />
+                       <td className="px-4 py-3">
+                          <div className="flex items-center space-x-3">
+                             <span className="text-[10px] font-black text-secondary/40 uppercase tracking-widest leading-none bg-gray-50 px-2 py-1 rounded-md border border-gray-100">{log.oldRole}</span>
+                             <ChevronRight size={14} className="text-secondary/30" />
                              <span className={cn(
-                               "text-[11px] font-black uppercase tracking-widest px-3 py-1 rounded-lg",
-                               log.newRole === 'SUSPENDED' ? "bg-rose-50 text-rose-600" : "bg-emerald-50 text-emerald-600"
+                                "text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-md border shadow-sm leading-none",
+                                log.newRole === 'SUSPENDED' ? "bg-rose-50 border-rose-100 text-rose-600" : "bg-emerald-50 border-emerald-100 text-emerald-600"
                              )}>{log.newRole}</span>
                           </div>
                        </td>
-                       <td className="px-10 py-10 italic">
-                          <p className="text-[11px] font-bold text-secondary/40 italic lowercase underline decoration-primary/10 truncate max-w-[200px]">"{log.reason}"</p>
+                       <td className="px-4 py-3">
+                          <p className="text-[10px] font-black text-secondary/60 uppercase max-w-xs leading-tight truncate">"{log.reason}"</p>
                        </td>
-                       <td className="px-10 py-10 text-right italic">
-                          <button className="p-4 bg-white border border-gray-100 rounded-2xl text-secondary/20 hover:text-primary transition-all shadow-sm italic"><ArrowUpRight size={18} /></button>
+                       <td className="px-4 py-3 text-right">
+                          <div className="flex items-center justify-end space-x-1.5">
+                             <button className="w-8 h-8 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-secondary/30 hover:bg-slate-900 hover:text-white transition-all shadow-sm">
+                                <ArrowUpRight size={14} />
+                             </button>
+                          </div>
                        </td>
                     </tr>
                   ))}
@@ -158,37 +162,34 @@ export default function AccessChangeLogPage() {
             </table>
          </div>
 
-         <div className="p-6 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat not-italic">
-            <div className="absolute top-0 right-0 p-6 opacity-5">
-               <ShieldAlert size={100} className="text-rose-500" />
+         <div className="p-3 border-t border-gray-100 bg-rose-50/30 relative overflow-hidden flex items-center justify-between font-montserrat">
+            <div className="absolute top-0 right-0 p-3 opacity-5 pointer-events-none">
+               <ShieldAlert size={60} className="text-rose-500" />
             </div>
-            <div className="flex items-center space-x-6 relative z-10 italic">
-               <AlertCircle size={18} className="text-rose-500 animate-pulse italic" />
-               <p className="text-xs font-black text-secondary/40 uppercase tracking-widest italic underline decoration-primary/10 uppercase italic">Anomaly Detected: 2 privilege escalations without prior Super-Admin approval in past 24h</p>
+            <div className="flex items-center space-x-3 relative z-10">
+               <AlertCircle size={14} className="text-rose-500 animate-pulse" />
+               <p className="text-[8px] font-black text-rose-600/60 uppercase tracking-widest max-w-2xl leading-relaxed">Anomaly Detected: 2 privilege escalations without prior Super-Admin approval in past 24h</p>
             </div>
-            <p className="text-[9px] font-black text-secondary/20 uppercase tracking-widest relative z-10 italic">Security Layer: RBAC-Enforce v4.2 Polled</p>
+            <p className="text-[7px] font-black text-secondary/20 uppercase tracking-widest relative z-10">RBAC-Enforce v4.2</p>
          </div>
       </section>
 
       {/* RBAC Verification Node */}
-      <section className="bg-emerald-50 p-12 rounded-[3.5rem] border border-emerald-100 flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative italic not-italic">
-         <div className="absolute inset-0 bg-emerald-500/5 flex items-center space-x-2 duration-1000" />
-         <div className="flex items-center space-x-8 relative z-10">
-            <div className="w-20 h-20 bg-emerald-500/20 text-emerald-500 rounded-2xl flex items-center justify-center shadow-inner group-hover:rotate-12 transition-transform">
-               <Unlock size={32} className="italic" />
+      <section className="bg-emerald-50/50 p-5 rounded-xl border border-emerald-100/50 flex flex-col md:flex-row md:items-center justify-between group shadow-md transition-all hover:shadow-lg">
+         <div className="flex items-center space-x-4">
+            <div className="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:scale-110 transition-transform">
+               <Unlock size={20} />
             </div>
             <div>
-               <h4 className="text-2xl font-black text-emerald-900 tracking-tighter uppercase italic">Institutional Identity Lock</h4>
-               <p className="text-xs font-bold text-emerald-700/60 uppercase tracking-widest mt-2 max-w-lg italic">
-                  All permission changes require <span className="text-emerald-800 font-black">2FA Root Re-verification</span>. This log provides the final legal proof of identity mutation for DPDP audits.
+               <h4 className="text-[11px] font-black text-emerald-900 uppercase tracking-widest leading-none mb-2">Institutional Identity Lock</h4>
+               <p className="text-[9px] font-black text-emerald-700/60 uppercase tracking-widest leading-relaxed max-w-xl">
+                  Permission changes require <span className="text-emerald-800 font-black">2FA Root Re-verification</span>. This log provides the final legal proof for DPDP audits.
                </p>
             </div>
          </div>
-         <div className="mt-8 md:mt-0 relative z-10 italic">
-            <button className="px-10 py-5 bg-emerald-600 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-500/20 italic font-montserrat not-italic">
-               Audit Current Permissions
-            </button>
-         </div>
+         <button className="mt-4 md:mt-0 px-6 py-2.5 bg-emerald-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-lg active:scale-95 shadow-emerald-600/20">
+            Audit Current Permissions
+         </button>
       </section>
     </div>
   );
