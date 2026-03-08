@@ -17,8 +17,8 @@ export async function GET() {
     
     const topColleges = topCollegesRaw.map((c: any) => ({
       name: c.name,
-      searches: c._count.leads * 150 + 124, // Assuming 1 lead approx 150 searches
-      change: `+${Math.floor(Math.random() * 10) + 1}%`
+      leads: c._count.leads,
+      change: `Real-time`
     }));
 
     // Generate dates for the last 7 days
@@ -45,9 +45,9 @@ export async function GET() {
     });
 
     const activityData = days.map((day: any) => {
-       const dau = recentUsers.filter((u: any) => u.created_at.toISOString().startsWith(day.dateStr)).length;
-       const ai = recentAiLogs.filter((a: any) => a.created_at.toISOString().startsWith(day.dateStr)).length;
-       return { name: day.name, dau: (dau * 200) + 500, ai: (ai * 150) + 300 }; // Inflated slightly to show graph
+       const dCount = recentUsers.filter((u: any) => u.created_at.toISOString().startsWith(day.dateStr)).length;
+       const aCount = recentAiLogs.filter((a: any) => a.created_at.toISOString().startsWith(day.dateStr)).length;
+       return { name: day.name, dau: dCount, ai: aCount };
     });
 
     // 3. Lead Velocity
@@ -59,25 +59,24 @@ export async function GET() {
     const leadVelocity = days.map((day: any) => {
        const dayLeads = recentLeads.filter((l: any) => l.created_at.toISOString().startsWith(day.dateStr));
        return {
-         day: day.name.split(' ')[0], // just Mon, Tue etc or 01, 02
-         eng: dayLeads.filter((l: any) => l.course_interest?.toLowerCase().includes('btech') || l.course_interest?.toLowerCase().includes('eng')).length * 5 + 10,
-         mba: dayLeads.filter((l: any) => l.course_interest?.toLowerCase().includes('mba')).length * 5 + 5,
-         med: dayLeads.filter((l: any) => l.course_interest?.toLowerCase().includes('mbbs') || l.course_interest?.toLowerCase().includes('med')).length * 5 + 8,
+         day: day.name.split(' ')[0], 
+         eng: dayLeads.filter((l: any) => l.course_interest?.toLowerCase().includes('btech') || l.course_interest?.toLowerCase().includes('eng')).length,
+         mba: dayLeads.filter((l: any) => l.course_interest?.toLowerCase().includes('mba')).length,
+         med: dayLeads.filter((l: any) => l.course_interest?.toLowerCase().includes('mbbs') || l.course_interest?.toLowerCase().includes('med')).length,
        };
     });
 
     // 4. Revenue Trend (based on applications)
     const recentApps = await prisma.application.findMany({
       where: { applied_at: { gte: date7DaysAgo }, payment_status: 'PAID' },
-      select: { applied_at: true }
+      select: { applied_at: true, id: true }
     });
 
     const revenueTrend = days.map((day: any) => {
       const dayAppsCount = recentApps.filter((a: any) => a.applied_at.toISOString().startsWith(day.dateStr)).length;
       return {
         date: day.name,
-        sub: dayAppsCount * 5000 + 15000, 
-        cpl: dayAppsCount * 2000 + 8000,
+        revenue: dayAppsCount * 5000, // Still hypothetical revenue per app, but based on real count
       }
     });
 
@@ -98,15 +97,10 @@ export async function GET() {
     });
     const moderationData = Object.values(modMap);
     
-    // Fallback if empty to avoid broken pie chart
-    if (moderationData.every(d => d.value === 0)) {
-       moderationData[0].value = 1; 
-    }
-
     // Alerts
     const alerts = [
-      { id: 1, type: 'INFO', text: 'System Boot Up', time: new Date().toISOString() },
-      { id: 2, type: 'DEBUG', text: `Fetched ${studentsCount} students from DB`, time: new Date().toISOString() }
+      { id: 1, type: 'INFO', text: `Database Online: ${studentsCount} Students linked`, time: new Date().toISOString() },
+      { id: 2, type: 'DEBUG', text: `Lead Registry: ${leadsCount} Entries indexed`, time: new Date().toISOString() }
     ];
 
     return NextResponse.json({

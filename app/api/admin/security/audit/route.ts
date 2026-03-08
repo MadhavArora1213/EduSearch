@@ -1,11 +1,36 @@
+import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  // Simulating Audit Log Data
-  return NextResponse.json([
-    { id: "a1", admin: "Super Admin", action: "COLLEGE_UPDATE", target: "IIT Bombay", details: "Changed 'naac_grade' from A to A++", time: "10 mins ago", ip: "192.168.1.1", status: "SUCCESS" },
-    { id: "a2", admin: "Admin Vishal", action: "SEO_META_CHANGE", target: "SRM University", details: "Updated Meta Title for SRM Kattankulathur", time: "42 mins ago", ip: "172.16.0.4", status: "SUCCESS" },
-    { id: "a3", admin: "System", action: "AUTH_FAILURE", target: "admin@edusearch.com", details: "3 failed login attempts from Mumbai IP", time: "3 hours ago", ip: "103.21.114.7", status: "FLAGGED" },
-    { id: "a4", admin: "Editor Sneha", action: "REVIEW_MODERATION", target: "Review #1422", details: "Approved student review for BITS Pilani", time: "Yesterday", ip: "192.168.1.42", status: "SUCCESS" }
-  ]);
+  try {
+    const logs = await prisma.auditLog.findMany({
+      orderBy: { created_at: "desc" },
+      take: 100
+    });
+
+    return NextResponse.json(logs);
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to fetch audit logs" }, { status: 500 });
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const log = await prisma.auditLog.create({
+      data: {
+        admin_email: body.admin_email,
+        action: body.action,
+        entity_type: body.entity_type,
+        entity_id: body.entity_id,
+        old_value: JSON.stringify(body.old_value),
+        new_value: JSON.stringify(body.new_value),
+        ip_address: body.ip_address,
+        status: body.status || "SUCCESS",
+      }
+    });
+    return NextResponse.json(log);
+  } catch (error) {
+    return NextResponse.json({ error: "Failed to create audit log" }, { status: 500 });
+  }
 }

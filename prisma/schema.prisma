@@ -345,6 +345,76 @@ model Scholarship {
   @@map("scholarships")
 }
 
+model BlogPost {
+  id              String   @id @default(uuid())
+  title           String
+  slug            String   @unique
+  content         String   @db.LongText
+  excerpt         String?  @db.Text
+  cover_image     String?  @db.Text
+  author_name     String?
+  category        String?
+  tags            String?  @db.Text
+  is_published    Boolean  @default(false)
+  view_count      Int      @default(0)
+  seo_title       String?
+  seo_description String?  @db.Text
+  published_at    DateTime?
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  @@map("blog_posts")
+}
+
+model University {
+  id           String   @id @default(uuid())
+  name         String
+  country      String
+  city         String
+  qs_rank      Int?
+  acceptance   Decimal? @db.Decimal(5, 2)
+  tuition_usd  Int?
+  ielts_min    Decimal? @db.Decimal(3, 1)
+  status       String   @default("ACTIVE")
+  is_partner   Boolean  @default(false)
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  contracts    PartnerContract[]
+
+  @@map("universities")
+}
+
+model PartnerContract {
+  id              String   @id @default(uuid())
+  university_id   String
+  commission_pct  Decimal  @db.Decimal(5, 2)
+  payment_cycle   String   @default("MONTHLY")
+  payout_pending  Decimal  @default(0) @db.Decimal(15, 2)
+  total_enrolled  Int      @default(0)
+  status          String   @default("ACTIVE")
+  expiry_date     DateTime
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  university      University @relation(fields: [university_id], references: [id], onDelete: Cascade)
+
+  @@map("partner_contracts")
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  admin_email String
+  action      String
+  entity_type String
+  entity_id   String
+  old_value   String?  @db.LongText
+  new_value   String?  @db.LongText
+  ip_address  String?
+  status      String   @default("SUCCESS")
+  created_at  DateTime @default(now())
+
+  @@map("audit_logs")
+}
+
 enum Role {
   STUDENT
   COLLEGE_ADMIN

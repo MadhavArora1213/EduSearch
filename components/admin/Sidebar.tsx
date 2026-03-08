@@ -43,39 +43,57 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const menuItems = [
-  { id: "dashboard", label: "Command Centre", icon: LayoutDashboard, href: "/admin/dashboard" },
-  { id: "colleges", label: "Institution Hub", icon: GraduationCap, href: "/admin/colleges" },
-  { id: "exams", label: "Exam Intelligence", icon: FileText, href: "/admin/exams" },
+interface MenuItem {
+  id?: string;
+  label: string;
+  icon?: any;
+  href?: string;
+  type?: "label";
+}
+
+const menuItems: MenuItem[] = [
+  // SECTION 1: CORE ENGINE
+  { type: "label", label: "Core Console" },
+  { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, href: "/admin/dashboard" },
+  { id: "colleges", label: "Colleges", icon: GraduationCap, href: "/admin/colleges" },
+  { id: "exams", label: "Exams", icon: FileText, href: "/admin/exams" },
+  { id: "students", label: "Students", icon: Users, href: "/admin/students" },
   
-  // Section 4 - Operations & Leads
+  // SECTION 2: REVENUE OPS
+  { type: "label", label: "Revenue Ops" },
   { id: "leads", label: "Lead Monitor", icon: Target, href: "/admin/operations/leads" },
-  { id: "disputes", label: "Dispute Workflow", icon: ShieldCheck, href: "/admin/operations/leads/disputes" },
+  { id: "disputes", label: "Lead Disputes", icon: ShieldCheck, href: "/admin/operations/leads/disputes" },
   
-  // Section 9 - Growth & Analytics
-  { id: "growth-analytics", label: "Growth Intel", icon: TrendingUp, href: "/admin/growth/analytics" },
-  { id: "funnels", label: "Conversion Funnel", icon: Zap, href: "/admin/growth/funnels" },
-  { id: "ab-testing", label: "A/B Test Lab", icon: LayoutGrid, href: "/admin/growth/ab-testing" },
+  // SECTION 3: CONTENT
+  { type: "label", label: "Content Engine" },
+  { id: "blogs", label: "Articles", icon: FileText, href: "/admin/content/blogs" },
 
-  // Section 10 - Study Abroad
-  { id: "study-abroad", label: "Global CMS", icon: Globe, href: "/admin/study-abroad/universities" },
-  { id: "partners", label: "Partner Vault", icon: Briefcase, href: "/admin/study-abroad/partners" },
+  // SECTION 4: GROWTH
+  { type: "label", label: "Growth" },
+  { id: "growth-analytics", label: "Engagement", icon: TrendingUp, href: "/admin/growth/analytics" },
+  { id: "funnels", label: "Funnels", icon: Zap, href: "/admin/growth/funnels" },
+  { id: "ab-testing", label: "A/B Testing", icon: LayoutGrid, href: "/admin/growth/ab-testing" },
 
-  // Section 11 - Communication
+  // SECTION 4: INTERNATIONAL
+  { type: "label", label: "Study Abroad" },
+  { id: "study-abroad", label: "Universities", icon: Globe, href: "/admin/study-abroad/universities" },
+  { id: "partners", label: "Partner Portal", icon: Briefcase, href: "/admin/study-abroad/partners" },
+
+  // SECTION 5: COMMUNICATION
+  { type: "label", label: "Communication" },
   { id: "notifications", label: "Email Engine", icon: MessageSquare, href: "/admin/notifications/email" },
-  { id: "sms-manager", label: "SMS Registry", icon: Smartphone, href: "/admin/notifications/sms" },
-  { id: "whatsapp", label: "Bot Control", icon: Globe, href: "/admin/notifications/whatsapp" },
+  { id: "sms-manager", label: "SMS Manager", icon: Smartphone, href: "/admin/notifications/sms" },
+  { id: "whatsapp", label: "WhatsApp Bot", icon: Globe, href: "/admin/notifications/whatsapp" },
 
-  // Section 12 - Security & Audit
-  { id: "audit", label: "Audit Ledger", icon: History, href: "/admin/security/audit" },
-  { id: "access-logs", label: "Access Shifts", icon: ShieldAlert, href: "/admin/security/access-logs" },
-  { id: "rbac", label: "Auth Matrix", icon: Lock, href: "/admin/security/rbac" },
-
-  // Tech & Content
-  { id: "moderation", label: "Auto-Mod Rules", icon: ShieldCheck, href: "/admin/moderation/reviews" },
-  { id: "seo", label: "SEO Intelligence", icon: Search, href: "/admin/seo/metadata" },
-  { id: "ai", label: "AI Ops Console", icon: Cpu, href: "/admin/ai/models/status" },
-  { id: "observability", label: "System Health", icon: Activity, href: "/admin/system/observability" },
+  // SECTION 6: GOVERNANCE
+  { type: "label", label: "Governance" },
+  { id: "audit", label: "Audit Logs", icon: History, href: "/admin/security/audit" },
+  { id: "access-logs", label: "Access Logs", icon: ShieldAlert, href: "/admin/security/access-logs" },
+  { id: "rbac", label: "Role Matrix", icon: Lock, href: "/admin/security/rbac" },
+  { id: "moderation", label: "Moderation", icon: ShieldCheck, href: "/admin/moderation/reviews" },
+  { id: "seo", label: "SEO Ops", icon: Search, href: "/admin/seo/metadata" },
+  { id: "ai", label: "AI Control", icon: Cpu, href: "/admin/ai/models/status" },
+  { id: "observability", label: "Platform Health", icon: Activity, href: "/admin/system/observability" },
 ];
 
 export function Sidebar() {
@@ -120,12 +138,25 @@ export function Sidebar() {
 
         {/* Navigation Items */}
         <nav className="flex-1 px-4 space-y-1.5 overflow-y-auto no-scrollbar relative z-10 pb-6">
-          {menuItems.map((item) => {
+          {menuItems.map((item, index) => {
+            if (item.type === "label") {
+              return !collapsed ? (
+                <p 
+                  key={`label-${index}`} 
+                  className="px-4 py-4 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mt-2 select-none"
+                >
+                  {item.label}
+                </p>
+              ) : (
+                <div key={`label-${index}`} className="h-px bg-white/5 my-4 mx-4" />
+              );
+            }
+
             const isActive = pathname === item.href;
             return (
               <Link 
                 key={item.id} 
-                href={item.href}
+                href={item.href!}
                 className={cn(
                   "flex items-center space-x-3.5 px-4 py-3.5 rounded-[14px] transition-all duration-300 group relative overflow-hidden",
                   isActive 
@@ -145,7 +176,7 @@ export function Sidebar() {
                    {isActive && (
                       <div className="absolute inset-0 bg-blue-400 blur-md opacity-40 rounded-full" />
                    )}
-                   <item.icon size={20} className="relative z-10" />
+                   {item.icon && <item.icon size={20} className="relative z-10" />}
                 </div>
                 
                 {!collapsed && (
@@ -181,12 +212,12 @@ export function Sidebar() {
 
       {/* Mobile Bottom Navigation */}
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#06162C]/95 backdrop-blur-xl border-t border-white/10 z-[100] flex flex-row items-center justify-between px-2 overflow-x-auto no-scrollbar shadow-[0_-10px_40px_rgba(0,0,0,0.3)] touch-pan-x">
-        {menuItems.map((item) => {
+        {menuItems.filter(i => i.type !== "label").slice(0, 6).map((item) => {
           const isActive = pathname === item.href;
           return (
             <Link 
               key={item.id} 
-              href={item.href}
+              href={item.href!}
               className={cn(
                 "flex flex-col items-center justify-center p-2 min-w-[64px] rounded-xl transition-all relative overflow-hidden",
                 isActive ? "text-blue-400" : "text-slate-400"
@@ -196,13 +227,13 @@ export function Sidebar() {
                  {isActive && (
                     <div className="absolute inset-0 bg-blue-400 blur-sm opacity-40 rounded-full" />
                  )}
-                 <item.icon size={20} className="relative z-10" />
+                 {item.icon && <item.icon size={20} className="relative z-10" />}
               </div>
               <span className={cn(
                 "text-[9px] font-semibold whitespace-nowrap",
                 isActive ? "text-blue-400" : "text-slate-500"
               )}>
-                 {item.label.split(' ')[0]} {/* Show short label on mobile */}
+                 {item.label!.split(' ')[0]} {/* Show short label on mobile */}
               </span>
               {isActive && (
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-blue-500 rounded-t-full shadow-[0_0_8px_rgba(59,130,246,0.8)]" />

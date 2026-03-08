@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import Link from "next/link";import { 
+import Link from "next/link";
+import { 
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
   BarChart, Bar, AreaChart, Area, PieChart, Pie, Cell, Legend 
 } from 'recharts';
@@ -20,57 +21,6 @@ import {
   Settings
 } from 'lucide-react';
 import { cn } from "@/lib/utils";
-
-// Mock Data
-const activityData = [
-  { name: '01 Mar', dau: 4000, queries: 2400, ai: 2400 },
-  { name: '02 Mar', dau: 3000, queries: 1398, ai: 2210 },
-  { name: '03 Mar', dau: 2000, queries: 9800, ai: 2290 },
-  { name: '04 Mar', dau: 2780, queries: 3908, ai: 2000 },
-  { name: '05 Mar', dau: 1890, queries: 4800, ai: 2181 },
-  { name: '06 Mar', dau: 2390, queries: 3800, ai: 2500 },
-  { name: '07 Mar', dau: 3490, queries: 4300, ai: 2100 },
-];
-
-const leadVelocity = [
-  { day: 'Mon', eng: 40, mba: 24, med: 24 },
-  { day: 'Tue', eng: 30, mba: 13, med: 22 },
-  { day: 'Wed', eng: 20, mba: 98, med: 22 },
-  { day: 'Thu', eng: 27, mba: 39, med: 20 },
-  { day: 'Fri', eng: 18, mba: 48, med: 21 },
-  { day: 'Sat', eng: 23, mba: 38, med: 25 },
-  { day: 'Sun', eng: 34, mba: 43, med: 21 },
-];
-
-const revenueTrend = [
-  { date: 'Feb 15', cpl: 12000, sub: 35000 },
-  { date: 'Feb 20', cpl: 19000, sub: 35000 },
-  { date: 'Feb 25', cpl: 15000, sub: 45000 },
-  { date: 'Mar 1', cpl: 22000, sub: 45000 },
-  { date: 'Mar 5', cpl: 30000, sub: 60000 },
-  { date: 'Mar 7', cpl: 34000, sub: 60000 },
-];
-
-const moderationData = [
-  { name: 'Pending', value: 34, color: '#0F172A' },
-  { name: 'Approved', value: 156, color: '#10B981' },
-  { name: 'Rejected', value: 12, color: '#EF4444' },
-];
-
-const topColleges = [
-  { name: 'IIT Bombay', searches: 12450, change: '+12%' },
-  { name: 'BITS Pilani', searches: 9800, change: '+8%' },
-  { name: 'SRM University', searches: 8400, change: '+15%' },
-  { name: 'LPU Jalandhar', searches: 7200, change: '-4%' },
-  { name: 'Chandigarh University', searches: 6800, change: '+20%' },
-];
-
-const alerts = [
-  { id: 1, type: 'CRITICAL', text: 'VPS RAM usage exceeded 90% (Node-02)', time: '2 mins ago' },
-  { id: 2, type: 'WARNING', text: 'Bulk review import conflict detected (ID: 482)', time: '15 mins ago' },
-  { id: 3, type: 'INFO', text: 'New College Subscription: Amity University', time: '1 hour ago' },
-  { id: 4, type: 'DEBUG', text: 'Scraper task completed for NIRF Rank 2024', time: '3 hours ago' },
-];
 
 function WidgetCard({ title, children, className, subtitle, icon: Icon, actions }: any) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -94,7 +44,9 @@ function WidgetCard({ title, children, className, subtitle, icon: Icon, actions 
             {Icon && <Icon size={18} className="text-primary shrink-0" />}
             <h3 className="text-[14px] font-black text-typography tracking-tight leading-none">{title}</h3>
           </div>
-          {subtitle && <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-2">{subtitle}</p>}
+          {subtitle && <p className="text-[10px] font-bold text-secondary/40 uppercase tracking-widest mt-2">
+            {subtitle}
+          </p>}
         </div>
         <div className="flex items-center space-x-2 shrink-0">
            <button onClick={handleDownloadCSV} title="Download CSV Report" className="p-1.5 hover:bg-gray-50 rounded-lg transition-all border border-transparent hover:border-gray-100 text-gray-400 hover:text-gray-600">
@@ -120,28 +72,21 @@ function WidgetCard({ title, children, className, subtitle, icon: Icon, actions 
 }
 
 export function DashboardWidgets({ 
-  topColleges: propTopColleges, 
-  alerts: propAlerts, 
-  activityData: propActivityData,
-  leadVelocity: propLeadVelocity,
-  revenueTrend: propRevenueTrend,
-  moderationData: propModerationData,
+  topColleges = [], 
+  alerts = [], 
+  activityData = [],
+  leadVelocity = [],
+  revenueTrend = [],
+  moderationData = [],
   loading 
 }: any) {
   const [mounted, setMounted] = useState(false);
   const [localAlerts, setLocalAlerts] = useState<any[]>([]);
 
-  const displayColleges = propTopColleges && propTopColleges.length > 0 ? propTopColleges : topColleges;
-  const initialAlerts = propAlerts && propAlerts.length > 0 ? propAlerts : alerts;
-  const displayActivityData = propActivityData && propActivityData.length > 0 ? propActivityData : activityData;
-  const displayLeadVelocity = propLeadVelocity && propLeadVelocity.length > 0 ? propLeadVelocity : leadVelocity;
-  const displayRevenueTrend = propRevenueTrend && propRevenueTrend.length > 0 ? propRevenueTrend : revenueTrend;
-  const displayModerationData = propModerationData && propModerationData.length > 0 ? propModerationData : moderationData;
-
   useEffect(() => {
     setMounted(true);
-    setLocalAlerts(initialAlerts);
-  }, [initialAlerts]);
+    setLocalAlerts(alerts);
+  }, [alerts]);
 
   if (!mounted) return <div className="grid grid-cols-12 gap-8 mb-10 min-h-[600px] animate-pulse bg-gray-50/50 rounded-[3rem]" />;
 
@@ -156,7 +101,7 @@ export function DashboardWidgets({
       >
         <div className="h-[350px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={displayActivityData}>
+            <AreaChart data={activityData}>
               <defs>
                 <linearGradient id="colorDau" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#0B2447" stopOpacity={0.1}/>
@@ -176,7 +121,6 @@ export function DashboardWidgets({
               />
               <Legend verticalAlign="top" height={36}/>
               <Area type="monotone" name="DAU" dataKey="dau" stroke="#0B2447" strokeWidth={4} fillOpacity={1} fill="url(#colorDau)" />
-              <Area type="monotone" name="Queries" dataKey="queries" stroke="#3B82F6" strokeWidth={2} fillOpacity={0.1} fill="#3B82F6" />
               <Area type="monotone" name="AI Sessions" dataKey="ai" stroke="#19376D" strokeWidth={4} fillOpacity={1} fill="url(#colorAi)" strokeDasharray="10 10" />
             </AreaChart>
           </ResponsiveContainer>
@@ -192,7 +136,7 @@ export function DashboardWidgets({
       >
         <div className="h-[350px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={displayLeadVelocity}>
+            <BarChart data={leadVelocity}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F1F5F9" />
               <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} dy={10} />
               <YAxis hide />
@@ -215,14 +159,13 @@ export function DashboardWidgets({
       >
         <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={displayRevenueTrend}>
+            <AreaChart data={revenueTrend}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#F1F5F9" />
               <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} dy={15} />
               <YAxis axisLine={false} tickLine={false} tick={{fill: '#94A3B8', fontSize: 10, fontWeight: 700}} tickFormatter={(value) => `₹${value/1000}k`} dx={-10} width={45} />
               <Tooltip />
               <Legend />
-              <Area type="step" name="Subscriptions" dataKey="sub" stroke="#0F172A" fill="#0F172A" fillOpacity={0.05} strokeWidth={2} />
-              <Area type="monotone" name="CPL Revenue" dataKey="cpl" stroke="#10B981" fill="#10B981" fillOpacity={0.15} strokeWidth={4} />
+              <Area type="monotone" name="Revenue" dataKey="revenue" stroke="#10B981" fill="#10B981" fillOpacity={0.15} strokeWidth={4} />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -239,14 +182,14 @@ export function DashboardWidgets({
           <ResponsiveContainer width="100%" height={240}>
             <PieChart>
               <Pie
-                data={displayModerationData}
+                data={moderationData}
                 innerRadius={60}
                 outerRadius={80}
                 paddingAngle={10}
                 dataKey="value"
                 stroke="none"
               >
-                {displayModerationData.map((entry: any, index: number) => (
+                {moderationData.map((entry: any, index: number) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
@@ -254,7 +197,7 @@ export function DashboardWidgets({
             </PieChart>
           </ResponsiveContainer>
           <div className="flex space-x-6">
-            {displayModerationData.map((item: any) => (
+            {moderationData.map((item: any) => (
               <div key={item.name} className="flex flex-col items-center">
                 <div className="flex items-center space-x-2 mb-1">
                    <div className="w-2.5 h-2.5 rounded-full" style={{backgroundColor: item.color}} />
@@ -267,72 +210,37 @@ export function DashboardWidgets({
         </div>
       </WidgetCard>
 
-      {/* Widget 6: AI Counselor Usage */}
-      <WidgetCard 
-        title="AI Ops Center" 
-        subtitle="Usage & Performance Logs" 
-        className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6" 
-        icon={Zap}
-      >
-        <div className="h-[300px] flex flex-col justify-center space-y-6">
-           <div className="space-y-2">
-              <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
-                 <span>Cache Hit Rate</span>
-                 <span>84%</span>
-              </div>
-              <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                 <div className="h-full bg-emerald-500 rounded-full" style={{width: '84%'}} />
-              </div>
-           </div>
-           <div className="space-y-2">
-              <div className="flex justify-between text-xs font-bold uppercase tracking-widest text-gray-500">
-                 <span>Queue Depth</span>
-                 <span>3 Active</span>
-              </div>
-              <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                 <div className="h-full bg-primary rounded-full" style={{width: '30%'}} />
-              </div>
-           </div>
-           <div className="grid grid-cols-2 gap-4 mt-2">
-              <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Total Tokens</p>
-                 <p className="text-lg font-black text-typography">8.4M</p>
-              </div>
-              <div className="bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">GPU Load</p>
-                 <p className="text-lg font-black text-typography">62%</p>
-              </div>
-           </div>
-        </div>
-      </WidgetCard>
-
       {/* Widget 7: Top Searched Colleges */}
       <WidgetCard 
-        title="Top Searched Colleges" 
-        subtitle="Most Viewed Institutions (Real-time)" 
-        className="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6"
+        title="Top Lead-Generating Colleges" 
+        subtitle="Most Interested Institutions (Real-time)" 
+        className="col-span-12 md:col-span-12 lg:col-span-12 xl:col-span-12"
         icon={Search}
       >
-        <div className="space-y-4">
-          {displayColleges.map((college: any, i: number) => (
-            <div key={college.name} className="flex items-center justify-between group cursor-pointer hover:bg-gray-50 p-2 rounded-xl transition-all">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {topColleges.map((college: any, i: number) => (
+            <div key={college.name} className="flex items-center justify-between group cursor-pointer hover:bg-gray-50 p-4 rounded-xl transition-all border border-gray-50">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center text-[10px] font-bold text-gray-500 group-hover:bg-primary group-hover:text-white transition-all">
                    {i+1}
                 </div>
                 <div>
                    <p className="text-sm font-bold text-gray-800">{college.name}</p>
-                   <p className="text-[10px] font-medium text-gray-500">{loading ? "..." : college.searches?.toLocaleString()} Views</p>
+                   <p className="text-[10px] font-medium text-gray-500">{loading ? "..." : college.leads?.toLocaleString()} Leads Ingested</p>
                 </div>
               </div>
               <div className={cn(
-                "text-[10px] font-black px-2 py-1 rounded-md",
-                college.change?.startsWith('+') ? "text-emerald-700 bg-emerald-50" : "text-red-700 bg-red-50"
+                "text-[10px] font-black px-2 py-1 rounded-md bg-emerald-50 text-emerald-700"
               )}>
                 {college.change}
               </div>
             </div>
           ))}
+          {topColleges.length === 0 && (
+            <div className="col-span-full py-10 text-center text-gray-400 text-xs font-bold uppercase tracking-widest">
+               No Lead Nodes Sequenced
+            </div>
+          )}
         </div>
       </WidgetCard>
 
