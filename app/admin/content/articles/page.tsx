@@ -70,7 +70,7 @@ export default function ContentEditorPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Editorial Lifecycle Control</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Content <span className="text-primary italic italic">Velocitor</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2 overflow-hidden text-ellipsis whitespace-nowrap">
@@ -115,7 +115,7 @@ export default function ContentEditorPage() {
 
       {/* Article Listing Console */}
       <section className="bg-white rounded-[4rem] border border-gray-50 shadow-sm overflow-hidden min-h-[600px] mb-20 animate-in fade-in transition-all italic">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between italic bg-snow-pearl/30">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 italic bg-snow-pearl/30">
             <div className="flex items-center space-x-10">
                <div className="flex items-center space-x-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100">
                  {["All Content", "Published", "Scheduled", "Drafts"].map((t) => (
@@ -171,7 +171,7 @@ export default function ContentEditorPage() {
                       </div>
                    </div>
                    
-                   <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                   <div className="flex items-center space-x-2 flex items-center space-x-2">
                       <button className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-primary hover:text-white transition-all shadow-sm">
                          <Edit2 size={16} />
                       </button>

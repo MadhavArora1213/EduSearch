@@ -45,7 +45,7 @@ export default function ConversionFunnelPage() {
   const [device, setDevice] = useState<'ALL' | 'MOBILE' | 'DESKTOP'>('ALL');
 
   return (
-    <div className="space-y-10 font-sans">
+    <div className="space-y-10 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -56,7 +56,7 @@ export default function ConversionFunnelPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Conversion Leakage Monitor</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Full <span className="text-primary italic">Funnel</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -92,7 +92,7 @@ export default function ConversionFunnelPage() {
         </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-10 font-sans italic not-italic">
+      <div className="grid grid-cols-12 gap-10 font-montserrat italic not-italic">
          {/* Funnel Visualization */}
          <div className="col-span-12 lg:col-span-9 bg-white rounded-[3rem] border border-gray-50 shadow-sm p-14 flex flex-col overflow-hidden italic">
             <div className="flex justify-between items-center mb-14 italic">
@@ -153,7 +153,7 @@ export default function ConversionFunnelPage() {
          </div>
 
          {/* Sidebar: Source Context */}
-         <div className="col-span-12 lg:col-span-3 space-y-8 font-sans italic not-italic">
+         <div className="col-span-12 lg:col-span-3 space-y-8 font-montserrat italic not-italic">
             <div className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col justify-between relative group h-full italic">
                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-1000 italic">
                   <Target size={80} className="text-primary italic" />
@@ -187,14 +187,14 @@ export default function ConversionFunnelPage() {
       </div>
 
       {/* Growth Node: UX Insights */}
-      <section className="bg-emerald-50 p-12 rounded-[3.5rem] border border-emerald-100 flex flex-col md:flex-row md:items-center justify-between group font-sans italic not-italic">
+      <section className="bg-emerald-50 p-12 rounded-[3.5rem] border border-emerald-100 flex flex-col md:flex-row md:items-center justify-between group font-montserrat italic not-italic">
          <div className="flex items-center space-x-8 italic">
             <div className="w-20 h-20 bg-emerald-500 text-white rounded-[2.5rem] flex items-center justify-center shadow-xl shadow-emerald-500/20 group-hover:scale-110 transition-transform italic">
                <MousePointer2 size={32} className="italic" />
             </div>
             <div>
                <h4 className="text-2xl font-black text-emerald-900 tracking-tighter uppercase italic">The "Enquire Now" Friction Node</h4>
-               <p className="text-xs font-bold text-emerald-600/60 uppercase tracking-widest mt-2 max-w-xl italic font-sans not-italic">
+               <p className="text-xs font-bold text-emerald-600/60 uppercase tracking-widest mt-2 max-w-xl italic font-montserrat not-italic">
                   We are losing <span className="text-emerald-700 font-black">70.2% of users</span> at the Enquire Click stage. Redesigning the modal trigger to be less intrusive could lift lead volume by 23%.
                </p>
             </div>

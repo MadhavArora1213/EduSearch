@@ -50,7 +50,7 @@ export default function EmailTemplateLibraryPage() {
   const [activeTab, setActiveTab] = useState<'ALL' | 'TRANSACTIONAL' | 'CAMPAIGN'>('ALL');
 
   return (
-    <div className="space-y-10 font-sans italic not-italic">
+    <div className="space-y-10 font-montserrat italic not-italic">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -61,7 +61,7 @@ export default function EmailTemplateLibraryPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Email Lifecycle Manager</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Template <span className="text-primary italic">Library</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -78,7 +78,7 @@ export default function EmailTemplateLibraryPage() {
       </section>
 
       {/* Analytics: Global Email Health */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
          {[
            { label: "Avg. Delivery Rate", value: "99.8%", trend: "+0.2%", icon: Send, color: "text-emerald-500 bg-emerald-50" },
            { label: "Open Rate (Global)", value: "32.4%", trend: "Stable", icon: Eye, color: "text-primary bg-primary/5" },
@@ -100,7 +100,7 @@ export default function EmailTemplateLibraryPage() {
 
       {/* Main Listing Grid */}
       <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col italic not-italic">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="flex items-center space-x-2 bg-white p-1.5 rounded-2xl border border-gray-100 italic">
                {['ALL', 'TRANSACTIONAL', 'CAMPAIGN'].map(t => (
                  <button 
@@ -137,7 +137,7 @@ export default function EmailTemplateLibraryPage() {
                </thead>
                <tbody className="divide-y divide-gray-50 italic">
                   {templates.map((t) => (
-                    <tr key={t.id} className="group hover:bg-snow-pearl/30 transition-all font-sans not-italic">
+                    <tr key={t.id} className="group hover:bg-snow-pearl/30 transition-all font-montserrat not-italic">
                        <td className="px-10 py-10">
                           <div className="flex items-center space-x-6 italic">
                              <div className={cn(
@@ -191,7 +191,7 @@ export default function EmailTemplateLibraryPage() {
             <div className="absolute top-0 right-0 p-10 opacity-5">
                <Zap size={100} className="text-primary" />
             </div>
-            <div className="flex items-center space-x-6 relative z-10 italic font-sans not-italic">
+            <div className="flex items-center space-x-6 relative z-10 italic font-montserrat not-italic">
                <RefreshCw size={18} className="text-secondary/20 animate-spin-slow" />
                <p className="text-xs font-black text-secondary/40 uppercase tracking-widest italic decoration-primary/10 underline">Brevo API Real-Time Sync Active • 142 Pending Transmissions in Queue</p>
             </div>
@@ -203,8 +203,8 @@ export default function EmailTemplateLibraryPage() {
       </section>
 
       {/* A/B Test Segment Footer */}
-      <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative italic not-italic font-sans">
-         <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+      <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative italic not-italic font-montserrat">
+         <div className="absolute inset-0 bg-primary/10 flex items-center space-x-2 duration-1000" />
          <div className="flex items-center space-x-8 relative z-10">
             <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center text-primary shadow-inner">
                <FlaskConical size={28} />

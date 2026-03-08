@@ -90,7 +90,7 @@ export default function LeadsManagementPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Master Lead Distribution</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Lead <span className="text-primary italic">Velocitor</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -168,7 +168,7 @@ export default function LeadsManagementPage() {
 
       {/* Main Listing */}
       <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-        <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
+        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
            <div className="relative flex-1 max-w-xl italic">
               <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input 
@@ -192,7 +192,7 @@ export default function LeadsManagementPage() {
                 <Loader2 className="w-10 h-10 text-primary animate-spin" />
               </div>
             )}
-            <table className="w-full text-left italic font-sans">
+            <table className="w-full text-left italic font-montserrat">
                <thead className="bg-snow-pearl/50 border-b border-gray-100 italic">
                   <tr>
                      <th className="px-10 py-6 text-[10px] font-black uppercase tracking-widest text-secondary/40">Potential Student</th>
@@ -266,7 +266,7 @@ export default function LeadsManagementPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-sans">
+         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat">
             <div className="absolute top-0 right-0 p-10 opacity-5">
                <TrendingUp size={100} className="text-primary" />
             </div>
@@ -274,7 +274,7 @@ export default function LeadsManagementPage() {
                <RefreshCw size={18} className="text-secondary/20 animate-spin-slow" />
                <p className="text-xs font-black text-secondary/40 uppercase tracking-widest italic font-black">Lead Velocitor Protocol: Live Intake Registry Node</p>
             </div>
-            <div className="flex items-center space-x-4 relative z-10 font-sans not-italic">
+            <div className="flex items-center space-x-4 relative z-10 font-montserrat not-italic">
                <button onClick={fetchLeads} className="px-8 py-4 bg-snow-pearl rounded-2xl text-[10px] font-black uppercase tracking-widest text-secondary/40 hover:text-primary transition-all italic">Force Sync</button>
                <div className="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center text-xs font-black italic shadow-lg shadow-primary/20">1</div>
             </div>

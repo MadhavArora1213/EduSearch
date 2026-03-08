@@ -44,7 +44,7 @@ export default function ContentPerformancePage() {
   const [activeTab, setActiveTab] = useState<'TOP' | 'UNDER' | 'GAP'>('TOP');
 
   return (
-    <div className="space-y-10 font-sans">
+    <div className="space-y-10 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -55,7 +55,7 @@ export default function ContentPerformancePage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Node Yield Analysis</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Content <span className="text-primary italic">Performance</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -88,7 +88,7 @@ export default function ContentPerformancePage() {
 
       {/* Analytics Matrix */}
       <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="relative flex-1 max-w-xl">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input placeholder="Search slug, node type or intent..." className="w-full bg-white border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all shadow-inner" />
@@ -125,7 +125,7 @@ export default function ContentPerformancePage() {
                              <div>
                                 <h4 className="text-[14px] font-black text-typography leading-tight uppercase transition-colors group-hover:text-primary flex items-center space-x-2">
                                    <span>{page.url}</span>
-                                   <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                                   <ExternalLink size={12} className="flex items-center space-x-2" />
                                 </h4>
                                 <div className="flex items-center space-x-3 text-[9px] font-bold text-secondary/20 uppercase tracking-widest mt-1 italic decoration-primary/10 underline">
                                    <span>{page.type} Node</span>
@@ -184,9 +184,9 @@ export default function ContentPerformancePage() {
       </section>
 
       {/* Content Gap Finder Hub */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 font-sans italic not-italic">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 font-montserrat italic not-italic">
          <div className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col justify-between group overflow-hidden relative">
-            <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            <div className="absolute inset-0 bg-primary/10 flex items-center space-x-2 duration-1000" />
             <div className="relative z-10">
                <h4 className="text-lg font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/30">Ghost Intent Detection</h4>
                <div className="space-y-6">

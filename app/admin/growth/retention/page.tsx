@@ -45,9 +45,9 @@ export default function CohortRetentionPage() {
   };
 
   return (
-    <div className="space-y-10 font-sans italic">
+    <div className="space-y-10 font-montserrat italic">
       {/* Header */}
-      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic font-sans not-italic">
+      <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic font-montserrat not-italic">
         <div>
            <div className="flex items-center space-x-3 mb-2">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
@@ -56,7 +56,7 @@ export default function CohortRetentionPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">LTV & Stickiness Matrix</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Cohort <span className="text-primary italic">Retention</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -90,10 +90,10 @@ export default function CohortRetentionPage() {
         </div>
       </section>
 
-      <div className="grid grid-cols-12 gap-10 font-sans not-italic">
+      <div className="grid grid-cols-12 gap-10 font-montserrat not-italic">
          {/* Main Retention Matrix */}
          <div className="col-span-12 lg:col-span-9 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-            <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Weekly Acquisition Cohorts</h3>
                   <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] mt-2 italic select-none">Target: W1 &gt; 35% Retention • Current: 38.2%</p>
@@ -201,7 +201,7 @@ export default function CohortRetentionPage() {
       </div>
 
       {/* DPDP Compliance Notice (Context Specific) */}
-      <section className="bg-snow-pearl/30 p-10 rounded-[2.5rem] border border-gray-100 flex items-center justify-between font-sans not-italic">
+      <section className="bg-snow-pearl/30 p-10 rounded-[2.5rem] border border-gray-100 flex items-center justify-between font-montserrat not-italic">
          <div className="flex items-center space-x-6">
             <History size={20} className="text-secondary/20" />
             <p className="text-[11px] font-bold text-secondary/40 tracking-widest uppercase italic">Cohort snapshots are anonymized per DPDP Act standards • No PII is shared in growth node analytics</p>

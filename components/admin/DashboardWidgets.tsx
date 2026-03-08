@@ -71,21 +71,28 @@ function WidgetCard({ title, children, className, subtitle, icon: Icon, actions 
   );
 }
 
+const STABLE_EMPTY_ARRAY: any[] = [];
+
 export function DashboardWidgets({ 
-  topColleges = [], 
-  alerts = [], 
-  activityData = [],
-  leadVelocity = [],
-  revenueTrend = [],
-  moderationData = [],
+  topColleges = STABLE_EMPTY_ARRAY, 
+  alerts = STABLE_EMPTY_ARRAY, 
+  activityData = STABLE_EMPTY_ARRAY,
+  leadVelocity = STABLE_EMPTY_ARRAY,
+  revenueTrend = STABLE_EMPTY_ARRAY,
+  moderationData = STABLE_EMPTY_ARRAY,
   loading 
 }: any) {
   const [mounted, setMounted] = useState(false);
-  const [localAlerts, setLocalAlerts] = useState<any[]>([]);
+  const [localAlerts, setLocalAlerts] = useState<any[]>(alerts);
 
   useEffect(() => {
     setMounted(true);
-    setLocalAlerts(alerts);
+  }, []);
+
+  useEffect(() => {
+    if (alerts && alerts.length > 0) {
+      setLocalAlerts(alerts);
+    }
   }, [alerts]);
 
   if (!mounted) return <div className="grid grid-cols-12 gap-8 mb-10 min-h-[600px] animate-pulse bg-gray-50/50 rounded-[3rem]" />;
@@ -283,7 +290,7 @@ export function DashboardWidgets({
                         <p className="text-sm font-medium text-gray-400 whitespace-nowrap">{displayTime}</p>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <button onClick={() => setLocalAlerts(prev => prev.filter(a => a.id !== alert.id))} className="text-xs font-medium text-primary px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary/5">Acknowledge</button>
+                        <button onClick={() => setLocalAlerts(prev => prev.filter(a => a.id !== alert.id))} className="text-[10px] font-black uppercase tracking-widest text-primary hover:bg-primary hover:text-white px-4 py-2 rounded-xl transition-all border border-primary/10">Acknowledge</button>
                       </td>
                     </tr>
                   );
@@ -312,18 +319,18 @@ export function QuickActions() {
   ];
 
   return (
-    <div className="fixed bottom-24 lg:bottom-10 right-4 lg:right-10 flex flex-col space-y-4 items-end z-[90] group">
-       <button className="w-14 h-14 md:w-16 md:h-16 bg-primary text-white rounded-[1.5rem] md:rounded-[2rem] shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+    <div className="fixed bottom-6 lg:bottom-10 right-4 lg:right-10 flex flex-col space-y-4 items-end z-[90] group">
+       <button className="w-14 h-14 md:w-16 md:h-16 bg-primary text-white rounded-[1.5rem] md:rounded-[2rem] shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all outline-none">
           <Settings size={28} className="animate-spin-slow" />
        </button>
-       <div className="absolute bottom-16 md:bottom-20 right-0 flex flex-col space-y-4 pointer-events-none group-hover:pointer-events-auto">
+       <div className="absolute bottom-16 md:bottom-20 right-0 flex flex-col space-y-3 pointer-events-none group-hover:pointer-events-auto">
           {actions.map((action, i) => (
-            <div key={i} className="flex items-center justify-end space-x-4 opacity-0 group-hover:opacity-100 translate-y-10 group-hover:translate-y-0 transition-all duration-300" style={{ transitionDelay: `${i * 50}ms` }}>
-               <span className="bg-white border border-gray-100 px-4 py-2 rounded-xl text-xs font-black shadow-lg shadow-black/5 whitespace-nowrap">
+            <div key={i} className="flex items-center justify-end space-x-3 md:space-x-4 opacity-0 group-hover:opacity-100 translate-y-10 group-hover:translate-y-0 transition-all duration-300" style={{ transitionDelay: `${i * 50}ms` }}>
+               <span className="bg-white border border-gray-100 px-3 py-1.5 md:px-4 md:py-2 rounded-xl text-[10px] md:text-xs font-black shadow-lg shadow-black/5 whitespace-nowrap">
                   {action.label}
                </span>
-               <Link href={action.href} className={cn("w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl cursor-pointer hover:rotate-12 active:scale-95 transition-all", action.color)}>
-                  <action.icon size={20} />
+               <Link href={action.href} className={cn("w-10 h-10 md:w-12 md:h-12 rounded-2xl flex items-center justify-center text-white shadow-xl cursor-pointer hover:rotate-12 active:scale-95 transition-all leading-none", action.color)}>
+                  <action.icon size={18} />
                </Link>
             </div>
           ))}

@@ -86,7 +86,7 @@ export default function SessionManagementPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Session Control & Hijack Prevention</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Session <span className="text-primary italic">Command</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -124,7 +124,7 @@ export default function SessionManagementPage() {
 
       <div className="grid grid-cols-12 gap-10">
          <div className="col-span-12 lg:col-span-9 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden">
-            <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10">{activeTab === 'ADMIN' ? 'Active Administrative Nodes' : 'Identity Theft Prevention'}</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic">

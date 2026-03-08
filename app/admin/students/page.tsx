@@ -70,18 +70,18 @@ export default function StudentsManagementPage() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-10 font-sans">
+    <div className="space-y-10 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-2 font-sans italic">
+           <div className="flex items-center space-x-3 mb-2 font-montserrat italic">
               <div className="bg-primary/5 px-3 py-1.5 rounded-xl border border-primary/10">
                  <span className="text-[10px] font-black uppercase tracking-widest text-primary italic lowercase">DPDP COMPLIANT</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">User Lifecycle Node</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Student <span className="text-primary italic">Cloud</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -102,7 +102,7 @@ export default function StudentsManagementPage() {
       </section>
 
       {/* KPI Section */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
          {[
            { label: "Active Nodes", value: students.length, trend: "Live", icon: Users, color: "text-primary bg-primary/5" },
            { label: "Today's Onboarding", value: students.filter(s => new Date(s.created_at).toDateString() === new Date().toDateString()).length, trend: "+420%", icon: Zap, color: "text-emerald-500 bg-emerald-50" },
@@ -124,7 +124,7 @@ export default function StudentsManagementPage() {
 
       {/* Filter Hub */}
       <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100 italic">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100 italic">
             <div className="relative flex-1 max-w-xl">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input 
@@ -134,7 +134,7 @@ export default function StudentsManagementPage() {
                  className="w-full bg-white border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all shadow-inner" 
                />
             </div>
-            <div className="flex items-center space-x-4 pl-10 italic">
+            <div className="flex items-center space-x-4 lg:pl-10 italic w-full lg:w-auto justify-between lg:justify-end">
                <div className="flex items-center space-x-2 bg-white/50 p-1.5 rounded-2xl border border-gray-100">
                   {["All", "Today", "Suspended"].map((p) => (
                     <button key={p} className="px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-primary transition-all">
@@ -154,7 +154,7 @@ export default function StudentsManagementPage() {
                 <Loader2 className="w-10 h-10 text-primary animate-spin" />
               </div>
             )}
-            <table className="w-full text-left italic font-sansnot-italic">
+            <table className="w-full text-left italic font-montserratnot-italic">
                <thead className="bg-snow-pearl/50 border-b border-gray-100 italic">
                   <tr>
                      <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">Student Profile</th>
@@ -183,7 +183,7 @@ export default function StudentsManagementPage() {
                              </div>
                           </div>
                        </td>
-                       <td className="px-10 py-10 font-sans not-italic">
+                       <td className="px-10 py-10 font-montserrat not-italic">
                           <div className="space-y-2 italic underline decoration-primary/10">
                              <div className="flex items-center space-x-2 text-[12px] font-black text-typography">
                                 <Mail size={12} className="text-secondary/20" />
@@ -195,7 +195,7 @@ export default function StudentsManagementPage() {
                              </div>
                           </div>
                        </td>
-                       <td className="px-10 py-10 font-sans italic">
+                       <td className="px-10 py-10 font-montserrat italic">
                           <p className="text-[13px] font-black text-typography uppercase">{new Date(student.created_at).toLocaleDateString('en-IN', { month: 'short', day: '2-digit', year: 'numeric' })}</p>
                           <p className="text-[8px] font-bold text-secondary/20 uppercase tracking-widest mt-1 italic">Identity Established</p>
                        </td>
@@ -231,7 +231,7 @@ export default function StudentsManagementPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-sans">
+         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat">
             <div className="absolute top-0 right-0 p-10 opacity-5">
                <Fingerprint size={100} className="text-primary" />
             </div>

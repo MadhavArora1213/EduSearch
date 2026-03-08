@@ -82,7 +82,7 @@ export default function CommissionTrackerPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Secondary Revenue Channels</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Settlement <span className="text-indigo-600 italic">Vault</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -118,7 +118,7 @@ export default function CommissionTrackerPage() {
                      </div>
                      <p className="text-xs font-black text-typography uppercase text-center">{partner.name}</p>
                      <p className="text-[9px] font-bold text-secondary/40 uppercase mt-2">{partner.type} Partner</p>
-                     <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                     <div className="mt-4 flex items-center space-x-2">
                         <LinkIcon size={14} className="text-indigo-500" />
                      </div>
                   </div>
@@ -157,7 +157,7 @@ export default function CommissionTrackerPage() {
 
       {/* Ledger Table */}
       <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-10 border-b border-gray-50 flex items-center justify-between">
+        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="relative flex-1 max-w-xl">
               <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input placeholder="Search Student or Partner..." className="w-full bg-snow-pearl border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all" />

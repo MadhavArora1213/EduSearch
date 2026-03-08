@@ -81,7 +81,7 @@ const tests: ABTest[] = [
 
 export default function ABTestManagerPage() {
   return (
-    <div className="space-y-10 font-sans italic not-italic font-sans">
+    <div className="space-y-10 font-montserrat italic not-italic font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -92,7 +92,7 @@ export default function ABTestManagerPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Statistical Significance Engine</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              A/B <span className="text-primary italic">Testing</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -190,7 +190,7 @@ export default function ABTestManagerPage() {
       </div>
 
       {/* Lab Stats Footnote */}
-      <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative font-sans italic not-italic">
+      <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative font-montserrat italic not-italic">
          <div className="absolute top-0 right-0 p-10 opacity-5 group-hover:scale-110 transition-transform duration-1000">
             <FlaskConical size={120} className="text-secondary/20" />
          </div>

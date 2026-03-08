@@ -60,7 +60,7 @@ export default function RBACPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Role-Based Access Control</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Authority <span className="text-primary italic">Matrix</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -190,7 +190,7 @@ export default function RBACPage() {
 
       {activeTab === 'AUDIT' && (
          <div className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden">
-            <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-slate-900 text-white border-0">
+            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-slate-900 text-white border-0">
                <div className="flex items-center space-x-4">
                   <History size={24} className="text-secondary/40" />
                   <div>

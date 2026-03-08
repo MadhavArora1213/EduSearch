@@ -89,7 +89,7 @@ export default function NotificationHubPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Global Distribution Console</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Omni <span className="text-primary italic italic">Link</span> Center
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">

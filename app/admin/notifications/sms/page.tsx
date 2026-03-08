@@ -43,7 +43,7 @@ const smsTemplates: SMSTemplate[] = [
 
 export default function SMSContentManagerPage() {
   return (
-    <div className="space-y-10 font-sans italic not-italic font-sans">
+    <div className="space-y-10 font-montserrat italic not-italic font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -54,7 +54,7 @@ export default function SMSContentManagerPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">TRAI Regulation Center</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              SMS <span className="text-primary italic">Manager</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -71,7 +71,7 @@ export default function SMSContentManagerPage() {
       </section>
 
       {/* Compliance & Delivery KPI strip */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
          {[
            { label: "DLT Approval Rate", value: "94%", trend: "Stable", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-50" },
            { label: "Avg Carrier Delivery", value: "91.2%", trend: "Medium", icon: Zap, color: "text-primary bg-primary/5" },
@@ -92,15 +92,15 @@ export default function SMSContentManagerPage() {
       </div>
 
       {/* Main Listing Grid */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col font-sans italic not-italic">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col font-montserrat italic not-italic">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="relative flex-1 max-w-xl italic">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input placeholder="Search Template, DLT ID or Type..." className="w-full bg-white border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all shadow-inner" />
             </div>
-            <div className="flex items-center space-x-4 pl-10 italic">
+            <div className="flex items-center space-x-4 lg:pl-10 italic w-full lg:w-auto justify-between lg:justify-end">
                <button className="p-5 bg-white border border-gray-100 rounded-2xl text-secondary/20 hover:text-primary transition-all shadow-sm italic"><Filter size={20} /></button>
-               <button className="px-10 py-5 bg-slate-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-xl shadow-slate-900/10 italic font-sans not-italic">Sync with Carriers</button>
+               <button className="px-10 py-5 bg-slate-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-primary transition-all shadow-xl shadow-slate-900/10 italic font-montserrat not-italic">Sync with Carriers</button>
             </div>
          </div>
 
@@ -115,7 +115,7 @@ export default function SMSContentManagerPage() {
                      <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit Status</th>
                   </tr>
                </thead>
-               <tbody className="divide-y divide-gray-50 font-sans italic not-italic">
+               <tbody className="divide-y divide-gray-50 font-montserrat italic not-italic">
                   {smsTemplates.map((sms) => (
                     <tr key={sms.id} className="group hover:bg-snow-pearl/30 transition-all italic">
                        <td className="px-10 py-10">
@@ -156,7 +156,7 @@ export default function SMSContentManagerPage() {
                              )}>
                                 {sms.status}
                              </span>
-                             <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all shadow-sm italic font-sans not-italic">
+                             <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all shadow-sm italic font-montserrat not-italic">
                                 <ArrowUpRight size={18} />
                              </button>
                           </div>
@@ -171,7 +171,7 @@ export default function SMSContentManagerPage() {
             <div className="absolute top-0 right-0 p-10 opacity-5">
                <History size={100} className="text-primary" />
             </div>
-            <div className="flex items-center space-x-6 relative z-10 italic font-sans not-italic">
+            <div className="flex items-center space-x-6 relative z-10 italic font-montserrat not-italic">
                <AlertCircle size={18} className="text-amber-500 animate-pulse" />
                <p className="text-xs font-black text-secondary/40 uppercase tracking-widest italic decoration-primary/10 underline">TRAI Legal Warning: 2 unregistered templates detected in production nodes • Sync blocked until DLT ID verified</p>
             </div>
@@ -180,9 +180,9 @@ export default function SMSContentManagerPage() {
       </section>
 
       {/* Device Preview Node */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 font-sans italic not-italic">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-10 font-montserrat italic not-italic">
          <div className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col justify-between group overflow-hidden relative italic not-italic">
-            <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            <div className="absolute inset-0 bg-primary/10 flex items-center space-x-2 duration-1000" />
             <div className="relative z-10">
                <h4 className="text-lg font-black text-slate-500 uppercase tracking-widest mb-10 italic underline decoration-primary/30">Carrier Latency Monitor</h4>
                <div className="space-y-6">
@@ -202,7 +202,7 @@ export default function SMSContentManagerPage() {
                </div>
             </div>
             <div className="mt-14 relative z-10">
-               <button className="w-full py-5 bg-white text-slate-900 rounded-3xl text-[10px] font-black uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-primary/20 italic font-sans not-italic">
+               <button className="w-full py-5 bg-white text-slate-900 rounded-3xl text-[10px] font-black uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-primary/20 italic font-montserrat not-italic">
                   View Full Routing History
                </button>
             </div>
@@ -213,7 +213,7 @@ export default function SMSContentManagerPage() {
             <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-1000">
                <Smartphone size={100} className="text-primary" />
             </div>
-            <div className="w-[280px] h-[500px] bg-slate-800 rounded-[3rem] border-[4px] border-slate-700 shadow-2xl relative overflow-hidden p-6 font-sans italic not-italic">
+            <div className="w-[280px] h-[500px] bg-slate-800 rounded-[3rem] border-[4px] border-slate-700 shadow-2xl relative overflow-hidden p-6 font-montserrat italic not-italic">
                <div className="w-16 h-1.5 bg-slate-700 rounded-full mx-auto mb-6" />
                <div className="flex items-center space-x-3 mb-6 font-mono text-[9px] text-slate-500 justify-between uppercase">
                   <span>9:41 AM</span>

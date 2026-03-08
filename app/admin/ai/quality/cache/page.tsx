@@ -40,7 +40,7 @@ export default function RedisCacheAnalytics() {
   ]);
 
   return (
-    <div className="space-y-10 font-sans italic">
+    <div className="space-y-10 font-montserrat italic">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic">
         <div>
@@ -51,7 +51,7 @@ export default function RedisCacheAnalytics() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Redis Infrastructure & Yield Monitor</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Cache <span className="text-primary italic">Intelligence</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -71,7 +71,7 @@ export default function RedisCacheAnalytics() {
       </section>
 
       {/* Cache Yield Summary */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
          {[
             { label: "Cache Hit Rate", value: "68.4%", sub: "+4.2% Growth", icon: Sparkles, color: "text-emerald-500 bg-emerald-50", trend: "+4.2%" },
             { label: "Ollama Calls Saved", value: "84,202", sub: "Last 30 Days", icon: Zap, color: "text-primary bg-primary/5", trend: "+12.4%" },

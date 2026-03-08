@@ -97,7 +97,7 @@ export default function AiControlCenterPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Llama 3.1 & GPT-4 Oracle Control</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              AI <span className="text-primary italic">Control</span> Center
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">

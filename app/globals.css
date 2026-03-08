@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand Core - Oxford Navy */
-  --color-primary: #0B2447;
-  --color-oxford-navy: #0B2447;
+  /* Brand Core - Ultra Premium Navy */
+  --color-primary: #06162C;
+  --color-oxford-navy: #06162C;
 
-  /* Secondary / Hover - Yale Blue */
-  --color-secondary: #19376D;
-  --color-yale-blue: #19376D;
+  /* Secondary / Accent - Electric Blue */
+  --color-secondary: #1E40AF;
+  --color-yale-blue: #1E40AF;
 
-  /* Background - Snow Pearl */
+  /* Background - Crisp Pearl */
   --color-background: #F8FAFC;
   --color-snow-pearl: #F8FAFC;
 
-  /* Typography - Ink Black */
+  /* Typography - Slate Ink */
   --color-typography: #0F172A;
   --color-ink-black: #0F172A;
 
-  /* Setting default theme fonts */
+  /* Global Fonts - Setting Montserrat as Default */
   --font-montserrat: var(--font-montserrat), sans-serif;
   --font-sans: var(--font-montserrat), sans-serif;
 }

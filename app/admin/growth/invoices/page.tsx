@@ -73,7 +73,7 @@ export default function InvoicesPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Billing & Settlements</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Invoice <span className="text-primary italic">Engine</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -116,7 +116,7 @@ export default function InvoicesPage() {
 
       {/* Invoice Table */}
       <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-10 border-b border-gray-50 flex items-center justify-between">
+        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="flex items-center space-x-4">
               <div className="bg-snow-pearl px-4 py-2 rounded-xl flex items-center space-x-3 border border-gray-100">
                  <CalendarDays size={18} className="text-secondary/20" />

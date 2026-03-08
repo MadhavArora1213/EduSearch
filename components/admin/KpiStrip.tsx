@@ -88,7 +88,7 @@ interface KpiStripProps {
 
 export function KpiStrip({ kpis, loading }: KpiStripProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 italic">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-16 font-montserrat">
       <KpiCard 
         label="DAU (Students)" 
         value={loading ? "..." : (kpis?.students || 0).toString()} 

@@ -60,7 +60,7 @@ GUARDRAILS:
   ]);
 
   return (
-    <div className="space-y-10 font-sans">
+    <div className="space-y-10 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic">
         <div>
@@ -71,7 +71,7 @@ GUARDRAILS:
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Counselor Persona Orchestrator</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              System <span className="text-primary italic">Prompts</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -94,7 +94,7 @@ GUARDRAILS:
       <div className="grid grid-cols-12 gap-10">
          {/* Editor Workspace */}
          <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col italic">
-            <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
+            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
                <div className="flex items-center space-x-6">
                   <div className="w-14 h-14 bg-primary/5 text-primary rounded-2xl flex items-center justify-center shadow-inner ring-1 ring-primary/10">
                      <PenTool size={28} />
@@ -200,7 +200,7 @@ GUARDRAILS:
 
       {/* Shadow Testing Analytics Hud */}
       <section className="bg-slate-900 p-10 rounded-[3rem] text-white flex flex-col md:flex-row md:items-center space-y-6 md:space-y-0 md:space-x-12 italic relative group overflow-hidden">
-         <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+         <div className="absolute inset-0 bg-primary/10 flex items-center space-x-2 duration-1000" />
          <div className="flex items-center space-x-6 relative z-10">
             <div className="w-14 h-14 bg-primary/20 rounded-2xl flex items-center justify-center text-primary animate-pulse">
                <Split size={28} />

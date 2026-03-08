@@ -89,7 +89,7 @@ export default function CollegesPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Educational Institutes</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Colleges <span className="text-primary italic">& Courses</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -259,21 +259,21 @@ export default function CollegesPage() {
                           </div>
                        </td>
                        <td className="px-10 py-8 text-right">
-                          <div className="flex items-center justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                             <button onClick={() => alert(`Cloning: ${college.name}`)} title="Clone Record" className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-snow-pearl hover:text-primary transition-all shadow-sm">
+                          <div className="flex items-center justify-end space-x-2">
+                             <button onClick={() => alert(`Cloning: ${college.name}`)} title="Clone Record" className="w-10 h-10 flex items-center justify-center bg-gray-50 border border-transparent rounded-xl text-secondary/40 hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/20 transition-all group/btn">
                                 <Copy size={16} />
                              </button>
-                             <button onClick={() => alert(`Opening Full Edit Form for: ${college.name}`)} title="Edit College" className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-primary hover:text-white transition-all shadow-sm">
+                             <button onClick={() => alert(`Opening Full Edit Form for: ${college.name}`)} title="Edit College" className="w-10 h-10 flex items-center justify-center bg-gray-50 border border-transparent rounded-xl text-secondary/40 hover:bg-amber-500 hover:text-white hover:shadow-lg hover:shadow-amber-500/20 transition-all group/btn">
                                 <Edit2 size={16} />
                              </button>
-                             <button onClick={() => window.open(`/${college.slug}`, '_blank')} title="View Public Profile" className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-emerald-500 hover:text-white transition-all shadow-sm">
+                             <button onClick={() => window.open(`/${college.slug}`, '_blank')} title="View Public Profile" className="w-10 h-10 flex items-center justify-center bg-gray-50 border border-transparent rounded-xl text-secondary/40 hover:bg-emerald-500 hover:text-white hover:shadow-lg hover:shadow-emerald-500/20 transition-all group/btn">
                                 <ExternalLink size={16} />
                              </button>
                              <button onClick={async () => {
                                if (confirm(`Are you sure you want to soft-delete/archive ${college.name}?`)) {
                                  alert(`Archiving ${college.name}... (Simulated)`);
                                }
-                             }} title="Archive College" className="p-3 bg-white border border-gray-100 rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-sm">
+                             }} title="Archive College" className="w-10 h-10 flex items-center justify-center bg-gray-50 border border-transparent rounded-xl text-secondary/40 hover:bg-red-500 hover:text-white hover:shadow-lg hover:shadow-red-500/20 transition-all group/btn">
                                 <Trash2 size={16} />
                              </button>
                           </div>

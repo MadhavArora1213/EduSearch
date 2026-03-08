@@ -92,7 +92,7 @@ export default function SponsoredManagerPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Sponsored Real Estate</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Sponsorship <span className="text-primary italic">Command</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -147,7 +147,7 @@ export default function SponsoredManagerPage() {
                </div>
                <div className="relative z-10">
                   <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Total Inventory yield</p>
-                  <p className="text-5xl font-black tracking-tighter mt-2 group-hover:text-primary transition-colors">₹8.4L</p>
+                  <p className="text-3xl md:text-3xl md:text-5xl font-black tracking-tighter mt-2 group-hover:text-primary transition-colors">₹8.4L</p>
                   <div className="mt-6 flex items-center space-x-2 text-[10px] font-black text-emerald-500 uppercase italic underline decoration-emerald-500/20">
                      <ShieldCheck size={14} />
                      <span>100% Slot Occupancy for March</span>
@@ -174,7 +174,7 @@ export default function SponsoredManagerPage() {
 
       {/* Ad Inventory Table */}
       <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden">
-        <div className="p-10 border-b border-gray-50 flex items-center justify-between">
+        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="relative flex-1 max-w-xl">
               <Search size={20} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
               <input placeholder="Search Active Sponsors..." className="w-full bg-snow-pearl border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all" />

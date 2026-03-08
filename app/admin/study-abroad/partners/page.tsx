@@ -67,7 +67,7 @@ export default function PartnerUniversityPage() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-10 font-sans">
+    <div className="space-y-10 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -78,7 +78,7 @@ export default function PartnerUniversityPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Partner Commission Lifecycle</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Partner <span className="text-emerald-500 italic">Portfolio</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -95,7 +95,7 @@ export default function PartnerUniversityPage() {
       </section>
 
       {/* Contract & Payout KPI Strip */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
          {[
            { label: "Commission Outstanding", value: `$${contracts.reduce((acc, c) => acc + Number(c.payout_pending), 0).toLocaleString()}`, trend: "Real-time", icon: DollarSign, color: "text-emerald-500 bg-emerald-50" },
            { label: "Active Revenue Nodes", value: `${contracts.length} Units`, trend: "Balanced", icon: Building2, color: "text-primary bg-primary/5" },
@@ -117,7 +117,7 @@ export default function PartnerUniversityPage() {
 
       {/* Main Partner Table */}
       <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100 italic relative">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100 italic relative">
             <div>
                <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-emerald-500/10 select-none">Active Partner Manifest</h3>
                <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] mt-2 italic select-none">Tracking Revenue Loop from Clicks to Enrollment Confirmation</p>
@@ -137,7 +137,7 @@ export default function PartnerUniversityPage() {
               </div>
             )}
             <table className="w-full text-left italic">
-               <thead className="bg-snow-pearl/50 border-b border-gray-100 font-sans italic">
+               <thead className="bg-snow-pearl/50 border-b border-gray-100 font-montserrat italic">
                   <tr>
                      <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40">University Partner</th>
                      <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-center">Comm. %</th>
@@ -154,7 +154,7 @@ export default function PartnerUniversityPage() {
                     </tr>
                   )}
                   {contracts.map((partner) => (
-                    <tr key={partner.id} className="group hover:bg-snow-pearl/30 transition-all font-sans italic">
+                    <tr key={partner.id} className="group hover:bg-snow-pearl/30 transition-all font-montserrat italic">
                        <td className="px-10 py-10">
                           <div className="flex items-center space-x-6 italic">
                              <div className="w-16 h-16 bg-snow-pearl rounded-2xl flex items-center justify-center text-secondary/10 group-hover:bg-emerald-500/5 group-hover:text-emerald-500 transition-all">
@@ -180,11 +180,11 @@ export default function PartnerUniversityPage() {
                              <span className="text-[13px] font-black text-typography">{partner.total_enrolled}</span>
                           </div>
                        </td>
-                       <td className="px-10 py-10 font-sans italic">
+                       <td className="px-10 py-10 font-montserrat italic">
                           <p className="text-xl font-black text-emerald-600 italic tracking-tighter">${Number(partner.payout_pending).toLocaleString()}</p>
                           <p className="text-[7px] font-black text-emerald-500/60 uppercase tracking-widest underline decoration-emerald-200">Verified for Settlement</p>
                        </td>
-                       <td className="px-10 py-10 text-right font-sans italic">
+                       <td className="px-10 py-10 text-right font-montserrat italic">
                           <div className={cn(
                              "inline-flex items-center space-x-2 italic underline decoration-emerald-200",
                              partner.status === 'PENDING_RENEWAL' ? "text-rose-500" : "text-typography font-black"
@@ -204,7 +204,7 @@ export default function PartnerUniversityPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-sans">
+         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat">
             <div className="absolute top-0 right-0 p-10 opacity-5">
                <Lock size={100} className="text-emerald-500" />
             </div>
@@ -217,8 +217,8 @@ export default function PartnerUniversityPage() {
       </section>
 
       {/* Conversion Funnel Context Node */}
-      <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative font-sans">
-         <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+      <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative font-montserrat">
+         <div className="absolute inset-0 bg-emerald-500/5 flex items-center space-x-2 duration-1000" />
          <div className="flex items-center space-x-8 relative z-10">
             <div className="w-20 h-20 bg-emerald-500/20 text-emerald-500 rounded-[2.5rem] flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform">
                <Target size={32} />

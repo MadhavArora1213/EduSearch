@@ -63,7 +63,7 @@ export default function NewScholarshipPage() {
                  <span className="text-[10px] font-black uppercase tracking-widest text-primary">Financial Aid</span>
               </Link>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              New <span className="text-primary italic">Scholarship</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">

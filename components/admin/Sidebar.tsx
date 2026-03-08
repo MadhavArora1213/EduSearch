@@ -96,18 +96,27 @@ const menuItems: MenuItem[] = [
   { id: "observability", label: "Platform Health", icon: Activity, href: "/admin/system/observability" },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
+
+export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false);
   const pathname = usePathname();
 
   return (
     <>
-      {/* Desktop Sidebar */}
+      {/* Sidebar - Desktop (Sticky) & Mobile (Fixed Drawer) */}
       <aside 
         className={cn(
-          "h-screen sticky top-0 bg-[#06162C] text-white transition-all duration-300 z-50 border-r border-white/5 shadow-2xl relative overflow-hidden shrink-0",
-          collapsed ? "w-24" : "w-[280px]",
-          "hidden lg:flex flex-col"
+          "h-screen fixed lg:sticky top-0 bg-[#06162C] text-white transition-all duration-300 z-[50] border-r border-white/5 shadow-2xl overflow-hidden flex flex-col shrink-0",
+          // Desktop Widths
+          collapsed ? "lg:w-24" : "lg:w-[280px]",
+          // Mobile Widths & Visibility
+          isOpen ? "w-[280px] left-0" : "w-[280px] -left-[280px] lg:left-0",
+          !isOpen && !collapsed && "lg:w-[280px]",
+          !isOpen && collapsed && "lg:w-24"
         )}
       >
         {/* Premium Background Glows */}
@@ -116,20 +125,32 @@ export function Sidebar() {
 
         {/* Sidebar Header */}
         <div className="relative h-24 flex items-center justify-between px-7 shrink-0 z-10">
-          {!collapsed && (
-            <div className="flex items-center group cursor-pointer transition-all">
-               <span className="font-extrabold text-[#F8FAFC] text-2xl tracking-tight leading-none">EduSearch</span>
-            </div>
-          )}
-          <button 
-            onClick={() => setCollapsed(!collapsed)}
-            className={cn(
-              "p-2 rounded-xl transition-all border border-transparent backdrop-blur-md",
-              collapsed ? "mx-auto bg-white/5 border-white/10 text-white hover:bg-white/10" : "hover:bg-white/5 text-slate-500 hover:text-slate-300"
-            )}
-          >
-            {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
-          </button>
+          <div className="flex items-center group cursor-pointer transition-all">
+             <span className="font-extrabold text-[#F8FAFC] text-2xl tracking-tight leading-none lg:block">
+               {collapsed ? "E" : "EduSearch"}
+             </span>
+          </div>
+          
+          <div className="flex items-center space-x-2">
+            {/* Desktop Toggle */}
+            <button 
+              onClick={() => setCollapsed(!collapsed)}
+              className={cn(
+                "hidden lg:flex p-2 rounded-xl transition-all border border-transparent backdrop-blur-md",
+                collapsed ? "bg-white/5 border-white/10 text-white hover:bg-white/10" : "hover:bg-white/5 text-slate-500 hover:text-slate-300"
+              )}
+            >
+              {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+            </button>
+
+            {/* Mobile Close */}
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="lg:hidden p-2 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-all"
+            >
+              <ChevronLeft size={20} />
+            </button>
+          </div>
         </div>
 
         <div className="px-7 mb-4 shrink-0 z-10">
@@ -141,14 +162,14 @@ export function Sidebar() {
           {menuItems.map((item, index) => {
             if (item.type === "label") {
               return !collapsed ? (
-                <p 
-                  key={`label-${index}`} 
-                  className="px-4 py-4 text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mt-2 select-none"
-                >
-                  {item.label}
-                </p>
+                <div key={`label-${index}`} className="px-4 pt-8 pb-3 select-none">
+                  <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] font-montserrat">
+                    {item.label}
+                  </p>
+                  <div className="w-8 h-0.5 bg-blue-500/30 mt-1 rounded-full" />
+                </div>
               ) : (
-                <div key={`label-${index}`} className="h-px bg-white/5 my-4 mx-4" />
+                <div key={`label-${index}`} className="h-px bg-white/5 my-6 mx-4" />
               );
             }
 
@@ -157,6 +178,7 @@ export function Sidebar() {
               <Link 
                 key={item.id} 
                 href={item.href!}
+                onClick={() => setIsOpen(false)}
                 className={cn(
                   "flex items-center space-x-3.5 px-4 py-3.5 rounded-[14px] transition-all duration-300 group relative overflow-hidden",
                   isActive 
@@ -210,38 +232,6 @@ export function Sidebar() {
         </div>
       </aside>
 
-      {/* Mobile Bottom Navigation */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#06162C]/95 backdrop-blur-xl border-t border-white/10 z-[100] flex flex-row items-center justify-between px-2 overflow-x-auto no-scrollbar shadow-[0_-10px_40px_rgba(0,0,0,0.3)] touch-pan-x">
-        {menuItems.filter(i => i.type !== "label").slice(0, 6).map((item) => {
-          const isActive = pathname === item.href;
-          return (
-            <Link 
-              key={item.id} 
-              href={item.href!}
-              className={cn(
-                "flex flex-col items-center justify-center p-2 min-w-[64px] rounded-xl transition-all relative overflow-hidden",
-                isActive ? "text-blue-400" : "text-slate-400"
-              )}
-            >
-              <div className="relative mb-1">
-                 {isActive && (
-                    <div className="absolute inset-0 bg-blue-400 blur-sm opacity-40 rounded-full" />
-                 )}
-                 {item.icon && <item.icon size={20} className="relative z-10" />}
-              </div>
-              <span className={cn(
-                "text-[9px] font-semibold whitespace-nowrap",
-                isActive ? "text-blue-400" : "text-slate-500"
-              )}>
-                 {item.label!.split(' ')[0]} {/* Show short label on mobile */}
-              </span>
-              {isActive && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-blue-500 rounded-t-full shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
-              )}
-            </Link>
-          );
-        })}
-      </nav>
     </>
   );
 }

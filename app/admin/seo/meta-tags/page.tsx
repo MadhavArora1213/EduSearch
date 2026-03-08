@@ -65,7 +65,7 @@ export default function SeometaTagsPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Meta Tag Intelligence</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Search <span className="text-primary italic">Engine</span> Console
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -131,7 +131,7 @@ export default function SeometaTagsPage() {
 
       {/* Meta Tag Editor */}
       <section className="bg-white rounded-[2.5rem] border border-gray-50 shadow-sm overflow-hidden min-h-[500px]">
-        <div className="p-10 border-b border-gray-50 flex items-center justify-between">
+        <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
            <div className="flex items-center space-x-10">
               <div className="flex items-center space-x-2 bg-gray-50 p-1.5 rounded-2xl border border-gray-100">
                 {["Page Meta", "Breadcrumbs", "JSON-LD"].map((t) => (

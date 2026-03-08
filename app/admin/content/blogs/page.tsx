@@ -112,7 +112,7 @@ export default function BlogCMSPage() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-10 font-sans">
+    <div className="space-y-10 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -123,7 +123,7 @@ export default function BlogCMSPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Article Registry</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Content <span className="text-primary italic">Engine</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -141,7 +141,7 @@ export default function BlogCMSPage() {
       </section>
 
       {/* KPI Stream */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
          {[
            { label: "Total Articles", value: posts.length, trend: "+4 this week", icon: FileText, color: "text-primary bg-primary/5" },
            { label: "Total PageViews", value: posts.reduce((acc, p) => acc + p.view_count, 0).toLocaleString(), trend: "Real-time", icon: BarChart3, color: "text-emerald-500 bg-emerald-50" },
@@ -163,7 +163,7 @@ export default function BlogCMSPage() {
 
       {/* Main Table */}
       <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
             <div className="relative flex-1 max-w-xl">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input 
@@ -286,7 +286,7 @@ export default function BlogCMSPage() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 md:p-10 italic">
           <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-xl" onClick={() => setIsEditorOpen(false)} />
           <div className="relative w-full max-w-4xl bg-white rounded-[3.5rem] overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
-            <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                <div>
                   <h3 className="text-2xl font-black text-typography uppercase tracking-tighter">
                     {editingPost?.id ? "Edit Article" : "Draft New Article"}

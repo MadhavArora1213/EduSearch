@@ -57,7 +57,7 @@ export default function PromptPerformanceDashboard() {
   ]);
 
   return (
-    <div className="space-y-10 font-sans italic">
+    <div className="space-y-10 font-montserrat italic">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100 italic">
         <div>
@@ -68,7 +68,7 @@ export default function PromptPerformanceDashboard() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Counselor Intelligence Audit</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              AI <span className="text-primary italic">Quality</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -88,7 +88,7 @@ export default function PromptPerformanceDashboard() {
       </section>
 
       {/* Sentiment & Engagement Matrix */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
          {metrics.map((m) => (
            <div key={m.id} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm relative group hover:border-primary/20 transition-all cursor-pointer">
               <div className="flex items-center justify-between mb-4 italic">
@@ -112,7 +112,7 @@ export default function PromptPerformanceDashboard() {
       <div className="grid grid-cols-12 gap-10">
          {/* Low Quality Response Feed - Hallucination Hunter */}
          <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col italic">
-            <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-rose-50/10 border-rose-100/20">
+            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10 border-rose-100/20">
                <div className="flex items-center space-x-6">
                   <div className="w-14 h-14 bg-rose-500 text-white rounded-2xl flex items-center justify-center shadow-xl shadow-rose-500/20">
                      <ThumbsDown size={28} />

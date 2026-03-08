@@ -42,7 +42,7 @@ const accessLogs: AccessChange[] = [
 
 export default function AccessChangeLogPage() {
   return (
-    <div className="space-y-10 font-sans italic not-italic">
+    <div className="space-y-10 font-montserrat italic not-italic">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -53,7 +53,7 @@ export default function AccessChangeLogPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">RBAC Identity Lifecycle</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Access <span className="text-primary italic">Logs</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -70,7 +70,7 @@ export default function AccessChangeLogPage() {
       </section>
 
       {/* Security Health KPI strip */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
          {[
            { label: "Privilege Escalations", value: "02", trend: "High Alert", icon: UserPlus, color: "text-rose-600 bg-rose-50" },
            { label: "Active Sessions", value: "124", trend: "Normal", icon: Activity, color: "text-primary bg-primary/5" },
@@ -91,8 +91,8 @@ export default function AccessChangeLogPage() {
       </div>
 
       {/* Access Event Feed */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col font-sans not-italic">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col font-montserrat not-italic">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div>
                <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Identity Mutation Ledger</h3>
                <p className="text-[10px] font-black text-secondary/30 uppercase tracking-[0.2em] mt-2 italic select-none">Tracking Role-Based Access Control (RBAC) Lifecycle Events</p>
@@ -117,7 +117,7 @@ export default function AccessChangeLogPage() {
                      <th className="px-10 py-8 text-[10px] font-black uppercase tracking-widest text-secondary/40 text-right">Commit</th>
                   </tr>
                </thead>
-               <tbody className="divide-y divide-gray-50 font-sans not-italic">
+               <tbody className="divide-y divide-gray-50 font-montserrat not-italic">
                   {accessLogs.map((log) => (
                     <tr key={log.id} className="group hover:bg-snow-pearl/30 transition-all italic underline decoration-primary/5">
                        <td className="px-10 py-10">
@@ -158,7 +158,7 @@ export default function AccessChangeLogPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-sans not-italic">
+         <div className="p-10 border-t border-gray-50 flex items-center justify-between bg-white italic relative overflow-hidden font-montserrat not-italic">
             <div className="absolute top-0 right-0 p-10 opacity-5">
                <ShieldAlert size={100} className="text-rose-500" />
             </div>
@@ -172,7 +172,7 @@ export default function AccessChangeLogPage() {
 
       {/* RBAC Verification Node */}
       <section className="bg-emerald-50 p-12 rounded-[3.5rem] border border-emerald-100 flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative italic not-italic">
-         <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+         <div className="absolute inset-0 bg-emerald-500/5 flex items-center space-x-2 duration-1000" />
          <div className="flex items-center space-x-8 relative z-10">
             <div className="w-20 h-20 bg-emerald-500/20 text-emerald-500 rounded-[2.5rem] flex items-center justify-center shadow-inner group-hover:rotate-12 transition-transform">
                <Unlock size={32} className="italic" />
@@ -185,7 +185,7 @@ export default function AccessChangeLogPage() {
             </div>
          </div>
          <div className="mt-8 md:mt-0 relative z-10 italic">
-            <button className="px-10 py-5 bg-emerald-600 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-500/20 italic font-sans not-italic">
+            <button className="px-10 py-5 bg-emerald-600 text-white rounded-2xl text-[11px] font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-500/20 italic font-montserrat not-italic">
                Audit Current Permissions
             </button>
          </div>

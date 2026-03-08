@@ -37,7 +37,7 @@ export default function AutoModerationRulesConfigPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Auto-Moderation Setup</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Rule <span className="text-primary italic">Config</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -140,7 +140,7 @@ export default function AutoModerationRulesConfigPage() {
                             <Activity size={14} />
                             <span>Processed Today: <span className="text-typography">{rule.hits}</span></span>
                          </div>
-                         <div className="flex items-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                         <div className="flex items-center space-x-3 flex items-center space-x-2">
                             <button className="flex items-center space-x-1 text-secondary/40 hover:text-primary transition-all">
                                <Copy size={14} /><span>Clone</span>
                             </button>

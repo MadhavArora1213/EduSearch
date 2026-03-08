@@ -62,7 +62,7 @@ export default function CoreWebVitalsTracker() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Core Web Vitals Tracker</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Performance <span className="text-primary italic">Vitals</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -103,7 +103,7 @@ export default function CoreWebVitalsTracker() {
                  <div className="px-3 py-1 bg-emerald-50 text-emerald-600 text-[9px] font-black rounded-full border border-emerald-100">PASSING</div>
                  <span className="text-[9px] font-black text-secondary/20 uppercase tracking-widest">{s.range}</span>
               </div>
-              <p className="text-5xl font-black text-typography tracking-tighter capitalize leading-none mb-2">{s.value}</p>
+              <p className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter capitalize leading-none mb-2">{s.value}</p>
               <p className="text-[11px] font-black text-secondary/40 uppercase tracking-widest italic">{s.label}</p>
               <div className="mt-8 flex items-center space-x-2">
                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
@@ -116,7 +116,7 @@ export default function CoreWebVitalsTracker() {
       <div className="grid grid-cols-12 gap-10">
          {/* Detail Matrix */}
          <div className="col-span-12 lg:col-span-8 bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-            <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30">
+            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-primary/10 select-none">Experience Matrix per Page Type</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic select-none">Field Data Collected from Actual User Sessions (90 Days)</p>

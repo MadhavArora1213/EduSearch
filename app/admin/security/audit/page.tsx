@@ -71,18 +71,18 @@ export default function AuditLogPage() {
   if (!mounted) return null;
 
   return (
-    <div className="space-y-10 font-sans">
+    <div className="space-y-10 font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
-           <div className="flex items-center space-x-3 mb-2 font-sans">
+           <div className="flex items-center space-x-3 mb-2 font-montserrat">
               <div className="bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100 italic">
                  <span className="text-[10px] font-black uppercase tracking-widest text-rose-600 italic">DPDP COMPLIANT</span>
               </div>
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Security Governance</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Security <span className="text-rose-500 italic">Audit Log</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -99,7 +99,7 @@ export default function AuditLogPage() {
       </section>
 
       {/* Real-time Integrity KPI Strip */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
          {[
            { label: "Integrity Status", value: logs.length > 0 ? "SECURE" : "AWAITING DATA", trend: "100% Validated", icon: ShieldCheck, color: "text-emerald-500 bg-emerald-50" },
            { label: "Active Admins", value: new Set(logs.map(l => l.admin_email)).size, trend: "Pulse Monitor", icon: Activity, color: "text-primary bg-primary/5" },
@@ -121,7 +121,7 @@ export default function AuditLogPage() {
 
       {/* Main Forensic Table */}
       <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col min-h-[400px]">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="relative flex-1 max-w-xl italic">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input 
@@ -206,7 +206,7 @@ export default function AuditLogPage() {
             </table>
          </div>
 
-         <div className="p-10 border-t border-gray-100 bg-snow-pearl/30 flex items-center justify-between font-sans italic">
+         <div className="p-10 border-t border-gray-100 bg-snow-pearl/30 flex items-center justify-between font-montserrat italic">
             <div className="flex items-center space-x-4 italic underline decoration-rose-500/10">
                <ShieldCheck size={18} className="text-emerald-500" />
                <p className="text-xs font-black text-secondary/40 uppercase tracking-widest">Ledger Integrity: Verified with SHA-256 Merkle Hash Node</p>

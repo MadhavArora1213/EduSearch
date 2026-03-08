@@ -65,7 +65,7 @@ export default function ProgrammaticPageHealth() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Programmatic Indexing Monitor</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Indexing <span className="text-primary italic">Health</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -113,7 +113,7 @@ export default function ProgrammaticPageHealth() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
          {/* Critical Errors List */}
          <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col">
-            <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-rose-50/10 border-rose-100/20">
+            <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-rose-50/10 border-rose-100/20">
                <div>
                   <h3 className="text-xl font-black text-typography tracking-tighter italic lowercase underline decoration-rose-500/20 capitalize">Top Critical Violations</h3>
                   <p className="text-[10px] font-bold text-secondary/30 uppercase tracking-[0.2em] mt-2 italic capitalize">Ranked by Monthly Traffic/Authority Impact</p>

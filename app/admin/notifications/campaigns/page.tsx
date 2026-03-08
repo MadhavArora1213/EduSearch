@@ -47,7 +47,7 @@ const campaigns: Campaign[] = [
 
 export default function CampaignSchedulerPage() {
   return (
-    <div className="space-y-10 font-sans italic not-italic font-sans">
+    <div className="space-y-10 font-montserrat italic not-italic font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -58,7 +58,7 @@ export default function CampaignSchedulerPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">Omnichannel Campaign Engine</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Campaign <span className="text-primary italic">Scheduler</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -75,7 +75,7 @@ export default function CampaignSchedulerPage() {
       </section>
 
       {/* Campaign Health KPI Strip */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
          {[
            { label: "Channel Delivery", value: "98.4%", trend: "+1.2%", icon: Send, color: "text-emerald-500 bg-emerald-50" },
            { label: "Active Broadcasts", value: "14 Nodes", trend: "Balanced", icon: Activity, color: "text-primary bg-primary/5" },
@@ -96,13 +96,13 @@ export default function CampaignSchedulerPage() {
       </div>
 
       {/* Main Campaign Timeline Listing */}
-      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col font-sans italic not-italic">
-         <div className="p-10 border-b border-gray-50 flex items-center justify-between bg-snow-pearl/30 border-gray-100">
+      <section className="bg-white rounded-[3rem] border border-gray-50 shadow-sm overflow-hidden flex flex-col font-montserrat italic not-italic">
+         <div className="p-6 md:p-10 border-b border-gray-50 flex flex-col lg:flex-row lg:items-center justify-between gap-6 bg-snow-pearl/30 border-gray-100">
             <div className="relative flex-1 max-w-xl italic">
                <Search size={22} className="absolute left-6 top-1/2 -translate-y-1/2 text-secondary/20" />
                <input placeholder="Search Active Campaigns or Segments..." className="w-full bg-white border-0 pl-16 pr-8 py-5 rounded-3xl text-[14px] font-bold outline-none focus:ring-4 focus:ring-primary/5 transition-all shadow-inner" />
             </div>
-            <div className="flex items-center space-x-4 pl-10 italic">
+            <div className="flex items-center space-x-4 lg:pl-10 italic w-full lg:w-auto justify-between lg:justify-end">
                <button className="p-5 bg-white border border-gray-100 rounded-2xl text-secondary/20 hover:text-primary transition-all shadow-sm italic"><Filter size={20} /></button>
             </div>
          </div>
@@ -120,7 +120,7 @@ export default function CampaignSchedulerPage() {
                </thead>
                <tbody className="divide-y divide-gray-50 italic">
                   {campaigns.map((c) => (
-                    <tr key={c.id} className="group hover:bg-snow-pearl/30 transition-all font-sans italic not-italic">
+                    <tr key={c.id} className="group hover:bg-snow-pearl/30 transition-all font-montserrat italic not-italic">
                        <td className="px-10 py-10">
                           <div className="flex items-center space-x-6 italic">
                              <div className={cn(
@@ -157,7 +157,7 @@ export default function CampaignSchedulerPage() {
                        <td className="px-10 py-10 text-right italic">
                           <div className="flex items-center justify-end space-x-3 italic">
                              <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-rose-50 hover:text-rose-500 transition-all text-secondary/20 shadow-sm italic"><Trash2 size={18} /></button>
-                             <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all text-secondary/20 shadow-sm italic font-sans not-italic">
+                             <button className="p-4 bg-white border border-gray-100 rounded-2xl hover:bg-primary hover:text-white transition-all text-secondary/20 shadow-sm italic font-montserrat not-italic">
                                 <ArrowUpRight size={18} />
                              </button>
                           </div>
@@ -181,7 +181,7 @@ export default function CampaignSchedulerPage() {
       </section>
 
       {/* Frequency Control / Segment Suggestor Node */}
-      <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative italic not-italic font-sans">
+      <section className="bg-slate-900 p-12 rounded-[3.5rem] text-white flex flex-col md:flex-row md:items-center justify-between group overflow-hidden relative italic not-italic font-montserrat">
          <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-primary/10 blur-3xl rounded-full" />
          <div className="flex items-center space-x-8 relative z-10">
             <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-primary shadow-inner italic">
@@ -195,7 +195,7 @@ export default function CampaignSchedulerPage() {
             </div>
          </div>
          <div className="mt-8 md:mt-0 relative z-10">
-            <button className="px-10 py-5 bg-white text-slate-900 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-primary/20 italic font-sans not-italic">
+            <button className="px-10 py-5 bg-white text-slate-900 rounded-2xl text-[11px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl shadow-primary/20 italic font-montserrat not-italic">
                Draft AI Campaign
             </button>
          </div>

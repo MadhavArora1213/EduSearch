@@ -51,7 +51,7 @@ export default function WhatsAppBotManagerPage() {
   ];
 
   return (
-    <div className="space-y-10 font-sans italic not-italic font-sans">
+    <div className="space-y-10 font-montserrat italic not-italic font-montserrat">
       {/* Header */}
       <section className="flex flex-col md:flex-row md:items-end justify-between space-y-6 md:space-y-0 pb-6 border-b border-gray-100">
         <div>
@@ -62,7 +62,7 @@ export default function WhatsAppBotManagerPage() {
               <ChevronRight size={14} className="text-secondary/30" />
               <span className="text-xs font-bold text-secondary/30">WhatsApp Ecosystem Hub</span>
            </div>
-           <h1 className="text-5xl font-black text-typography tracking-tighter leading-none mb-1">
+           <h1 className="text-3xl md:text-3xl md:text-5xl font-black text-typography tracking-tighter leading-none mb-1">
              Bot <span className="text-emerald-500 italic">Manager</span>
            </h1>
            <p className="text-secondary/40 text-sm font-bold uppercase tracking-widest mt-2">
@@ -93,7 +93,7 @@ export default function WhatsAppBotManagerPage() {
       </section>
 
       {/* Bot Health & Telemetry Strip */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 italic">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 italic">
          {botMetrics.map((m) => (
            <div key={m.id} className="bg-white p-8 rounded-[2.5rem] border border-gray-50 shadow-sm relative group hover:border-emerald-500/20 transition-all cursor-pointer italic">
               <div className="flex items-center justify-between mb-4 italic">
@@ -108,13 +108,13 @@ export default function WhatsAppBotManagerPage() {
          ))}
       </div>
 
-      <div className="grid grid-cols-12 gap-10 font-sans italic not-italic font-sans">
+      <div className="grid grid-cols-12 gap-10 font-montserrat italic not-italic font-montserrat">
          {/* QR Auth Terminal */}
-         <div className="col-span-12 lg:col-span-4 bg-slate-900 rounded-[3rem] p-12 text-white flex flex-col items-center justify-between group overflow-hidden relative font-sans italic not-italic">
+         <div className="col-span-12 lg:col-span-4 bg-slate-900 rounded-[3rem] p-12 text-white flex flex-col items-center justify-between group overflow-hidden relative font-montserrat italic not-italic">
             <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:scale-110 transition-transform duration-1000">
                <Wifi size={120} className="text-primary italic" />
             </div>
-            <div className="w-full relative z-10 font-sans italic not-italic">
+            <div className="w-full relative z-10 font-montserrat italic not-italic">
                <div className="flex items-center justify-between mb-10">
                   <h4 className="text-sm font-black text-slate-500 uppercase tracking-widest italic underline decoration-primary/30">Session Security</h4>
                   <div className={cn(
@@ -150,7 +150,7 @@ export default function WhatsAppBotManagerPage() {
          </div>
 
          {/* Conversation Flow Monitor */}
-         <div className="col-span-12 lg:col-span-8 bg-white p-12 rounded-[3.5rem] border border-gray-100 shadow-sm flex flex-col font-sans italic not-italic font-sans">
+         <div className="col-span-12 lg:col-span-8 bg-white p-12 rounded-[3.5rem] border border-gray-100 shadow-sm flex flex-col font-montserrat italic not-italic font-montserrat">
             <div className="flex justify-between items-center mb-10 italic">
                <div>
                   <h4 className="text-black text-xl font-black tracking-tighter uppercase italic lowercase">Conversation Intent Flow</h4>
@@ -208,10 +208,10 @@ export default function WhatsAppBotManagerPage() {
       </div>
 
       {/* Logic Config Alert Footnote */}
-      <section className="bg-emerald-50 p-10 rounded-[2.5rem] border border-emerald-100 flex items-center justify-between italic not-italic font-sans">
+      <section className="bg-emerald-50 p-10 rounded-[2.5rem] border border-emerald-100 flex items-center justify-between italic not-italic font-montserrat">
          <div className="flex items-center space-x-6">
             <Lock size={20} className="text-emerald-600 italic" />
-            <p className="text-[11px] font-bold text-emerald-800/60 tracking-widest uppercase italic font-sans not-italic">All bot messages are signed via AES-GCM • No PII cached in Fastify session storage • Session expiration enforced daily</p>
+            <p className="text-[11px] font-bold text-emerald-800/60 tracking-widest uppercase italic font-montserrat not-italic">All bot messages are signed via AES-GCM • No PII cached in Fastify session storage • Session expiration enforced daily</p>
          </div>
          <p className="text-[9px] font-black text-emerald-600/30 uppercase tracking-widest italic">v5.1 High-Density Cluster</p>
       </section>
