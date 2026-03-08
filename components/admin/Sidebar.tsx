@@ -25,7 +25,17 @@ import {
   Lock,
   Activity,
   Zap,
-  CreditCard
+  CreditCard,
+  ShieldAlert,
+  Fingerprint,
+  Terminal,
+  History,
+  HardDrive,
+  RotateCcw,
+  RefreshCw,
+  Layers,
+  Bug,
+  LayoutGrid
 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
@@ -38,22 +48,32 @@ const menuItems = [
   { id: "exams", label: "Exam Intelligence", icon: FileText, href: "/admin/exams" },
   
   // Section 4.1 - Lead Management & Audit
-  { id: "leads", label: "Lead Velocitor", icon: Target, href: "/admin/operations/leads" },
-  { id: "disputes", label: "Invalid Disputes", icon: ShieldCheck, href: "/admin/operations/leads/disputes" },
-  { id: "performance", label: "SLA Precision", icon: Activity, href: "/admin/operations/leads/performance" },
-  { id: "attribution", label: "Source Attribution", icon: Map, href: "/admin/operations/leads/attribution" },
+  { id: "leads", label: "Lead Monitor", icon: Target, href: "/admin/operations/leads" },
+  { id: "disputes", label: "Dispute Workflow", icon: ShieldCheck, href: "/admin/operations/leads/disputes" },
+  { id: "attribution", label: "Source Intel", icon: Map, href: "/admin/operations/leads/attribution" },
 
-  // Section 4.2 - Subscription, Billing & Sponsorship
+  // Section 4.2 - Revenue Ops
   { id: "subscriptions", label: "Sub Matrix", icon: Zap, href: "/admin/growth/subscriptions" },
-  { id: "invoices", label: "Invoicing Engine", icon: CreditCard, href: "/admin/growth/invoices" },
-  { id: "sponsored", label: "Ad Inventory", icon: LayoutDashboard, href: "/admin/growth/sponsored" }, // Reusing icon for slots
+  { id: "invoices", label: "Billing Engine", icon: CreditCard, href: "/admin/growth/invoices" },
+  { id: "sponsored", label: "Ad Inventory", icon: LayoutGrid, href: "/admin/growth/sponsored" },
   { id: "commissions", label: "Affiliate Vault", icon: TrendingUp, href: "/admin/growth/commissions" },
+
+  // Section 5 - User & Security
+  { id: "users", label: "Student Registry", icon: Users, href: "/admin/users" },
+  { id: "dpdp", label: "DPDP Vault", icon: ShieldAlert, href: "/admin/users/dpdp" },
+  { id: "security", label: "Sec Terminal", icon: Fingerprint, href: "/admin/security/rate-limits" },
+  { id: "rbac", label: "Auth Matrix", icon: Lock, href: "/admin/security/rbac" },
+
+  // Section 6 - Tech Ops & Infra
+  { id: "scraper", label: "Scraper Console", icon: Layers, href: "/admin/operations/scraper/manager" },
+  { id: "observability", label: "Grafana Command", icon: Activity, href: "/admin/system/observability" },
+  { id: "sentry", label: "Error Stack", icon: Bug, href: "/admin/system/sentry" },
+  { id: "backups", label: "Recovery Sentry", icon: HardDrive, href: "/admin/system/backups" },
 
   { id: "moderation", label: "Auto-Mod Rules", icon: ShieldCheck, href: "/admin/moderation/reviews" },
   { id: "content", label: "Content Editor", icon: BookOpen, href: "/admin/content/articles" },
   { id: "seo", label: "SEO Intelligence", icon: Globe, href: "/admin/seo/meta-tags" },
   { id: "ai", label: "AI Ops Console", icon: Cpu, href: "/admin/ai/control" },
-  { id: "system", label: "System Pulse", icon: Database, href: "/admin/system/health" },
 ];
 
 export function Sidebar() {
