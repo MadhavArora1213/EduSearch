@@ -7,10 +7,10 @@ import { useState, useEffect } from "react";
 export default function AICounselorBanner() {
   const [activeStep, setActiveStep] = useState(0);
   const steps = [
-    "Analyzing Cutoff Trajectories...",
-    "Synchronizing Placement Logs...",
-    "Calibrating Neural Match...",
-    "Ready for Consultation."
+    "Analyzing Entrance Cutoffs...",
+    "Reviewing Placement Records...",
+    "Finding Your Best Match...",
+    "Expert Counselor Ready."
   ];
 
   useEffect(() => {
@@ -22,7 +22,6 @@ export default function AICounselorBanner() {
 
   return (
     <section className="py-24 px-6 font-montserrat relative overflow-hidden bg-white">
-      {/* Background Decorative Blur */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10 pointer-events-none">
          <div className="absolute top-[20%] left-[10%] w-[40%] h-[40%] bg-blue-50/50 rounded-full blur-[120px]" />
          <div className="absolute bottom-[20%] right-[10%] w-[40%] h-[40%] bg-indigo-50/50 rounded-full blur-[120px]" />
@@ -30,14 +29,9 @@ export default function AICounselorBanner() {
 
       <div className="max-w-7xl mx-auto">
         <div className="bg-slate-950 rounded-[48px] p-8 md:p-20 relative overflow-hidden shadow-[0_40px_100px_-24px_rgba(0,0,0,0.3)] group">
-          {/* Animated Mesh Overlay */}
           <div className="absolute inset-0 opacity-20 noise-bg mix-blend-overlay pointer-events-none" />
           <motion.div 
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [0.1, 0.2, 0.1],
-              rotate: [0, 45, 0]
-            }}
+            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1], rotate: [0, 45, 0] }}
             transition={{ duration: 15, repeat: Infinity }}
             className="absolute -top-1/4 -right-1/4 w-[80%] h-[80%] bg-secondary rounded-full blur-[160px]" 
           />
@@ -51,23 +45,22 @@ export default function AICounselorBanner() {
                   className="inline-flex items-center space-x-3 bg-white/5 border border-white/10 px-5 py-2 rounded-full backdrop-blur-sm"
                 >
                   <Sparkles size={14} className="text-secondary" />
-                  <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-blue-100/60">Autonomous Intelligence</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-blue-100/60">Expert Career Guidance</span>
                 </motion.div>
 
                 <h2 className="text-5xl md:text-7xl font-light text-white tracking-tighter leading-[0.9] uppercase">
-                  Your Personal <br />
-                  <span className="italic font-medium text-secondary">Decision Hub.</span>
+                  Personalized <br />
+                  <span className="italic font-medium text-secondary">Admission Guide.</span>
                 </h2>
 
                 <p className="text-slate-400 text-sm md:text-base font-normal max-w-lg leading-relaxed tracking-tight">
-                  Beyond algorithms. Our proprietary Llama-powered cluster maps your ambition against a multi-dimensional registry of 35k institutions.
+                  Get professional advice for your higher education journey. We help you choose the best college based on your scores, interests, and budget.
                 </p>
               </div>
 
-              {/* Live Status Logic */}
               <div className="flex items-center space-x-6 py-4 border-y border-white/5">
                  <div className="flex flex-col gap-1">
-                    <p className="text-[9px] font-medium text-white/30 uppercase tracking-[0.3em]">System Status</p>
+                    <p className="text-[9px] font-medium text-white/30 uppercase tracking-[0.3em]">Counseling Status</p>
                     <div className="flex items-center space-x-2">
                        <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
                        <AnimatePresence mode="wait">
@@ -85,8 +78,8 @@ export default function AICounselorBanner() {
                  </div>
                  <div className="w-px h-8 bg-white/10" />
                  <div className="flex flex-col gap-1">
-                    <p className="text-[9px] font-medium text-white/30 uppercase tracking-[0.3em]">Active Peers</p>
-                    <p className="text-[10px] font-medium text-white uppercase tracking-widest">1.4M Nodes</p>
+                    <p className="text-[9px] font-medium text-white/30 uppercase tracking-[0.3em]">Happy Students</p>
+                    <p className="text-[10px] font-medium text-white uppercase tracking-widest">10M+ Monthly</p>
                  </div>
               </div>
 
@@ -95,12 +88,11 @@ export default function AICounselorBanner() {
                 whileTap={{ scale: 0.98 }}
                 className="group px-10 py-5 bg-white text-slate-950 rounded-2xl text-[10px] font-medium uppercase tracking-[0.3em] flex items-center space-x-4 shadow-2xl shadow-white/5"
               >
-                <span>Initialize AI Match</span>
+                <span>Chat with Counselor</span>
                 <ArrowRight size={16} className="text-secondary group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </div>
 
-            {/* Visual Column: The "Brain" Console */}
             <div className="relative">
                <motion.div 
                  animate={{ y: [0, -15, 0] }}
@@ -113,15 +105,15 @@ export default function AICounselorBanner() {
                      </div>
                      <div className="flex items-center space-x-2 bg-emerald-500/10 px-4 py-2 rounded-full border border-emerald-500/10">
                         <Activity size={14} className="text-emerald-500" />
-                        <span className="text-[10px] font-medium text-emerald-400 uppercase tracking-widest">Live Flux</span>
+                        <span className="text-[10px] font-medium text-emerald-400 uppercase tracking-widest">Live Updates</span>
                      </div>
                   </div>
 
                   <div className="space-y-6">
                      {[
-                       { icon: Zap, label: "Placement Predictor", status: "Calibrating", color: "text-amber-400" },
-                       { icon: Cpu, label: "ROI Node Analysis", status: "Active", color: "text-blue-400" },
-                       { icon: MessageSquare, label: "Natural Language Sync", status: "Ready", color: "text-emerald-400" }
+                       { icon: Zap, label: "Salary Predictor", status: "Active", color: "text-amber-400" },
+                       { icon: Cpu, label: "Fee Structure Analysis", status: "Updated", color: "text-blue-400" },
+                       { icon: MessageSquare, label: "Admission Support Chat", status: "Ready", color: "text-emerald-400" }
                      ].map((item, i) => (
                        <motion.div 
                          initial={{ opacity: 0, x: 20 }}
@@ -139,7 +131,6 @@ export default function AICounselorBanner() {
                      ))}
                   </div>
 
-                  {/* Mock Chart Bar */}
                   <div className="mt-10 flex gap-2 h-12 items-end">
                      {[40, 70, 45, 90, 60, 80, 50, 95].map((h, i) => (
                        <motion.div 
@@ -153,12 +144,11 @@ export default function AICounselorBanner() {
                   </div>
                </motion.div>
 
-               {/* Overlapping Glass Detail */}
                <motion.div 
                  style={{ y: -40, x: 40 }}
                  className="absolute -bottom-10 -right-10 bg-white/10 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-2xl hidden md:block"
                >
-                  <p className="text-[9px] font-medium text-white/40 uppercase tracking-[0.3em] mb-4">Neural Certainty</p>
+                  <p className="text-[9px] font-medium text-white/40 uppercase tracking-[0.3em] mb-4">Success Rate</p>
                   <p className="text-4xl font-light text-white tracking-tighter">99.4<span className="text-secondary font-medium">%</span></p>
                </motion.div>
             </div>

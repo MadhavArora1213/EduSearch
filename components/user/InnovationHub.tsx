@@ -1,41 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calculator, Target, History, Globe2, ArrowRight, ShieldCheck, Activity } from "lucide-react";
+import { 
+  Calculator as CalcIcon, 
+  Target as RankIcon, 
+  Clock as AlertIcon, 
+  Globe as AbroadIcon,
+  ShieldCheck as VerifyIcon,
+  ArrowRight as LinkIcon,
+  Activity
+} from "lucide-react";
 
 export default function InnovationHub() {
   const tools = [
     { 
-      title: "ROI Optimizer", 
-      desc: "Algorithmically mapping fee structures against 10-year growth trajectories.", 
-      icon: Calculator, 
+      title: "Fee & ROI Calculator", 
+      desc: "Calculate course fees and estimated return on investment for top colleges.", 
+      icon: CalcIcon, 
       color: "text-emerald-500", 
       bg: "bg-emerald-50/50",
-      tag: "Financial Flux"
+      tag: "Admission Planning"
     },
     { 
-      title: "Rank Predictor", 
-      desc: "Neural-based percentile mapping for exhaustive entrance examination logs.", 
-      icon: Target, 
+      title: "College Rank Predictor", 
+      desc: "Predict your college admission chances based on entrance exam scores.", 
+      icon: RankIcon, 
       color: "text-blue-500", 
       bg: "bg-blue-50/50",
-      tag: "Predictive Node"
+      tag: "Entrance Exams"
     },
     { 
-      title: "Sync Timeline", 
-      desc: "Live synchronization with official state-wise counseling and vacancy rounds.", 
-      icon: History, 
+      title: "Counseling Alerts", 
+      desc: "Get real-time updates on counseling dates, seat vacancy, and cutoffs.", 
+      icon: AlertIcon, 
       color: "text-amber-500", 
       bg: "bg-amber-50/50",
-      tag: "Real-time Sync"
+      tag: "Admissions 2026"
     },
     { 
-      title: "Cross Gateway", 
-      desc: "Direct-entry integration architecture with 500+ international university nodes.", 
-      icon: Globe2, 
+      title: "Study Abroad Guide", 
+      desc: "Complete assistance for international admissions and visa processing.", 
+      icon: AbroadIcon, 
       color: "text-indigo-500", 
       bg: "bg-indigo-50/50",
-      tag: "Global Node"
+      tag: "Global Education"
     }
   ];
 
@@ -49,37 +57,36 @@ export default function InnovationHub() {
             <div className="space-y-6">
                <div className="inline-flex items-center space-x-3 bg-white px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">
                   <Activity size={12} className="text-secondary" />
-                  <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-slate-400">Integrated Toolkit</span>
+                  <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-slate-400">Student Success Tools</span>
                </div>
                <h2 className="text-5xl md:text-7xl font-light text-slate-900 tracking-tighter leading-none">
-                  Advanced <br /> 
-                  <span className="italic font-medium text-slate-900/40">Decision Tools.</span>
+                  Smart Admission <br /> 
+                  <span className="italic font-medium text-slate-900/40">Planning Tools.</span>
                </h2>
                <p className="text-slate-500 text-sm md:text-base font-normal max-w-sm leading-relaxed tracking-tight">
-                  Beyond discovery. We provide the intelligence required to optimize every financial and academic transition in the scholarly era.
+                  Everything you need to plan your career—from fee comparisons to exam rank predictors and international admission guides.
                </p>
             </div>
 
             <div className="flex flex-col gap-6">
                <div className="flex items-center space-x-4">
                   <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center border border-slate-100 shadow-sm">
-                     <ShieldCheck size={18} className="text-secondary" />
+                     <VerifyIcon size={18} className="text-secondary" />
                   </div>
                   <div>
-                     <p className="text-[11px] font-medium text-slate-900 uppercase tracking-widest leading-none mb-1">Authenticated</p>
-                     <p className="text-[9px] font-normal text-slate-400 uppercase tracking-[0.2em]">Verified NIRF Data Flux</p>
+                     <p className="text-[11px] font-medium text-slate-900 uppercase tracking-widest leading-none mb-1">Authentic Data</p>
+                     <p className="text-[9px] font-normal text-slate-400 uppercase tracking-[0.2em]">Verified NIRF & University Info</p>
                   </div>
                </div>
                <button className="flex items-center space-x-3 text-[10px] font-medium text-slate-900 uppercase tracking-[0.3em] hover:text-secondary transition-colors">
-                  <span>Launch Comprehensive Hub</span>
-                  <ArrowRight size={14} />
+                  <span>Explore Admission Hub</span>
+                  <LinkIcon size={14} />
                </button>
             </div>
           </div>
 
           {/* Dynamic Cards Column */}
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4 relative">
-             {/* Decorative Background Element */}
              <div className="absolute inset-0 bg-blue-50/50 blur-[100px] -z-10" />
              
              {tools.map((tool, i) => (
@@ -103,7 +110,7 @@ export default function InnovationHub() {
                  </div>
                  <div className="pt-6 opacity-0 group-hover:opacity-100 transition-opacity">
                     <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center">
-                       <ArrowRight size={14} className="text-slate-300" />
+                       <LinkIcon size={14} className="text-slate-300" />
                     </div>
                  </div>
                </motion.div>

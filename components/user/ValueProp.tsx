@@ -5,10 +5,10 @@ import { ShieldCheck, Database, Globe2, Lock, Cpu, Sparkles } from "lucide-react
 
 export default function ValueProp() {
   const points = [
-    { title: "Neural Logic", desc: "Proprietary Llama-powered cluster for private counseling.", icon: Cpu },
-    { title: "Verified Hub", desc: "Direct-from-source synchronization with 35k+ institutions.", icon: Database },
-    { title: "Global Gateway", desc: "End-to-end migration nodes for US, UK, and Canada entry.", icon: Globe2 },
-    { title: "Secure Identity", desc: "Enterprise-grade DPDP compliance and identity protocol.", icon: Lock }
+    { title: "Expert Guidance", desc: "Personalized counseling for college & course selection.", icon: Cpu },
+    { title: "Verified Data", desc: "Official fees and placement info from 35,000+ colleges.", icon: Database },
+    { title: "Study Abroad", desc: "End-to-end support for US, UK, Canada & Global admissions.", icon: Globe2 },
+    { title: "Privacy First", desc: "Your personal data is protected with 100% security.", icon: Lock }
   ];
 
   return (
@@ -20,14 +20,14 @@ export default function ValueProp() {
             <div className="space-y-6">
               <div className="inline-flex items-center space-x-3 bg-secondary/5 px-4 py-2 rounded-full border border-secondary/10">
                 <ShieldCheck size={14} className="text-secondary" />
-                <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-secondary">Trust Infrastructure</span>
+                <span className="text-[10px] font-medium uppercase tracking-[0.4em] text-secondary">Trustworthy Choice</span>
               </div>
               <h2 className="text-5xl md:text-7xl font-light text-slate-900 tracking-tighter leading-none">
-                Platform <br /> 
-                <span className="italic font-medium text-slate-900/40">Integrity.</span>
+                Why Choose <br /> 
+                <span className="italic font-medium text-slate-900/40">EduSearch.</span>
               </h2>
               <p className="text-slate-500 text-sm md:text-base font-normal max-w-lg leading-relaxed tracking-tight">
-                Academic discovery requires absolute veracity. We've built the high-integrity foundation needed for verified life-changing transitions.
+                Empowering students with accurate information and expert guidance to make the best career decisions.
               </p>
             </div>
 
@@ -47,7 +47,6 @@ export default function ValueProp() {
           </div>
 
           <div className="relative aspect-square lg:pl-20">
-             {/* Central Hub Orb */}
              <div className="w-full h-full bg-slate-50 rounded-full border border-slate-100 flex items-center justify-center relative group">
                 <motion.div 
                    animate={{ rotate: 360 }}
@@ -66,11 +65,10 @@ export default function ValueProp() {
                    </div>
                    <div className="space-y-1">
                       <p className="text-5xl md:text-8xl font-light text-slate-900 tracking-tighter">99.9<span className="text-secondary font-medium">%</span></p>
-                      <p className="text-[10px] font-medium text-slate-300 uppercase tracking-[0.6em]">System Veracity</p>
+                      <p className="text-[10px] font-medium text-slate-300 uppercase tracking-[0.6em]">Accurate Information</p>
                    </div>
                 </div>
 
-                {/* Satellite Nodes */}
                 {[...Array(4)].map((_, i) => (
                   <motion.div
                     key={i}

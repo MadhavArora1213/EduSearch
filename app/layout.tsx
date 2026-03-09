@@ -9,8 +9,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "EduSearch",
-  description: "EduSearch platform for students and colleges",
+  title: "EduSearch | India's #1 College Search & Admission Portal",
+  description: "Find your dream college and course in India. Explore 35,000+ top universities, MBA, Engineering, and Medical colleges with expert counseling, fee details, and placement records.",
+  keywords: "college search, admissions 2026, top universities India, MBA entrance exams, engineering colleges, medical admission guide",
 };
 
 export default function RootLayout({

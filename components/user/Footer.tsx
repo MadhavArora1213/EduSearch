@@ -12,8 +12,7 @@ import {
   Linkedin,
   ArrowUpRight,
   ShieldCheck,
-  Globe,
-  Sparkles
+  Globe
 } from "lucide-react";
 
 export default function Footer() {
@@ -21,18 +20,17 @@ export default function Footer() {
 
   const footerLinks = [
     {
-      title: "Premier Nodes",
+      title: "Top Colleges",
       links: ["IIT Bombay", "BITS Pilani", "IIM Ahmedabad", "LPU Punjab", "VIT Vellore"]
     },
     {
-      title: "Navigation",
-      links: ["Entrance Exams", "Rank Predictors", "Study Abroad", "Scholarship Hub", "AI Counselor"]
+      title: "Quick Links",
+      links: ["Entrance Exams", "Rank Predictors", "Study Abroad", "Scholarships", "Career Counseling"]
     }
   ];
 
   return (
     <footer className="bg-white border-t border-slate-50 pt-32 pb-16 px-6 font-montserrat relative overflow-hidden">
-      {/* Decorative Gradient Flare */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-t from-slate-50/50 to-transparent -z-10" />
 
       <div className="max-w-7xl mx-auto">
@@ -48,12 +46,12 @@ export default function Footer() {
                  <span className="text-sm font-medium tracking-[0.4em] uppercase text-slate-900 leading-none">
                    Edu<span className="text-secondary italic">Search</span>
                  </span>
-                 <span className="text-[8px] font-medium uppercase tracking-[0.5em] text-slate-400 mt-1">Foundational Registry</span>
+                 <span className="text-[8px] font-medium uppercase tracking-[0.5em] text-slate-400 mt-1">India's Leading Education Portal</span>
                </div>
             </Link>
             
             <p className="text-slate-400 text-xs font-normal leading-relaxed tracking-tight max-w-sm">
-              The definitive discovery layer for higher education. Synchronizing the world's brightest <span className="text-slate-900 font-medium whitespace-nowrap">10M+ seekers</span> with future-proof excellence through verified institutional data.
+              The #1 destination for college search, exam preparation, and career guidance. Helping <span className="text-slate-900 font-medium whitespace-nowrap">10M+ students</span> find the right path to success.
             </p>
 
             <div className="flex items-center space-x-4">
@@ -94,7 +92,7 @@ export default function Footer() {
 
           {/* Contact Node */}
           <div className="lg:col-span-3 space-y-10">
-            <h4 className="text-[10px] font-medium uppercase tracking-[0.4em] text-slate-900 border-l border-secondary pl-3">Registry HQ</h4>
+            <h4 className="text-[10px] font-medium uppercase tracking-[0.4em] text-slate-900 border-l border-secondary pl-3">Get in Touch</h4>
             <div className="space-y-6">
                <div className="flex items-start space-x-4 group cursor-pointer">
                   <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center border border-slate-100 group-hover:border-secondary/20 transition-colors">
@@ -111,7 +109,7 @@ export default function Footer() {
                >
                   <div className="flex items-center space-x-3 relative z-10">
                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping" />
-                     <span className="text-[9px] font-medium uppercase tracking-[0.4em] text-slate-600">Global Sync Online</span>
+                     <span className="text-[9px] font-medium uppercase tracking-[0.4em] text-slate-600">Admission Open 2026</span>
                   </div>
                   <Globe size={16} className="text-slate-200" />
                </motion.div>
@@ -122,15 +120,15 @@ export default function Footer() {
         {/* Global Footer Bottom */}
         <div className="pt-12 border-t border-slate-50 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-             <p className="text-[9px] font-medium text-slate-300 uppercase tracking-[0.4em]">© {currentYear} EduSearch Intelligence Matrix</p>
+             <p className="text-[9px] font-medium text-slate-300 uppercase tracking-[0.4em]">© {currentYear} EduSearch Education Portal</p>
              <div className="flex items-center space-x-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100">
                 <ShieldCheck size={12} className="text-secondary" />
-                <span className="text-[8px] font-medium uppercase text-slate-400 tracking-widest">DPDP Secured Registry Node</span>
+                <span className="text-[8px] font-medium uppercase text-slate-400 tracking-widest">Secure Student Data Portal</span>
              </div>
           </div>
 
           <div className="flex items-center space-x-10">
-             {["Protocol", "Privacy", "Licensing"].map(item => (
+             {["Sitemap", "Privacy Policy", "Terms of Use"].map(item => (
                <Link key={item} href="#" className="text-[9px] font-medium text-slate-300 uppercase tracking-[0.4em] hover:text-slate-900 transition-colors">
                  {item}
                </Link>
@@ -140,9 +138,9 @@ export default function Footer() {
           <div className="hidden lg:flex items-center space-x-6 text-[8px] font-medium text-slate-200 uppercase tracking-[0.5em]">
              <div className="flex items-center space-x-2">
                 <div className="w-1 h-1 bg-emerald-500 rounded-full" />
-                <span>42ms</span>
+                <span>Admission Updates</span>
              </div>
-             <span>Build v5.0.1</span>
+             <span>App Version 2.0.1</span>
           </div>
         </div>
       </div>

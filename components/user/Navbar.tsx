@@ -13,13 +13,12 @@ export default function Navbar() {
   const navHeight = useTransform(scrollY, [0, 50], ["96px", "72px"]);
   const navBg = useTransform(scrollY, [0, 50], ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.8)"]);
   const navBorder = useTransform(scrollY, [0, 50], ["rgba(255, 255, 255, 0)", "rgba(15, 23, 42, 0.05)"]);
-  const navOpacity = useTransform(scrollY, [0, 50], [1, 1]);
 
   const navLinks = [
-    { name: "Registry", href: "/colleges", icon: GraduationCap },
-    { name: "Examinations", href: "/exams", icon: BookOpen },
-    { name: "Global Hub", href: "/study-abroad", icon: Globe },
-    { name: "AI Consultation", href: "/counseling", icon: MessageSquare, highlight: true },
+    { name: "Colleges", href: "/colleges", icon: GraduationCap },
+    { name: "Exams", href: "/exams", icon: BookOpen },
+    { name: "Study Abroad", href: "/study-abroad", icon: Globe },
+    { name: "Counseling", href: "/counseling", icon: MessageSquare, highlight: true },
   ];
 
   return (
@@ -29,7 +28,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between w-full">
         
-        {/* Logo Node */}
+        {/* Brand Logo */}
         <Link href="/" className="flex items-center space-x-3 group">
            <div className="w-10 h-10 bg-slate-950 rounded-xl flex items-center justify-center shadow-2xl group-hover:rotate-6 transition-all duration-500">
              <GraduationCap size={20} className="text-white" />
@@ -38,11 +37,11 @@ export default function Navbar() {
              <span className="text-sm font-medium tracking-[0.4em] uppercase text-slate-900 leading-none">
                Edu<span className="text-secondary italic">Search</span>
              </span>
-             <span className="text-[7px] font-medium uppercase tracking-[0.5em] text-slate-400 mt-1">v5.0.2 Intel</span>
+             <span className="text-[7px] font-medium uppercase tracking-[0.5em] text-slate-400 mt-1">2026 Admissions</span>
            </div>
         </Link>
 
-        {/* Neural Link Bar */}
+        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center p-1.5 bg-slate-50/50 rounded-full border border-slate-100">
            {navLinks.map((link) => (
              <Link 
@@ -59,14 +58,14 @@ export default function Navbar() {
            ))}
         </div>
 
-        {/* Action Gate */}
+        {/* User Actions */}
         <div className="flex items-center space-x-4">
-           <button className="hidden md:block text-[9px] font-medium uppercase tracking-[0.4em] text-slate-400 hover:text-slate-900 transition-colors">Access Portal</button>
+           <button className="hidden md:block text-[9px] font-medium uppercase tracking-[0.4em] text-slate-400 hover:text-slate-900 transition-colors">Login</button>
            <motion.button 
              whileHover={{ x: 3 }}
              className="group text-[9px] font-medium uppercase tracking-[0.3em] bg-slate-950 text-white px-8 py-3.5 rounded-full hover:bg-secondary transition-all shadow-xl shadow-slate-950/10 flex items-center space-x-3"
            >
-             <span>Initialize</span>
+             <span>Get Started</span>
              <MoveRight size={14} className="group-hover:translate-x-1 transition-transform" />
            </motion.button>
            <button 
@@ -78,7 +77,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Neural Overlay */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
@@ -88,7 +87,7 @@ export default function Navbar() {
             className="lg:hidden fixed inset-0 top-[72px] bg-white z-[90] px-10 py-16 flex flex-col justify-between"
           >
             <div className="space-y-12">
-              <p className="text-[8px] font-medium uppercase tracking-[0.6em] text-slate-300">Navigation Core</p>
+              <p className="text-[8px] font-medium uppercase tracking-[0.6em] text-slate-300">Quick Links</p>
               <div className="flex flex-col space-y-8">
                 {navLinks.map((link) => (
                   <Link 
@@ -106,8 +105,8 @@ export default function Navbar() {
             <div className="space-y-8">
               <div className="h-px bg-slate-100 w-full" />
               <div className="flex flex-col space-y-4">
-                <button className="w-full py-5 border border-slate-100 rounded-2xl text-[10px] uppercase font-medium tracking-[0.4em] text-slate-400">Portal Login</button>
-                <button className="w-full py-5 bg-slate-950 text-white rounded-2xl text-[10px] uppercase font-medium tracking-[0.4em]">Establish Identity</button>
+                <button className="w-full py-5 border border-slate-100 rounded-2xl text-[10px] uppercase font-medium tracking-[0.4em] text-slate-400">Student Login</button>
+                <button className="w-full py-5 bg-slate-950 text-white rounded-2xl text-[10px] uppercase font-medium tracking-[0.4em]">Register Now</button>
               </div>
             </div>
           </motion.div>
