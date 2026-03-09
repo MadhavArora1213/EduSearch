@@ -71,11 +71,11 @@ export default function CollegesPage() {
     }
   };
 
-  const filteredColleges = colleges.filter(c => 
+  const filteredColleges = Array.isArray(colleges) ? colleges.filter(c => 
     c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     c.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
     c.state.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  ) : [];
 
   return (
     <div className="space-y-6 font-montserrat">

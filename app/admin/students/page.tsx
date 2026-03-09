@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { 
   Users, 
   Search, 
@@ -22,7 +23,8 @@ import {
   Loader2,
   CheckCircle2,
   Lock,
-  Fingerprint
+  Fingerprint,
+  AlertTriangle
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
