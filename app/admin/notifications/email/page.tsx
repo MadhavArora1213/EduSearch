@@ -40,7 +40,7 @@ interface EmailTemplate {
 }
 
 const templates: EmailTemplate[] = [
-  { id: "T1", name: "Welcome Email v2", type: "Transactional", subject: "Welcome to EduSearch, {{name}}!", sentCount: 14200, openRate: 48.2, clickRate: 12.4, status: 'ACTIVE' },
+  { id: "T1", name: "Welcome Email v2", type: "Transactional", subject: "Welcome to Admission Season, {{name}}!", sentCount: 14200, openRate: 48.2, clickRate: 12.4, status: 'ACTIVE' },
   { id: "T2", name: "Lead Confirmation (College)", type: "Transactional", subject: "New Lead Received: {{student_name}}", sentCount: 8400, openRate: 92.1, clickRate: 64.2, status: 'ACTIVE' },
   { id: "T3", name: "Scholarship Deadline Alert", type: "Campaign", subject: "7 Days Left: Apply for MIT International Grant", sentCount: 22000, openRate: 24.8, clickRate: 4.2, status: 'ACTIVE' },
   { id: "T4", name: "Review Approved Badge", type: "Transactional", subject: "Your review is live! 🌟", sentCount: 1240, openRate: 88.5, clickRate: 32.1, status: 'DRAFT' },

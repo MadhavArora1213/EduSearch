@@ -150,9 +150,9 @@ export default function RBACPage() {
       {activeTab === 'TEAM' && (
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-typography flex-1">
             {[
-               { name: 'Ankit Sharma', role: 'Super Admin', email: 'ankit@edusearch.com', status: 'ACTIVE' },
-               { name: 'Rohan Das', role: 'Content Manager', email: 'rohan@edusearch.com', status: 'ACTIVE' },
-               { name: 'Simran Gill', role: 'Moderator', email: 'simran@edusearch.com', status: 'INACTIVE' }
+               { name: 'Ankit Sharma', role: 'Super Admin', email: 'ankit@admissionseason.com', status: 'ACTIVE' },
+               { name: 'Rohan Das', role: 'Content Manager', email: 'rohan@admissionseason.com', status: 'ACTIVE' },
+               { name: 'Simran Gill', role: 'Moderator', email: 'simran@admissionseason.com', status: 'INACTIVE' }
             ].map((member, i) => (
                <div key={i} className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm relative group hover:shadow-md hover:border-primary/20 transition-all flex flex-col justify-between min-h-[180px]">
                   <div className="absolute top-0 right-0 p-3">

@@ -43,10 +43,10 @@ export default function Footer() {
                  <GraduationCap size={20} className="text-white" />
                </div>
                <div className="flex flex-col">
-                 <span className="text-sm font-medium tracking-[0.4em] uppercase text-slate-900 leading-none">
-                   Edu<span className="text-secondary italic">Search</span>
-                 </span>
-                 <span className="text-[8px] font-medium uppercase tracking-[0.5em] text-slate-400 mt-1">India's Leading Education Portal</span>
+                  <span className="text-sm font-medium tracking-[0.4em] uppercase text-slate-900 leading-none">
+                    Admission<span className="text-secondary italic">Season</span>
+                  </span>
+                  <span className="text-[8px] font-medium uppercase tracking-[0.5em] text-slate-400 mt-1">India's Leading Education Portal</span>
                </div>
             </Link>
             
@@ -120,7 +120,7 @@ export default function Footer() {
         {/* Global Footer Bottom */}
         <div className="pt-12 border-t border-slate-50 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-             <p className="text-[9px] font-medium text-slate-300 uppercase tracking-[0.4em]">© {currentYear} EduSearch Education Portal</p>
+             <p className="text-[9px] font-medium text-slate-300 uppercase tracking-[0.4em]">© {currentYear} Admission Season Education Portal</p>
              <div className="flex items-center space-x-2 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-100">
                 <ShieldCheck size={12} className="text-secondary" />
                 <span className="text-[8px] font-medium uppercase text-slate-400 tracking-widest">Secure Student Data Portal</span>

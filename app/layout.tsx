@@ -9,9 +9,21 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "EduSearch | India's #1 College Search & Admission Portal",
-  description: "Find your dream college and course in India. Explore 35,000+ top universities, MBA, Engineering, and Medical colleges with expert counseling, fee details, and placement records.",
-  keywords: "college search, admissions 2026, top universities India, MBA entrance exams, engineering colleges, medical admission guide",
+  metadataBase: new URL("https://admissionseason.com"),
+  title: "Admission Season | India's #1 College Search & Admission Portal",
+  description: "Find your dream college and course in India with Admission Season. Explore 35,000+ top universities, MBA, Engineering, and Medical colleges with expert counseling, fee details, and placement records.",
+  keywords: "college search, admissions 2026, Admission Season, top universities India, MBA entrance exams, engineering colleges, medical admission guide",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Admission Season | College Search & Admission Portal",
+    description: "Explore 35,000+ colleges and find your perfect course with Admission Season.",
+    url: "https://admissionseason.com",
+    siteName: "Admission Season",
+    locale: "en_IN",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

@@ -434,7 +434,7 @@ enum RankingAgency {
   OUTLOOK
   INDIA_TODAY
   QS
-  EDUSEARCH
+  ADMISSION_SEASON
 }
 
 enum GalleryCategory {

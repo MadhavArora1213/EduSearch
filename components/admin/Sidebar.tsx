@@ -127,7 +127,7 @@ export function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
         <div className="relative h-20 flex items-center justify-between px-7 shrink-0 z-10">
           <div className="flex items-center group cursor-pointer transition-all">
              <span className="font-extrabold text-[#F8FAFC] text-2xl tracking-tight leading-none lg:block">
-               {collapsed ? "E" : "EduSearch"}
+               {collapsed ? "A" : "AdmissionSeason"}
              </span>
           </div>
           

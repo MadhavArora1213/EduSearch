@@ -9,6 +9,7 @@ import {
   Clock,
   XCircle,
   ShieldAlert,
+  ShieldCheck,
   ChevronRight,
   LogOut,
   User,
@@ -40,7 +41,7 @@ export default function SessionManagementPage() {
   const sessions: Session[] = [
     { 
       id: "SES-001", 
-      user: { name: "Ankit Sharma", role: "Super Admin", email: "ankit@edusearch.com" }, 
+      user: { name: "Ankit Sharma", role: "Super Admin", email: "ankit@admissionseason.com" }, 
       ip: "42.108.12.3", 
       device: "MacBook Pro M3", 
       browser: "Chrome v122", 
@@ -50,7 +51,7 @@ export default function SessionManagementPage() {
     },
     { 
       id: "SES-002", 
-      user: { name: "Rohan Das", role: "Content Manager", email: "rohan@edusearch.com" }, 
+      user: { name: "Rohan Das", role: "Content Manager", email: "rohan@admissionseason.com" }, 
       ip: "102.14.88.21", 
       device: "iPad Air", 
       browser: "Safari Mobile", 

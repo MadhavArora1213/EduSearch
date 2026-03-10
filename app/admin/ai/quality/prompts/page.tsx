@@ -39,11 +39,11 @@ interface PromptVersion {
 }
 
 export default function SystemPromptEditor() {
-  const [activePrompt, setActivePrompt] = useState(`You are the EduSearch AI Counselor, a friendly and expert guide for students in India. 
+  const [activePrompt, setActivePrompt] = useState(`You are the Admission Season AI Counselor, a friendly and expert guide for students in India. 
 Your goal is to help students find the best colleges and exams based on their preferences.
 
 CONTEXT RULES:
-1. Always suggest colleges available in the edusearch database.
+1. Always suggest colleges available in the admissionseason database.
 2. If fees are mentioned, be precise (e.g., 2.4 LPA vs ~2 LPA).
 3. If NIRF ranking is available, quote it to build trust.
 4. Tone: Encouraging, analytical, and concise.

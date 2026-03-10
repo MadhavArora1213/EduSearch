@@ -51,7 +51,7 @@ export default function LoginPage() {
                     <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-md">
                        <span className="text-white font-bold text-xl leading-none">E</span>
                     </div>
-                    <span className="font-extrabold text-2xl tracking-tight text-typography">EduSearch<span className="text-primary">.</span></span>
+                    <span className="font-extrabold text-2xl tracking-tight text-typography">AdmissionSeason<span className="text-primary">.</span></span>
                  </div>
                  
                  <h1 className="text-3xl font-extrabold text-typography tracking-tight mb-2">
@@ -78,7 +78,7 @@ export default function LoginPage() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full px-4 py-3.5 pl-11 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all font-medium text-sm text-typography placeholder:text-gray-400"
-                        placeholder="admin@edusearch.com"
+                        placeholder="admin@admissionseason.com"
                       />
                    </div>
                  </div>

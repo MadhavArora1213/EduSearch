@@ -35,7 +35,7 @@ export default function Navbar() {
            </div>
            <div className="flex flex-col">
              <span className="text-sm font-medium tracking-[0.4em] uppercase text-slate-900 leading-none">
-               Edu<span className="text-secondary italic">Search</span>
+               Admission<span className="text-secondary italic">Season</span>
              </span>
              <span className="text-[7px] font-medium uppercase tracking-[0.5em] text-slate-400 mt-1">2026 Admissions</span>
            </div>

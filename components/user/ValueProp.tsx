@@ -24,7 +24,7 @@ export default function ValueProp() {
               </div>
               <h2 className="text-5xl md:text-7xl font-light text-slate-900 tracking-tighter leading-none">
                 Why Choose <br /> 
-                <span className="italic font-medium text-slate-900/40">EduSearch.</span>
+                <span className="italic font-medium text-slate-900/40">Admission Season.</span>
               </h2>
               <p className="text-slate-500 text-sm md:text-base font-normal max-w-lg leading-relaxed tracking-tight">
                 Empowering students with accurate information and expert guidance to make the best career decisions.

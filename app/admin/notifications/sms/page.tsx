@@ -35,9 +35,9 @@ interface SMSTemplate {
 }
 
 const smsTemplates: SMSTemplate[] = [
-  { id: "S1", name: "OTP Verification", text: "Your EduSearch OTP is {{otp}}. This is valid for 10 minutes. Do not share it.", charCount: 84, dltId: "1007123456789012345", type: "Transactional", status: 'APPROVED' },
+  { id: "S1", name: "OTP Verification", text: "Your Admission Season OTP is {{otp}}. This is valid for 10 minutes. Do not share it.", charCount: 84, dltId: "1007123456789012345", type: "Transactional", status: 'APPROVED' },
   { id: "S2", name: "Lead Notification (College)", text: "New lead received: {{student_name}} for {{course}}. Login to B2B portal to view.", charCount: 112, dltId: "1007987654321098765", type: "Service", status: 'APPROVED' },
-  { id: "S3", name: "Admit Card Alert", text: "JEE Main 2026 Admit Card is out! Download now at edusearch.com/exam/jee-2026", charCount: 92, dltId: "123456", type: "Service", status: 'PENDING_DLT' },
+  { id: "S3", name: "Admit Card Alert", text: "JEE Main 2026 Admit Card is out! Download now at admissionseason.com/exam/jee-2026", charCount: 92, dltId: "123456", type: "Service", status: 'PENDING_DLT' },
   { id: "S4", name: "Counseling Update", text: "The wait is over! Your AI Counseling session is ready. Check your dashboard.", charCount: 88, dltId: "Pending", type: "Service", status: 'REJECTED' },
 ];
 
@@ -222,9 +222,9 @@ export default function SMSContentManagerPage() {
                <div className="space-y-3">
                   <div className="flex flex-col">
                      <div className="bg-slate-800/80 p-3 rounded-xl rounded-tl-none border border-slate-700/50 shadow-sm">
-                        <p className="text-[9px] font-bold text-white leading-relaxed">Your EduSearch OTP is <span className="text-primary font-black">992142</span>. Valid for 10m.</p>
+                        <p className="text-[9px] font-bold text-white leading-relaxed">Your Admission Season OTP is <span className="text-primary font-black">992142</span>. Valid for 10m.</p>
                      </div>
-                     <span className="text-[7px] text-slate-500 mt-1 uppercase tracking-widest ml-1 font-black">1m ago • EDUSCH</span>
+                     <span className="text-[7px] text-slate-500 mt-1 uppercase tracking-widest ml-1 font-black">1m ago • ADMSEA</span>
                   </div>
                </div>
 
